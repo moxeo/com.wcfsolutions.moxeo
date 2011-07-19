@@ -44,51 +44,46 @@ class BookNavigationThemeModuleType extends AbstractThemeModuleType {
 		// get content item
 		$contentItem = ContentItem::getContentItem($themeModule->contentItemID);
 		
-		// get content items
-		if ($activeContentItem->contentItemID == $contentItem->contentItemID || $contentItem->isParent($activeContentItem->contentItemID)) {
-			// init content item list
-			$contentItemList = new ViewableContentItemList($contentItem->contentItemID);
-			$contentItemList->readContentItems();
-			$contentItems = $contentItemList->getContentItemList();
-			
-			// get content item ids
-			$contentItemIDs = array_keys($contentItems);
-			array_unshift($contentItemIDs, $contentItem->contentItemID);
-			
-			// get keys
-			$activeKey = array_search($activeContentItem->contentItemID, $contentItemIDs);
-			$previousKey = $activeKey - 1;
-			$nextKey = $activeKey + 1;
-			
-			// get previous content item
-			$previousContentItem = null;
-			if (isset($contentItemIDs[$previousKey])) {
-				$previousContentItemID = $contentItemIDs[$previousKey];
-				$previousContentItem = ContentItem::getContentItem($previousContentItemID);
-			}
-			
-			// get up content item
-			$upContentItem = null;
-			if ($activeContentItem->contentItemID != $contentItem->contentItemID) {
-				$upContentItem = ContentItem::getContentItem($activeContentItem->parentID);
-			}
-			
-			// get next content item
-			$nextContentItem = null;
-			if (isset($contentItemIDs[$nextKey])) {
-				$nextContentItemID = $contentItemIDs[$nextKey];
-				$nextContentItem = ContentItem::getContentItem($nextContentItemID);
-			}
-			
-			WCF::getTPL()->assign(array(
-				'previousContentItem' => $previousContentItem,
-				'upContentItem' => $upContentItem,
-				'nextContentItem' => $nextContentItem
-			));
-			return WCF::getTPL()->fetch('bookNavigationThemeModuleType');		
+		// init content item list
+		$contentItemList = new ViewableContentItemList($contentItem->contentItemID);
+		$contentItemList->readContentItems();
+		$contentItems = $contentItemList->getContentItemList();
+		
+		// get content item ids
+		$contentItemIDs = array_keys($contentItems);
+		array_unshift($contentItemIDs, $contentItem->contentItemID);
+		
+		// get keys
+		$activeKey = array_search($activeContentItem->contentItemID, $contentItemIDs);
+		$previousKey = $activeKey - 1;
+		$nextKey = $activeKey + 1;
+		
+		// get previous content item
+		$previousContentItem = null;
+		if (isset($contentItemIDs[$previousKey])) {
+			$previousContentItemID = $contentItemIDs[$previousKey];
+			$previousContentItem = ContentItem::getContentItem($previousContentItemID);
 		}
 		
-		return '';
+		// get up content item
+		$upContentItem = null;
+		if ($activeContentItem->contentItemID != $contentItem->contentItemID) {
+			$upContentItem = ContentItem::getContentItem($activeContentItem->parentID);
+		}
+		
+		// get next content item
+		$nextContentItem = null;
+		if (isset($contentItemIDs[$nextKey])) {
+			$nextContentItemID = $contentItemIDs[$nextKey];
+			$nextContentItem = ContentItem::getContentItem($nextContentItemID);
+		}
+		
+		WCF::getTPL()->assign(array(
+			'previousContentItem' => $previousContentItem,
+			'upContentItem' => $upContentItem,
+			'nextContentItem' => $nextContentItem
+		));
+		return WCF::getTPL()->fetch('bookNavigationThemeModuleType');
 	}
 	
 	// form methods

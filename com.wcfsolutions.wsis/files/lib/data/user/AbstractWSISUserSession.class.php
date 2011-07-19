@@ -13,7 +13,18 @@ require_once(WCF_DIR.'lib/system/session/UserSession.class.php');
  * @category	Infinite Site
  */
 class AbstractWSISUserSession extends UserSession {
+	/**
+	 * list of content item user permissions
+	 * 
+	 * @var	array
+	 */
 	protected $contentItemPermissions = array();
+	
+	/**
+	 * list of content item admin permissions
+	 * 
+	 * @var	array
+	 */
 	protected $contentItemAdminPermissions = array();
 	
 	/**
@@ -68,8 +79,6 @@ class AbstractWSISUserSession extends UserSession {
 			$this->contentItemPermissions = array();
 		}
 		
-		// @todo	move to user session
-		// @see		WSISUserSession!
 		// get content item admin permissions
 		$sql = "SELECT		*
 			FROM		wsis".WSIS_N."_content_item_admin

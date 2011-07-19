@@ -18,7 +18,7 @@ class WSISUserSession extends AbstractWSISUserSession {
 	 */
 	public function update() {
 		// update global last activity timestamp
-		WSISUserSession::updateLastActivityTime($this->userID);
+		self::updateLastActivityTime($this->userID);
 	}
 	
 	/**
