@@ -1,5 +1,7 @@
-WCF Solutions Theme System
-==========================
+WCF Solutions Infinite Site
+===========================
+
+Repository of the WCF Solutions CMS project.
 
 License
 -------

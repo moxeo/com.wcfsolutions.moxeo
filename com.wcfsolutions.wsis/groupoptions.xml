@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/group-options.xsd">
+	<import>
+		<categories>
+			<category name="user.site">
+				<parent>user</parent>
+			</category>
+			<category name="user.site.contentItem">
+				<parent>user.site</parent>
+			</category>
+			<category name="user.site.comment">
+				<parent>user.site</parent>
+			</category>
+			<category name="admin.site">
+				<parent>admin</parent>
+			</category>
+			<category name="admin.site.contentItem">
+				<parent>admin.site</parent>
+			</category>
+			<category name="admin.site.article">
+				<parent>admin.site</parent>
+			</category>
+			<category name="admin.site.news">
+				<parent>admin.site</parent>
+			</category>
+			<category name="admin.site.comment">
+				<parent>admin.site</parent>
+			</category>
+		</categories>
+		<options>
+			<option name="user.site.canViewContentItem">
+				<categoryname>user.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>			
+			<option name="user.site.canEnterContentItem">
+				<categoryname>user.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="user.site.canViewHiddenContentItem">
+				<categoryname>user.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="user.site.canComment">
+				<categoryname>user.site.comment</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="user.site.maxCommentLength">
+				<categoryname>user.site.comment</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>1000</defaultvalue>
+			</option>
+			<option name="admin.site.isContentItemAdmin">
+				<categoryname>admin.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canAddContentItem">
+				<categoryname>admin.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canEditContentItem">
+				<categoryname>admin.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canDeleteContentItem">
+				<categoryname>admin.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canEnableContentItem">
+				<categoryname>admin.site.contentItem</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canAddArticle">
+				<categoryname>admin.site.article</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canEditArticle">
+				<categoryname>admin.site.article</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canDeleteArticle">
+				<categoryname>admin.site.article</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canAddNewsArchive">
+				<categoryname>admin.site.news</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canEditNewsArchive">
+				<categoryname>admin.site.news</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canDeleteNewsArchive">
+				<categoryname>admin.site.news</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canAddNewsItem">
+				<categoryname>admin.site.news</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canEditNewsItem">
+				<categoryname>admin.site.news</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canDeleteNewsItem">
+				<categoryname>admin.site.news</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canEnableNewsItem">
+				<categoryname>admin.site.news</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canEditComment">
+				<categoryname>admin.site.comment</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canDeleteComment">
+				<categoryname>admin.site.comment</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="admin.site.canUseFileManager">
+				<categoryname>admin.system</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+		</options>
+	</import>
+</data>

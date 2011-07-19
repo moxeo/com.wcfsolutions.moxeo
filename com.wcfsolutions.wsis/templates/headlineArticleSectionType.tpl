@@ -1,0 +1,1 @@
+<h{@$articleSection->headlineSize} class="headline">{$articleSection->headline}</h{@$articleSection->headlineSize}>

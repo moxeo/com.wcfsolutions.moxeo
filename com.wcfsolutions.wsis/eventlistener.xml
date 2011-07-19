@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/eventlistener.xsd">
+	<import>
+		<eventlistener>
+			<eventclassname>ThemeModuleAddForm</eventclassname>
+			<eventname>saved</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/ThemeModuleAddFormContentItemListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>OptionForm</eventclassname>
+			<eventname>saved</eventname>
+			<environment>admin</environment>
+			<listenerclassfile>lib/system/event/listener/OptionFormSEOListener.class.php</listenerclassfile>
+		</eventlistener>
+	</import>
+</data>

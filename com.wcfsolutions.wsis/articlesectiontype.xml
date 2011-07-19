@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.wcfsolutions.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wcfsolutions.com/XSD/article-section-type.xsd">
+	<import>
+		<!-- text elements -->
+		<type>
+			<name>headline</name>
+			<category>text</category>
+			<classfile>lib/data/article/section/type/HeadlineArticleSectionType.class.php</classfile>
+		</type>
+		<type>
+			<name>text</name>
+			<category>text</category>
+			<classfile>lib/data/article/section/type/TextArticleSectionType.class.php</classfile>
+		</type>
+		<type>
+			<name>html</name>
+			<category>text</category>
+			<classfile>lib/data/article/section/type/HTMLArticleSectionType.class.php</classfile>
+		</type>
+		<type>
+			<name>list</name>
+			<category>text</category>
+			<classfile>lib/data/article/section/type/ListArticleSectionType.class.php</classfile>
+		</type>
+		
+		<!-- gallery elements -->
+		<type>
+			<name>image</name>
+			<category>image</category>
+			<classfile>lib/data/article/section/type/ImageArticleSectionType.class.php</classfile>
+		</type>
+		<type>
+			<name>gallery</name>
+			<category>image</category>
+			<classfile>lib/data/article/section/type/GalleryArticleSectionType.class.php</classfile>
+		</type>
+		
+		<!-- download elements -->
+		<type>
+			<name>download</name>
+			<category>download</category>
+			<classfile>lib/data/article/section/type/DownloadArticleSectionType.class.php</classfile>
+		</type>
+		<type>
+			<name>downloads</name>
+			<category>download</category>
+			<classfile>lib/data/article/section/type/DownloadsArticleSectionType.class.php</classfile>
+		</type>
+		
+		<!-- link elements -->
+		<type>
+			<name>hyperlink</name>
+			<category>link</category>
+			<classfile>lib/data/article/section/type/HyperlinkArticleSectionType.class.php</classfile>
+		</type>	
+		
+		<!-- video elements -->	
+		<type>
+			<name>youTube</name>
+			<category>video</category>
+			<classfile>lib/data/article/section/type/YouTubeArticleSectionType.class.php</classfile>
+		</type>
+		
+		<!-- misc elements -->
+		<type>
+			<name>comments</name>
+			<category>misc</category>
+			<classfile>lib/data/article/section/type/CommentsArticleSectionType.class.php</classfile>
+		</type>
+		<type>
+			<name>themeModule</name>
+			<category>misc</category>
+			<classfile>lib/data/article/section/type/ThemeModuleArticleSectionType.class.php</classfile>
+		</type>
+	</import>
+</data>

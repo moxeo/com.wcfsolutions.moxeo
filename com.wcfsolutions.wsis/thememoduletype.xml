@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.wcfsolutions.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wcfsolutions.com/XSD/theme-module-type.xsd">
+	<import>		
+		<!-- navigation elements -->
+		<type>
+			<name>breadCrumb</name>
+			<category>navigation</category>
+			<classfile>lib/data/theme/module/type/BreadCrumbThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>navigation</name>
+			<category>navigation</category>
+			<classfile>lib/data/theme/module/type/NavigationThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>customNavigation</name>
+			<category>navigation</category>
+			<classfile>lib/data/theme/module/type/CustomNavigationThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>bookNavigation</name>
+			<category>navigation</category>
+			<classfile>lib/data/theme/module/type/BookNavigationThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>sitemap</name>
+			<category>navigation</category>
+			<classfile>lib/data/theme/module/type/SitemapThemeModuleType.class.php</classfile>
+		</type>
+		
+		<!-- user elements -->
+		<type>
+			<name>login</name>
+			<category>user</category>
+			<classfile>lib/data/theme/module/type/LoginThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>logout</name>
+			<category>user</category>
+			<classfile>lib/data/theme/module/type/LogoutThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>register</name>
+			<category>user</category>
+			<classfile>lib/data/theme/module/type/RegisterThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>accountManagement</name>
+			<category>user</category>
+			<classfile>lib/data/theme/module/type/AccountManagementThemeModuleType.class.php</classfile>
+		</type>
+		
+		<!-- news elements -->
+		<type>
+			<name>newsItemList</name>
+			<category>news</category>
+			<classfile>lib/data/theme/module/type/NewsItemListThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>newsItem</name>
+			<category>news</category>
+			<classfile>lib/data/theme/module/type/NewsItemThemeModuleType.class.php</classfile>
+		</type>
+		
+		<!-- misc elements -->
+		<type>
+			<name>article</name>
+			<category>misc</category>
+			<classfile>lib/data/theme/module/type/ArticleThemeModuleType.class.php</classfile>
+		</type>
+		<type>
+			<name>search</name>
+			<category>misc</category>
+			<classfile>lib/data/theme/module/type/SearchThemeModuleType.class.php</classfile>
+		</type>
+	</import>
+</data>
