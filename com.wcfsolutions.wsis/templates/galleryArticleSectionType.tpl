@@ -3,7 +3,7 @@
 {/if}
 <ul class="images">
 	{foreach from=$images item=image}
-		<li class="image">
+		<li class="element image">
 			<img src="files/{$image.name}" alt="" />
 		</li>
 	{/foreach}

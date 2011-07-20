@@ -539,7 +539,6 @@
 	<category name="wsis.comment">
 		<item name="wsis.comment.add"><![CDATA[Kommentar hinzufügen]]></item>
 		<item name="wsis.comment.comment"><![CDATA[Kommentar]]></item>
-		<item name="wsis.comment.comments"><![CDATA[Kommentare]]></item>
 	</category>
 	<category name="wsis.search">
 		<item name="wsis.search.error.noMatches"><![CDATA[Es wurde keine mit Ihrer Suchanfrage &raquo;{$query}&laquo; übereinstimmende Seite gefunden.]]></item>

@@ -311,7 +311,7 @@ class ContentItem extends DatabaseObject {
 	 */
 	public static function getContentItemStructure() {
 		if (self::$contentItemStructure === null) {
-			self::$contentItemStructure = WCF::getCache()->get( 'contentItemStructure');
+			self::$contentItemStructure = WCF::getCache()->get('contentItemStructure');
 		}
 		
 		return self::$contentItemStructure;

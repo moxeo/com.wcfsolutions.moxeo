@@ -50,8 +50,8 @@ class ContentItemList {
 		$this->contentItemID = $contentItemID;
 		
 		// read cache
-		$this->contentItems = WCF::getCache()->get('contentItem');
-		$this->contentItemStructure = WCF::getCache()->get( 'contentItemStructure');
+		$this->contentItems = ContentItem::getContentItems();
+		$this->contentItemStructure = ContentItem::getContentItemStructure();
 	}
 	
 	/**
