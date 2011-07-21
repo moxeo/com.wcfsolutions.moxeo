@@ -4,6 +4,12 @@
 <head>
 	<title>{$pageTitle} - {lang}{PAGE_TITLE}{/lang}</title>
 	
+	<!--
+		This website is powered by Infinite Site, an Open Source CMS licensed under GNU LGPL
+		Copyright 2009-2011 Sebastian Oettl <http://www.wcfsolutions.com/>
+		Extensions are copyright of their respective owners
+	-->
+	
 	<base href="{PAGE_URL}/" />
 	<meta http-equiv="content-type" content="text/html; charset={@CHARSET}" />
 	<meta http-equiv="content-script-type" content="text/javascript" />
@@ -28,9 +34,6 @@
 		{@$specialStyles}
 	{/if}
 	
-	<!-- print styles -->
-	<link rel="stylesheet" type="text/css" media="print" href="{@RELATIVE_WSIS_DIR}style/print{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
-	
 	<script type="text/javascript">
 		//<![CDATA[
 		var SID_ARG_1ST	= '{@SID_ARG_1ST}';
@@ -38,7 +41,6 @@
 		var SECURITY_TOKEN = '{@SECURITY_TOKEN}';
 		var RELATIVE_WCF_DIR = '{@RELATIVE_WCF_DIR}';
 		var RELATIVE_WSIS_DIR = '{@RELATIVE_WSIS_DIR}';
-		var LANG_DELETE_CONFIRM = '{lang}wcf.global.button.delete.confirm{/lang}';
 		//]]>
 	</script>
 	

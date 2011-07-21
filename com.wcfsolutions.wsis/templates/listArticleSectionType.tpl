@@ -3,6 +3,6 @@
 {/if}
 <{@$listTag} class="list" style="list-style-type: {@$articleSection->listStyleType}">
 	{foreach from=$listItems item=listItem}
-		<li class="element listItem">{@$listItem}</li>
+		<li class="listItem">{@$listItem}</li>
 	{/foreach}
 </{@$listTag}>
