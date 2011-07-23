@@ -29,12 +29,14 @@ if ($theme->themeID) {
 	require_once(WCF_DIR.'lib/data/theme/module/ThemeModuleEditor.class.php');
 	$headerThemeModule = ThemeModuleEditor::create($theme->themeID, 'Page Title', '', '', 'html', array('code' => '{PAGE_TITLE}', 'dynamicCode' => '<?php echo StringUtil::encodeHTML(PAGE_TITLE); ?>'), $packageID);
 	$mainNavigationThemeModule = ThemeModuleEditor::create($theme->themeID, 'Main Menu', 'mainMenu', '', 'navigation', array('levelOffset' => 0, 'levelLimit' => 1), $packageID);
+	$subNavigationThemeModule = ThemeModuleEditor::create($theme->themeID, 'Sub Menu', 'subMenu', '', 'navigation', array('levelOffset' => 1, 'levelLimit' => 5), $packageID);
 	$breadCrumbThemeModule = ThemeModuleEditor::create($theme->themeID, 'Bread Crumbs', '', '', 'breadCrumb', array(), $packageID);
 	$articleThemeModule = ThemeModuleEditor::create($theme->themeID, 'Article', '', '', 'article', array(), $packageID);
 	
 	// add modules to layout
 	$themeLayout->addThemeModule($headerThemeModule->themeModuleID, 'header');
 	$themeLayout->addThemeModule($mainNavigationThemeModule->themeModuleID, 'header');
+	$themeLayout->addThemeModule($subNavigationThemeModule->themeModuleID, 'left');
 	$themeLayout->addThemeModule($breadCrumbThemeModule->themeModuleID, 'main');
 	$themeLayout->addThemeModule($articleThemeModule->themeModuleID, 'main');
 }
