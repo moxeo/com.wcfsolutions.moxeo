@@ -22,7 +22,7 @@ $theme = ThemeEditor::import($sourceFile, $packageID);
 if ($theme->themeID) {
 	// create theme layout
 	require_once(WCF_DIR.'lib/data/theme/layout/ThemeLayoutEditor.class.php');
-	$themeLayout = ThemeLayoutEditor::create($theme->themeID, 'Default', 'global', $packageID);
+	$themeLayout = ThemeLayoutEditor::create($theme->themeID, 'Default', "global\nnavigation\ncontent\nform", $packageID);
 	$themeLayout->setAsDefault($parentPackageID);
 	
 	// create default modules

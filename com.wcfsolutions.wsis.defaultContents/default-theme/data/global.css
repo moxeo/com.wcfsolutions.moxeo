@@ -1,0 +1,84 @@
+
+/* ### -- -- -- -- -- Global Theme Default Styles -- -- -- -- -- ### */
+
+/*
+
+File: global.css 
+Copyright 2009-2011 by wcfsolutions.com
+
+*/
+
+/* ### -- -- -- -- -- Page Layout -- -- -- -- -- ### */
+
+#header, #content, #footer {
+	width: 960px;
+	border: 1px solid #999;
+	margin: 10px auto;
+}
+
+#header {
+	background-color: #777;
+}
+
+#header .htmlThemeModule {
+	font-size: 2em;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 10px;	
+}
+
+#main:after {
+	clear: both;
+	display: block;
+	height: 0;
+	content: "";
+}
+
+.inner {
+	padding: 10px;
+}
+
+#content .inner {
+	padding: 15px;
+}
+
+#left {
+	float: left;
+}
+
+#right {
+	float: right;
+}
+
+
+#layout-2 #right, #layout-3 #left {
+	width: 200px;
+}
+
+#layout-4 #left, #layout-4 #right {
+	width: 200px;
+}
+
+#layout-3 #main, #layout-4 #main {
+	margin-left: 200px;
+}
+
+#layout-2 #main, #layout-4 #main {
+	margin-right: 200px;
+}
+
+#content:after {
+	clear: both;	
+}
+
+/* ### -- -- -- -- -- Inner Errors -- -- -- -- -- ### */
+
+.innerError {
+	background-image: url("../../../icon/errorS.png");
+	background-position: 1px center;
+	background-repeat: no-repeat;
+	margin-bottom: 5px;
+	padding: 5px 5px 5px 25px;
+}
+
+/* ### -- -- -- -- -- EOF -- -- -- -- -- ### */

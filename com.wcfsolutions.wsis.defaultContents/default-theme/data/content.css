@@ -1,0 +1,118 @@
+
+/* ### -- -- -- -- -- Content Styles -- -- -- -- -- ### */
+
+/*
+
+File: content.css 
+Copyright 2009-2011 by wcfsolutions.com
+
+*/
+
+/* ### -- -- -- -- -- Articles -- -- -- -- -- ### */
+
+.article > div {
+	margin-bottom: 12px;
+}
+
+.article > div:after {
+	clear: both;
+	display: block;
+	height: 0;
+	content: "";	
+}
+
+/* ### -- -- -- -- -- Thumbnails / Images -- -- -- -- -- ### */
+
+.thumbnail, .image {
+	text-align: center;
+	border: 1px solid #999;
+}
+
+.thumbnail span, .image span {
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+	font-size: 0.85em;
+}
+
+.thumbnail img, .image img {
+	max-width: 100%;
+}
+
+/* ### -- -- -- -- -- Thumbnails -- -- -- -- -- ### */
+
+.thumbnail {
+	float: right;
+	margin: 0 0 30px 30px;
+	padding: 5px;
+	max-width: 25%;
+}
+
+/* ### -- -- -- -- -- Images -- -- -- -- -- ### */
+
+.image {
+	padding: 5px;
+	text-align: center;
+}
+
+.images {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.images .image {
+	float: left;
+	margin: 10px;
+}
+
+.images .image img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+/* ### -- -- -- -- -- Files -- -- -- -- -- ### */
+
+.files {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.file {
+	margin-bottom: 10px;
+}
+
+.file a {
+	display: block;
+	font-weight: bold;
+}
+
+.file .size {
+	font-size: 0.85em;
+	color: #333;
+}
+
+/* ### -- -- -- -- -- Testings -- -- -- -- -- ### */
+
+.newsItems, .comments {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.newsItems li, .comments li {
+	padding: 5px 0;
+}
+
+.textArticleSection {
+	padding-top: 5px;
+	display: block;
+}
+
+.author {
+	font-size: 0.85em;
+	color: #333;
+}
+
+/* ### -- -- -- -- -- EOF -- -- -- -- -- ### */

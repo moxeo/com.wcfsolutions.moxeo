@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme xmlns="http://www.wcfsolutions.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wcfsolutions.com/XSD/theme.xsd">
+	<general>
+		<themename><![CDATA[Default]]></themename>
+		<version><![CDATA[1.0.0 Alpha 2]]></version>
+		<date><![CDATA[2011-07-23]]></date>
+		<copyright><![CDATA[2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.php>]]></copyright>
+		<license><![CDATA[GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>]]></license>
+	</general>
+	<author>
+		<authorname><![CDATA[WCF Solutions]]></authorname>
+		<authorurl><![CDATA[http://www.wcfsolutions.com]]></authorurl>
+	</author>
+	<files>
+		<data>data.tar</data>
+	</files>
+</theme>

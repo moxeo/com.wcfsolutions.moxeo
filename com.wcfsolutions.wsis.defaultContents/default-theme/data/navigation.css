@@ -1,0 +1,156 @@
+
+/* ### -- -- -- -- -- Navigation Styles -- -- -- -- -- ### */
+
+/*
+
+File: navigation.css 
+Copyright 2009-2011 by wcfsolutions.com
+
+*/
+
+/* ### -- -- -- -- -- Main Menu -- -- -- -- -- ### */
+
+#mainMenu {
+	border: 1px solid #999;
+	margin: 0;
+	background-color: #f7f7f7;
+}
+
+#mainMenu a {
+	background-color: #f7f7f7;
+}
+
+#mainMenu .active a {
+	background-color: #777;
+}
+
+#mainMenu ul {
+	margin: 0;
+	padding: 0;
+	display: block;
+	list-style: none;
+}
+
+#mainMenu > ul > li {
+	display: inline-block;
+}
+
+#mainMenu a {
+	display: block;
+	min-height: 23px;
+	white-space: nowrap;
+	background-color: #efefef;
+	color: #666;
+}
+
+#mainMenu a:hover {
+	background-color: #fff;
+	color: #333;
+}
+
+#mainMenu a, #mainMenu a:hover {
+	padding: 8px 20px 5px 20px;
+	text-decoration: none;
+}
+
+#mainMenu span {
+	text-decoration: none !important;
+}
+
+#mainMenu .active a:hover {
+	background-color: #cecece;
+}
+
+#mainMenu .active a {
+	color: #fff;
+}
+
+#mainMenu .active a:hover {
+	color: #000;
+}
+
+/* ### -- -- -- -- -- Sub Menu -- -- -- -- -- ### */
+
+#subMenu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#subMenu a {
+	color: #666;
+}
+
+#subMenu ul li ul {
+	padding-left: 20px;
+}
+
+#subMenu ul li ul li ul {
+	padding-left: 40px;
+}
+
+#subMenu ul li ul li ul li ul {
+	padding-left: 60px;
+}
+
+#subMenu ul li ul li ul li ul li ul {
+	padding-left: 80px;
+}
+
+#subMenu .active > a {
+	font-weight: bold;
+}
+
+/* ### -- -- -- -- -- Book Navigation -- -- -- -- -- ### */
+
+.bookNavigationThemeModule {
+	width: 100%;
+}
+
+.bookNavigationThemeModule ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;	
+}
+
+.bookNavigationThemeModule li {
+	float: left;
+	width: 33.3%;
+}
+
+.bookNavigationThemeModule li.previous {
+	text-align: left;
+}
+
+.bookNavigationThemeModule li.up {
+	text-align: center;
+}
+
+.bookNavigationThemeModule li.next {
+	text-align: right;
+}
+
+.bookNavigationThemeModule a {
+	color: #666;
+}
+
+/* ### -- -- -- -- -- Breadcrumbs -- -- -- -- -- ### */
+
+.breadCrumbs {
+	font-size: 0.95em;
+	list-style: none;
+	margin: 5px 0;
+	padding: 0;
+}
+
+.breadCrumbs li {
+	margin-right: 1px;
+	display: inline;
+}
+
+.breadCrumbs li span {
+	color: #666;
+}
+
+/* ### -- -- -- -- -- EOF -- -- -- -- -- ### */
