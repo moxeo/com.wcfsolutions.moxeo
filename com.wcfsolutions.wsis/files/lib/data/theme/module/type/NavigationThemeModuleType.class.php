@@ -22,18 +22,23 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 	 */
 	public function getContent(ThemeModule $themeModule, $themeModulePosition, $additionalData) {
 		if (!isset($additionalData['contentItem'])) return '';
-		$contentItem = $additionalData['contentItem'];
+		$activeContentItem = $additionalData['contentItem'];
 		
 		// get content items
 		$contentItems = array();
-		if ($themeModule->levelOffset <= $contentItem->getLevel()) {
+		if ($themeModule->levelOffset <= ($activeContentItem->getLevel() + 1)) {			
 			// get parent content item
-			while ($contentItem->parentID != 0 && $themeModule->levelOffset != $contentItem->getLevel()) {
-				$contentItem = ContentItem::getContentItem($contentItem->parentID);
+			$contentItem = $activeContentItem;
+			$parentID = $contentItem->contentItemID;
+			while ($parentID != 0 && $themeModule->levelOffset != ($contentItem->getLevel() + 1)) {
+				$parentID = $contentItem->parentID;
+				if ($parentID) {
+					$contentItem = ContentItem::getContentItem($parentID);
+				}
 			}
 			
 			// init content item list
-			$contentItemList = new ViewableContentItemList($contentItem->parentID, $themeModule->levelOffset + $themeModule->levelLimit);
+			$contentItemList = new ViewableContentItemList($parentID, $themeModule->levelOffset, $themeModule->levelLimit);
 			$contentItemList->readContentItems();
 			
 			// update content items
@@ -41,7 +46,7 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 		}
 		
 		WCF::getTPL()->assign(array(
-			'activeContentItemID' => $contentItem->contentItemID,
+			'activeContentItemID' => $activeContentItem->contentItemID,
 			'contentItems' => $contentItems
 		));
 		return WCF::getTPL()->fetch('navigationThemeModuleType');

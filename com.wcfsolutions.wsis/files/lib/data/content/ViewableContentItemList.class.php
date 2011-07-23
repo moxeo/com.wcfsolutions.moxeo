@@ -14,20 +14,29 @@ require_once(WSIS_DIR.'lib/data/content/ContentItemList.class.php');
  */
 class ViewableContentItemList extends ContentItemList {
 	/**
-	 * max depth
+	 * level offset
 	 * 
 	 * @var	integer
 	 */
-	public $maxDepth = 0;
+	public $levelOffset = 0;
+	
+	/**
+	 * level limit
+	 * 
+	 * @var	integer
+	 */
+	public $levelLimit = 0;
 	
 	/**
 	 * Creates a new ViewableContentItemList.
 	 * 
 	 * @param	integer		$contentItemID
-	 * @param	integer		$maxDepth
+	 * @param	integer		$levelOffset
+	 * @param	integer		$levelLimit
 	 */
-	public function __construct($contentItemID = 0, $maxDepth = 0) {
-		$this->maxDepth = $maxDepth;
+	public function __construct($contentItemID = 0, $levelOffset = 0, $levelLimit = 0) {
+		$this->levelOffset = $levelOffset;
+		$this->levelLimit = $levelLimit;
 		parent::__construct($contentItemID);
 	}
 	
@@ -35,7 +44,7 @@ class ViewableContentItemList extends ContentItemList {
 	 * @see	ContentItemList::isVisible()
 	 */
 	protected function isVisible(ContentItem $contentItem) {
-		if ($contentItem->languageID != WCF::getLanguage()->getLanguageID() || !$contentItem->isVisiblePage() || !$contentItem->getPermission() || (!$contentItem->isPublished() && !$contentItem->getPermission('canViewHiddenContentItem')) || $this->maxDepth && ($contentItem->getLevel()+1) > $this->maxDepth) {
+		if ($contentItem->languageID != WCF::getLanguage()->getLanguageID() || !$contentItem->isVisiblePage() || !$contentItem->getPermission() || (!$contentItem->isPublished() && !$contentItem->getPermission('canViewHiddenContentItem')) || $this->levelLimit && $contentItem->getLevel() >= ($this->levelOffset + $this->levelLimit)) {
 			return false;
 		}
 		return true;
