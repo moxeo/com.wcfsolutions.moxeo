@@ -50,7 +50,7 @@ class SEOUtil {
 		$file = new File($filename);
 		
 		// chmod file
-		@$file->chmod(777);
+		@chmod($filename, 0777);
 		
 		// reinsert existing content
 		if (!empty($existingContent)) {
@@ -77,7 +77,7 @@ class SEOUtil {
 			// write rewrite rule
 			$file->write("RewriteCond %{REQUEST_FILENAME} !-f\n");
 			$file->write("RewriteCond %{REQUEST_FILENAME} !-d\n");
-			$file->write("RewriteRule ^([^/\.]+/)*([^/\.]+\.html)?$ index.php/$1$2 [L,QSA]\n");
+			$file->write("RewriteRule ^([^/\.]+/)*([^/\.]+\.html)?$ index.php [L,QSA]\n");
 			
 			// write closing ifmodule tag
 			$file->write("</IfModule>\n");
@@ -90,8 +90,8 @@ class SEOUtil {
 		$file->close();
 		
 		// remove empty file
-		if (!StringUtil::trim($existingContent)) {
-			@$file->unlink();
+		if (!$options['ENABLE_SEO_REWRITING'] && !StringUtil::trim($existingContent)) {
+			@unlink($filename);
 		}
 	}
 }
