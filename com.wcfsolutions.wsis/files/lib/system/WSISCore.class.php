@@ -15,7 +15,7 @@ require_once(WCF_DIR.'lib/system/theme/ThemeLayoutManager.class.php');
  * @subpackage	system
  * @category	Infinite Site
  */
-class WSISCore extends WCF {	
+class WSISCore extends WCF {
 	/**
 	 * @see WCF::initLanguage()
 	 */

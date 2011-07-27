@@ -21,7 +21,6 @@
 	
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/3rdParty/protoaculous.1.8.2.min.js"></script>
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/default.js"></script>
-	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/PopupMenuList.class.js"></script>
 	
 	<!-- theme styles -->
 	<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}style/theme/global{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
