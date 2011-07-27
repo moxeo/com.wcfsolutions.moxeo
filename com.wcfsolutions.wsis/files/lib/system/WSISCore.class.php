@@ -15,28 +15,7 @@ require_once(WCF_DIR.'lib/system/theme/ThemeLayoutManager.class.php');
  * @subpackage	system
  * @category	Infinite Site
  */
-class WSISCore extends WCF {
-	protected static $benchmarkIndex = '';
-	
-	/**
-	 * @see WCF::destruct()
-	 */
-	public static function destruct() {
-		parent::destruct();
-		
-		self::getBenchmark()->stop(self::$benchmarkIndex);
-		print self::getBenchmark()->getResult();
-	}
-	
-	/**
-	 * @see		WCF::initBenchmark()
-	 * @todo	remove this
-	 */
-	protected function initBenchmark() {
-		parent::initBenchmark();
-		self::$benchmarkIndex = self::getBenchmark()->start('WSIS');
-	}
-	
+class WSISCore extends WCF {	
 	/**
 	 * @see WCF::initLanguage()
 	 */
