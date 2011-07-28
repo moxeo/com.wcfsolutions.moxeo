@@ -44,7 +44,7 @@ class ViewableContentItemList extends ContentItemList {
 	 * @see	ContentItemList::isVisible()
 	 */
 	protected function isVisible(ContentItem $contentItem) {
-		if ($contentItem->languageID != WCF::getLanguage()->getLanguageID() || !$contentItem->isVisiblePage() || !$contentItem->getPermission() || (!$contentItem->isPublished() && !$contentItem->getPermission('canViewHiddenContentItem')) || $this->levelLimit && $contentItem->getLevel() >= ($this->levelOffset + $this->levelLimit)) {
+		if ($contentItem->languageID != WCF::getLanguage()->getLanguageID() || !$contentItem->isVisiblePage() || !$contentItem->getPermission() || ((!$contentItem->enabled || !$contentItem->isPublished()) && !$contentItem->getPermission('canViewHiddenContentItem')) || $this->levelLimit && $contentItem->getLevel() >= ($this->levelOffset + $this->levelLimit)) {
 			return false;
 		}
 		return true;

@@ -83,7 +83,7 @@ class ContentItem extends DatabaseObject {
 	 */
 	public function enter() {		
 		// check permissions
-		if (!$this->getPermission('canViewContentItem') || !$this->getPermission('canEnterContentItem') || (!$this->isPublished() && !$this->getPermission('canViewHiddenContentItem'))) {
+		if (!$this->getPermission('canViewContentItem') || !$this->getPermission('canEnterContentItem') || ((!$this->enabled || !$this->isPublished()) && !$this->getPermission('canViewHiddenContentItem'))) {
 			throw new PermissionDeniedException();
 		}
 	}
