@@ -50,7 +50,7 @@ class ContentItemSortAction extends AbstractAction {
 		}
 		
 		// reset cache
-		WCF::getCache()->clearResource('contentItem');
+		ContentItemEditor::resetCache();
 		$this->executed();
 		
 		// forward to list page

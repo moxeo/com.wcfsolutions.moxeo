@@ -46,7 +46,7 @@ class ContentItemRenameAction extends AbstractContentItemAction {
 		$this->contentItem->updateTitle($this->title);
 		
 		// reset cache
-		WCF::getCache()->clearResource('contentItem');
+		ContentItemEditor::resetCache();
 		$this->executed();
 	}
 }

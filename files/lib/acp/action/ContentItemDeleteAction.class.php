@@ -27,7 +27,7 @@ class ContentItemDeleteAction extends AbstractContentItemAction {
 		$this->contentItem->delete();
 		
 		// reset cache
-		WCF::getCache()->clearResource('contentItem');
+		ContentItemEditor::resetCache();
 		$this->executed();
 		
 		// forward to list page
