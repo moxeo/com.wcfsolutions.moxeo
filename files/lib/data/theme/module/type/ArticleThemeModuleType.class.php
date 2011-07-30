@@ -43,14 +43,12 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 		if ($this->articles === null) {
 			$this->articles = $this->articleSections = array();
 			
-			// get required article ids
+			// get required article ids of ALL theme module positions
 			$cache = WCF::getCache()->get('contentItemArticles');
 			$articleIDs = '';
-			if (isset($cache[$contentItem->contentItemID][$themeModulePosition])) {
-				foreach ($cache[$contentItem->contentItemID] as $themeModulePosition => $articleIDArray) {
-					if (!empty($articleIDs)) $articleIDs .= ',';
-					$articleIDs .= implode(',', $articleIDArray);
-				}
+			foreach ($cache[$contentItem->contentItemID] as $themeModulePosition => $articleIDArray) {
+				if (!empty($articleIDs)) $articleIDs .= ',';
+				$articleIDs .= implode(',', $articleIDArray);
 			}
 			
 			if ($articleIDs) {

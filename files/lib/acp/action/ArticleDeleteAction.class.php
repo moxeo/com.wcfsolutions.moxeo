@@ -24,6 +24,9 @@ class ArticleDeleteAction extends AbstractArticleAction {
 		
 		// delete article
 		$this->article->delete();
+		
+		// reset cache
+		WCF::getCache()->clearResource('contentItemArticles');
 		$this->executed();
 		
 		// forward to list page

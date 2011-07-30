@@ -101,6 +101,9 @@ class ArticleAddForm extends ACPForm {
 		
 		// create article
 		$this->article = ArticleEditor::create($this->contentItemID, $this->themeModulePosition, $this->title, $this->cssID, $this->cssClasses, $this->showOrder);
+		
+		// reset cache
+		WCF::getCache()->clearResource('contentItemArticles');
 		$this->saved();
 		
 		// reset values
