@@ -31,7 +31,7 @@ class FileManagerFileDownloadPage extends AbstractPage {
 	public $path = '';
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -50,7 +50,7 @@ class FileManagerFileDownloadPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		parent::show();

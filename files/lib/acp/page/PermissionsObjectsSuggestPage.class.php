@@ -14,7 +14,7 @@ require_once(WCF_DIR.'lib/acp/page/UserSuggestPage.class.php');
  */
 class PermissionsObjectsSuggestPage extends UserSuggestPage {
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		AbstractPage::show();

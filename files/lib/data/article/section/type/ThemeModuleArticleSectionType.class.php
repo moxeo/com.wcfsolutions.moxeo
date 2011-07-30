@@ -77,7 +77,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	
 	// form methods
 	/**
-	 * @see ThemeModuleType::readFormParameters()
+	 * @see	ThemeModuleType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -87,7 +87,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::validate()
+	 * @see	ThemeModuleType::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -105,7 +105,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::assignVariables()
+	 * @see	ThemeModuleType::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -117,7 +117,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::getFormTemplateName()
+	 * @see	ThemeModuleType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'themeModuleArticleSectionType';

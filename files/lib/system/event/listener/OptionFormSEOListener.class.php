@@ -14,7 +14,7 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  */
 class OptionFormSEOListener implements EventListener {
 	/**
-	 * @see EventListener::execute()
+	 * @see	EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
 		if ($eventObj->activeCategory == 'general') {

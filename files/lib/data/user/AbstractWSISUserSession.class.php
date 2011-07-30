@@ -61,7 +61,7 @@ class AbstractWSISUserSession extends UserSession {
 	}
 	
 	/**
-	 * @see UserSession::getGroupData()
+	 * @see	UserSession::getGroupData()
 	 */
 	protected function getGroupData() {
 		parent::getGroupData();

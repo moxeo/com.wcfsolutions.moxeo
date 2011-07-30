@@ -47,7 +47,7 @@ abstract class AbstractArticleSectionAction extends AbstractAction {
 	public $contentItem = null;
 	
 	/**
-	 * @see Action::readParameters()
+	 * @see	Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();

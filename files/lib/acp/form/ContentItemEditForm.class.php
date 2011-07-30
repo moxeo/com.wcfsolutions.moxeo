@@ -25,7 +25,7 @@ class ContentItemEditForm extends ContentItemAddForm {
 	public $contentItemID = 0;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -39,7 +39,7 @@ class ContentItemEditForm extends ContentItemAddForm {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -133,7 +133,7 @@ class ContentItemEditForm extends ContentItemAddForm {
 	}
 	
 	/**
-	 * @see ContentItemAddForm::validateParentID()
+	 * @see	ContentItemAddForm::validateParentID()
 	 */
 	protected function validateParentID() {
 		parent::validateParentID();
@@ -146,7 +146,7 @@ class ContentItemEditForm extends ContentItemAddForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();
@@ -179,7 +179,7 @@ class ContentItemEditForm extends ContentItemAddForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

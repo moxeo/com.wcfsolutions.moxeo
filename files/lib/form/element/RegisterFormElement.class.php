@@ -52,7 +52,7 @@ class RegisterFormElement extends ThemeModuleFormElement {
 	public $user = null;
 	
 	/**
-	 * @see Form::readFormParameters()
+	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -68,7 +68,7 @@ class RegisterFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Form::validate()
+	 * @see	Form::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -162,7 +162,7 @@ class RegisterFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();
@@ -183,7 +183,7 @@ class RegisterFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -196,7 +196,7 @@ class RegisterFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -215,7 +215,7 @@ class RegisterFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		if (!WCF::getUser()->userID) {

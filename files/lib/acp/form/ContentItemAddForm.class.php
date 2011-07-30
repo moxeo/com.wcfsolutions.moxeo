@@ -110,7 +110,7 @@ class ContentItemAddForm extends ACPForm {
 	public $admins = array();
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -134,7 +134,7 @@ class ContentItemAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -147,7 +147,7 @@ class ContentItemAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::readFormParameters()
+	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -189,7 +189,7 @@ class ContentItemAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::validate()
+	 * @see	Form::validate()
 	 * @todo	validate invisible, addSecurityToken, cssClasses
 	 */
 	public function validate() {
@@ -341,7 +341,7 @@ class ContentItemAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		parent::save();
@@ -381,7 +381,7 @@ class ContentItemAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

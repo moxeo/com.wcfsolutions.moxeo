@@ -17,7 +17,7 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 	public $tableName = 'article_section_type';
 	
 	/** 
-	 * @see PackageInstallationPlugin::install()
+	 * @see	PackageInstallationPlugin::install()
 	 */
 	public function install() {
 		parent::install();
@@ -93,7 +93,7 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 	}
 	
 	/**
-	 * @see	 PackageInstallationPlugin::hasUninstall()
+	 * @see	PackageInstallationPlugin::hasUninstall()
 	 */
 	public function hasUninstall() {
 		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.wsis') {
@@ -113,7 +113,7 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 	}
 	
 	/**
-	 * @see	 PackageInstallationPlugin::uninstall()
+	 * @see	PackageInstallationPlugin::uninstall()
 	 */
 	public function uninstall() {
 		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.wsis') {		

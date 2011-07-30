@@ -21,7 +21,7 @@ class ContentItemRenameAction extends AbstractContentItemAction {
 	public $title = '';
 	
 	/**
-	 * @see Action::readParameters()
+	 * @see	Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -33,7 +33,7 @@ class ContentItemRenameAction extends AbstractContentItemAction {
 	}
 	
 	/**
-	 * @see Action::execute();
+	 * @see	Action::execute();
 	 */
 	public function execute() {
 		parent::execute();

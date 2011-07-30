@@ -24,7 +24,7 @@ class ContentItemSortAction extends AbstractAction {
 	public $positions = array();
 	
 	/**
-	 * @see Action::readParameters()
+	 * @see	Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -33,7 +33,7 @@ class ContentItemSortAction extends AbstractAction {
 	}
 	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

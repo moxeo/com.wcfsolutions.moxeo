@@ -11,7 +11,7 @@
  */
 class WSISIllegalLinkException extends IllegalLinkException {
 	/**
-	 * @see NamedUserException::show();
+	 * @see	NamedUserException::show();
 	 */
 	public function show() {
 		// get content item id

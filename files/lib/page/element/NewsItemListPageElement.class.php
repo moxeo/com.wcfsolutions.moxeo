@@ -35,7 +35,7 @@ class NewsItemListPageElement extends ThemeModulePageElement {
 	public $contentItem = null;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -58,7 +58,7 @@ class NewsItemListPageElement extends ThemeModulePageElement {
 	}
 	
 	/**
-	 * @see MultipleLinkPage::countItems()
+	 * @see	MultipleLinkPage::countItems()
 	 */
 	public function countItems() {
 		parent::countItems();
@@ -67,7 +67,7 @@ class NewsItemListPageElement extends ThemeModulePageElement {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -79,7 +79,7 @@ class NewsItemListPageElement extends ThemeModulePageElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

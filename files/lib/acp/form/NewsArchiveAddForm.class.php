@@ -41,7 +41,7 @@ class NewsArchiveAddForm extends ACPForm {
 	public $contentItemID = 0;
 		
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -50,7 +50,7 @@ class NewsArchiveAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::readFormParameters()
+	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -60,7 +60,7 @@ class NewsArchiveAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::validate()
+	 * @see	Form::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -80,7 +80,7 @@ class NewsArchiveAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		parent::save();
@@ -101,7 +101,7 @@ class NewsArchiveAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

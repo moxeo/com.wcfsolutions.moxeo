@@ -21,7 +21,7 @@ class ArticleSortAction extends AbstractArticleAction {
 	public $showOrder = 0;
 	
 	/**
-	 * @see Action::readParameters()
+	 * @see	Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -31,7 +31,7 @@ class ArticleSortAction extends AbstractArticleAction {
 	}
 	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

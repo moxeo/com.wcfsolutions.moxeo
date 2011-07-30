@@ -21,7 +21,7 @@ class ArticleSectionEditForm extends ArticleSectionAddForm {
 	public $articleSectionID = 0;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		ACPForm::readParameters();
@@ -45,7 +45,7 @@ class ArticleSectionEditForm extends ArticleSectionAddForm {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -64,7 +64,7 @@ class ArticleSectionEditForm extends ArticleSectionAddForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -76,7 +76,7 @@ class ArticleSectionEditForm extends ArticleSectionAddForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();

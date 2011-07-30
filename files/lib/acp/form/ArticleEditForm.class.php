@@ -24,7 +24,7 @@ class ArticleEditForm extends ArticleAddForm {
 	public $articleID = 0;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		ACPForm::readParameters();
@@ -42,7 +42,7 @@ class ArticleEditForm extends ArticleAddForm {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -58,7 +58,7 @@ class ArticleEditForm extends ArticleAddForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -70,7 +70,7 @@ class ArticleEditForm extends ArticleAddForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();

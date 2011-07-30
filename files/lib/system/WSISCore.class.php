@@ -17,7 +17,7 @@ require_once(WCF_DIR.'lib/system/theme/ThemeLayoutManager.class.php');
  */
 class WSISCore extends WCF {
 	/**
-	 * @see WCF::initLanguage()
+	 * @see	WCF::initLanguage()
 	 */
 	protected function initLanguage() {
 		$languageID = ContentItemRequestHandler::getInstance()->getLanguageID();
@@ -25,7 +25,7 @@ class WSISCore extends WCF {
 	}
 	
 	/**
-	 * @see WCF::initTPL()
+	 * @see	WCF::initTPL()
 	 */
 	protected function initTPL() {
 		// init theme layout to get template pack id
@@ -48,7 +48,7 @@ class WSISCore extends WCF {
 	}
 	
 	/**
-	 * @see WCF::loadDefaultCacheResources()
+	 * @see	WCF::loadDefaultCacheResources()
 	 */
 	protected function loadDefaultCacheResources() {
 		parent::loadDefaultCacheResources();
@@ -72,7 +72,7 @@ class WSISCore extends WCF {
 	}
 	
 	/**
-	 * @see WCF::getOptionsFilename()
+	 * @see	WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
 		return WSIS_DIR.'options.inc.php';
@@ -95,7 +95,7 @@ class WSISCore extends WCF {
 	}
 	
 	/**
-	 * @see WCF::initSession()
+	 * @see	WCF::initSession()
 	 */
 	protected function initSession() {
 		// start session

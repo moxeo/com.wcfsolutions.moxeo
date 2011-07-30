@@ -65,7 +65,7 @@ class ArticleSectionListPage extends SortablePage {
 	public $successfulSorting = false;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -90,7 +90,7 @@ class ArticleSectionListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function readData() {
 		parent::readData();
@@ -103,7 +103,7 @@ class ArticleSectionListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see SortablePage::validateSortField()
+	 * @see	SortablePage::validateSortField()
 	 */
 	public function validateSortField() {
 		parent::validateSortField();
@@ -117,7 +117,7 @@ class ArticleSectionListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see MultipleLinkPage::countItems()
+	 * @see	MultipleLinkPage::countItems()
 	 */
 	public function countItems() {
 		parent::countItems();
@@ -126,7 +126,7 @@ class ArticleSectionListPage extends SortablePage {
 	}
 		
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -142,7 +142,7 @@ class ArticleSectionListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		// enable menu item

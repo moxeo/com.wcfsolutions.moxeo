@@ -31,7 +31,7 @@ class NewsArchiveList extends DatabaseObjectList {
 	public $sqlOrderBy = 'news_archive.title ASC';
 	
 	/**
-	 * @see DatabaseObjectList::countObjects()
+	 * @see	DatabaseObjectList::countObjects()
 	 */
 	public function countObjects() {
 		$sql = "SELECT	COUNT(*) AS count
@@ -42,7 +42,7 @@ class NewsArchiveList extends DatabaseObjectList {
 	}
 	
 	/**
-	 * @see DatabaseObjectList::readObjects()
+	 * @see	DatabaseObjectList::readObjects()
 	 */
 	public function readObjects() {
 		$sql = "SELECT		".(!empty($this->sqlSelects) ? $this->sqlSelects.',' : '')."
@@ -59,7 +59,7 @@ class NewsArchiveList extends DatabaseObjectList {
 	}
 	
 	/**
-	 * @see DatabaseObjectList::getObjects()
+	 * @see	DatabaseObjectList::getObjects()
 	 */
 	public function getObjects() {
 		return $this->newsArchives;

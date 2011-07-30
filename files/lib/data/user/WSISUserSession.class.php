@@ -22,7 +22,7 @@ class WSISUserSession extends AbstractWSISUserSession {
 	}
 	
 	/**
-	 * @see UserSession::getGroupData()
+	 * @see	UserSession::getGroupData()
 	 */
 	protected function getGroupData() {
 		parent::getGroupData();

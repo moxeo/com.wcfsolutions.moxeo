@@ -38,7 +38,7 @@ class LoginFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Form::validate()
+	 * @see	Form::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -55,7 +55,7 @@ class LoginFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();
@@ -75,7 +75,7 @@ class LoginFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Form::readFormParameters()
+	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -88,7 +88,7 @@ class LoginFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

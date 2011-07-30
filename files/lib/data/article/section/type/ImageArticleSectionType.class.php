@@ -29,7 +29,7 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 	
 	// form methods
 	/**
-	 * @see ArticleSectionType::readFormParameters()
+	 * @see	ArticleSectionType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -45,7 +45,7 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::validate()
+	 * @see	ArticleSectionType::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -75,7 +75,7 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::assignVariables()
+	 * @see	ArticleSectionType::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -90,7 +90,7 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::getFormTemplateName()
+	 * @see	ArticleSectionType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'imageArticleSectionType';

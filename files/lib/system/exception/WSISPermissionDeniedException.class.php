@@ -11,7 +11,7 @@
  */
 class WSISPermissionDeniedException extends PermissionDeniedException {
 	/**
-	 * @see NamedUserException::show();
+	 * @see	NamedUserException::show();
 	 */
 	public function show() {
 		// get content item id

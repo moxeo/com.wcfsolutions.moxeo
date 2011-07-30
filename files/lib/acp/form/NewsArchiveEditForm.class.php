@@ -25,7 +25,7 @@ class NewsArchiveEditForm extends NewsArchiveAddForm {
 	public $newsArchiveID = 0;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -39,7 +39,7 @@ class NewsArchiveEditForm extends NewsArchiveAddForm {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -52,7 +52,7 @@ class NewsArchiveEditForm extends NewsArchiveAddForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		ACPForm::save();
@@ -69,7 +69,7 @@ class NewsArchiveEditForm extends NewsArchiveAddForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

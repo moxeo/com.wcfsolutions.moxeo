@@ -41,7 +41,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 	
 	// form methods
 	/**
-	 * @see ArticleSectionType::readFormParameters()
+	 * @see	ArticleSectionType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		$this->formData['code'] = '';
@@ -49,7 +49,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::validate()
+	 * @see	ArticleSectionType::validate()
 	 */
 	public function validate() {
 		// code
@@ -72,7 +72,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::assignVariables()
+	 * @see	ArticleSectionType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -81,7 +81,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::getFormTemplateName()
+	 * @see	ArticleSectionType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'htmlArticleSectionType';

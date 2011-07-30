@@ -37,7 +37,7 @@ class CommentListPage extends SortablePage {
 	public $deletedCommentID = 0;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -49,7 +49,7 @@ class CommentListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function readData() {
 		parent::readData();
@@ -62,7 +62,7 @@ class CommentListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see SortablePage::validateSortField()
+	 * @see	SortablePage::validateSortField()
 	 */
 	public function validateSortField() {
 		parent::validateSortField();
@@ -78,7 +78,7 @@ class CommentListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see MultipleLinkPage::countItems()
+	 * @see	MultipleLinkPage::countItems()
 	 */
 	public function countItems() {
 		parent::countItems();
@@ -87,7 +87,7 @@ class CommentListPage extends SortablePage {
 	}
 		
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -99,7 +99,7 @@ class CommentListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		// enable menu item

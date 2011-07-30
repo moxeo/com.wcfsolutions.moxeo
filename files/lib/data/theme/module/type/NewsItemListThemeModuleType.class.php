@@ -28,7 +28,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 	
 	// form methods
 	/**
-	 * @see ThemeModuleType::readFormParameters()
+	 * @see	ThemeModuleType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		// news archive ids
@@ -45,7 +45,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::validate()
+	 * @see	ThemeModuleType::validate()
 	 */
 	public function validate() {
 		// news archive ids
@@ -70,7 +70,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::assignVariables()
+	 * @see	ThemeModuleType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -82,7 +82,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::getFormTemplateName()
+	 * @see	ThemeModuleType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'newsItemListThemeModuleType';

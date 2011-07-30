@@ -59,7 +59,7 @@ class NewsItemListPage extends SortablePage {
 	public $newsArchiveOptions = array();
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -78,7 +78,7 @@ class NewsItemListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function readData() {
 		parent::readData();
@@ -94,7 +94,7 @@ class NewsItemListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see SortablePage::validateSortField()
+	 * @see	SortablePage::validateSortField()
 	 */
 	public function validateSortField() {
 		parent::validateSortField();
@@ -108,7 +108,7 @@ class NewsItemListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see MultipleLinkPage::countItems()
+	 * @see	MultipleLinkPage::countItems()
 	 */
 	public function countItems() {
 		parent::countItems();
@@ -118,7 +118,7 @@ class NewsItemListPage extends SortablePage {
 	
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -133,7 +133,7 @@ class NewsItemListPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		// enable menu item

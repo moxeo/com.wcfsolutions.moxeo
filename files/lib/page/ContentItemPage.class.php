@@ -66,7 +66,7 @@ class ContentItemPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -76,7 +76,7 @@ class ContentItemPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -91,7 +91,7 @@ class ContentItemPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		// enter content item		

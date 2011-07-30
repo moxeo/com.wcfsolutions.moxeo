@@ -14,7 +14,7 @@ require_once(WSIS_DIR.'lib/acp/action/AbstractNewsItemAction.class.php');
  */
 class NewsItemEnableAction extends AbstractNewsItemAction {	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

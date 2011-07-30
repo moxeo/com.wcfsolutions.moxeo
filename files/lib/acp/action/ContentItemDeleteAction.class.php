@@ -15,7 +15,7 @@ require_once(WSIS_DIR.'lib/data/content/ContentItemEditor.class.php');
  */
 class ContentItemDeleteAction extends AbstractContentItemAction {	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

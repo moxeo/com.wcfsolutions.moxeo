@@ -39,7 +39,7 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 	
 	// form methods
 	/**
-	 * @see ThemeModuleType::readFormParameters()
+	 * @see	ThemeModuleType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		$this->formData['contentItemIDs'] = array();
@@ -47,7 +47,7 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::validate()
+	 * @see	ThemeModuleType::validate()
 	 */
 	public function validate() {
 		// content item ids
@@ -65,7 +65,7 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::assignVariables()
+	 * @see	ThemeModuleType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -75,7 +75,7 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::getFormTemplateName()
+	 * @see	ThemeModuleType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'customNavigationThemeModuleType';

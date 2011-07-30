@@ -14,7 +14,7 @@ require_once(WCF_DIR.'lib/system/WCFACP.class.php');
  */
 class WSISACP extends WCFACP {
 	/**
-	 * @see WCF::getOptionsFilename()
+	 * @see	WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
 		return WSIS_DIR.'options.inc.php';
@@ -43,7 +43,7 @@ class WSISACP extends WCFACP {
 	}
 	
 	/**
-	 * @see WCF::assignDefaultTemplateVariables()
+	 * @see	WCF::assignDefaultTemplateVariables()
 	 */
 	protected function assignDefaultTemplateVariables() {
 		parent::assignDefaultTemplateVariables();
@@ -57,7 +57,7 @@ class WSISACP extends WCFACP {
 	}
 	
 	/**
-	 * @see WCF::loadDefaultCacheResources()
+	 * @see	WCF::loadDefaultCacheResources()
 	 */
 	protected function loadDefaultCacheResources() {
 		parent::loadDefaultCacheResources();
@@ -80,7 +80,7 @@ class WSISACP extends WCFACP {
 	}
 	
 	/**
-	 * @see WCF::initSession()
+	 * @see	WCF::initSession()
 	 */
 	protected function initSession() {
 		// start session

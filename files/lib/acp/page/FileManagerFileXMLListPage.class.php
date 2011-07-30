@@ -38,7 +38,7 @@ class FileManagerFileXMLListPage extends AbstractPage {
 	public $files = array();
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -55,7 +55,7 @@ class FileManagerFileXMLListPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */	
 	public function readData() {
 		parent::readData();
@@ -73,7 +73,7 @@ class FileManagerFileXMLListPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		parent::show();

@@ -60,7 +60,7 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 	
 	// form methods
 	/**
-	 * @see ThemeModuleType::readFormParameters()
+	 * @see	ThemeModuleType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		// level start
@@ -73,7 +73,7 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::assignVariables()
+	 * @see	ThemeModuleType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -83,7 +83,7 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::getFormTemplateName()
+	 * @see	ThemeModuleType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'navigationThemeModuleType';

@@ -15,7 +15,7 @@ require_once(WCF_DIR.'lib/system/session/Session.class.php');
  */
 class CleanupCronjob implements Cronjob {
 	/**
-	 * @see Cronjob::execute()
+	 * @see	Cronjob::execute()
 	 */
 	public function execute($data) {		
 		// delete old sessions

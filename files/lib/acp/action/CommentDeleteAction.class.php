@@ -31,7 +31,7 @@ class CommentDeleteAction extends AbstractAction {
 	public $comment = null;
 	
 	/**
-	 * @see Action::readParameters()
+	 * @see	Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -45,7 +45,7 @@ class CommentDeleteAction extends AbstractAction {
 	}
 	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

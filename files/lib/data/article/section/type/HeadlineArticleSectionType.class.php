@@ -45,7 +45,7 @@ class HeadlineArticleSectionType extends AbstractArticleSectionType {
 	
 	// form methods
 	/**
-	 * @see ArticleSectionType::readFormParameters()
+	 * @see	ArticleSectionType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		$this->formData['headline'] = '';
@@ -56,7 +56,7 @@ class HeadlineArticleSectionType extends AbstractArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::validate()
+	 * @see	ArticleSectionType::validate()
 	 */
 	public function validate() {
 		// headline
@@ -73,7 +73,7 @@ class HeadlineArticleSectionType extends AbstractArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::assignVariables()
+	 * @see	ArticleSectionType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -83,7 +83,7 @@ class HeadlineArticleSectionType extends AbstractArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::getFormTemplateName()
+	 * @see	ArticleSectionType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'headlineArticleSectionType';

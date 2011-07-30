@@ -26,7 +26,7 @@ class IndexPage extends AbstractPage {
 	public $majorUpdates = array();
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -44,7 +44,7 @@ class IndexPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

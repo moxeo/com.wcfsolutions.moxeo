@@ -45,7 +45,7 @@ class FileManagerFileAddForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see Form::readFormParameters()
+	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -56,7 +56,7 @@ class FileManagerFileAddForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see Form::validate()
+	 * @see	Form::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -77,7 +77,7 @@ class FileManagerFileAddForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		parent::save();
@@ -115,7 +115,7 @@ class FileManagerFileAddForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

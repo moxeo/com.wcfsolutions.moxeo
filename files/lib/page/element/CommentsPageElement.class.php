@@ -39,7 +39,7 @@ class CommentsPageElement extends ArticleSectionPageElement {
 	public $comment = null;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -76,7 +76,7 @@ class CommentsPageElement extends ArticleSectionPageElement {
 	}
 	
 	/**
-	 * @see MultipleLinkPage::countItems()
+	 * @see	MultipleLinkPage::countItems()
 	 */
 	public function countItems() {
 		parent::countItems();
@@ -85,7 +85,7 @@ class CommentsPageElement extends ArticleSectionPageElement {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -97,7 +97,7 @@ class CommentsPageElement extends ArticleSectionPageElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

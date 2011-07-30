@@ -86,7 +86,7 @@ class ArticleSectionAddForm extends ACPForm {
 	public $send = false;
 			
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -107,7 +107,7 @@ class ArticleSectionAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::readFormParameters()
+	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -129,7 +129,7 @@ class ArticleSectionAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::validate()
+	 * @see	Form::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -142,7 +142,7 @@ class ArticleSectionAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::submit()
+	 * @see	Form::submit()
 	 */
 	public function submit() {
 		// call submit event
@@ -165,7 +165,7 @@ class ArticleSectionAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		parent::save();
@@ -187,7 +187,7 @@ class ArticleSectionAddForm extends ACPForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

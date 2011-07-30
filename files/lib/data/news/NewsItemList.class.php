@@ -31,7 +31,7 @@ class NewsItemList extends DatabaseObjectList {
 	public $sqlOrderBy = 'news_item.time DESC';
 	
 	/**
-	 * @see DatabaseObjectList::countObjects()
+	 * @see	DatabaseObjectList::countObjects()
 	 */
 	public function countObjects() {
 		$sql = "SELECT	COUNT(*) AS count
@@ -42,7 +42,7 @@ class NewsItemList extends DatabaseObjectList {
 	}
 	
 	/**
-	 * @see DatabaseObjectList::readObjects()
+	 * @see	DatabaseObjectList::readObjects()
 	 */
 	public function readObjects() {
 		$sql = "SELECT		".(!empty($this->sqlSelects) ? $this->sqlSelects.',' : '')."
@@ -60,7 +60,7 @@ class NewsItemList extends DatabaseObjectList {
 	}
 	
 	/**
-	 * @see DatabaseObjectList::getObjects()
+	 * @see	DatabaseObjectList::getObjects()
 	 */
 	public function getObjects() {
 		return $this->newsItems;

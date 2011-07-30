@@ -33,7 +33,7 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 	
 	// form methods
 	/**
-	 * @see ThemeModuleType::readFormParameters()
+	 * @see	ThemeModuleType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		$this->formData['contentItemID'] = 0;
@@ -41,7 +41,7 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::validate()
+	 * @see	ThemeModuleType::validate()
 	 */
 	public function validate() {
 		// content item id
@@ -56,7 +56,7 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::assignVariables()
+	 * @see	ThemeModuleType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -66,7 +66,7 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::getFormTemplateName()
+	 * @see	ThemeModuleType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'sitemapThemeModuleType';

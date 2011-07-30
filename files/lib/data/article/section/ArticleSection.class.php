@@ -81,7 +81,7 @@ class ArticleSection extends DatabaseObject {
 	}
 	
 	/**
-	 * @see DatabaseObject::__get()
+	 * @see	DatabaseObject::__get()
 	 */
 	public function __get($name) {
 		$value = parent::__get($name);

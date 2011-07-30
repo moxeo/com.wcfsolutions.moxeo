@@ -14,7 +14,7 @@ require_once(WSIS_DIR.'lib/acp/action/AbstractArticleSectionAction.class.php');
  */
 class ArticleSectionDeleteAction extends AbstractArticleSectionAction {
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

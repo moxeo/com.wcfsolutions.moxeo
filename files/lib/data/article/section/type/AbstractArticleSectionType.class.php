@@ -57,36 +57,36 @@ abstract class AbstractArticleSectionType implements ArticleSectionType {
 	
 	// form methods
 	/**
-	 * @see ArticleSectionType::readFormParameters()
+	 * @see	ArticleSectionType::readFormParameters()
 	 */
 	public function readFormParameters() {}
 	
 	/**
-	 * @see ArticleSectionType::validate()
+	 * @see	ArticleSectionType::validate()
 	 */
 	public function validate() {}
 	
 	/**
-	 * @see ArticleSectionType::getFormData()
+	 * @see	ArticleSectionType::getFormData()
 	 */
 	public function getFormData() {
 		return $this->formData;
 	}
 	
 	/**
-	 * @see ArticleSectionType::readFormData()
+	 * @see	ArticleSectionType::readFormData()
 	 */
 	public function setFormData($data) {
 		$this->formData = $data;
 	}
 	
 	/**
-	 * @see ArticleSectionType::assignVariables()
+	 * @see	ArticleSectionType::assignVariables()
 	 */
 	public function assignVariables() {}
 	
 	/**
-	 * @see ArticleSectionType::getFormTemplateName()
+	 * @see	ArticleSectionType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return '';

@@ -42,7 +42,7 @@ class NewsItemPageElement extends ThemeModulePageElement {
 	public $newsArchive = null;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -65,7 +65,7 @@ class NewsItemPageElement extends ThemeModulePageElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -78,7 +78,7 @@ class NewsItemPageElement extends ThemeModulePageElement {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		// set custom page title

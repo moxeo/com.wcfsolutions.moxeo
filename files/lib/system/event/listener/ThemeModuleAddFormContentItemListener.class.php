@@ -17,7 +17,7 @@ require_once(WCF_DIR.'lib/system/event/EventListener.class.php');
  */
 class ThemeModuleAddFormContentItemListener implements EventListener {
 	/**
-	 * @see EventListener::execute()
+	 * @see	EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
 		$contentItems = ContentItem::getContentItems();

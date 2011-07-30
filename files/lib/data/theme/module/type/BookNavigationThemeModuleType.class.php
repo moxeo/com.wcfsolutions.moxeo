@@ -88,7 +88,7 @@ class BookNavigationThemeModuleType extends AbstractThemeModuleType {
 	
 	// form methods
 	/**
-	 * @see ThemeModuleType::readFormParameters()
+	 * @see	ThemeModuleType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		$this->formData['contentItemID'] = 0;
@@ -96,7 +96,7 @@ class BookNavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::validate()
+	 * @see	ThemeModuleType::validate()
 	 */
 	public function validate() {
 		// content item id
@@ -109,7 +109,7 @@ class BookNavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::assignVariables()
+	 * @see	ThemeModuleType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -119,7 +119,7 @@ class BookNavigationThemeModuleType extends AbstractThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::getFormTemplateName()
+	 * @see	ThemeModuleType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'bookNavigationThemeModuleType';

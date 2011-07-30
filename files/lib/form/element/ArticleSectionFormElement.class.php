@@ -50,7 +50,7 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

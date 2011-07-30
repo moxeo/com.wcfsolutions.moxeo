@@ -28,7 +28,7 @@ class FileManagerFileDeleteAction extends AbstractAction {
 	public $path = '';
 	
 	/**
-	 * @see Action::readParameters()
+	 * @see	Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -50,7 +50,7 @@ class FileManagerFileDeleteAction extends AbstractAction {
 	}
 	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

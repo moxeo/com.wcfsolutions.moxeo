@@ -25,7 +25,7 @@ class SearchThemeModuleType extends ViewableThemeModuleType {
 	
 	// form methods
 	/**
-	 * @see ThemeModuleType::readFormParameters()
+	 * @see	ThemeModuleType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		$this->formData['itemsPerPage'] = 10;
@@ -33,7 +33,7 @@ class SearchThemeModuleType extends ViewableThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::assignVariables()
+	 * @see	ThemeModuleType::assignVariables()
 	 */
 	public function assignVariables() {
 		WCF::getTPL()->assign(array(
@@ -42,7 +42,7 @@ class SearchThemeModuleType extends ViewableThemeModuleType {
 	}
 	
 	/**
-	 * @see ThemeModuleType::getFormTemplateName()
+	 * @see	ThemeModuleType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'searchThemeModuleType';

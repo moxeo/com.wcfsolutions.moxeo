@@ -27,7 +27,7 @@ class AccountManagementFormElement extends ThemeModuleFormElement {
 	public $languageID = 0;
 	
 	/**
-	 * @see Form::readFormParameters()
+	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -41,7 +41,7 @@ class AccountManagementFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Form::validate()
+	 * @see	Form::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -97,7 +97,7 @@ class AccountManagementFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -110,7 +110,7 @@ class AccountManagementFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();
@@ -147,7 +147,7 @@ class AccountManagementFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -164,7 +164,7 @@ class AccountManagementFormElement extends ThemeModuleFormElement {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		if (WCF::getUser()->userID) {

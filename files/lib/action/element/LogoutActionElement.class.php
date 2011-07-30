@@ -14,7 +14,7 @@ require_once(WCF_DIR.'lib/action/element/ThemeModuleActionElement.class.php');
  */
 class LogoutActionElement extends ThemeModuleActionElement {	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

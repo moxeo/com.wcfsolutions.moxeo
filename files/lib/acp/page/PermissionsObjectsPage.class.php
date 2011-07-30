@@ -21,7 +21,7 @@ class PermissionsObjectsPage extends AbstractPage {
 	public $query = array();
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -36,7 +36,7 @@ class PermissionsObjectsPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		parent::show();

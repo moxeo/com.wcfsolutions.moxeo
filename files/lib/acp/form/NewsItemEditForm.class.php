@@ -25,7 +25,7 @@ class NewsItemEditForm extends NewsItemAddForm {
 	public $newsItemID = 0;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		ACPForm::readParameters();
@@ -39,7 +39,7 @@ class NewsItemEditForm extends NewsItemAddForm {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -80,7 +80,7 @@ class NewsItemEditForm extends NewsItemAddForm {
 	}
 	
 	/**
-	 * @see Form::save()
+	 * @see	Form::save()
 	 */
 	public function save() {
 		ACPForm::save();
@@ -94,7 +94,7 @@ class NewsItemEditForm extends NewsItemAddForm {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

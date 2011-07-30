@@ -14,7 +14,7 @@ require_once(WSIS_DIR.'lib/acp/action/AbstractContentItemAction.class.php');
  */
 class ContentItemDisableAction extends AbstractContentItemAction {	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

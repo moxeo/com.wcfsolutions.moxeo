@@ -47,7 +47,7 @@ class FileManagerPage extends SortablePage {
 	public $deletedFile = '';
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -66,7 +66,7 @@ class FileManagerPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function readData() {
 		parent::readData();
@@ -84,7 +84,7 @@ class FileManagerPage extends SortablePage {
 	}
 	
 	/**
-	 * @see SortablePage::validateSortField()
+	 * @see	SortablePage::validateSortField()
 	 */
 	public function validateSortField() {
 		parent::validateSortField();
@@ -99,7 +99,7 @@ class FileManagerPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -117,7 +117,7 @@ class FileManagerPage extends SortablePage {
 	}
 	
 	/**
-	 * @see Page::show()
+	 * @see	Page::show()
 	 */
 	public function show() {
 		// enable menu item

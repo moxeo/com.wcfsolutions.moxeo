@@ -31,7 +31,7 @@ class NewsArchiveDeleteAction extends AbstractAction {
 	public $newsArchive = null;
 	
 	/**
-	 * @see Action::readParameters()
+	 * @see	Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -45,7 +45,7 @@ class NewsArchiveDeleteAction extends AbstractAction {
 	}
 	
 	/**
-	 * @see Action::execute()
+	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();

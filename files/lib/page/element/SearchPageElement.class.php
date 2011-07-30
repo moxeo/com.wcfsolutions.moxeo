@@ -42,7 +42,7 @@ class SearchPageElement extends ThemeModulePageElement {
 	public $contentItem = null;
 	
 	/**
-	 * @see Page::readParameters()
+	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -51,7 +51,7 @@ class SearchPageElement extends ThemeModulePageElement {
 	}
 	
 	/**
-	 * @see Page::readData()
+	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
@@ -69,7 +69,7 @@ class SearchPageElement extends ThemeModulePageElement {
 	}
 	
 	/**
-	 * @see Page::assignVariables()
+	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();

@@ -24,7 +24,7 @@ class ArticleSectionList extends DatabaseObjectList {
 	public $articleSections = array();
 	
 	/**
-	 * @see DatabaseObjectList::countObjects()
+	 * @see	DatabaseObjectList::countObjects()
 	 */
 	public function countObjects() {
 		$sql = "SELECT	COUNT(*) AS count
@@ -35,7 +35,7 @@ class ArticleSectionList extends DatabaseObjectList {
 	}
 	
 	/**
-	 * @see DatabaseObjectList::readObjects()
+	 * @see	DatabaseObjectList::readObjects()
 	 */
 	public function readObjects() {
 		$sql = "SELECT		".(!empty($this->sqlSelects) ? $this->sqlSelects.',' : '')."
@@ -51,7 +51,7 @@ class ArticleSectionList extends DatabaseObjectList {
 	}
 	
 	/**
-	 * @see DatabaseObjectList::getObjects()
+	 * @see	DatabaseObjectList::getObjects()
 	 */
 	public function getObjects() {
 		return $this->articleSections;

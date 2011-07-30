@@ -39,7 +39,7 @@ class DownloadsArticleSectionType extends HeadlineArticleSectionType {
 	
 	// form methods
 	/**
-	 * @see ArticleSectionType::readFormParameters()
+	 * @see	ArticleSectionType::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -49,7 +49,7 @@ class DownloadsArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::validate()
+	 * @see	ArticleSectionType::validate()
 	 */
 	public function validate() {
 		parent::validate();
@@ -80,7 +80,7 @@ class DownloadsArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::assignVariables()
+	 * @see	ArticleSectionType::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -91,7 +91,7 @@ class DownloadsArticleSectionType extends HeadlineArticleSectionType {
 	}
 	
 	/**
-	 * @see ArticleSectionType::getFormTemplateName()
+	 * @see	ArticleSectionType::getFormTemplateName()
 	 */
 	public function getFormTemplateName() {
 		return 'downloadsArticleSectionType';
