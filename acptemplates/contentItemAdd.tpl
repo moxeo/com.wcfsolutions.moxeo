@@ -167,18 +167,13 @@
 			
 			<fieldset>
 				<legend>{lang}wsis.acp.contentItem.contentItemType{/lang}</legend>
-				<div class="formElement{if $errorField == 'contentItemType'} formError{/if}">
+				<div class="formElement">
 					<ul class="formOptions">
 						<li><label><input onclick="if (IS_SAFARI) setContentItemType(0)" onfocus="setContentItemType(0)" type="radio" name="contentItemType" value="0" {if $contentItemType == 0}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.0{/lang}</label></li>
 						<li><label><input onclick="if (IS_SAFARI) setContentItemType(1)" onfocus="setContentItemType(1)" type="radio" name="contentItemType" value="1" {if $contentItemType == 1}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.1{/lang}</label></li>
 						<li><label><input onclick="if (IS_SAFARI) setContentItemType(2)" onfocus="setContentItemType(2)" type="radio" name="contentItemType" value="2" {if $contentItemType == 2}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.2{/lang}</label></li>
 						<li><label><input onclick="if (IS_SAFARI) setContentItemType(3)" onfocus="setContentItemType(3)" type="radio" name="contentItemType" value="3" {if $contentItemType == 3}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.3{/lang}</label></li>
 					</ul>
-					{if $errorField == 'contentItemType'}
-						<p class="innerError">
-							{if $errorType == 'invalid'}{lang}wsis.acp.contentItem.error.contentItemType.invalid{/lang}{/if}
-						</p>
-					{/if}
 				</div>
 			</fieldset>
 			
@@ -186,7 +181,7 @@
 				<legend>{lang}wsis.acp.contentItem.classification{/lang}</legend>
 					
 				{if $contentItemOptions|count > 0}
-					<div class="formElement{if $errorField == 'parentID'} formError{/if}" id="parentIDDiv">
+					<div class="formElement" id="parentIDDiv">
 						<div class="formFieldLabel">
 							<label for="parentID">{lang}wsis.acp.contentItem.parentID{/lang}</label>
 						</div>
@@ -195,11 +190,6 @@
 								<option value="0"></option>
 								{htmlOptions options=$contentItemOptions selected=$parentID disableEncoding=true}
 							</select>
-							{if $errorField == 'parentID'}
-								<p class="innerError">
-									{if $errorType == 'invalid'}{lang}wsis.acp.contentItem.error.parentID.invalid{/lang}{/if}
-								</p>
-							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="parentIDHelpMessage">
 							<p>{lang}wsis.acp.contentItem.parentID.description{/lang}</p>

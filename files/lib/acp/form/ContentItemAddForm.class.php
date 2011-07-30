@@ -22,7 +22,7 @@ class ContentItemAddForm extends ACPForm {
 	public $templateName = 'contentItemAdd';
 	public $activeMenuItem = 'wsis.acp.menu.link.content.contentItem.add';
 	public $activeTabMenuItem = 'data';
-		
+	
 	/**
 	 * content item editor object
 	 * 
@@ -78,7 +78,7 @@ class ContentItemAddForm extends ACPForm {
 	 * @var	integer
 	 */
 	public $publishingEndTime = 0;
-		
+	
 	// parameters
 	public $languageID = 0;
 	public $parentID = 0;
@@ -190,17 +190,19 @@ class ContentItemAddForm extends ACPForm {
 	
 	/**
 	 * @see	Form::validate()
-	 * @todo	validate invisible, addSecurityToken, cssClasses
 	 */
 	public function validate() {
 		parent::validate();
 		
 		// language id
-		// validation!
+		if (!Language::getLanguage($this->languageID)) {
+			// use default language
+			$this->languageID = Language::getDefaultLanguageID();
+		}
 		
 		// content item type
 		if ($this->contentItemType < 0 || $this->contentItemType > 3) {
-			throw new UserInputException('contentItemType', 'invalid');
+			$this->contentItemType = 0;
 		}
 		
 		// parent id
@@ -211,8 +213,10 @@ class ContentItemAddForm extends ACPForm {
 			throw new UserInputException('title');
 		}
 		
-		// title seo
-		if (!$this->contentItemAlias) $this->contentItemAlias = $this->title;
+		// alias
+		if (empty($this->contentItemAlias)) {
+			$this->contentItemAlias = $this->title;
+		}
 		$this->contentItemAlias = SEOUtil::formatString($this->contentItemAlias);
 		
 		// external url
@@ -251,10 +255,10 @@ class ContentItemAddForm extends ACPForm {
 		$this->metaKeywords = implode(',', ArrayUtil::trim(explode(',', $this->metaKeywords)));
 		
 		// permissions
-		$this->validatePermissions();
+		$this->validatePermissions($this->permissions, $this->permissionSettings);
 		
 		// admins
-		// VALIDATION!
+		$this->validatePermissions($this->admins, $this->adminSettings);
 	}
 	
 	/**
@@ -266,7 +270,7 @@ class ContentItemAddForm extends ACPForm {
 				ContentItem::getContentItem($this->parentID);
 			}
 			catch (IllegalLinkException $e) {
-				throw new UserInputException('parentID', 'invalid');
+				$this->parentID = 0;
 			}
 		}
 	}
@@ -296,11 +300,14 @@ class ContentItemAddForm extends ACPForm {
 	}
 	
 	/**
-	 * Validates the permissions.
+	 * Validates the given permissions.
+	 * 
+	 * @param	array		$permissions
+	 * @param	array		$permissionSettings
 	 */
-	public function validatePermissions() {
-		$settings = array_flip($this->permissionSettings);
-		foreach ($this->permissions as $permission) {
+	public function validatePermissions($permissions, $permissionSettings) {
+		$settings = array_flip($permissionSettings);
+		foreach ($permissions as $permission) {
 			// type
 			if (!isset($permission['type']) || ($permission['type'] != 'user' && $permission['type'] != 'group')) {
 				throw new UserInputException();

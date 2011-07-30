@@ -140,7 +140,7 @@ class ContentItemEditForm extends ContentItemAddForm {
 		
 		if ($this->parentID) {
 			if ($this->contentItemID == $this->parentID || ContentItem::searchChildren($this->contentItemID, $this->parentID)) {
-				throw new UserInputException('parentID', 'invalid');
+				$this->parentID = 0;
 			}
 		}
 	}
