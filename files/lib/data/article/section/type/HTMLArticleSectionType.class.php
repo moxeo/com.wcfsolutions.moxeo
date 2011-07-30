@@ -62,7 +62,12 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 		if (strpos($this->formData['code'], '{') !== false) {
 			require_once(WCF_DIR.'lib/system/template/TemplateScriptingCompiler.class.php');
 			$scriptingCompiler = new TemplateScriptingCompiler(WCF::getTPL());
-			$this->formData['dynamicCode'] = $scriptingCompiler->compileString('htmlArticleSectionType', $this->formData['code']);
+			try {
+				$this->formData['dynamicCode'] = $scriptingCompiler->compileString('htmlArticleSectionType', $this->formData['code']);
+			}
+			catch (SystemException $e) {
+				throw new UserInputException('code', 'syntaxError');
+			}
 		}
 	}
 	

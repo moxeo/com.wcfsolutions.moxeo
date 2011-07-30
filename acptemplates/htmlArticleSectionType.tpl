@@ -10,6 +10,7 @@
 			{if $errorField == 'code'}
 				<p class="innerError">
 					{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+					{if $errorType == 'syntaxError'}{lang}wsis.acp.article.section.html.code.error.syntaxError{/lang}{/if}
 				</p>
 			{/if}
 		</div>

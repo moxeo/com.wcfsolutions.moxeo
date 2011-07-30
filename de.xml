@@ -176,6 +176,7 @@
 		<item name="wsis.acp.article.section.headlineSize.description"><![CDATA[Wählen Sie hier die Größe der Überschrifts des Abschnitts aus.]]></item>
 		<item name="wsis.acp.article.section.html.code"><![CDATA[HTML-Code]]></item>
 		<item name="wsis.acp.article.section.html.code.description"><![CDATA[Geben Sie hier den HTML-Code des Abschnitts ein.]]></item>
+		<item name="wsis.acp.article.section.html.code.error.syntaxError"><![CDATA[Der eingegebene dynamische Template-Code enthält Fehler.]]></item>
 		<item name="wsis.acp.article.section.html.data"><![CDATA[Daten]]></item>
 		<item name="wsis.acp.article.section.hyperlink.caption"><![CDATA[Titel]]></item>
 		<item name="wsis.acp.article.section.hyperlink.caption.description"><![CDATA[Geben Sie hier den Titel des Hyperlinks an, der statt der Adresse (URL) angezeigt wird.]]></item>		
