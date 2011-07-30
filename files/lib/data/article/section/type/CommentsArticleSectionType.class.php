@@ -17,13 +17,5 @@ class CommentsArticleSectionType extends ViewableArticleSectionType {
 	 * @see	ViewableArticleSectionType::$pageElement
 	 */
 	public $pageElement = 'comments';
-	
-	// display methods
-	/**
-	 * @see	ArticleSectionType::getPreviewHTML()
-	 */	
-	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		return WCF::getLanguage()->get('wsis.comment.comments');
-	}
 }
 ?>
