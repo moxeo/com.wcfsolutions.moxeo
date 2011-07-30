@@ -51,6 +51,12 @@
 			</tbody>
 		</table>
 	</div>
+{else}
+	<div class="border content">
+		<div class="container-1">
+			<p>{lang}wsis.acp.fileManager.file.count.noFiles{/lang}</p>
+		</div>
+	</div>
 {/if}
 
 <script type="text/javascript">

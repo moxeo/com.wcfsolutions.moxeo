@@ -341,6 +341,7 @@
 		<item name="wsis.acp.fileManager"><![CDATA[Dateimanager]]></item>
 		<item name="wsis.acp.fileManager.dirName"><![CDATA[Name]]></item>
 		<item name="wsis.acp.fileManager.file.add"><![CDATA[Datei hinzufügen]]></item>
+		<item name="wsis.acp.fileManager.file.count.noFiles"><![CDATA[Derzeit sind keine Dateien vorhanden.]]></item>
 		<item name="wsis.acp.fileManager.file.date"><![CDATA[Änderungsdatum]]></item>
 		<item name="wsis.acp.fileManager.file.delete"><![CDATA[Datei löschen]]></item>
 		<item name="wsis.acp.fileManager.file.delete.success"><![CDATA[Die Datei wurde erfolgreich gelöscht.]]></item>

@@ -54,6 +54,12 @@ class WSISACP extends WCFACP {
 			// individual page title
 			'pageTitle' => WCF::getLanguage()->get(StringUtil::encodeHTML(PAGE_TITLE)).' - '.StringUtil::encodeHTML(PACKAGE_NAME.' '.PACKAGE_VERSION)
 		));
+		
+		// wsis stylesheet
+		$html = '<style type="text/css">
+				@import url("'.RELATIVE_WSIS_DIR.'acp/style/wsis'.(PAGE_DIRECTION == 'rtl' ? '-rtl' : '').'.css");
+			</style>';
+		self::getTPL()->append('specialStyles', $html);		
 	}
 	
 	/**

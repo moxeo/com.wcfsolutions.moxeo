@@ -1,8 +1,4 @@
-{capture append='specialStyles'}
-<style type="text/css">
-	@import url("{@RELATIVE_WSIS_DIR}acp/style/wsis{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css");
-</style>
-{/capture}{include file='header'}
+{include file='header'}
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/ItemListEditor.class.js"></script>
 <script type="text/javascript">
 	//<![CDATA[
