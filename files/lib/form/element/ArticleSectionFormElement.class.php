@@ -35,7 +35,7 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 	 * 
 	 * @var	ContentItem
 	 */
-	public $contentItem = null;	
+	public $contentItem = null;
 	
 	/**
 	 * Creates a new ArticleSectionFormElement object.
@@ -47,6 +47,20 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 		$this->article = $article;
 		$this->contentItem = $contentItem;
 		parent::__construct();
+	}
+	
+	/**
+	 * @see Form::submit()
+	 */
+	public function readData() {
+		// get submitting article section id
+		$articleSectionID = 0;
+		if (isset($_POST['articleSectionID'])) $articleSectionID = intval($_POST['articleSectionID']);
+		
+		// submit
+		if ($articleSectionID == $this->articleSection->articleSectionID) {
+			parent::submit();
+		}
 	}
 	
 	/**
