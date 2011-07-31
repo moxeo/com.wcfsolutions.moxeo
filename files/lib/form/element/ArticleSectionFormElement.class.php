@@ -73,7 +73,8 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 		WCF::getTPL()->assign(array(
 			'articleSection' => $this->articleSection,
 			'article' => $this->article,
-			'contentItem' => $this->contentItem
+			'contentItem' => $this->contentItem,
+			'articleSectionInputTag' => '<input type="hidden" name="articleSectionID" value="'.$this->articleSection->articleSectionID.'" />'
 		));
 	}
 }

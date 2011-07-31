@@ -53,7 +53,7 @@
 	<div class="formSubmit">
 		<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 		<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />
+		{@$articleSectionInputTag}
 		{@SID_INPUT_TAG}
-		<input type="hidden" name="articleSectionID" value="{@$articleSection->articleSectionID}" />
 	</div>
 </form>
