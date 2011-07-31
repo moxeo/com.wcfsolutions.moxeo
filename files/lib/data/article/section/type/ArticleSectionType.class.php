@@ -15,6 +15,8 @@ interface ArticleSectionType {
 	 * Caches all necessary article section data to save performance.
 	 *
 	 * @param	ArticleSection		$articleSection
+	 * @param	Article			$article
+	 * @param	ContentItem		$contentItem
 	 */
 	public function cache(ArticleSection $articleSection, Article $article, ContentItem $contentItem);
 	
@@ -22,6 +24,8 @@ interface ArticleSectionType {
 	 * Returns true, if the given article section object has content.
 	 * 
 	 * @param	ArticleSection		$articleSection
+	 * @param	Article			$article
+	 * @param	ContentItem		$contentItem
 	 * @return	boolean
 	 */
 	public function hasContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem);
@@ -30,6 +34,8 @@ interface ArticleSectionType {
 	 * Returns the content of the given article section object (html code).
 	 * 
 	 * @param	ArticleSection		$articleSection
+	 * @param	Article			$article
+	 * @param	ContentItem		$contentItem
 	 * @return	string
 	 */
 	public function getContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem);
@@ -38,6 +44,8 @@ interface ArticleSectionType {
 	 * Returns the searchable content of the given article section object.
 	 * 
 	 * @param	ArticleSection		$articleSection
+	 * @param	Article			$article
+	 * @param	ContentItem		$contentItem
 	 * @return	string
 	 */
 	public function getSearchableContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem);
@@ -46,6 +54,8 @@ interface ArticleSectionType {
 	 * Returns the preview html code of the given article section object.
 	 * 
 	 * @param	ArticleSection		$articleSection
+	 * @param	Article			$article
+	 * @param	ContentItem		$contentItem
 	 * @return	string
 	 */
 	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem);
