@@ -25,20 +25,6 @@ class CommentsPageElement extends ArticleSectionPageElement {
 	public $commentList = null;
 	
 	/**
-	 * comment id
-	 * 
-	 * @var	integer
-	 */
-	public $commentID = 0;
-	
-	/**
-	 * comment object
-	 * 
-	 * @var	PublicationObjectComment
-	 */
-	public $comment = null;
-	
-	/**
 	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
@@ -46,28 +32,6 @@ class CommentsPageElement extends ArticleSectionPageElement {
 		
 		// get page no
 		if (isset($_REQUEST['pageNo'])) $this->pageNo = intval($_REQUEST['pageNo']);
-		
-		// get comment
-		if (isset($_REQUEST['commentID'])) $this->commentID = intval($_REQUEST['commentID']);
-		if ($this->commentID != 0) {
-			$this->comment = new Comment($this->commentID);
-			if (!$this->comment->commentID || $this->comment->articleSectionID != $this->articleSection->articleSectionID) {
-				throw new IllegalLinkException();
-			}
-			
-			// check permissions
-			if ($this->action == 'edit' && !$this->comment->isEditable()) {
-				throw new PermissionDeniedException();
-			}
-			
-			// get page number
-			$sql = "SELECT	COUNT(*) AS comments
-				FROM 	wsis".WSIS_N."_comment
-				WHERE 	articleSectionID = ".$this->articleSection->articleSectionID."
-					AND time >= ".$this->comment->time;
-			$result = WCF::getDB()->getFirstRow($sql);
-			$this->pageNo = intval(ceil($result['comments'] / $this->itemsPerPage));
-		}
 		
 		// init comment list
 		$this->commentList = new CommentList();
@@ -102,16 +66,17 @@ class CommentsPageElement extends ArticleSectionPageElement {
 	public function assignVariables() {
 		parent::assignVariables();
 		
-		// init comment form
-		require_once(WSIS_DIR.'lib/form/CommentForm.class.php');
-		new CommentForm($this->articleSection, $this->contentItem);
+		// init comment add form
+		require_once(WSIS_DIR.'lib/form/element/CommentAddFormElement.class.php');
+		$commentAddForm = new CommentAddFormElement($this->articleSection, $this->contentItem);
 		
 		WCF::getTPL()->assign(array(
 			'comments' => ($this->commentList != null ? $this->commentList->getObjects() : array()),
 			'pageNo' => $this->pageNo,
 			'pages' => $this->pages,
 			'items' => $this->items,
-			'itemsPerPage' => $this->itemsPerPage
+			'itemsPerPage' => $this->itemsPerPage,
+			'commentForm' => $commentAddForm->getContent()
 		));
 	}
 }

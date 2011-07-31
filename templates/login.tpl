@@ -42,11 +42,11 @@
 		{/if}
 		
 		{if $additionalLoginFields|isset}{@$additionalLoginFields}{/if}
-			
+		
 		<div class="formSubmit">
 			<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 			<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />
-			{@$themeModuleInputTags}
+			{@$formElementInputTag}
 			{@SID_INPUT_TAG}
 		</div>
 	</form>

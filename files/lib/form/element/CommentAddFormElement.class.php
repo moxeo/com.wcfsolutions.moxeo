@@ -4,10 +4,10 @@ require_once(WSIS_DIR.'lib/data/captcha/Captcha.class.php');
 require_once(WSIS_DIR.'lib/data/comment/CommentEditor.class.php');
 
 // wcf imports
-require_once(WCF_DIR.'lib/form/AbstractForm.class.php');
+require_once(WCF_DIR.'lib/form/element/AbstractFormElement.class.php');
 
 /**
- * Shows the comment form.
+ * Shows the comment add form.
  * 
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
@@ -16,7 +16,10 @@ require_once(WCF_DIR.'lib/form/AbstractForm.class.php');
  * @subpackage	form
  * @category	Infinite Site
  */
-class CommentForm extends AbstractForm {
+class CommentAddFormElement extends AbstractFormElement {
+	// system
+	public $templateName = 'commentAdd';
+	
 	// parameters
 	public $comment = '';
 	public $username = '';
@@ -140,7 +143,7 @@ class CommentForm extends AbstractForm {
 		$this->saved();
 		
 		// forward
-		HeaderUtil::redirect($this->contentItem->getURL().'?commentID='.$this->commentObj->commentID.SID_ARG_2ND_NOT_ENCODED.'#comment'.$this->commentObj->commentID);
+		HeaderUtil::redirect($this->contentItem->getURL().SID_ARG_1ST);
 		exit;
 	}
 	
@@ -160,6 +163,13 @@ class CommentForm extends AbstractForm {
 			$this->captchaID = Captcha::create();
 			$this->captcha = new Captcha($this->captchaID);
 		}
+	}
+	
+	/**
+	 * @see	AbstractFormElement::getIdentifier()
+	 */	
+	public function getIdentifier() {
+		return $this->articleSection->articleSectionID;
 	}
 	
 	/**

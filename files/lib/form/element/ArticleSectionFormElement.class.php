@@ -50,17 +50,10 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 	}
 	
 	/**
-	 * @see Form::submit()
-	 */
-	public function readData() {
-		// get submitting article section id
-		$articleSectionID = 0;
-		if (isset($_POST['articleSectionID'])) $articleSectionID = intval($_POST['articleSectionID']);
-		
-		// submit
-		if ($articleSectionID == $this->articleSection->articleSectionID) {
-			parent::submit();
-		}
+	 * @see	AbstractFormElement::getIdentifier()
+	 */	
+	public function getIdentifier() {
+		return $this->articleSection->articleSectionID;
 	}
 	
 	/**
@@ -73,8 +66,7 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 		WCF::getTPL()->assign(array(
 			'articleSection' => $this->articleSection,
 			'article' => $this->article,
-			'contentItem' => $this->contentItem,
-			'articleSectionInputTag' => '<input type="hidden" name="articleSectionID" value="'.$this->articleSection->articleSectionID.'" />'
+			'contentItem' => $this->contentItem
 		));
 	}
 }

@@ -113,11 +113,11 @@
 	{include file='captcha'}
 	
 	{if $additionalRegistrationFields|isset}{@$additionalRegistrationFields}{/if}
-		
+	
 	<div class="formSubmit">
 		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" />
 		<input type="reset" value="{lang}wcf.global.button.reset{/lang}" />
-		{@$themeModuleInputTags}
+		{@$formElementInputTag}
 		{@SID_INPUT_TAG}
 	</div>
 </form>
