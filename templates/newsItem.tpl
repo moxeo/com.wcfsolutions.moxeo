@@ -5,7 +5,7 @@
 	<p class="text">{if $themeModule->displayType == 'full'}{@$newsItem->text}{else}{@$newsItem->teaser}{/if}</p>
 </div>
 
-{pages print=true assign=pagesOutput link=$contentItem->getURL()|concat:'?pageNo=%d':SID_ARG_2ND_NOT_ENCODED}
+{pages print=true assign=pagesOutput link=$newsItem->getURL()|concat:'?pageNo=%d':SID_ARG_2ND_NOT_ENCODED}
 
 <ul class="comments">
 	{cycle name='commentsCycle' values='even,odd' reset=true print=false advance=false}
