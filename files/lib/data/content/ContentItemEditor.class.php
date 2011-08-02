@@ -295,22 +295,43 @@ class ContentItemEditor extends ContentItem {
 		
 		$articleIDs = '';
 		if (isset($cache[$this->contentItemID]['main'])) {
-			$articleIDArray = implode(',', $cache[$this->contentItemID]['main']);
+			$articleIDs = implode(',', $cache[$this->contentItemID]['main']);
 		}
 		
 		$contents = '';
 		if ($articleIDs) {
-			$sql = "SELECT	*
-				FROM	wsis".WSIS_N."_article_section
-				WHERE	articleID IN (".$articleIDs.")";
+			// get article sections
+			$sql = "SELECT		*
+				FROM		wsis".WSIS_N."_article_section
+				WHERE		articleID IN (".$articleIDs.")
+				ORDER BY	articleID, showOrder";
 			$result = WCF::getDB()->sendQuery($sql);
 			while ($row = WCF::getDB()->fetchArray($result)) {
-				if (!empty($contents)) $contents .= "\n";
+				if (!isset($articleSections[$row['articleID']])) {
+					$articleSections[$row['articleID']] = array();
+				}
+				$articleSections[$row['articleID']][] = new ArticleSection(null, $row);
+			}
+			
+			// get articles
+			$sql = "SELECT		*
+				FROM		wsis".WSIS_N."_article
+				WHERE		articleID IN (".$articleIDs.")
+				ORDER BY	showOrder";
+			$result = WCF::getDB()->sendQuery($sql);
+			while ($row = WCF::getDB()->fetchArray($result)) {	
+				$article = new Article(null, $row);
 				
-				$articleSection = new ArticleSection(null, $row);
-				$content = $articleSection->getArticleSectionType()->getSearchableContent($articleSection);
-				if (!empty($content)) {
-					$contents .= $content;
+				// cache article section data
+				if (isset($articleSections[$row['articleID']])) {
+					foreach ($articleSections[$row['articleID']] as $articleSection) {
+						if (!empty($contents)) $contents .= "\n";
+						
+						$content = $articleSection->getArticleSectionType()->getSearchableContent($articleSection, $article, $this);
+						if (!empty($content)) {
+							$contents .= $content;
+						}
+					}
 				}
 			}
 		}

@@ -59,19 +59,17 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 					ORDER BY	articleID, showOrder";
 				$result = WCF::getDB()->sendQuery($sql);
 				while ($row = WCF::getDB()->fetchArray($result)) {
-					$articleSection = new ArticleSection(null, $row);
-					
 					if (!isset($this->articleSections[$row['articleID']])) {
 						$this->articleSections[$row['articleID']] = array();
 					}
-					$this->articleSections[$row['articleID']][] = $articleSection;
+					$this->articleSections[$row['articleID']][] = new ArticleSection(null, $row);
 				}
 				
 				// get articles
 				$sql = "SELECT		*
 					FROM		wsis".WSIS_N."_article
 					WHERE		articleID IN (".$articleIDs.")
-					ORDER BY	themeModulePosition, articleID";
+					ORDER BY	themeModulePosition, showOrder";
 				$result = WCF::getDB()->sendQuery($sql);
 				while ($row = WCF::getDB()->fetchArray($result)) {	
 					$article = new Article(null, $row);

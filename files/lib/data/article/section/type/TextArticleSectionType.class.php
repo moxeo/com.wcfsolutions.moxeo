@@ -31,7 +31,7 @@ class TextArticleSectionType extends HeadlineArticleSectionType {
 	 * @see	ArticleSectionType::getSearchableContent()
 	 */	
 	public function getSearchableContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		return parent::getSearchableContent($articleSection).' '.StringUtil::stripHTML($articleSection->code);
+		return parent::getSearchableContent($articleSection, $article, $contentItem).' '.StringUtil::stripHTML($articleSection->code);
 	}
 	
 	/**

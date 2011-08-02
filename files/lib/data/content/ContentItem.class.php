@@ -479,9 +479,25 @@ class ContentItem extends DatabaseObject {
 	}
 	
 	/**
+	 * Returns the number of search results matching the given query.
+	 * 
+	 * @param	string		$query
+	 * @return	integer
+	 */
+	public static function countSearchResults($query) {		
+		$sql = "SELECT	COUNT(*) AS count
+			FROM	wsis".WSIS_N."_content_item
+			WHERE	searchableContent LIKE '%".escapeString($query)."%'";
+		$row = WCF::getDB()->getFirstRow($sql);
+		return $row['count'];
+	}
+	
+	/**
 	 * Searches in content items.
 	 * 
 	 * @param	string		$query
+	 * @param	integer		$limit
+	 * @param	integer		$offset
 	 * @return	array<ContentItem>
 	 */
 	public static function search($query, $limit, $offset) {

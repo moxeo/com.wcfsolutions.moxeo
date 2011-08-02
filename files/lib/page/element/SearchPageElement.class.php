@@ -48,6 +48,21 @@ class SearchPageElement extends ThemeModulePageElement {
 		parent::readParameters();
 		
 		if (isset($_REQUEST['q'])) $this->query = StringUtil::trim($_REQUEST['q']);
+		
+		// items per page
+		if ($this->themeModule->itemsPerPage) $this->itemsPerPage = $this->themeModule->itemsPerPage;
+	}
+	
+	/**
+	 * @see	MultipleLinkPage::countItems()
+	 */
+	public function countItems() {
+		parent::countItems();
+		
+		if ($this->query) {
+			return ContentItem::countSearchResults($this->query);
+		}
+		return 0;
 	}
 	
 	/**

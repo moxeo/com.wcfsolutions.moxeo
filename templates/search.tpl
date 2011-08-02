@@ -15,7 +15,7 @@
 {if $query}
 	<h2>{lang}wsis.search.results{/lang}</h2>
 	
-	{pages print=true assign=pagesOutput link=$contentItem->getURL()|concat:'?pageNo=%d':SID_ARG_2ND_NOT_ENCODED}
+	{pages print=true assign=pagesOutput link=$contentItem->getURL()|concat:'?pageNo=%d&q=':$query:SID_ARG_2ND_NOT_ENCODED}
 	
 	{if $result|count}
 		<ul class="searchResults">
