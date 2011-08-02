@@ -23,9 +23,9 @@
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/default.js"></script>
 	
 	<!-- theme styles -->
-	<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}style/theme/global{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}theme/global{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
 	{foreach from=$this->getThemeLayout()->getStyleSheets() item=styleSheet}
-		<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}style/theme/{$this->getThemeLayout()->getTheme()->dataLocation}/{$styleSheet}{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}theme/{$this->getThemeLayout()->getTheme()->dataLocation}/{$styleSheet}{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
 	{/foreach}
 	
 	{if $specialStyles|isset}
