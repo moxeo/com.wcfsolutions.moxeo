@@ -1,5 +1,4 @@
-<h2>{lang}wsis.comment.add{/lang}</h2>
-<form method="post" action="{$contentItem->getURL()}?action=add">
+<form method="post" action="{$formURL}">
 	{if !$this->user->userID}
 		<div class="formElement{if $errorField == 'username'} formError{/if}">
 			<div class="formFieldLabel">
@@ -34,6 +33,8 @@
 	</div>
 	
 	{include file='captcha'}
+	
+	{if $additionalCommentFields.$identifier|isset}{@$additionalCommentFields.$identifier}{/if}
 	
 	<div class="formSubmit">
 		<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />

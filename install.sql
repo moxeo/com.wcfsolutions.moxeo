@@ -44,13 +44,14 @@ CREATE TABLE wsis1_1_captcha (
 DROP TABLE IF EXISTS wsis1_1_comment;
 CREATE TABLE wsis1_1_comment (
 	commentID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	articleSectionID INT(10) NOT NULL DEFAULT 0,
+	commentObjectID INT(10) NOT NULL DEFAULT 0,
+	commentObjectType VARCHAR(255) NOT NULL DEFAULT '',
 	userID INT(10) NOT NULL DEFAULT 0,
 	username VARCHAR(255) NOT NULL DEFAULT '',
 	comment TEXT NULL,
 	time INT(10) NOT NULL DEFAULT 0,
 	ipAddress VARCHAR(15) NOT NULL DEFAULT '',
-	KEY (articleSectionID)
+	KEY (commentObjectID, commentObjectType)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS wsis1_1_content_item;

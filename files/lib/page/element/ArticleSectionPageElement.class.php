@@ -50,6 +50,13 @@ abstract class ArticleSectionPageElement extends AbstractPageElement {
 	}
 	
 	/**
+	 * @see	PageElement::getIdentifier()
+	 */	
+	public function getIdentifier() {
+		return $this->articleSection->articleSectionID;
+	}
+	
+	/**
 	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {

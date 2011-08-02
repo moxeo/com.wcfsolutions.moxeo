@@ -1,4 +1,7 @@
 <?php
+// wsis imports
+require_once(WSIS_DIR.'lib/data/comment/object/CommentObject.class.php');
+
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
@@ -12,7 +15,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @subpackage	data.news
  * @category	Infinite Site
  */
-class NewsItem extends DatabaseObject {
+class NewsItem extends DatabaseObject implements CommentObject {
 	/**
 	 * news archive object
 	 * 
@@ -110,6 +113,35 @@ class NewsItem extends DatabaseObject {
 			WHERE 		news_item.newsItemAlias = '".escapeString($newsItemAlias)."'";
 		$row = WCF::getDB()->getFirstRow($sql);
 		return new NewsItem(null, $row);
+	}
+	
+	// CommentObject implementation
+	/**
+	 * @see	CommentObject::getCommentObjectID()
+	 */
+	public function getCommentObjectID() {
+		return $this->newsItemID;
+	}
+	
+	/**
+	 * @see	CommentObject::getPublicationType()
+	 */
+	public function getCommentObjectType() {
+		return 'newsItem';
+	}
+	
+	/**
+	 * @see	CommentObject::getTitle()
+	 */
+	public function getTitle() {
+		return $this->title;
+	}
+	
+	/**
+	 * @see	CommentObject::isCommentable()
+	 */	
+	public function isCommentable() {
+		return WCF::getUser()->getPermission('user.site.canComment');
 	}
 }
 ?>

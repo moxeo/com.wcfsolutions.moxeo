@@ -35,16 +35,17 @@ class CommentEditor extends Comment {
 	/**
 	 * Creates a new comment.
 	 * 
-	 * @param	integer		$articleSectionID
+	 * @param	integer		$commentObjectID
+	 * @param	string		$commentObjectType
 	 * @param	integer		$userID
 	 * @param	string		$username
 	 * @param	string		$comment
 	 * @return	CommentEditor
 	 */
-	public static function create($articleSectionID, $userID, $username, $comment) {
+	public static function create($commentObjectID, $commentObjectType, $userID, $username, $comment) {
 		$sql = "INSERT INTO	wsis".WSIS_N."_comment
-					(articleSectionID, userID, username, comment, time, ipAddress)
-			VALUES		(".$articleSectionID.", ".$userID.", '".escapeString($username)."', '".escapeString($comment)."', ".TIME_NOW.", '".escapeString(WCF::getSession()->ipAddress)."')";
+					(commentObjectID, commentObjectType, userID, username, comment, time, ipAddress)
+			VALUES		(".$commentObjectID.", '".escapeString($commentObjectType)."', ".$userID.", '".escapeString($username)."', '".escapeString($comment)."', ".TIME_NOW.", '".escapeString(WCF::getSession()->ipAddress)."')";
 		WCF::getDB()->sendQuery($sql);
 		
 		$commentID = WCF::getDB()->getInsertID("wsis".WSIS_N."_comment", 'commentID');

@@ -30,12 +30,9 @@ class CommentsPageElement extends ArticleSectionPageElement {
 	public function readParameters() {
 		parent::readParameters();
 		
-		// get page no
-		if (isset($_REQUEST['pageNo'])) $this->pageNo = intval($_REQUEST['pageNo']);
-		
 		// init comment list
 		$this->commentList = new CommentList();
-		$this->commentList->sqlConditions .= "comment.articleSectionID = ".$this->articleSection->articleSectionID;
+		$this->commentList->sqlConditions .= "comment.commentObjectID = ".$this->articleSection->articleSectionID." AND comment.commentObjectType = 'articleSection'";
 		$this->commentList->sqlOrderBy = 'comment.time DESC';
 	}
 	
@@ -68,14 +65,10 @@ class CommentsPageElement extends ArticleSectionPageElement {
 		
 		// init comment add form
 		require_once(WSIS_DIR.'lib/form/element/CommentAddFormElement.class.php');
-		$commentAddForm = new CommentAddFormElement($this->articleSection, $this->contentItem);
+		$commentAddForm = new CommentAddFormElement($this->articleSection, $this->contentItem, $this->contentItem->getURL());
 		
 		WCF::getTPL()->assign(array(
-			'comments' => ($this->commentList != null ? $this->commentList->getObjects() : array()),
-			'pageNo' => $this->pageNo,
-			'pages' => $this->pages,
-			'items' => $this->items,
-			'itemsPerPage' => $this->itemsPerPage,
+			'comments' => $this->commentList->getObjects(),
 			'commentForm' => $commentAddForm->getContent()
 		));
 	}

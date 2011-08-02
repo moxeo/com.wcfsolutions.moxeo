@@ -13,17 +13,19 @@ require_once(WCF_DIR.'lib/form/element/AbstractFormElement.class.php');
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.wsis
- * @subpackage	form
+ * @subpackage	form.element
  * @category	Infinite Site
  */
 class CommentAddFormElement extends AbstractFormElement {
 	// system
 	public $templateName = 'commentAdd';
 	
-	// parameters
-	public $comment = '';
-	public $username = '';
-	public $captchaValue = 0;
+	/**
+	 * comment object
+	 * 
+	 * @var CommentObject
+	 */
+	public $commentObject = null;
 	
 	/**
 	 * content item object
@@ -33,11 +35,11 @@ class CommentAddFormElement extends AbstractFormElement {
 	public $contentItem = null;
 	
 	/**
-	 * article section object
+	 * form url
 	 * 
-	 * @var ArticleSection
+	 * @var	string
 	 */
-	public $articleSection = null;
+	public $formURL = '';
 	
 	/**
 	 * comment editor object
@@ -60,14 +62,20 @@ class CommentAddFormElement extends AbstractFormElement {
 	 */
 	public $captcha = null;
 	
+	// parameters
+	public $comment = '';
+	public $username = '';
+	public $captchaValue = 0;
+	
 	/**
-	 * Creates a new CommentAddForm object.
+	 * Creates a new CommentAddFormElement object.
 	 * 
-	 * @param	ArticleSection		$articleSection
+	 * @param	CommentObject		$commentObject
 	 */
-	public function __construct(ArticleSection $articleSection, ContentItem $contentItem) {
-		$this->articleSection = $articleSection;
+	public function __construct(CommentObject $commentObject, ContentItem $contentItem, $formURL) {
+		$this->commentObject = $commentObject;
 		$this->contentItem = $contentItem;
+		$this->formURL = $formURL;
 		parent::__construct();
 	}
 	
@@ -139,11 +147,11 @@ class CommentAddFormElement extends AbstractFormElement {
 		parent::save();
 		
 		// save comment
-		$this->commentObj = CommentEditor::create($this->articleSection->articleSectionID, WCF::getUser()->userID, $this->username, $this->comment);
+		$this->commentObj = CommentEditor::create($this->commentObject->getCommentObjectID(), $this->commentObject->getCommentObjectType(), WCF::getUser()->userID, $this->username, $this->comment);
 		$this->saved();
 		
 		// forward
-		HeaderUtil::redirect($this->contentItem->getURL().SID_ARG_1ST);
+		HeaderUtil::redirect($this->formURL.SID_ARG_1ST);
 		exit;
 	}
 	
@@ -169,7 +177,7 @@ class CommentAddFormElement extends AbstractFormElement {
 	 * @see	AbstractFormElement::getIdentifier()
 	 */	
 	public function getIdentifier() {
-		return $this->articleSection->articleSectionID;
+		return $this->commentObject->getCommentObjectID().'-'.$this->commentObject->getCommentObjectType();
 	}
 	
 	/**
@@ -183,7 +191,8 @@ class CommentAddFormElement extends AbstractFormElement {
 			'username' => $this->username,
 			'maxTextLength' => WCF::getUser()->getPermission('user.site.maxCommentLength'),
 			'captchaID' => $this->captchaID,
-			'captcha' => $this->captcha
+			'captcha' => $this->captcha,
+			'formURL' => $this->formURL
 		));
 	}
 }

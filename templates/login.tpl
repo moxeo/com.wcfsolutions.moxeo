@@ -41,7 +41,7 @@
 			</div>
 		{/if}
 		
-		{if $additionalLoginFields|isset}{@$additionalLoginFields}{/if}
+		{if $additionalLoginFields.$identifier|isset}{@$additionalLoginFields.$identifier}{/if}
 		
 		<div class="formSubmit">
 			<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />

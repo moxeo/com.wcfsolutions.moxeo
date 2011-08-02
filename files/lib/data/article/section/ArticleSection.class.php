@@ -1,4 +1,7 @@
 <?php
+// wsis imports
+require_once(WSIS_DIR.'lib/data/comment/object/CommentObject.class.php');
+
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
@@ -12,7 +15,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @subpackage	data.article.section
  * @category	Infinite Site
  */
-class ArticleSection extends DatabaseObject {	
+class ArticleSection extends DatabaseObject implements CommentObject {
 	/**
 	 * list of article section types
 	 * 
@@ -166,5 +169,34 @@ class ArticleSection extends DatabaseObject {
 		}
 		
 		return $options;
+	}
+	
+	// CommentObject implementation
+	/**
+	 * @see	CommentObject::getCommentObjectID()
+	 */
+	public function getCommentObjectID() {
+		return $this->articleSectionID;
+	}
+	
+	/**
+	 * @see	CommentObject::getPublicationType()
+	 */
+	public function getCommentObjectType() {
+		return 'articleSection';
+	}
+	
+	/**
+	 * @see	CommentObject::getTitle()
+	 */
+	public function getTitle() {
+		return $this->title;
+	}
+	
+	/**
+	 * @see	CommentObject::isCommentable()
+	 */	
+	public function isCommentable() {
+		return WCF::getUser()->getPermission('user.site.canComment');
 	}
 }

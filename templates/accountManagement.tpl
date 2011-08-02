@@ -106,7 +106,7 @@
 		</div>
 	{/if}
 	
-	{if $additionalAccountManagementFields|isset}{@$additionalAccountManagementFields}{/if}
+	{if $additionalAccountManagementFields.$identifier|isset}{@$additionalAccountManagementFields.$identifier}{/if}
 	
 	<div class="formSubmit">
 		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" />

@@ -6,7 +6,7 @@ require_once(WSIS_DIR.'lib/system/request/ContentItemRequestHandler.class.php');
 require_once(WCF_DIR.'lib/system/theme/ThemeLayoutManager.class.php');
 
 /**
- * This class extends the main WCF class by cms specific functions.
+ * This class extends the main WCF class by site specific functions.
  * 
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>

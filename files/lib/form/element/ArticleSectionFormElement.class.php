@@ -50,7 +50,7 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 	}
 	
 	/**
-	 * @see	AbstractFormElement::getIdentifier()
+	 * @see	PageElement::getIdentifier()
 	 */	
 	public function getIdentifier() {
 		return $this->articleSection->articleSectionID;

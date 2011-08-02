@@ -1,5 +1,6 @@
 <?php
 // wsis imports
+require_once(WSIS_DIR.'lib/data/comment/CommentList.class.php');
 require_once(WSIS_DIR.'lib/data/news/NewsItem.class.php');
 require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
@@ -42,6 +43,13 @@ class NewsItemPageElement extends ThemeModulePageElement {
 	public $newsArchive = null;
 	
 	/**
+	 * list of comments
+	 * 
+	 * @var	CommentList
+	 */
+	public $commentList = null;
+	
+	/**
 	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
@@ -62,6 +70,32 @@ class NewsItemPageElement extends ThemeModulePageElement {
 		if (!in_array($this->newsArchive->newsArchiveID, $this->themeModule->newsArchiveIDs)) {
 			throw new IllegalLinkException();
 		}
+		
+		// init comment list
+		$this->commentList = new CommentList();
+		$this->commentList->sqlConditions .= "comment.commentObjectID = ".$this->newsItem->newsItemID." AND comment.commentObjectType = 'newsItem'";
+		$this->commentList->sqlOrderBy = 'comment.time DESC';
+	}
+	
+	/**
+	 * @see	MultipleLinkPage::countItems()
+	 */
+	public function countItems() {
+		parent::countItems();
+		
+		return $this->commentList->countObjects();
+	}
+	
+	/**
+	 * @see	Page::readData()
+	 */
+	public function readData() {
+		parent::readData();
+		
+		// read comments
+		$this->commentList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
+		$this->commentList->sqlLimit = $this->itemsPerPage;
+		$this->commentList->readObjects();
 	}
 	
 	/**
@@ -70,10 +104,16 @@ class NewsItemPageElement extends ThemeModulePageElement {
 	public function assignVariables() {
 		parent::assignVariables();
 		
+		// init comment add form
+		require_once(WSIS_DIR.'lib/form/element/CommentAddFormElement.class.php');
+		$commentAddForm = new CommentAddFormElement($this->newsItem, $this->additionalData['contentItem'], $this->newsItem->getURL());
+		
 		WCF::getTPL()->assign(array(
 			'newsArchive' => $this->newsArchive,
 			'newsItem' => $this->newsItem,
-			'newsItemAlias' => $this->newsItemAlias
+			'newsItemAlias' => $this->newsItemAlias,
+			'comments' => $this->commentList->getObjects(),
+			'commentForm' => $commentAddForm->getContent()
 		));
 	}
 	

@@ -112,7 +112,7 @@
 	
 	{include file='captcha'}
 	
-	{if $additionalRegistrationFields|isset}{@$additionalRegistrationFields}{/if}
+	{if $additionalRegistrationFields.$identifier|isset}{@$additionalRegistrationFields.$identifier}{/if}
 	
 	<div class="formSubmit">
 		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" />

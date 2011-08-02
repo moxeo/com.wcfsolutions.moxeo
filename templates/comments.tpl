@@ -12,4 +12,5 @@
 
 {@$pagesOutput}
 
+<h2>{lang}wsis.comment.add{/lang}</h2>
 {@$commentForm}

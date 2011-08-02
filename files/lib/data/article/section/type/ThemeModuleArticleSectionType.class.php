@@ -36,7 +36,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 			$this->themeModules[$articleSection->themeModuleID] = ThemeModule::getThemeModule($articleSection->themeModuleID);
 		}
 		$themeModule = $this->themeModules[$articleSection->themeModuleID];
-		$themeModule->getThemeModuleType()->cache($themeModule, $articleSection->articleSectionPosition, array('contentItem' => $contentItem));
+		$themeModule->getThemeModuleType()->cache($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
 	}
 	
 	/**
@@ -44,7 +44,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	 */	
 	public function hasContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		$themeModule = $this->themeModules[$articleSection->themeModuleID];
-		return $themeModule->getThemeModuleType()->hasContent($themeModule, $articleSection->articleSectionPosition, array('contentItem' => $contentItem));
+		return $themeModule->getThemeModuleType()->hasContent($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
 	}
 	
 	/**
@@ -64,7 +64,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	 */	
 	public function getSearchableContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		$themeModule = ThemeModule::getThemeModule($articleSection->themeModuleID);
-		return $themeModule->getThemeModuleType()->getSearchableContent($themeModule, $articleSection->articleSectionPosition, array('contentItem' => $contentItem));
+		return $themeModule->getThemeModuleType()->getSearchableContent($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
 	}
 	
 	/**
@@ -72,7 +72,7 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	 */	
 	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		$themeModule = ThemeModule::getThemeModule($articleSection->themeModuleID);
-		return $themeModule->getThemeModuleType()->getPreviewHTML($themeModule, $articleSection->articleSectionPosition);
+		return $themeModule->getThemeModuleType()->getPreviewHTML($themeModule);
 	}
 	
 	// form methods

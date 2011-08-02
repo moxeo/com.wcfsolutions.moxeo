@@ -1,6 +1,5 @@
 <?php
 // wcf imports
-require_once(WCF_DIR.'lib/data/image/captcha/Captcha.class.php');
 require_once(WCF_DIR.'lib/form/element/ThemeModuleFormElement.class.php');
 require_once(WCF_DIR.'lib/system/auth/UserAuth.class.php');
 
