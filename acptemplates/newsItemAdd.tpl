@@ -18,7 +18,7 @@
 <div class="contentHeader">
 	<div class="largeButtons">
 		<ul>
-			<li><a href="index.php?page=NewsItemList{if $newsArchiveID}&amp;newsArchiveID={@$newsArchiveID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.newsItem.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/newsItemM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.newsItem.view{/lang}</span></a></li>
+			<li><a href="index.php?page=NewsItemList{if $newsArchive}&amp;newsArchiveID={@$newsArchive->newsArchiveID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.newsItem.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/newsItemM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.newsItem.view{/lang}</span></a></li>
 			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
 		</ul>
 	</div>

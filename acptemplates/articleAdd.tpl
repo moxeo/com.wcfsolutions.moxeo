@@ -19,7 +19,7 @@
 <div class="contentHeader">
 	<div class="largeButtons">
 		<ul>
-			<li><a href="index.php?page=ArticleList{if $contentItemID}&amp;contentItemID={@$contentItemID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.article.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/articleM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.article.view{/lang}</span></a></li>
+			<li><a href="index.php?page=ArticleList{if $contentItem}&amp;contentItemID={@$contentItem->contentItemID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.article.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/articleM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.article.view{/lang}</span></a></li>
 			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
 		</ul>
 	</div>

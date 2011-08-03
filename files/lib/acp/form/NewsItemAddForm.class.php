@@ -93,9 +93,6 @@ class NewsItemAddForm extends ACPForm {
 		if (isset($_REQUEST['newsArchiveID'])) $this->newsArchiveID = intval($_REQUEST['newsArchiveID']);
 		if ($this->newsArchiveID) {
 			$this->newsArchive = new NewsArchiveEditor($this->newsArchiveID);
-			if (!$this->newsArchive->newsArchiveID) {
-				throw new IllegalLinkException();
-			}
 		}
 	}
 	

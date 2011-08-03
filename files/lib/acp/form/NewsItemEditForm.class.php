@@ -36,6 +36,9 @@ class NewsItemEditForm extends NewsItemAddForm {
 		if (!$this->newsItem->newsItemID) {
 			throw new IllegalLinkException();
 		}
+		
+		// get news archive
+		$this->newsArchive = new NewsArchiveEditor($this->newsItem->newsArchiveID);
 	}
 	
 	/**
