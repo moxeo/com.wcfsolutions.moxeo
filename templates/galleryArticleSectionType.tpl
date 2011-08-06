@@ -4,7 +4,7 @@
 <ul class="images">
 	{foreach from=$images item=image}
 		<li class="image">
-			<img src="files/{$image.name}" alt="" />
+			<a href="files/{$image.name}" class="enlargable"><img src="files/{$image.name}" alt="" /></a>
 		</li>
 	{/foreach}
 </ul>
