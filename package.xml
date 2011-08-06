@@ -23,6 +23,10 @@
 		<requiredpackage minversion="1.0.0 Alpha 10" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
 	</requiredpackages>
 	
+	<optionalpackages>
+		<optionalpackage file="optionals/com.wcfsolutions.wsis.sampleContents.tar">com.wcfsolutions.wsis.sampleContents</optionalpackage>
+	</optionalpackages>
+	
 	<instructions type="install">
 		<!-- pips -->
 		<packageinstallationplugins>pip.tar</packageinstallationplugins>
