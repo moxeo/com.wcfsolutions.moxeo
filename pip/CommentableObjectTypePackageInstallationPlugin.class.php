@@ -46,7 +46,7 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 						}
 					
 						// default values
-						$name = $category = $classFile = '';
+						$name = $classFile = '';
 						
 						// get values
 						if (isset($commentableObjectType['name'])) $name = $commentableObjectType['name'];
@@ -58,7 +58,7 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 							VALUES				(".$this->installation->getPackageID().",
 											'".escapeString($name)."',
 											'".escapeString($classFile)."')
-							ON DUPLICATE KEY UPDATE 	category = VALUES(category)";
+							ON DUPLICATE KEY UPDATE 	classFile = VALUES(classFile)";
 						WCF::getDB()->sendQuery($sql);
 					}
 				}
