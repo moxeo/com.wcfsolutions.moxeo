@@ -25,11 +25,9 @@ DROP TABLE IF EXISTS wsis1_1_article_section_type;
 CREATE TABLE wsis1_1_article_section_type (
 	articleSectionTypeID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	packageID INT(10) NOT NULL,
-	articleSectionType VARCHAR(255) NOT NULL,
+	articleSectionType VARCHAR(255) NOT NULL UNIQUE KEY,
 	category VARCHAR(255) NOT NULL,
-	classFile VARCHAR(255) NOT NULL,
-	--UNIQUE KEY (packageID, articleSectionType)
-	UNIQUE KEY (articleSectionType)
+	classFile VARCHAR(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS wsis1_1_captcha;
