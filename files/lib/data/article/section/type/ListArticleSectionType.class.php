@@ -6,7 +6,7 @@ require_once(WSIS_DIR.'lib/data/article/section/type/HeadlineArticleSectionType.
  * Represents a list article section type.
  * 
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
+ * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.wsis
  * @subpackage	data.article.section.type

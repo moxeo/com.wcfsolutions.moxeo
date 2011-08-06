@@ -11,7 +11,7 @@ require_once(WCF_DIR.'lib/system/session/UserSession.class.php');
  * Shows the content item add form.
  * 
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
+ * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.wsis
  * @subpackage	acp.form
