@@ -242,6 +242,8 @@
 	<category name="wsis.acp.comment">
 		<item name="wsis.acp.comment.comment"><![CDATA[Kommentar]]></item>
 		<item name="wsis.acp.comment.comment.description"><![CDATA[Geben Sie hier den Kommentar ein.]]></item>
+		<item name="wsis.acp.comment.commentableObjectID"><![CDATA[Ursprung]]></item>
+		<item name="wsis.acp.comment.commentableObjectType"><![CDATA[Typ]]></item>
 		<item name="wsis.acp.comment.commentID"><![CDATA[Kommentar-ID]]></item>
 		<item name="wsis.acp.comment.data"><![CDATA[Daten]]></item>
 		<item name="wsis.acp.comment.delete"><![CDATA[Kommentar löschen]]></item>
@@ -541,6 +543,8 @@
 	<category name="wsis.comment">
 		<item name="wsis.comment.add"><![CDATA[Kommentar hinzufügen]]></item>
 		<item name="wsis.comment.comment"><![CDATA[Kommentar]]></item>
+		<item name="wsis.comment.commentableObjectType.articleSection"><![CDATA[Abschnitt]]></item>
+		<item name="wsis.comment.commentableObjectType.newsItem"><![CDATA[Nachricht]]></item>
 	</category>
 	<category name="wsis.search">
 		<item name="wsis.search.error.noMatches"><![CDATA[Es wurde keine mit Ihrer Suchanfrage &raquo;{$query}&laquo; übereinstimmende Seite gefunden.]]></item>

@@ -1,6 +1,6 @@
 <?php
 // wsis imports
-require_once(WSIS_DIR.'lib/data/comment/CommentList.class.php');
+require_once(WSIS_DIR.'lib/data/comment/ACPCommentList.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/page/SortablePage.class.php');
@@ -45,7 +45,7 @@ class CommentListPage extends SortablePage {
 		if (isset($_REQUEST['deletedCommentID'])) $this->deletedCommentID = intval($_REQUEST['deletedCommentID']);
 		
 		// init comment list
-		$this->commentList = new CommentList();
+		$this->commentList = new ACPCommentList();
 	}
 	
 	/**
@@ -72,6 +72,8 @@ class CommentListPage extends SortablePage {
 			case 'username':
 			case 'ipAddress':
 			case 'comment':
+			case 'commentableObjectType':
+			case 'commentableObjectID':
 			case 'time': break;
 			default: $this->sortField = $this->defaultSortField;
 		}

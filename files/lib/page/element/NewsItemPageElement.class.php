@@ -73,7 +73,7 @@ class NewsItemPageElement extends ThemeModulePageElement {
 		
 		// init comment list
 		$this->commentList = new CommentList();
-		$this->commentList->sqlConditions .= "comment.commentObjectID = ".$this->newsItem->newsItemID." AND comment.commentObjectType = 'newsItem'";
+		$this->commentList->sqlConditions .= "comment.commentableObjectID = ".$this->newsItem->newsItemID." AND comment.commentableObjectType = 'newsItem'";
 		$this->commentList->sqlOrderBy = 'comment.time DESC';
 	}
 	
@@ -106,7 +106,7 @@ class NewsItemPageElement extends ThemeModulePageElement {
 		
 		// init comment add form
 		require_once(WSIS_DIR.'lib/form/element/CommentAddFormElement.class.php');
-		$commentAddForm = new CommentAddFormElement($this->newsItem, $this->additionalData['contentItem'], $this->newsItem->getURL());
+		$commentAddForm = new CommentAddFormElement($this->newsItem->getCommentableObject(), $this->additionalData['contentItem'], $this->newsItem->getURL());
 		
 		WCF::getTPL()->assign(array(
 			'newsArchive' => $this->newsArchive,

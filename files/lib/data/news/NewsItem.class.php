@@ -1,6 +1,6 @@
 <?php
 // wsis imports
-require_once(WSIS_DIR.'lib/data/comment/object/CommentObject.class.php');
+require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
@@ -15,7 +15,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @subpackage	data.news
  * @category	Infinite Site
  */
-class NewsItem extends DatabaseObject implements CommentObject {
+class NewsItem extends DatabaseObject {
 	/**
 	 * news archive object
 	 * 
@@ -100,6 +100,16 @@ class NewsItem extends DatabaseObject implements CommentObject {
 	}
 	
 	/**
+	 * Returns an commmentable object object for this news item.
+	 *
+	 * @return	NewsItemCommentableObject
+	 */
+	public function getCommentableObject() {
+		require_once(WSIS_DIR.'lib/data/news/NewsItemCommentableObject.class.php');
+		return new NewsItemCommentableObject(null, $this->data);
+	}
+	
+	/**
 	 * Returns the news item object with the given news item alias.
 	 * 
 	 * @param	string		$newsItemAlias
@@ -113,35 +123,6 @@ class NewsItem extends DatabaseObject implements CommentObject {
 			WHERE 		news_item.newsItemAlias = '".escapeString($newsItemAlias)."'";
 		$row = WCF::getDB()->getFirstRow($sql);
 		return new NewsItem(null, $row);
-	}
-	
-	// CommentObject implementation
-	/**
-	 * @see	CommentObject::getCommentObjectID()
-	 */
-	public function getCommentObjectID() {
-		return $this->newsItemID;
-	}
-	
-	/**
-	 * @see	CommentObject::getPublicationType()
-	 */
-	public function getCommentObjectType() {
-		return 'newsItem';
-	}
-	
-	/**
-	 * @see	CommentObject::getTitle()
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
-	
-	/**
-	 * @see	CommentObject::isCommentable()
-	 */	
-	public function isCommentable() {
-		return WCF::getUser()->getPermission('user.site.canComment');
 	}
 }
 ?>

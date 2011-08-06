@@ -22,6 +22,13 @@ class CommentEditForm extends ACPForm {
 	public $activeMenuItem = 'wsis.acp.menu.link.content.comment';
 	
 	/**
+	 * commentable object
+	 * 
+	 * @var CommentableObject
+	 */
+	public $commentableObject = null;
+	
+	/**
 	 * comment editor object
 	 * 
 	 * @var	CommentEditor
@@ -50,6 +57,9 @@ class CommentEditForm extends ACPForm {
 	 */
 	public function readData() {
 		parent::readData();
+		
+		// get commentable object
+		$this->commentableObject = Comment::getCommentableObjectByID($this->commentObj->commentableObjectType, $this->commentObj->commentableObjectID);
 		
 		// default values
 		if (!count($_POST)) {
@@ -104,7 +114,8 @@ class CommentEditForm extends ACPForm {
 		WCF::getTPL()->assign(array(
 			'commentID' => $this->commentID,
 			'commentObj' => $this->commentObj,
-			'comment' => $this->comment
+			'comment' => $this->comment,
+			'commentableObject' => $this->commentableObject
 		));
 	}
 }

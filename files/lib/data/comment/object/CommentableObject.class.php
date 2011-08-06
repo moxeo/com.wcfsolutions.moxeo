@@ -1,6 +1,6 @@
 <?php
 /**
- * Any comment object should implement this interface.
+ * Any commentable object should implement this interface.
  * 
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
@@ -9,33 +9,33 @@
  * @subpackage	data.comment.object
  * @category	Infinite Site
  */
-interface CommentObject {
+interface CommentableObject {
 	/**
-	 * Returns the comment object id.
+	 * Returns the commentable object id.
 	 * 
 	 * @return 	integer
 	 */
-	public function getCommentObjectID();
+	public function getCommentableObjectID();
 	
 	/**
-	 * Returns the comment object type.
+	 * Returns the commentable object type.
 	 * 
 	 * @return 	string
 	 */
-	public function getCommentObjectType();
+	public function getCommentableObjectType();
 	
 	/**
-	 * Returns the title of this comment object.
+	 * Returns the title of this commentable object.
 	 * 
 	 * @return 	string
 	 */	
 	public function getTitle();
 	
 	/**
-	 * Returns true, if the active user can comment this comment object.
+	 * Returns the url of this commentable object.
 	 * 
-	 * @return	boolean
-	 */
-	public function isCommentable();
+	 * @return 	string
+	 */	
+	public function getURL();
 }
 ?>

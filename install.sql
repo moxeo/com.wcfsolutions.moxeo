@@ -44,14 +44,22 @@ CREATE TABLE wsis1_1_captcha (
 DROP TABLE IF EXISTS wsis1_1_comment;
 CREATE TABLE wsis1_1_comment (
 	commentID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	commentObjectID INT(10) NOT NULL DEFAULT 0,
-	commentObjectType VARCHAR(255) NOT NULL DEFAULT '',
+	commentableObjectID INT(10) NOT NULL DEFAULT 0,
+	commentableObjectType VARCHAR(255) NOT NULL DEFAULT '',
 	userID INT(10) NOT NULL DEFAULT 0,
 	username VARCHAR(255) NOT NULL DEFAULT '',
 	comment TEXT NULL,
 	time INT(10) NOT NULL DEFAULT 0,
 	ipAddress VARCHAR(15) NOT NULL DEFAULT '',
-	KEY (commentObjectID, commentObjectType)
+	KEY (commentableObjectID, commentableObjectType)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS wsis1_1_commentable_object_type;
+CREATE TABLE wsis1_1_commentable_object_type (
+	commentableObjectTypeID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	packageID INT(10) NOT NULL,
+	commentableObjectType VARCHAR(255) NOT NULL UNIQUE KEY,
+	classFile VARCHAR(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS wsis1_1_content_item;

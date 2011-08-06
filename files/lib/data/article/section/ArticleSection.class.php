@@ -1,7 +1,4 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/comment/object/CommentObject.class.php');
-
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
@@ -15,7 +12,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @subpackage	data.article.section
  * @category	Infinite Site
  */
-class ArticleSection extends DatabaseObject implements CommentObject {
+class ArticleSection extends DatabaseObject {
 	/**
 	 * list of article section types
 	 * 
@@ -90,6 +87,16 @@ class ArticleSection extends DatabaseObject implements CommentObject {
 		$value = parent::__get($name);
 		if ($value === null) $value = $this->getArticleSectionOption($name);
 		return $value;
+	}
+	
+	/**
+	 * Returns an commmentable object object for this article section.
+	 *
+	 * @return	ArticleSectionCommentableObject
+	 */
+	public function getCommentableObject() {
+		require_once(WSIS_DIR.'lib/data/article/section/ArticleSectionCommentableObject.class.php');
+		return new ArticleSectionCommentableObject(null, $this->data);
 	}
 	
 	/**
@@ -169,34 +176,5 @@ class ArticleSection extends DatabaseObject implements CommentObject {
 		}
 		
 		return $options;
-	}
-	
-	// CommentObject implementation
-	/**
-	 * @see	CommentObject::getCommentObjectID()
-	 */
-	public function getCommentObjectID() {
-		return $this->articleSectionID;
-	}
-	
-	/**
-	 * @see	CommentObject::getPublicationType()
-	 */
-	public function getCommentObjectType() {
-		return 'articleSection';
-	}
-	
-	/**
-	 * @see	CommentObject::getTitle()
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
-	
-	/**
-	 * @see	CommentObject::isCommentable()
-	 */	
-	public function isCommentable() {
-		return WCF::getUser()->getPermission('user.site.canComment');
 	}
 }

@@ -29,6 +29,39 @@
 			<fieldset>
 				<legend>{lang}wsis.acp.comment.data{/lang}</legend>
 				
+				<div class="formElement">
+					<div class="formFieldLabel">
+						{lang}wcf.user.username{/lang}
+					</div>
+					<div class="formField">
+						{if $commentObj->userID && $this->user->getPermission('admin.user.canEditUser')}
+							<a href="index.php?form=UserEdit&amp;userID={@$commentObj->userID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wcf.acp.user.edit{/lang}">{$commentObj->username}</a>
+						{else}
+							{$commentObj->username}
+						{/if}
+					</div>
+				</div>
+				
+				<div class="formElement">
+					<div class="formFieldLabel">
+						{lang}wsis.acp.comment.commentableObjectType{/lang}
+					</div>
+					<div class="formField">
+						{lang}wsis.comment.commentableObjectType.{@$commentObj->commentableObjectType}{/lang}
+					</div>
+				</div>
+				
+				<div class="formElement">
+					<div class="formFieldLabel">
+						{lang}wsis.acp.comment.commentableObjectID{/lang}
+					</div>
+					<div class="formField">
+						{if $commentableObject}
+							<a href="{@RELATIVE_WSIS_DIR}{$commentableObject->getURL()}">{$commentableObject->getTitle()}</a>
+						{/if}
+					</div>
+				</div>
+				
 				<div class="formElement{if $errorField == 'comment'} formError{/if}" id="commentDiv">
 					<div class="formFieldLabel">
 						<label for="comment">{lang}wsis.comment.comment{/lang}</label>

@@ -24,6 +24,8 @@
 			<thead>
 				<tr class="tableHead">
 					<th class="columnCommentID{if $sortField == 'commentID'} active{/if}" colspan="2"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=commentID&amp;sortOrder={if $sortField == 'commentID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.comment.commentID{/lang}{if $sortField == 'commentID'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
+					<th class="columnCommentableObjectType{if $sortField == 'commentableObjectType'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=commentableObjectType&amp;sortOrder={if $sortField == 'commentableObjectType' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.comment.commentableObjectType{/lang}{if $sortField == 'commentableObjectType'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
+					<th class="columnCommentableObjectID{if $sortField == 'commentableObjectID'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=commentableObjectID&amp;sortOrder={if $sortField == 'commentableObjectID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.comment.commentableObjectID{/lang}{if $sortField == 'commentableObjectID'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 					<th class="columnUsername{if $sortField == 'username'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=username&amp;sortOrder={if $sortField == 'username' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.comment.username{/lang}{if $sortField == 'username'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 					<th class="columnIpAddress{if $sortField == 'ipAddress'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=ipAddress&amp;sortOrder={if $sortField == 'ipAddress' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.comment.ipAddress{/lang}{if $sortField == 'ipAddress'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 					<th class="columnComment{if $sortField == 'comment'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=comment&amp;sortOrder={if $sortField == 'comment' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.comment.comment{/lang}{if $sortField == 'comment'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
@@ -50,13 +52,25 @@
 							{if $additionalButtons.$comment->commentID|isset}{@$additionalButtons.$comment->commentID}{/if}
 						</td>
 						<td class="columnCommentID columnID">{@$comment->commentID}</td>
+						<td class="columnCommentableObjectType columnText">
+							{lang}wsis.comment.commentableObjectType.{@$comment->commentableObjectType}{/lang}
+						</td>
+						<td class="columnCommentableObjectID columnText">
+							{if $comment->commentableObject}
+								<a href="{@RELATIVE_WSIS_DIR}{$comment->commentableObject->getURL()}">{$comment->commentableObject->getTitle()}</a>
+							{/if}
+						</td>
 						<td class="columnUsername columnText">
-							{$comment->username}
+							{if $comment->userID && $this->user->getPermission('admin.user.canEditUser')}
+								<a href="index.php?form=UserEdit&amp;userID={@$comment->userID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wcf.acp.user.edit{/lang}">{$comment->username}</a>
+							{else}
+								{$comment->username}
+							{/if}
 						</td>
 						<td class="columnIpAddress columnText">
 							{$comment->ipAddress}
 						</td>
-						<td class="columnComment columnText" style="width: 70%;">
+						<td class="columnComment columnText">
 							{@$comment->getFormattedComment()}
 						</td>
 						<td class="columnTime columnText">

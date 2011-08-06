@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.wcfsolutions.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wcfsolutions.com http://www.wcfsolutions.com/XSD/commentableobjecttype.xsd">
+	<import>
+		<type>
+			<name>articleSection</name>
+			<classfile>lib/data/article/section/ArticleSectionCommentableObjectType.class.php</classfile>
+		</type>
+		<type>
+			<name>newsItem</name>
+			<classfile>lib/data/news/NewsItemCommentableObjectType.class.php</classfile>
+		</type>
+	</import>
+</data>

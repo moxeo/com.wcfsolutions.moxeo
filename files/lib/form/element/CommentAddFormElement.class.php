@@ -21,11 +21,11 @@ class CommentAddFormElement extends AbstractFormElement {
 	public $templateName = 'commentAdd';
 	
 	/**
-	 * comment object
+	 * commentable object
 	 * 
-	 * @var CommentObject
+	 * @var CommentableObject
 	 */
-	public $commentObject = null;
+	public $commentableObject = null;
 	
 	/**
 	 * content item object
@@ -70,10 +70,10 @@ class CommentAddFormElement extends AbstractFormElement {
 	/**
 	 * Creates a new CommentAddFormElement object.
 	 * 
-	 * @param	CommentObject		$commentObject
+	 * @param	CommentableObject		$commentableObject
 	 */
-	public function __construct(CommentObject $commentObject, ContentItem $contentItem, $formURL) {
-		$this->commentObject = $commentObject;
+	public function __construct(CommentableObject $commentableObject, ContentItem $contentItem, $formURL) {
+		$this->commentableObject = $commentableObject;
 		$this->contentItem = $contentItem;
 		$this->formURL = $formURL;
 		parent::__construct();
@@ -147,7 +147,7 @@ class CommentAddFormElement extends AbstractFormElement {
 		parent::save();
 		
 		// save comment
-		$this->commentObj = CommentEditor::create($this->commentObject->getCommentObjectID(), $this->commentObject->getCommentObjectType(), WCF::getUser()->userID, $this->username, $this->comment);
+		$this->commentObj = CommentEditor::create($this->commentableObject->getCommentableObjectID(), $this->commentableObject->getCommentableObjectType(), WCF::getUser()->userID, $this->username, $this->comment);
 		$this->saved();
 		
 		// forward
@@ -177,7 +177,7 @@ class CommentAddFormElement extends AbstractFormElement {
 	 * @see	AbstractFormElement::getIdentifier()
 	 */	
 	public function getIdentifier() {
-		return $this->commentObject->getCommentObjectID().'-'.$this->commentObject->getCommentObjectType();
+		return $this->commentableObject->getCommentableObjectID().'-'.$this->commentableObject->getCommentableObjectType();
 	}
 	
 	/**
