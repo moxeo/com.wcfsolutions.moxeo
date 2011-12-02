@@ -5,7 +5,7 @@
 			<category name="general.page">
 				<parent>general</parent>
 				<showorder>1</showorder>
-			</category>	
+			</category>
 		</categories>
 		<options>
 			<option name="page_title">

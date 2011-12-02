@@ -52,9 +52,9 @@
 			<name>hyperlink</name>
 			<category>link</category>
 			<classfile>lib/data/article/section/type/HyperlinkArticleSectionType.class.php</classfile>
-		</type>	
+		</type>
 		
-		<!-- video elements -->	
+		<!-- video elements -->
 		<type>
 			<name>youTube</name>
 			<category>video</category>

@@ -179,7 +179,7 @@
 		<item name="wsis.acp.article.section.html.code.error.syntaxError"><![CDATA[Der eingegebene dynamische Template-Code enthält Fehler.]]></item>
 		<item name="wsis.acp.article.section.html.data"><![CDATA[Daten]]></item>
 		<item name="wsis.acp.article.section.hyperlink.caption"><![CDATA[Titel]]></item>
-		<item name="wsis.acp.article.section.hyperlink.caption.description"><![CDATA[Geben Sie hier den Titel des Hyperlinks an, der statt der Adresse (URL) angezeigt wird.]]></item>		
+		<item name="wsis.acp.article.section.hyperlink.caption.description"><![CDATA[Geben Sie hier den Titel des Hyperlinks an, der statt der Adresse (URL) angezeigt wird.]]></item>
 		<item name="wsis.acp.article.section.hyperlink.data"><![CDATA[Daten]]></item>
 		<item name="wsis.acp.article.section.hyperlink.url"><![CDATA[Adresse (URL)]]></item>
 		<item name="wsis.acp.article.section.hyperlink.url.description"><![CDATA[Geben Sie hier die Adresse (URL) an.]]></item>

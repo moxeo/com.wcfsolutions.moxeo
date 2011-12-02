@@ -32,7 +32,7 @@
 				<categoryname>user.site.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
-			</option>			
+			</option>
 			<option name="user.site.canEnterContentItem">
 				<categoryname>user.site.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
