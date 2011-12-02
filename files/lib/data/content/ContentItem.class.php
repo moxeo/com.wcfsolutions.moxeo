@@ -43,7 +43,7 @@ class ContentItem extends DatabaseObject {
 	 * 
 	 * @var	array<ContentItem>
 	 */
-	protected static $parentContentItems = null;
+	protected $parentContentItems = null;
 	
 	/**
 	 * Defines that a content item acts as a page.
