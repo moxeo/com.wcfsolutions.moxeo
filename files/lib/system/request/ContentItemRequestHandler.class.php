@@ -104,37 +104,25 @@ class ContentItemRequestHandler {
 	 */
 	public function getContentItemID() {
 		if ($this->contentItemID === null) {
-			// get request fragments
-			$requestFragments = array();
-			$basename = $this->getBasename();
-			if ($basename) {
-				$requestFragments = explode('/', $basename);
+			// get request components
+			$requestComponents = array();
+			if (($basename = $this->getBasename())) {
+				$requestComponents = explode('/', $basename);
 				if (!ENABLE_SEO_REWRITING) {
-					array_shift($requestFragments);
+					array_shift($requestComponents);
 				}
 			}
 			
 			// define url prefix
-			if (ENABLE_SEO_REWRITING) define('URL_PREFIX', '');
-			else define('URL_PREFIX', 'index.php/');
-			
-			// load seo structure
-			$contentItemStructure = WCF::getCache()->get('contentItemAlias');
+			define('URL_PREFIX', (ENABLE_SEO_REWRITING ? '' : 'index.php/'));
 			
 			// get content item id
 			$contentItemID = 0;
-			if (count($requestFragments)) {
-				$parentContentItemID = $level = 0;
-				$contentItemAlias = $requestFragments[0];
-				while (isset($contentItemStructure[$parentContentItemID][$contentItemAlias])) {
-					$contentItemID = $contentItemStructure[$parentContentItemID][$contentItemAlias];
-					
-					// next content item
-					$parentContentItemID = $contentItemID;
-					$level++;
-					if (isset($requestFragments[$level])) {
-						$contentItemAlias = $requestFragments[$level];
-					}
+			if (count($requestComponents)) {
+				$cache = WCF::getCache()->get('contentItemAlias');
+				
+				while (($contentItemAlias = array_shift($requestComponents)) && isset($cache[$contentItemID][$contentItemAlias])) {
+					$contentItemID = $cache[$contentItemID][$contentItemAlias];
 				}
 			}
 			else {
