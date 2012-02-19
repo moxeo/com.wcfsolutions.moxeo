@@ -19,5 +19,5 @@
 
 {@$pagesOutput}
 
-<h2>{lang}wsis.comment.add{/lang}</h2>
+<h2>{lang}moxeo.comment.add{/lang}</h2>
 {@$commentForm}

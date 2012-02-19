@@ -93,7 +93,7 @@ var PermissionList = Class.create({
 			// update title
 			var h3 = $(this.key+'SettingsTitle');
 			if (h3) {
-				h3.update(language['wsis.acp.'+this.type+'.permissions.permissionsFor'].replace(/\{\$name\}/, permission.name));
+				h3.update(language['moxeo.acp.'+this.type+'.permissions.permissionsFor'].replace(/\{\$name\}/, permission.name));
 			}
 			
 			// refresh settings
@@ -196,7 +196,7 @@ var PermissionList = Class.create({
 				var labelAllow = new Element('label', { 'className': 'allow' }).insert(checkboxAllow);
 				
 				// create span
-				var span = new Element('span').observe('mouseup', function(name) { $(name).focus(); }.bind(this, this.key+'Setting'+setting+'Allow')).insert(language['wsis.acp.'+this.type+'.permissions.'+setting]);
+				var span = new Element('span').observe('mouseup', function(name) { $(name).focus(); }.bind(this, this.key+'Setting'+setting+'Allow')).insert(language['moxeo.acp.'+this.type+'.permissions.'+setting]);
 				
 				// create a
 				var a = new Element('a').insert(labelDeny).insert(labelAllow).insert(span);

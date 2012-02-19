@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/acpmenu.xsd">
 	<import>
-		<acpmenuitem name="wsis.acp.menu.link.system.fileManager">
+		<acpmenuitem name="moxeo.acp.menu.link.system.fileManager">
 			<parent>wcf.acp.menu.link.system</parent>
 			<link>index.php?page=FileManager</link>
 			<permissions>admin.site.canUseFileManager</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.contentItem">
+		<acpmenuitem name="moxeo.acp.menu.link.content.contentItem">
 			<parent>wcf.acp.menu.link.content</parent>
 			<showorder>1</showorder>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.contentItem.view">
-			<parent>wsis.acp.menu.link.content.contentItem</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.contentItem.view">
+			<parent>moxeo.acp.menu.link.content.contentItem</parent>
 			<showorder>1</showorder>
 			<link>index.php?page=ContentItemList</link>
 			<icon>icon/contentItemM.png</icon>
 			<permissions>admin.site.canEditContentItem,admin.site.canDeleteContentItem</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.contentItem.add">
-			<parent>wsis.acp.menu.link.content.contentItem</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.contentItem.add">
+			<parent>moxeo.acp.menu.link.content.contentItem</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=ContentItemAdd</link>
 			<permissions>admin.site.canAddContentItem</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.article">
+		<acpmenuitem name="moxeo.acp.menu.link.content.article">
 			<parent>wcf.acp.menu.link.content</parent>
 			<showorder>2</showorder>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.article.view">
-			<parent>wsis.acp.menu.link.content.article</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.article.view">
+			<parent>moxeo.acp.menu.link.content.article</parent>
 			<showorder>1</showorder>
 			<link>index.php?page=ArticleList</link>
 			<icon>icon/articleM.png</icon>
 			<permissions>admin.site.canEditArticle,admin.site.canDeleteArticle</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.article.add">
-			<parent>wsis.acp.menu.link.content.article</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.article.add">
+			<parent>moxeo.acp.menu.link.content.article</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=ArticleAdd</link>
 			<permissions>admin.site.canAddArticle</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.news">
+		<acpmenuitem name="moxeo.acp.menu.link.content.news">
 			<parent>wcf.acp.menu.link.content</parent>
 			<showorder>3</showorder>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.newsArchive">
-			<parent>wsis.acp.menu.link.content.news</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive">
+			<parent>moxeo.acp.menu.link.content.news</parent>
 			<showorder>1</showorder>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.newsArchive.view">
-			<parent>wsis.acp.menu.link.content.newsArchive</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive.view">
+			<parent>moxeo.acp.menu.link.content.newsArchive</parent>
 			<showorder>1</showorder>
 			<link>index.php?page=NewsArchiveList</link>
 			<icon>icon/newsArchiveM.png</icon>
 			<permissions>admin.site.canEditNewsArchive,admin.site.canDeleteNewsArchive</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.newsArchive.add">
-			<parent>wsis.acp.menu.link.content.newsArchive</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive.add">
+			<parent>moxeo.acp.menu.link.content.newsArchive</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=NewsArchiveAdd</link>
 			<permissions>admin.site.canAddNewsArchive</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.newsItem">
-			<parent>wsis.acp.menu.link.content.news</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem">
+			<parent>moxeo.acp.menu.link.content.news</parent>
 			<showorder>2</showorder>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.newsItem.view">
-			<parent>wsis.acp.menu.link.content.newsItem</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem.view">
+			<parent>moxeo.acp.menu.link.content.newsItem</parent>
 			<showorder>1</showorder>
 			<link>index.php?page=NewsItemList</link>
 			<icon>icon/newsItemM.png</icon>
 			<permissions>admin.site.canEditNewsItem,admin.site.canDeleteNewsItem</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.newsItem.add">
-			<parent>wsis.acp.menu.link.content.newsItem</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem.add">
+			<parent>moxeo.acp.menu.link.content.newsItem</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=NewsItemAdd</link>
 			<permissions>admin.site.canAddNewsItem</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.comment">
+		<acpmenuitem name="moxeo.acp.menu.link.content.comment">
 			<parent>wcf.acp.menu.link.content</parent>
 			<showorder>4</showorder>
 		</acpmenuitem>
-		<acpmenuitem name="wsis.acp.menu.link.content.comment.view">
-			<parent>wsis.acp.menu.link.content.comment</parent>
+		<acpmenuitem name="moxeo.acp.menu.link.content.comment.view">
+			<parent>moxeo.acp.menu.link.content.comment</parent>
 			<showorder>1</showorder>
 			<link>index.php?page=CommentList</link>
 			<icon>icon/commentM.png</icon>

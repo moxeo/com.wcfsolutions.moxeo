@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/theme/module/type/ViewableThemeModuleType.class.php');
@@ -11,9 +11,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/ViewableThemeModuleType.class.p
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 	/**
@@ -24,7 +24,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 	/**
 	 * @see	ViewableThemeModuleType::$pageElementDir
 	 */
-	public $pageElementDir = WSIS_DIR;
+	public $pageElementDir = MOXEO_DIR;
 	
 	// form methods
 	/**

@@ -1,11 +1,11 @@
 {include file='headlineArticleSectionType'}
 
 <fieldset>
-	<legend>{lang}wsis.acp.article.section.list.data{/lang}</label></legend>
+	<legend>{lang}moxeo.acp.article.section.list.data{/lang}</label></legend>
 	
 	<div class="formElement{if $errorField == 'listItems'} formError{/if}" id="listItemsDiv">
 		<div class="formFieldLabel">
-			<label for="listItems">{lang}wsis.acp.article.section.list.listItems{/lang}</label>
+			<label for="listItems">{lang}moxeo.acp.article.section.list.listItems{/lang}</label>
 		</div>
 		<div class="formField">
 			<textarea id="listItems" name="listItems" cols="40" rows="5">{$listItems}</textarea>
@@ -16,7 +16,7 @@
 			{/if}
 		</div>
 		<div class="formFieldDesc hidden" id="listItemsHelpMessage">
-			<p>{lang}wsis.acp.article.section.list.listItems.description{/lang}</p>
+			<p>{lang}moxeo.acp.article.section.list.listItems.description{/lang}</p>
 		</div>
 	</div>
 	<script type="text/javascript">//<![CDATA[
@@ -25,7 +25,7 @@
 	
 	<div class="formElement{if $errorField == 'listStyleType'} formError{/if}" id="listStyleTypeDiv">
 		<div class="formFieldLabel">
-			<label for="listStyleType">{lang}wsis.acp.article.section.list.listStyleType{/lang}</label>
+			<label for="listStyleType">{lang}moxeo.acp.article.section.list.listStyleType{/lang}</label>
 		</div>
 		<div class="formField">
 			<select name="listStyleType" id="listStyleType">
@@ -40,7 +40,7 @@
 			{/if}
 		</div>
 		<div class="formFieldDesc hidden" id="listStyleTypeHelpMessage">
-			<p>{lang}wsis.acp.article.section.list.listStyleType.description{/lang}</p>
+			<p>{lang}moxeo.acp.article.section.list.listStyleType.description{/lang}</p>
 		</div>
 	</div>
 	<script type="text/javascript">//<![CDATA[

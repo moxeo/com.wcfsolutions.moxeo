@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class Article extends DatabaseObject {	
 	/**
@@ -22,10 +22,11 @@ class Article extends DatabaseObject {
 	public function __construct($articleID, $row = null) {
 		if ($articleID !== null) {
 			$sql = "SELECT	*
-				FROM 	wsis".WSIS_N."_article
+				FROM 	moxeo".MOXEO_N."_article
 				WHERE 	articleID = ".$articleID;
 			$row = WCF::getDB()->getFirstRow($sql);
 		}
 		parent::__construct($row);
 	}
 }
+?>

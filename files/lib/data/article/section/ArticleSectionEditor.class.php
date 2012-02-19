@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/article/section/ArticleSection.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/article/section/ArticleSection.class.php');
 
 /**
  * Provides functions to manage article sections.
@@ -8,9 +8,9 @@ require_once(WSIS_DIR.'lib/data/article/section/ArticleSection.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class ArticleSectionEditor extends ArticleSection {	
 	/**
@@ -24,7 +24,7 @@ class ArticleSectionEditor extends ArticleSection {
 		// update show order
 		if ($this->showOrder != $showOrder) {
 			if ($showOrder < $this->showOrder) {
-				$sql = "UPDATE	wsis".WSIS_N."_article_section
+				$sql = "UPDATE	moxeo".MOXEO_N."_article_section
 					SET 	showOrder = showOrder + 1
 					WHERE 	showOrder >= ".$showOrder."
 						AND showOrder < ".$this->showOrder."
@@ -32,7 +32,7 @@ class ArticleSectionEditor extends ArticleSection {
 				WCF::getDB()->sendQuery($sql);
 			}
 			else if ($showOrder > $this->showOrder) {
-				$sql = "UPDATE	wsis".WSIS_N."_article_section
+				$sql = "UPDATE	moxeo".MOXEO_N."_article_section
 					SET	showOrder = showOrder - 1
 					WHERE	showOrder <= ".$showOrder."
 						AND showOrder > ".$this->showOrder."
@@ -42,7 +42,7 @@ class ArticleSectionEditor extends ArticleSection {
 		}
 		
 		// update article section
-		$sql = "UPDATE	wsis".WSIS_N."_article_section
+		$sql = "UPDATE	moxeo".MOXEO_N."_article_section
 			SET	articleSectionType = '".escapeString($articleSectionType)."',
 				articleSectionData = '".escapeString(serialize($articleSectionData))."',
 				cssID = '".escapeString($cssID)."',
@@ -58,7 +58,7 @@ class ArticleSectionEditor extends ArticleSection {
 	 * @param	integer		$showOrder
 	 */
 	public function updateShowOrder($showOrder) {
-		$sql = "UPDATE	wsis".WSIS_N."_article_section
+		$sql = "UPDATE	moxeo".MOXEO_N."_article_section
 			SET 	showOrder = ".$showOrder."
 			WHERE 	articleSectionID = ".$this->articleSectionID;
 		WCF::getDB()->sendQuery($sql);
@@ -85,14 +85,14 @@ class ArticleSectionEditor extends ArticleSection {
 		if ($showOrder == 0) {
 			// get next number in row
 			$sql = "SELECT	MAX(showOrder) AS showOrder
-				FROM	wsis".WSIS_N."_article_section
+				FROM	moxeo".MOXEO_N."_article_section
 				WHERE	articleID = ".$articleID;
 			$row = WCF::getDB()->getFirstRow($sql);
 			if (!empty($row)) $showOrder = intval($row['showOrder']) + 1;
 			else $showOrder = 1;
 		}
 		else {
-			$sql = "UPDATE	wsis".WSIS_N."_article_section
+			$sql = "UPDATE	moxeo".MOXEO_N."_article_section
 				SET 	showOrder = showOrder + 1
 				WHERE 	showOrder >= ".$showOrder."
 					AND articleID = ".$articleID;
@@ -100,12 +100,12 @@ class ArticleSectionEditor extends ArticleSection {
 		}
 		
 		// save article section
-		$sql = "INSERT INTO	wsis".WSIS_N."_article_section
+		$sql = "INSERT INTO	moxeo".MOXEO_N."_article_section
 					(articleID, articleSectionType, articleSectionData, cssID, cssClasses, showOrder)
 			VALUES		(".$articleID.", '".escapeString($articleSectionType)."', '".escapeString(serialize($articleSectionData))."', '".escapeString($cssID)."', '".escapeString($cssClasses)."', ".$showOrder.")";
 		WCF::getDB()->sendQuery($sql);
 		
-		$articleSectionID = WCF::getDB()->getInsertID("wsis".WSIS_N."_article_section", 'articleSectionID');
+		$articleSectionID = WCF::getDB()->getInsertID("moxeo".MOXEO_N."_article_section", 'articleSectionID');
 		return new ArticleSectionEditor($articleSectionID);
 	}
 	
@@ -120,7 +120,7 @@ class ArticleSectionEditor extends ArticleSection {
 		// get all comment ids
 		$commentIDs = '';
 		$sql = "SELECT	commentID
-			FROM	wsis".WSIS_N."_comment
+			FROM	moxeo".MOXEO_N."_comment
 			WHERE	articleSectionID IN (".$articleSectionIDs.")";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
@@ -129,17 +129,17 @@ class ArticleSectionEditor extends ArticleSection {
 		}
 		if (!empty($commentIDs)) {
 			// delete comments
-			require_once(WSIS_DIR.'lib/data/comment/CommentEditor.class.php');
+			require_once(MOXEO_DIR.'lib/data/comment/CommentEditor.class.php');
 			CommentEditor::deleteAll($commentIDs);
 		}
 		
 		// update show order
 		$sql = "SELECT	articleID, showOrder
-			FROM	wsis".WSIS_N."_article_section
+			FROM	moxeo".MOXEO_N."_article_section
 			WHERE	articleSectionID IN (".$articleSectionIDs.")";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
-			$sql = "UPDATE	wsis".WSIS_N."_article_section
+			$sql = "UPDATE	moxeo".MOXEO_N."_article_section
 				SET 	showOrder = showOrder - 1
 				WHERE 	showOrder >= ".$row['showOrder']."
 					AND articleID = ".$row['articleID'];
@@ -147,7 +147,7 @@ class ArticleSectionEditor extends ArticleSection {
 		}
 		
 		// delete article section
-		$sql = "DELETE FROM	wsis".WSIS_N."_article_section
+		$sql = "DELETE FROM	moxeo".MOXEO_N."_article_section
 			WHERE		articleSectionID IN (".$articleSectionIDs.")";
 		WCF::getDB()->sendQuery($sql);
 	}

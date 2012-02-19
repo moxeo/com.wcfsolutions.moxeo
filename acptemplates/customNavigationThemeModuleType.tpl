@@ -1,9 +1,9 @@
 <fieldset>
-	<legend>{lang}wsis.acp.theme.module.customNavigation.data{/lang}</legend>
+	<legend>{lang}moxeo.acp.theme.module.customNavigation.data{/lang}</legend>
 	
 	<div class="formElement{if $errorField == 'contentItemIDs'} formError{/if}" id="contentItemIDsDiv">
 		<div class="formFieldLabel">
-			<label for="contentItemIDs">{lang}wsis.acp.theme.module.customNavigation.contentItemIDs{/lang}</label>
+			<label for="contentItemIDs">{lang}moxeo.acp.theme.module.customNavigation.contentItemIDs{/lang}</label>
 		</div>
 		<div class="formField">
 			<select name="contentItemIDs[]" id="contentItemIDs" multiple="multiple" size="5">
@@ -16,7 +16,7 @@
 			{/if}
 		</div>
 		<div class="formFieldDesc hidden" id="contentItemIDsHelpMessage">
-			<p>{lang}wsis.acp.theme.module.customNavigation.contentItemIDs.description{/lang}</p>
+			<p>{lang}moxeo.acp.theme.module.customNavigation.contentItemIDs.description{/lang}</p>
 			<p>{lang}wcf.global.multiSelect{/lang}</p>
 		</div>
 	</div>

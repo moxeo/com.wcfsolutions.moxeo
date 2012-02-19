@@ -8,16 +8,16 @@ require_once(WCF_DIR.'lib/system/WCFACP.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	system
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
-class WSISACP extends WCFACP {
+class MOXEOACP extends WCFACP {
 	/**
 	 * @see	WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
-		return WSIS_DIR.'options.inc.php';
+		return MOXEO_DIR.'options.inc.php';
 	}
 	
 	/**
@@ -50,14 +50,14 @@ class WSISACP extends WCFACP {
 		
 		self::getTPL()->assign(array(
 			// add jump to frontend link 			
-			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_WSIS_DIR.'"><img src="'.RELATIVE_WSIS_DIR.'icon/indexS.png" alt="" /> <span>'.WCF::getLanguage()->get('wsis.acp.jumpToFrontend').'</span></a></li>',
+			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_MOXEO_DIR.'"><img src="'.RELATIVE_MOXEO_DIR.'icon/indexS.png" alt="" /> <span>'.WCF::getLanguage()->get('moxeo.acp.jumpToFrontend').'</span></a></li>',
 			// individual page title
 			'pageTitle' => WCF::getLanguage()->get(StringUtil::encodeHTML(PAGE_TITLE)).' - '.StringUtil::encodeHTML(PACKAGE_NAME.' '.PACKAGE_VERSION)
 		));
 		
-		// wsis stylesheet
+		// moxeo stylesheet
 		$html = '<style type="text/css">
-				@import url("'.RELATIVE_WSIS_DIR.'acp/style/wsis'.(PAGE_DIRECTION == 'rtl' ? '-rtl' : '').'.css");
+				@import url("'.RELATIVE_MOXEO_DIR.'acp/style/moxeo'.(PAGE_DIRECTION == 'rtl' ? '-rtl' : '').'.css");
 			</style>';
 		self::getTPL()->append('specialStyles', $html);		
 	}
@@ -67,19 +67,19 @@ class WSISACP extends WCFACP {
 	 */
 	protected function loadDefaultCacheResources() {
 		parent::loadDefaultCacheResources();
-		self::loadDefaultWSISCacheResources();
+		self::loadDefaultMOXEOCacheResources();
 	}
 	
 	/**
 	 * Loads default cache resources of content management system acp.
 	 * Can be called statically from other applications or plugins.
 	 */
-	public static function loadDefaultWSISCacheResources() {
-		WCF::getCache()->addResource('contentItem', WSIS_DIR.'cache/cache.contentItem.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItem.class.php');
-		WCF::getCache()->addResource('contentItemAlias', WSIS_DIR.'cache/cache.contentItemAlias.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItemAlias.class.php');
-		WCF::getCache()->addResource('contentItemStructure', WSIS_DIR.'cache/cache.contentItemStructure.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItemStructure.class.php');
-		WCF::getCache()->addResource('contentItemArticles', WSIS_DIR.'cache/cache.contentItemArticles.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItemArticles.class.php');
-		WCF::getCache()->addResource('newsArchive', WSIS_DIR.'cache/cache.newsArchive.php', WSIS_DIR.'lib/system/cache/CacheBuilderNewsArchive.class.php');
+	public static function loadDefaultMOXEOCacheResources() {
+		WCF::getCache()->addResource('contentItem', MOXEO_DIR.'cache/cache.contentItem.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItem.class.php');
+		WCF::getCache()->addResource('contentItemAlias', MOXEO_DIR.'cache/cache.contentItemAlias.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemAlias.class.php');
+		WCF::getCache()->addResource('contentItemStructure', MOXEO_DIR.'cache/cache.contentItemStructure.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemStructure.class.php');
+		WCF::getCache()->addResource('contentItemArticles', MOXEO_DIR.'cache/cache.contentItemArticles.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemArticles.class.php');
+		WCF::getCache()->addResource('newsArchive', MOXEO_DIR.'cache/cache.newsArchive.php', MOXEO_DIR.'lib/system/cache/CacheBuilderNewsArchive.class.php');
 		WCF::getCache()->addResource('theme-'.PACKAGE_ID, WCF_DIR.'cache/cache.theme-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderTheme.class.php');
 		WCF::getCache()->addResource('themeLayout-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeLayout-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeLayout.class.php');
 		WCF::getCache()->addResource('themeModule-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeModule-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeModule.class.php');
@@ -90,8 +90,8 @@ class WSISACP extends WCFACP {
 	 */
 	protected function initSession() {
 		// start session
-		require_once(WSIS_DIR.'lib/system/session/WSISACPSessionFactory.class.php');
-		$factory = new WSISACPSessionFactory();
+		require_once(MOXEO_DIR.'lib/system/session/MOXEOACPSessionFactory.class.php');
+		$factory = new MOXEOACPSessionFactory();
 		self::$sessionObj = $factory->get();
 		self::$userObj = self::getSession()->getUser();
 	}

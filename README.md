@@ -1,7 +1,7 @@
-WCF Solutions Infinite Site
-===========================
+Moxeo Open Source CMS
+=====================
 
-Repository of the WCF Solutions CMS project.
+Repository of the Moxeo Open Source CMS project.
 
 License
 -------

@@ -19,14 +19,14 @@
 	
 	<div class="formElement{if $errorField == 'comment'} formError{/if}">
 		<div class="formFieldLabel">
-			<label for="comment">{lang}wsis.comment.comment{/lang}</label>
+			<label for="comment">{lang}moxeo.comment.comment{/lang}</label>
 		</div>
 		<div class="formField">
 			<textarea name="comment" id="comment" rows="10" cols="40">{$comment}</textarea>
 			{if $errorField == 'comment'}
 				<p class="innerError">
 					{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-					{if $errorType == 'tooLong'}{lang}wsis.publication.object.comment.error.tooLong{/lang}{/if}
+					{if $errorType == 'tooLong'}{lang}moxeo.publication.object.comment.error.tooLong{/lang}{/if}
 				</p>
 			{/if}
 		</div>

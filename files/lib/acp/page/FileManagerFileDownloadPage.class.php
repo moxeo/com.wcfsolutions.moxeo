@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.page
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class FileManagerFileDownloadPage extends AbstractPage {
 	// system
@@ -43,7 +43,7 @@ class FileManagerFileDownloadPage extends AbstractPage {
 		}
 		
 		// get path
-		$this->path = FileUtil::getRealPath(WSIS_DIR.'files/'.$this->file);
+		$this->path = FileUtil::getRealPath(MOXEO_DIR.'files/'.$this->file);
 		if (!FileManagerUtil::isValidPath($this->path)) {
 			throw new IllegalLinkException();
 		}

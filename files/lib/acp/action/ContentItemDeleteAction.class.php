@@ -1,7 +1,7 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/acp/action/AbstractContentItemAction.class.php');
-require_once(WSIS_DIR.'lib/data/content/ContentItemEditor.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/acp/action/AbstractContentItemAction.class.php');
+require_once(MOXEO_DIR.'lib/data/content/ContentItemEditor.class.php');
 
 /**
  * Deletes a content item.
@@ -9,9 +9,9 @@ require_once(WSIS_DIR.'lib/data/content/ContentItemEditor.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.action
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class ContentItemDeleteAction extends AbstractContentItemAction {	
 	/**

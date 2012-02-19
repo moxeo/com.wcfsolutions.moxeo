@@ -1,9 +1,9 @@
 {include file='header'}
 
 <div class="mainHeadline">
-	<img src="{@RELATIVE_WSIS_DIR}icon/newsItem{@$action|ucfirst}L.png" alt="" />
+	<img src="{@RELATIVE_MOXEO_DIR}icon/newsItem{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}wsis.acp.news.item.{@$action}{/lang}</h2>
+		<h2>{lang}moxeo.acp.news.item.{@$action}{/lang}</h2>
 	</div>
 </div>
 
@@ -12,13 +12,13 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}wsis.acp.news.item.{@$action}.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.news.item.{@$action}.success{/lang}</p>	
 {/if}
 
 <div class="contentHeader">
 	<div class="largeButtons">
 		<ul>
-			<li><a href="index.php?page=NewsItemList{if $newsArchive}&amp;newsArchiveID={@$newsArchive->newsArchiveID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.newsItem.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/newsItemM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.newsItem.view{/lang}</span></a></li>
+			<li><a href="index.php?page=NewsItemList{if $newsArchive}&amp;newsArchiveID={@$newsArchive->newsArchiveID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.menu.link.content.newsItem.view{/lang}"><img src="{@RELATIVE_MOXEO_DIR}icon/newsItemM.png" alt="" /> <span>{lang}moxeo.acp.menu.link.content.newsItem.view{/lang}</span></a></li>
 			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
 		</ul>
 	</div>
@@ -27,10 +27,10 @@
 {if $action == 'add'}
 	{if $newsArchiveOptions|count}
 		<fieldset>
-			<legend>{lang}wsis.acp.news.archive{/lang}</legend>
+			<legend>{lang}moxeo.acp.news.archive{/lang}</legend>
 			<div class="formElement" id="newsArchiveIDDiv">
 				<div class="formFieldLabel">
-					<label for="newsArchiveChange">{lang}wsis.acp.news.item.newsArchiveID{/lang}</label>
+					<label for="newsArchiveChange">{lang}moxeo.acp.news.item.newsArchiveID{/lang}</label>
 				</div>
 				<div class="formField">
 					<select id="newsArchiveChange" onchange="document.location.href=fixURL('index.php?form=NewsItemAdd&amp;newsArchiveID='+this.options[this.selectedIndex].value+'&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}')">
@@ -39,7 +39,7 @@
 					</select>
 				</div>
 				<div class="formFieldDesc hidden" id="newsArchiveIDHelpMessage">
-					{lang}wsis.acp.news.item.newsArchiveID.description{/lang}
+					{lang}moxeo.acp.news.item.newsArchiveID.description{/lang}
 				</div>
 			</div>
 			<script type="text/javascript">//<![CDATA[
@@ -49,7 +49,7 @@
 	{else}
 		<div class="border content">
 			<div class="container-1">
-				<p>{lang}wsis.acp.news.item.view.count.noNewsArchives{/lang}</p>
+				<p>{lang}moxeo.acp.news.item.view.count.noNewsArchives{/lang}</p>
 			</div>
 		</div>
 	{/if}
@@ -67,11 +67,11 @@
 		<div class="border content">
 			<div class="container-1">					
 				<fieldset>
-					<legend>{lang}wsis.acp.news.item.data{/lang}</legend>
+					<legend>{lang}moxeo.acp.news.item.data{/lang}</legend>
 					
 					<div class="formElement{if $errorField == 'username'} formError{/if}" id="usernameDiv">
 						<div class="formFieldLabel">
-							<label for="username">{lang}wsis.acp.news.item.username{/lang}</label>
+							<label for="username">{lang}moxeo.acp.news.item.username{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="username" name="username" value="{$username}" />
@@ -83,7 +83,7 @@
 							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="usernameHelpMessage">
-							<p>{lang}wsis.acp.news.item.username.description{/lang}</p>
+							<p>{lang}moxeo.acp.news.item.username.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -92,7 +92,7 @@
 					
 					<div class="formElement{if $errorField == 'title'} formError{/if}" id="titleDiv">
 						<div class="formFieldLabel">
-							<label for="title">{lang}wsis.acp.news.item.title{/lang}</label>
+							<label for="title">{lang}moxeo.acp.news.item.title{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="title" name="title" value="{$title}" />
@@ -103,7 +103,7 @@
 							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="titleHelpMessage">
-							<p>{lang}wsis.acp.news.item.title.description{/lang}</p>
+							<p>{lang}moxeo.acp.news.item.title.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -112,7 +112,7 @@
 					
 					<div class="formElement{if $errorField == 'newsItemAlias'} formError{/if}" id="newsItemAliasDiv">
 						<div class="formFieldLabel">
-							<label for="newsItemAlias">{lang}wsis.acp.news.item.newsItemAlias{/lang}</label>
+							<label for="newsItemAlias">{lang}moxeo.acp.news.item.newsItemAlias{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="newsItemAlias" name="newsItemAlias" value="{$newsItemAlias}" />
@@ -123,7 +123,7 @@
 							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="newsItemAliasHelpMessage">
-							<p>{lang}wsis.acp.news.item.newsItemAlias.description{/lang}</p>
+							<p>{lang}moxeo.acp.news.item.newsItemAlias.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -132,7 +132,7 @@
 					
 					<div class="formElement{if $errorField == 'teaser'} formError{/if}" id="teaserDiv">
 						<div class="formFieldLabel">
-							<label for="teaser">{lang}wsis.acp.news.item.teaser{/lang}</label>
+							<label for="teaser">{lang}moxeo.acp.news.item.teaser{/lang}</label>
 						</div>
 						<div class="formField">
 							<textarea id="teaser" name="teaser" cols="40" rows="5">{$teaser}</textarea>
@@ -143,7 +143,7 @@
 							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="teaserHelpMessage">
-							<p>{lang}wsis.acp.news.item.teaser.description{/lang}</p>
+							<p>{lang}moxeo.acp.news.item.teaser.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -152,7 +152,7 @@
 					
 					<div class="formElement{if $errorField == 'text'} formError{/if}" id="textDiv">
 						<div class="formFieldLabel">
-							<label for="text">{lang}wsis.acp.news.item.text{/lang}</label>
+							<label for="text">{lang}moxeo.acp.news.item.text{/lang}</label>
 						</div>
 						<div class="formField">
 							<textarea id="text" name="text" cols="40" rows="10">{$text}</textarea>
@@ -163,7 +163,7 @@
 							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="textHelpMessage">
-							<p>{lang}wsis.acp.news.item.text.description{/lang}</p>
+							<p>{lang}moxeo.acp.news.item.text.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -174,17 +174,17 @@
 				</fieldset>
 				
 				<fieldset>
-					<legend>{lang}wsis.acp.news.item.display{/lang}</legend>
+					<legend>{lang}moxeo.acp.news.item.display{/lang}</legend>
 					
 					<div class="formElement" id="cssIDDiv">
 						<div class="formFieldLabel">
-							<label for="cssID">{lang}wsis.acp.news.item.cssID{/lang}</label>
+							<label for="cssID">{lang}moxeo.acp.news.item.cssID{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="cssID" name="cssID" value="{$cssID}" />
 						</div>
 						<div class="formFieldDesc hidden" id="cssIDHelpMessage">
-							{lang}wsis.acp.news.item.cssID.description{/lang}
+							{lang}moxeo.acp.news.item.cssID.description{/lang}
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -193,13 +193,13 @@
 					
 					<div class="formElement" id="cssClassesDiv">
 						<div class="formFieldLabel">
-							<label for="cssClasses">{lang}wsis.acp.news.item.cssClasses{/lang}</label>
+							<label for="cssClasses">{lang}moxeo.acp.news.item.cssClasses{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="cssClasses" name="cssClasses" value="{$cssClasses}" />
 						</div>
 						<div class="formFieldDesc hidden" id="cssClassesHelpMessage">
-							{lang}wsis.acp.news.item.cssClasses.description{/lang}
+							{lang}moxeo.acp.news.item.cssClasses.description{/lang}
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -210,15 +210,15 @@
 				</fieldset>
 				
 				<fieldset>
-					<legend>{lang}wsis.acp.news.item.publishingTime{/lang}</legend>
+					<legend>{lang}moxeo.acp.news.item.publishingTime{/lang}</legend>
 					
 					<div class="formGroup{if $errorField == 'publishingStartTime'} formError{/if}" id="publishingStartTimeDiv">
 						<div class="formGroupLabel">
-							<label>{lang}wsis.acp.news.item.publishingStartTime{/lang}</label>
+							<label>{lang}moxeo.acp.news.item.publishingStartTime{/lang}</label>
 						</div>
 						<div class="formGroupField">
 							<fieldset>
-								<legend><label>{lang}wsis.acp.news.item.publishingStartTime{/lang}</label></legend>
+								<legend><label>{lang}moxeo.acp.news.item.publishingStartTime{/lang}</label></legend>
 					
 								<div class="formField">
 									<div class="floatedElement">
@@ -258,13 +258,13 @@
 									
 									{if $errorField == 'publishingStartTime'}
 										<p class="floatedElement innerError">
-											{if $errorType == 'invalid'}{lang}wsis.acp.news.item.publishingStartTime.error.invalid{/lang}{/if}
+											{if $errorType == 'invalid'}{lang}moxeo.acp.news.item.publishingStartTime.error.invalid{/lang}{/if}
 										</p>
 									{/if}
 								</div>
 								
 								<div class="formFieldDesc hidden" id="publishingStartTimeHelpMessage">
-									<p>{lang}wsis.acp.news.item.publishingStartTime.description{/lang}</p>
+									<p>{lang}moxeo.acp.news.item.publishingStartTime.description{/lang}</p>
 								</div>
 							</fieldset>
 						</div>
@@ -275,11 +275,11 @@
 					
 					<div class="formGroup{if $errorField == 'publishingEndTime'} formError{/if}" id="publishingEndTimeDiv">
 						<div class="formGroupLabel">
-							<label>{lang}wsis.acp.news.item.publishingEndTime{/lang}</label>
+							<label>{lang}moxeo.acp.news.item.publishingEndTime{/lang}</label>
 						</div>
 						<div class="formGroupField">
 							<fieldset>
-								<legend><label>{lang}wsis.acp.news.item.publishingEndTime{/lang}</label></legend>
+								<legend><label>{lang}moxeo.acp.news.item.publishingEndTime{/lang}</label></legend>
 								
 								<div class="formField">
 									<div class="floatedElement">
@@ -319,13 +319,13 @@
 									
 									{if $errorField == 'publishingEndTime'}
 										<p class="floatedElement innerError">
-											{if $errorType == 'invalid'}{lang}wsis.acp.news.item.publishingEndTime.error.invalid{/lang}{/if}
+											{if $errorType == 'invalid'}{lang}moxeo.acp.news.item.publishingEndTime.error.invalid{/lang}{/if}
 										</p>
 									{/if}
 								</div>
 								
 								<div class="formFieldDesc hidden" id="publishingEndTimeHelpMessage">
-									<p>{lang}wsis.acp.news.item.publishingEndTime.description{/lang}</p>
+									<p>{lang}moxeo.acp.news.item.publishingEndTime.description{/lang}</p>
 								</div>
 							</fieldset>
 						</div>

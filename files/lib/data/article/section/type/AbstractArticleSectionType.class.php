@@ -1,7 +1,7 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/article/section/ArticleSection.class.php');
-require_once(WSIS_DIR.'lib/data/article/section/type/ArticleSectionType.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/article/section/ArticleSection.class.php');
+require_once(MOXEO_DIR.'lib/data/article/section/type/ArticleSectionType.class.php');
 
 /**
  * Provides default implementations for article section types.
@@ -9,9 +9,9 @@ require_once(WSIS_DIR.'lib/data/article/section/type/ArticleSectionType.class.ph
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section.type
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 abstract class AbstractArticleSectionType implements ArticleSectionType {
 	/**
@@ -52,7 +52,7 @@ abstract class AbstractArticleSectionType implements ArticleSectionType {
 	 * @see	ArticleSectionType::getPreviewHTML()
 	 */	
 	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		return '### '.WCF::getLanguage()->get('wsis.article.section.type.'.$articleSection->articleSectionType).' ###';
+		return '### '.WCF::getLanguage()->get('moxeo.article.section.type.'.$articleSection->articleSectionType).' ###';
 	}
 	
 	// form methods

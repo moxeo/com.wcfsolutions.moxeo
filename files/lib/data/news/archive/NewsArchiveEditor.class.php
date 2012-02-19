@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
 /**
  * Provides functions to manage news archives.
@@ -8,9 +8,9 @@ require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news.archive
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class NewsArchiveEditor extends NewsArchive {
 	/**
@@ -20,7 +20,7 @@ class NewsArchiveEditor extends NewsArchive {
 		if ($useCache) parent::__construct($newsArchiveID, $row, $cacheObject);
 		else {
 			$sql = "SELECT	*
-				FROM	wsis".WSIS_N."_news_archive
+				FROM	moxeo".MOXEO_N."_news_archive
 				WHERE 	newsArchiveID = ".$newsArchiveID;
 			$row = WCF::getDB()->getFirstRow($sql);
 			parent::__construct(null, $row);
@@ -34,7 +34,7 @@ class NewsArchiveEditor extends NewsArchive {
 	 * @param	integer		$contentItemID
 	 */
 	public function update($title, $contentItemID) {
-		$sql = "UPDATE	wsis".WSIS_N."_news_archive
+		$sql = "UPDATE	moxeo".MOXEO_N."_news_archive
 			SET	title = '".escapeString($title)."',
 				contentItemID = ".$contentItemID."
 			WHERE	newsArchiveID = ".$this->newsArchiveID;
@@ -46,12 +46,12 @@ class NewsArchiveEditor extends NewsArchive {
 	 */
 	public function delete() {
 		// delete news items
-		$sql = "DELETE FROM	wsis".WSIS_N."_news_item
+		$sql = "DELETE FROM	moxeo".MOXEO_N."_news_item
 			WHERE		newsArchiveID = ".$this->newsArchiveID;
 		WCF::getDB()->sendQuery($sql);		
 		
 		// delete news archive
-		$sql = "DELETE FROM	wsis".WSIS_N."_news_archive
+		$sql = "DELETE FROM	moxeo".MOXEO_N."_news_archive
 			WHERE		newsArchiveID = ".$this->newsArchiveID;
 		WCF::getDB()->sendQuery($sql);
 	}
@@ -64,12 +64,12 @@ class NewsArchiveEditor extends NewsArchive {
 	 * @return	NewsArchiveEditor
 	 */
 	public static function create($title, $contentItemID) {
-		$sql = "INSERT INTO	wsis".WSIS_N."_news_archive
+		$sql = "INSERT INTO	moxeo".MOXEO_N."_news_archive
 					(title, contentItemID)
 			VALUES		('".escapeString($title)."', ".$contentItemID.")";
 		WCF::getDB()->sendQuery($sql);
 		
-		$newsArchiveID = WCF::getDB()->getInsertID("wsis".WSIS_N."_news_archive", 'newsArchiveID');
+		$newsArchiveID = WCF::getDB()->getInsertID("moxeo".MOXEO_N."_news_archive", 'newsArchiveID');
 		return new NewsArchiveEditor($newsArchiveID, null, null, false);
 	}
 	

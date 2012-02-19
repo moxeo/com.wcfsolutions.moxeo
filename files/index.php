@@ -5,6 +5,6 @@
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
 require_once('./global.php');
-require_once(WSIS_DIR.'lib/system/request/ContentItemRequestHandler.class.php');
+require_once(MOXEO_DIR.'lib/system/request/ContentItemRequestHandler.class.php');
 ContentItemRequestHandler::getInstance()->handle();
 ?>

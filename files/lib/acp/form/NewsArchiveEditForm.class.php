@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/acp/form/NewsArchiveAddForm.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/acp/form/NewsArchiveAddForm.class.php');
 
 /**
  * Shows the news archive edit form.
@@ -8,13 +8,13 @@ require_once(WSIS_DIR.'lib/acp/form/NewsArchiveAddForm.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.form
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class NewsArchiveEditForm extends NewsArchiveAddForm {
 	// system
-	public $activeMenuItem = 'wsis.acp.menu.link.content.newsArchive';
+	public $activeMenuItem = 'moxeo.acp.menu.link.content.newsArchive';
 	public $neededPermissions = 'admin.site.canEditNewsArchive';
 	
 	/**

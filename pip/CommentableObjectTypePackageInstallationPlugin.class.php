@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/acp/package/plugin/AbstractXMLPackageInstallationPlugi
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.php>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.package.plugin
- * @category 	Infinite Site
+ * @category 	Moxeo Open Source CMS
  */
 class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageInstallationPlugin {
 	public $tagName = 'commentableobjecttype';
@@ -53,7 +53,7 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 						if (isset($commentableObjectType['classfile'])) $classFile = $commentableObjectType['classfile'];
 						
 						// insert items
-						$sql = "INSERT INTO			wsis".$instanceNo."_commentable_object_type
+						$sql = "INSERT INTO			moxeo".$instanceNo."_commentable_object_type
 											(packageID, commentableObjectType, classFile)
 							VALUES				(".$this->installation->getPackageID().",
 											'".escapeString($name)."',
@@ -79,7 +79,7 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 						$nameArray[] = $commentableObjectType['name'];
 					}
 					if (count($nameArray)) {
-						$sql = "DELETE FROM	wsis".$instanceNo."_commentable_object_type
+						$sql = "DELETE FROM	moxeo".$instanceNo."_commentable_object_type
 							WHERE		packageID = ".$this->installation->getPackageID()."
 									AND commentableObjectType IN ('".implode("','", array_map('escapeString', $nameArray))."')";
 						WCF::getDB()->sendQuery($sql);
@@ -93,11 +93,11 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 	 * @see	PackageInstallationPlugin::hasUninstall()
 	 */
 	public function hasUninstall() {
-		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.wsis') {
+		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {
 			try {				
 				$instanceNo = WCF_N.'_'.$package->getInstanceNo();
 				$sql = "SELECT	COUNT(*) AS count
-					FROM	wsis".$instanceNo."_commentable_object_type
+					FROM	moxeo".$instanceNo."_commentable_object_type
 					WHERE	packageID = ".$this->installation->getPackageID();
 				$installationCount = WCF::getDB()->getFirstRow($sql);
 				return $installationCount['count'];
@@ -113,13 +113,13 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 	 * @see	PackageInstallationPlugin::uninstall()
 	 */
 	public function uninstall() {
-		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.wsis') {		
+		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {		
 			$instanceNo = WCF_N.'_'.$package->getInstanceNo();
 			
 			// get commentable object types
 			$commentableObjectTypes = array();
 			$sql = "SELECT	commentableObjectType
-				FROM	wsis".$instanceNo."_commentable_object_type
+				FROM	moxeo".$instanceNo."_commentable_object_type
 				WHERE	packageID = ".$this->installation->getPackageID();
 			$result = WCF::getDB()->sendQuery($sql);
 			while ($row = WCF::getDB()->fetchArray($result)) {
@@ -128,12 +128,12 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 			
 			if (count($commentableObjectTypes)) {
 				// delete comments
-				$sql = "DELETE FROM	wsis".$instanceNo."_comment
+				$sql = "DELETE FROM	moxeo".$instanceNo."_comment
 					WHERE		commentableObjectType IN ('".implode("','", array_map('escapeString', $commentableObjectTypes))."')";
 				WCF::getDB()->sendQuery($sql);			
 			
 				// delete commentable object types
-				$sql = "DELETE FROM	wsis".$instanceNo."_commentable_object_type
+				$sql = "DELETE FROM	moxeo".$instanceNo."_commentable_object_type
 					WHERE		packageID = ".$this->installation->getPackageID();
 				WCF::getDB()->sendQuery($sql);
 			}

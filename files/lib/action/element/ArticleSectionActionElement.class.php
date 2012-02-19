@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/article/section/ArticleSection.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/article/section/ArticleSection.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/action/AbstractSecureAction.class.php');
@@ -11,9 +11,9 @@ require_once(WCF_DIR.'lib/action/AbstractSecureAction.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	action.element
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 abstract class ArticleSectionActionElement extends AbstractSecureAction {
 	/**

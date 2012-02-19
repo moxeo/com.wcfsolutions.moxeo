@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	system.cache
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class CacheBuilderContentItemPermissions implements CacheBuilder {
 	/**
@@ -21,7 +21,7 @@ class CacheBuilderContentItemPermissions implements CacheBuilder {
 		$data = array();
 		
 		$sql = "SELECT		*
-			FROM		wsis".WSIS_N."_content_item_to_group
+			FROM		moxeo".MOXEO_N."_content_item_to_group
 			WHERE		groupID IN (".$groupIDs.")";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
@@ -38,7 +38,7 @@ class CacheBuilderContentItemPermissions implements CacheBuilder {
 		
 		// inherit content item group permissions
 		if (count($data)) {
-			require_once(WSIS_DIR.'lib/data/content/ContentItem.class.php');
+			require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
 			ContentItem::inheritPermissions(0, $data);
 		}
 		

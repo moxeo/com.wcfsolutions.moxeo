@@ -5,9 +5,9 @@
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section.type
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 interface ArticleSectionType {
 	// display methods

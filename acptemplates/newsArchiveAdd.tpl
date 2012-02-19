@@ -1,9 +1,9 @@
 {include file='header'}
 
 <div class="mainHeadline">
-	<img src="{@RELATIVE_WSIS_DIR}icon/newsArchive{@$action|ucfirst}L.png" alt="" />
+	<img src="{@RELATIVE_MOXEO_DIR}icon/newsArchive{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}wsis.acp.news.archive.{@$action}{/lang}</h2>
+		<h2>{lang}moxeo.acp.news.archive.{@$action}{/lang}</h2>
 	</div>
 </div>
 
@@ -12,13 +12,13 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}wsis.acp.news.archive.{@$action}.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.news.archive.{@$action}.success{/lang}</p>	
 {/if}
 
 <div class="contentHeader">
 	<div class="largeButtons">
 		<ul>
-			<li><a href="index.php?page=NewsArchiveList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.newsArchive.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/newsArchiveM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.newsArchive.view{/lang}</span></a></li>
+			<li><a href="index.php?page=NewsArchiveList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.menu.link.content.newsArchive.view{/lang}"><img src="{@RELATIVE_MOXEO_DIR}icon/newsArchiveM.png" alt="" /> <span>{lang}moxeo.acp.menu.link.content.newsArchive.view{/lang}</span></a></li>
 			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
 		</ul>
 	</div>
@@ -27,11 +27,11 @@
 	<div class="border content">
 		<div class="container-1">					
 			<fieldset>
-				<legend>{lang}wsis.acp.news.archive.data{/lang}</legend>
+				<legend>{lang}moxeo.acp.news.archive.data{/lang}</legend>
 				
 				<div class="formElement{if $errorField == 'title'} formError{/if}" id="titleDiv">
 					<div class="formFieldLabel">
-						<label for="title">{lang}wsis.acp.news.archive.title{/lang}</label>
+						<label for="title">{lang}moxeo.acp.news.archive.title{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="title" name="title" value="{$title}" />
@@ -42,7 +42,7 @@
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="titleHelpMessage">
-						<p>{lang}wsis.acp.news.archive.title.description{/lang}</p>
+						<p>{lang}moxeo.acp.news.archive.title.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -51,7 +51,7 @@
 				
 				<div class="formElement{if $errorField == 'contentItemID'} formError{/if}" id="contentItemIDDiv">
 					<div class="formFieldLabel">
-						<label for="contentItemID">{lang}wsis.acp.news.archive.contentItemID{/lang}</label>
+						<label for="contentItemID">{lang}moxeo.acp.news.archive.contentItemID{/lang}</label>
 					</div>
 					<div class="formField">
 						<select name="contentItemID" id="contentItemID">
@@ -59,12 +59,12 @@
 						</select>
 						{if $errorField == 'parentID'}
 							<p class="innerError">
-								{if $errorType == 'invalid'}{lang}wsis.acp.archive.error.contentItemID.invalid{/lang}{/if}
+								{if $errorType == 'invalid'}{lang}moxeo.acp.archive.error.contentItemID.invalid{/lang}{/if}
 							</p>
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="contentItemIDHelpMessage">
-						<p>{lang}wsis.acp.news.archive.contentItemID.description{/lang}</p>
+						<p>{lang}moxeo.acp.news.archive.contentItemID.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[

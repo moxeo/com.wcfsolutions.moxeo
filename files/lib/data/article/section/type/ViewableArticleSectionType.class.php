@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/article/section/type/AbstractArticleSectionType.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/article/section/type/AbstractArticleSectionType.class.php');
 
 /**
  * Represents a viewable article section type.
@@ -8,9 +8,9 @@ require_once(WSIS_DIR.'lib/data/article/section/type/AbstractArticleSectionType.
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section.type
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 abstract class ViewableArticleSectionType extends AbstractArticleSectionType {
 	/**
@@ -39,7 +39,7 @@ abstract class ViewableArticleSectionType extends AbstractArticleSectionType {
 	 */
 	public function cache(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		$className = ucfirst($this->pageElement).ucfirst($this->pageElementType).'Element';
-		$path = WSIS_DIR.'lib/'.$this->pageElementType.'/element/'.$className.'.class.php';
+		$path = MOXEO_DIR.'lib/'.$this->pageElementType.'/element/'.$className.'.class.php';
 		
 		// include class file
 		if (!class_exists($className)) {

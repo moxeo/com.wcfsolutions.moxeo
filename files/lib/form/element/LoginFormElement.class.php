@@ -9,9 +9,9 @@ require_once(WCF_DIR.'lib/system/auth/UserAuth.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	form.element
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class LoginFormElement extends ThemeModuleFormElement {
 	// system

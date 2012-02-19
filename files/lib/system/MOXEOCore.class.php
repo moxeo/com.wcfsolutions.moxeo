@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/system/request/ContentItemRequestHandler.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/system/request/ContentItemRequestHandler.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/system/theme/ThemeLayoutManager.class.php');
@@ -11,11 +11,11 @@ require_once(WCF_DIR.'lib/system/theme/ThemeLayoutManager.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	system
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
-class WSISCore extends WCF {
+class MOXEOCore extends WCF {
 	/**
 	 * @see	WCF::initLanguage()
 	 */
@@ -52,20 +52,20 @@ class WSISCore extends WCF {
 	 */
 	protected function loadDefaultCacheResources() {
 		parent::loadDefaultCacheResources();
-		self::loadDefaultWSISCacheResources();
+		self::loadDefaultMOXEOCacheResources();
 	}
 	
 	/**
 	 * Loads default cache resources of content management system.
 	 * Can be called statically from other applications or plugins.
 	 */
-	public static function loadDefaultWSISCacheResources() {
-		WCF::getCache()->addResource('contentItem', WSIS_DIR.'cache/cache.contentItem.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItem.class.php');
-		WCF::getCache()->addResource('contentItemAlias', WSIS_DIR.'cache/cache.contentItemAlias.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItemAlias.class.php');
-		WCF::getCache()->addResource('contentItemStructure', WSIS_DIR.'cache/cache.contentItemStructure.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItemStructure.class.php');
-		WCF::getCache()->addResource('contentItemArticles', WSIS_DIR.'cache/cache.contentItemArticles.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItemArticles.class.php');
+	public static function loadDefaultMOXEOCacheResources() {
+		WCF::getCache()->addResource('contentItem', MOXEO_DIR.'cache/cache.contentItem.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItem.class.php');
+		WCF::getCache()->addResource('contentItemAlias', MOXEO_DIR.'cache/cache.contentItemAlias.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemAlias.class.php');
+		WCF::getCache()->addResource('contentItemStructure', MOXEO_DIR.'cache/cache.contentItemStructure.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemStructure.class.php');
+		WCF::getCache()->addResource('contentItemArticles', MOXEO_DIR.'cache/cache.contentItemArticles.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemArticles.class.php');
 		WCF::getCache()->addResource('cronjobs-'.PACKAGE_ID, WCF_DIR.'cache/cache.cronjobs-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderCronjobs.class.php');
-		WCF::getCache()->addResource('newsArchive', WSIS_DIR.'cache/cache.newsArchive.php', WSIS_DIR.'lib/system/cache/CacheBuilderNewsArchive.class.php');
+		WCF::getCache()->addResource('newsArchive', MOXEO_DIR.'cache/cache.newsArchive.php', MOXEO_DIR.'lib/system/cache/CacheBuilderNewsArchive.class.php');
 		WCF::getCache()->addResource('theme-'.PACKAGE_ID, WCF_DIR.'cache/cache.theme-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderTheme.class.php');
 		WCF::getCache()->addResource('themeLayout-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeLayout-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeLayout.class.php');
 		WCF::getCache()->addResource('themeModule-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeModule-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeModule.class.php');
@@ -75,7 +75,7 @@ class WSISCore extends WCF {
 	 * @see	WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
-		return WSIS_DIR.'options.inc.php';
+		return MOXEO_DIR.'options.inc.php';
 	}
 	
 	/**
@@ -99,8 +99,8 @@ class WSISCore extends WCF {
 	 */
 	protected function initSession() {
 		// start session
-		require_once(WSIS_DIR.'lib/system/session/WSISSessionFactory.class.php');
-		$factory = new WSISSessionFactory();
+		require_once(MOXEO_DIR.'lib/system/session/MOXEOSessionFactory.class.php');
+		$factory = new MOXEOSessionFactory();
 		self::$sessionObj = $factory->get();
 		self::$userObj = self::getSession()->getUser();
 	}

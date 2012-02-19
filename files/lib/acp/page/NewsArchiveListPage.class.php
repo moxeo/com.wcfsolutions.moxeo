@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/news/archive/NewsArchiveList.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchiveList.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/page/SortablePage.class.php');
@@ -100,7 +100,7 @@ class NewsArchiveListPage extends SortablePage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('wsis.acp.menu.link.content.newsArchive.view');
+		WCFACP::getMenu()->setActiveMenuItem('moxeo.acp.menu.link.content.newsArchive.view');
 		
 		parent::show();
 	}

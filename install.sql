@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS wsis1_1_article;
-CREATE TABLE wsis1_1_article (
+DROP TABLE IF EXISTS moxeo1_1_article;
+CREATE TABLE moxeo1_1_article (
 	articleID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	contentItemID INT(10) NOT NULL DEFAULT 0,
 	themeModulePosition VARCHAR(255) NOT NULL DEFAULT '',
@@ -9,8 +9,8 @@ CREATE TABLE wsis1_1_article (
 	showOrder INT(10) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_article_section;
-CREATE TABLE wsis1_1_article_section (
+DROP TABLE IF EXISTS moxeo1_1_article_section;
+CREATE TABLE moxeo1_1_article_section (
 	articleSectionID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	articleID INT(10) NOT NULL DEFAULT 0,
 	articleSectionType VARCHAR(125) NOT NULL DEFAULT '',
@@ -21,8 +21,8 @@ CREATE TABLE wsis1_1_article_section (
 	KEY (articleID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_article_section_type;
-CREATE TABLE wsis1_1_article_section_type (
+DROP TABLE IF EXISTS moxeo1_1_article_section_type;
+CREATE TABLE moxeo1_1_article_section_type (
 	articleSectionTypeID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	packageID INT(10) NOT NULL,
 	articleSectionType VARCHAR(255) NOT NULL UNIQUE KEY,
@@ -30,8 +30,8 @@ CREATE TABLE wsis1_1_article_section_type (
 	classFile VARCHAR(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_captcha;
-CREATE TABLE wsis1_1_captcha (
+DROP TABLE IF EXISTS moxeo1_1_captcha;
+CREATE TABLE moxeo1_1_captcha (
 	captchaID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	questionNo INT(10) NOT NULL DEFAULT 0,
 	firstValue INT(10) NOT NULL DEFAULT 0,
@@ -39,8 +39,8 @@ CREATE TABLE wsis1_1_captcha (
 	time INT(10) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_comment;
-CREATE TABLE wsis1_1_comment (
+DROP TABLE IF EXISTS moxeo1_1_comment;
+CREATE TABLE moxeo1_1_comment (
 	commentID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	commentableObjectID INT(10) NOT NULL DEFAULT 0,
 	commentableObjectType VARCHAR(255) NOT NULL DEFAULT '',
@@ -52,16 +52,16 @@ CREATE TABLE wsis1_1_comment (
 	KEY (commentableObjectID, commentableObjectType)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_commentable_object_type;
-CREATE TABLE wsis1_1_commentable_object_type (
+DROP TABLE IF EXISTS moxeo1_1_commentable_object_type;
+CREATE TABLE moxeo1_1_commentable_object_type (
 	commentableObjectTypeID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	packageID INT(10) NOT NULL,
 	commentableObjectType VARCHAR(255) NOT NULL UNIQUE KEY,
 	classFile VARCHAR(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_content_item;
-CREATE TABLE wsis1_1_content_item (
+DROP TABLE IF EXISTS moxeo1_1_content_item;
+CREATE TABLE moxeo1_1_content_item (
 	contentItemID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	parentID INT(10) NOT NULL DEFAULT 0,
 	languageID INT(10) NOT NULL DEFAULT 0,
@@ -87,8 +87,8 @@ CREATE TABLE wsis1_1_content_item (
 	searchableContent MEDIUMTEXT
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_content_item_admin;
-CREATE TABLE wsis1_1_content_item_admin (
+DROP TABLE IF EXISTS moxeo1_1_content_item_admin;
+CREATE TABLE moxeo1_1_content_item_admin (
 	contentItemID INT(10) NOT NULL DEFAULT 0,
 	userID INT(10) NOT NULL DEFAULT 0,
 	groupID INT(10) NOT NULL DEFAULT 0,
@@ -103,8 +103,8 @@ CREATE TABLE wsis1_1_content_item_admin (
 	KEY (groupID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_content_item_to_group;
-CREATE TABLE wsis1_1_content_item_to_group (
+DROP TABLE IF EXISTS moxeo1_1_content_item_to_group;
+CREATE TABLE moxeo1_1_content_item_to_group (
 	contentItemID INT(10) NOT NULL DEFAULT 0,
 	groupID INT(10) NOT NULL DEFAULT 0,
 	canViewContentItem TINYINT(1) NOT NULL DEFAULT -1,
@@ -113,8 +113,8 @@ CREATE TABLE wsis1_1_content_item_to_group (
 	PRIMARY KEY (groupID, contentItemID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_content_item_to_user;
-CREATE TABLE wsis1_1_content_item_to_user (
+DROP TABLE IF EXISTS moxeo1_1_content_item_to_user;
+CREATE TABLE moxeo1_1_content_item_to_user (
 	contentItemID INT(10) NOT NULL DEFAULT 0,
 	userID INT(10) NOT NULL DEFAULT 0,
 	canViewContentItem TINYINT(1) NOT NULL DEFAULT -1,
@@ -123,15 +123,15 @@ CREATE TABLE wsis1_1_content_item_to_user (
 	PRIMARY KEY (userID, contentItemID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_news_archive;
-CREATE TABLE wsis1_1_news_archive (
+DROP TABLE IF EXISTS moxeo1_1_news_archive;
+CREATE TABLE moxeo1_1_news_archive (
 	newsArchiveID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	title VARCHAR(255) NOT NULL DEFAULT '',
 	contentItemID INT(10) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsis1_1_news_item;
-CREATE TABLE wsis1_1_news_item (
+DROP TABLE IF EXISTS moxeo1_1_news_item;
+CREATE TABLE moxeo1_1_news_item (
 	newsItemID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	newsArchiveID INT(10) NOT NULL DEFAULT 0,
 	userID INT(10) NOT NULL DEFAULT 0,

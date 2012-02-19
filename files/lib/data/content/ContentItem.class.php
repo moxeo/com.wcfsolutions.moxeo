@@ -1,7 +1,7 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/article/Article.class.php');
-require_once(WSIS_DIR.'lib/data/article/section/ArticleSection.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/article/Article.class.php');
+require_once(MOXEO_DIR.'lib/data/article/section/ArticleSection.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
@@ -12,9 +12,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.content
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class ContentItem extends DatabaseObject {
 	/**
@@ -300,7 +300,7 @@ class ContentItem extends DatabaseObject {
 	 * @return	ContentItemEditor
 	 */
 	public function getEditor() {
-		require_once(WSIS_DIR.'lib/data/content/ContentItemEditor.class.php');
+		require_once(MOXEO_DIR.'lib/data/content/ContentItemEditor.class.php');
 		return new ContentItemEditor(null, $this->data);
 	}
 	
@@ -450,7 +450,7 @@ class ContentItem extends DatabaseObject {
 	 * @return 	array
 	 */
 	public static function getPermissionSettings() {
-		$sql = "SHOW COLUMNS FROM wsis".WSIS_N."_content_item_to_group";
+		$sql = "SHOW COLUMNS FROM moxeo".MOXEO_N."_content_item_to_group";
 		$result = WCF::getDB()->sendQuery($sql);
 		$settings = array();
 		while ($row = WCF::getDB()->fetchArray($result)) {
@@ -467,7 +467,7 @@ class ContentItem extends DatabaseObject {
 	 * @return 	array
 	 */
 	public static function getAdminSettings() {
-		$sql = "SHOW COLUMNS FROM wsis".WSIS_N."_content_item_admin";
+		$sql = "SHOW COLUMNS FROM moxeo".MOXEO_N."_content_item_admin";
 		$result = WCF::getDB()->sendQuery($sql);
 		$settings = array();
 		while ($row = WCF::getDB()->fetchArray($result)) {
@@ -486,7 +486,7 @@ class ContentItem extends DatabaseObject {
 	 */
 	public static function countSearchResults($query) {		
 		$sql = "SELECT	COUNT(*) AS count
-			FROM	wsis".WSIS_N."_content_item
+			FROM	moxeo".MOXEO_N."_content_item
 			WHERE	searchableContent LIKE '%".escapeString($query)."%'";
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
@@ -504,7 +504,7 @@ class ContentItem extends DatabaseObject {
 		$contentItems = array();
 		
 		$sql = "SELECT		contentItemID 
-			FROM		wsis".WSIS_N."_content_item
+			FROM		moxeo".MOXEO_N."_content_item
 			WHERE		searchableContent LIKE '%".escapeString($query)."%'
 			ORDER BY	parentID, showOrder";
 		$result = WCF::getDB()->sendQuery($sql, $limit, $offset);

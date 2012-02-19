@@ -1,8 +1,8 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/article/section/ArticleSection.class.php');
-require_once(WSIS_DIR.'lib/data/comment/object/CommentableObject.class.php');
-require_once(WSIS_DIR.'lib/data/content/ContentItem.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/article/section/ArticleSection.class.php');
+require_once(MOXEO_DIR.'lib/data/comment/object/CommentableObject.class.php');
+require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
@@ -13,9 +13,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class ArticleSectionCommentableObject extends ArticleSection implements CommentableObject {
 	/**
@@ -24,8 +24,8 @@ class ArticleSectionCommentableObject extends ArticleSection implements Commenta
 	public function __construct($articleSectionID, $row = null) {
 		if ($articleSectionID !== null) {
 			$sql = "SELECT		article_section.*, article.contentItemID
-				FROM 		wsis".WSIS_N."_article_section article_section
-				LEFT JOIN	wsis".WSIS_N."_article article
+				FROM 		moxeo".MOXEO_N."_article_section article_section
+				LEFT JOIN	moxeo".MOXEO_N."_article article
 				ON		(article.articleID = article_section.articleID)
 				WHERE 		article_section.articleSectionID = ".$articleSectionID;
 			$row = WCF::getDB()->getFirstRow($sql);

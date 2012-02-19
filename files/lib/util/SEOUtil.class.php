@@ -5,9 +5,9 @@
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	util
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class SEOUtil {
 	/**
@@ -37,13 +37,13 @@ class SEOUtil {
 		$options = Options::getOptionValues();
 		
 		// get existing content of file
-		$filename = WSIS_DIR.'.htaccess';
+		$filename = MOXEO_DIR.'.htaccess';
 		$existingContent = '';
 		if (file_exists($filename)) {
 			$existingContent = StringUtil::unifyNewlines(file_get_contents($filename));
 			
 			// remove existing seo rules
-			$existingContent = preg_replace("~\n?# WSIS-SEO-START.*# WSIS-SEO-END~s", '', $existingContent);
+			$existingContent = preg_replace("~\n?# MOXEO-SEO-START.*# MOXEO-SEO-END~s", '', $existingContent);
 		}
 	
 		// open file
@@ -59,7 +59,7 @@ class SEOUtil {
 		
 		if ($options['ENABLE_SEO_REWRITING']) {			
 			// write start comment
-			$file->write("\n# WSIS-SEO-START\n");
+			$file->write("\n# MOXEO-SEO-START\n");
 			
 			// write opening ifmodule tag
 			$file->write("<IfModule mod_rewrite.c>\n");
@@ -83,7 +83,7 @@ class SEOUtil {
 			$file->write("</IfModule>\n");
 			
 			// write end comment
-			$file->write("# WSIS-SEO-END");
+			$file->write("# MOXEO-SEO-END");
 		}
 			
 		// close file

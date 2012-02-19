@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/comment/ACPCommentList.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/comment/ACPCommentList.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/page/SortablePage.class.php');
@@ -105,7 +105,7 @@ class CommentListPage extends SortablePage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('wsis.acp.menu.link.content.comment.view');
+		WCFACP::getMenu()->setActiveMenuItem('moxeo.acp.menu.link.content.comment.view');
 		
 		parent::show();
 	}

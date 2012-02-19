@@ -1,8 +1,8 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/article/Article.class.php');
-require_once(WSIS_DIR.'lib/data/article/section/ArticleSection.class.php');
-require_once(WSIS_DIR.'lib/data/content/ContentItem.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/article/Article.class.php');
+require_once(MOXEO_DIR.'lib/data/article/section/ArticleSection.class.php');
+require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.php');
@@ -13,9 +13,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.p
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class ArticleThemeModuleType extends AbstractThemeModuleType {
 	/**
@@ -54,7 +54,7 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 			if ($articleIDs) {
 				// get article sections
 				$sql = "SELECT		*
-					FROM		wsis".WSIS_N."_article_section
+					FROM		moxeo".MOXEO_N."_article_section
 					WHERE		articleID IN (".$articleIDs.")
 					ORDER BY	articleID, showOrder";
 				$result = WCF::getDB()->sendQuery($sql);
@@ -67,7 +67,7 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 				
 				// get articles
 				$sql = "SELECT		*
-					FROM		wsis".WSIS_N."_article
+					FROM		moxeo".MOXEO_N."_article
 					WHERE		articleID IN (".$articleIDs.")
 					ORDER BY	themeModulePosition, showOrder";
 				$result = WCF::getDB()->sendQuery($sql);

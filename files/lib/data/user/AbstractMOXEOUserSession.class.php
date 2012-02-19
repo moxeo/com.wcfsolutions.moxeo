@@ -3,16 +3,16 @@
 require_once(WCF_DIR.'lib/system/session/UserSession.class.php');
 
 /**
- * Abstract class for wsis user and guest sessions.
+ * Abstract class for moxeo user and guest sessions.
  * 
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.user
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
-class AbstractWSISUserSession extends UserSession {
+class AbstractMOXEOUserSession extends UserSession {
 	/**
 	 * list of content item user permissions
 	 * 
@@ -71,7 +71,7 @@ class AbstractWSISUserSession extends UserSession {
 		$groupsFilename = StringUtil::getHash(implode('-', $this->groupIDs));
 		
 		// register cache resource
-		WCF::getCache()->addResource('contentItemPermissions-'.$groups, WSIS_DIR.'cache/cache.contentItemPermissions-'.$groupsFilename.'.php', WSIS_DIR.'lib/system/cache/CacheBuilderContentItemPermissions.class.php');
+		WCF::getCache()->addResource('contentItemPermissions-'.$groups, MOXEO_DIR.'cache/cache.contentItemPermissions-'.$groupsFilename.'.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemPermissions.class.php');
 		
 		// get content item group data from cache
 		$this->contentItemPermissions = WCF::getCache()->get('contentItemPermissions-'.$groups);
@@ -81,7 +81,7 @@ class AbstractWSISUserSession extends UserSession {
 		
 		// get content item admin permissions
 		$sql = "SELECT		*
-			FROM		wsis".WSIS_N."_content_item_admin
+			FROM		moxeo".MOXEO_N."_content_item_admin
 			WHERE		groupID IN (".implode(',', $this->groupIDs).")
 					".($this->userID ? " OR userID = ".$this->userID : '')."
 			ORDER BY 	userID DESC";
@@ -103,7 +103,7 @@ class AbstractWSISUserSession extends UserSession {
 		}
 		
 		if (count($this->contentItemAdminPermissions)) {
-			require_once(WSIS_DIR.'lib/data/content/ContentItem.class.php');
+			require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
 			ContentItem::inheritPermissions(0, $this->contentItemAdminPermissions);
 		}
 	}

@@ -10,10 +10,10 @@ require_once(dirname(__FILE__).'/config.inc.php');
 
 // include wcf
 require_once(RELATIVE_WCF_DIR.'global.php');
-if (!count($packageDirs)) $packageDirs[] = WSIS_DIR;
+if (!count($packageDirs)) $packageDirs[] = MOXEO_DIR;
 $packageDirs[] = WCF_DIR;
 
-// starting wsis core
-require_once(WSIS_DIR.'lib/system/WSISCore.class.php');
-new WSISCore();
+// starting moxeo core
+require_once(MOXEO_DIR.'lib/system/MOXEOCore.class.php');
+new MOXEOCore();
 ?>

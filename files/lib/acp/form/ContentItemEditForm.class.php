@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/acp/form/ContentItemAddForm.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/acp/form/ContentItemAddForm.class.php');
 
 /**
  * Shows the content item edit form.
@@ -8,13 +8,13 @@ require_once(WSIS_DIR.'lib/acp/form/ContentItemAddForm.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.form
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class ContentItemEditForm extends ContentItemAddForm {
 	// system
-	public $activeMenuItem = 'wsis.acp.menu.link.content.contentItem';
+	public $activeMenuItem = 'moxeo.acp.menu.link.content.contentItem';
 	//public $neededPermissions = 'admin.site.canEditContentItem';
 	
 	/**
@@ -83,13 +83,13 @@ class ContentItemEditForm extends ContentItemAddForm {
 			
 			// get permissions
 			$sql = "		(SELECT		user_permission.*, user.userID AS id, 'user' AS type, user.username AS name
-						FROM		wsis".WSIS_N."_content_item_to_user user_permission
+						FROM		moxeo".MOXEO_N."_content_item_to_user user_permission
 						LEFT JOIN	wcf".WCF_N."_user user
 						ON		(user.userID = user_permission.userID)
 						WHERE		contentItemID = ".$this->contentItemID.")
 				UNION
 						(SELECT		group_permission.*, usergroup.groupID AS id, 'group' AS type, usergroup.groupName AS name
-						FROM		wsis".WSIS_N."_content_item_to_group group_permission
+						FROM		moxeo".MOXEO_N."_content_item_to_group group_permission
 						LEFT JOIN	wcf".WCF_N."_group usergroup
 						ON		(usergroup.groupID = group_permission.groupID)
 						WHERE		contentItemID = ".$this->contentItemID.")
@@ -108,7 +108,7 @@ class ContentItemEditForm extends ContentItemAddForm {
 			
 			// get admins
 			$sql = "SELECT		admin.*, IFNULL(user.username, usergroup.groupName) AS name, user.userID, usergroup.groupID
-				FROM		wsis".WSIS_N."_content_item_admin admin
+				FROM		moxeo".MOXEO_N."_content_item_admin admin
 				LEFT JOIN	wcf".WCF_N."_user user
 				ON		(user.userID = admin.userID)
 				LEFT JOIN	wcf".WCF_N."_group usergroup

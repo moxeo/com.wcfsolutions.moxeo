@@ -9,9 +9,9 @@ require_once(WCF_DIR.'lib/system/session/Session.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	system.cronjob
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class CleanupCronjob implements Cronjob {
 	/**
@@ -22,7 +22,7 @@ class CleanupCronjob implements Cronjob {
 		Session::deleteExpiredSessions((TIME_NOW - SESSION_TIMEOUT));
 		
 		// delete old captchas
-		$sql = "DELETE FROM	wsis".WSIS_N."_captcha
+		$sql = "DELETE FROM	moxeo".MOXEO_N."_captcha
 			WHERE		time < ".(TIME_NOW - 3600);
 		WCF::getDB()->registerShutdownUpdate($sql);
 		

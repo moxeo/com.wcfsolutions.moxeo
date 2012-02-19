@@ -11,14 +11,14 @@
 <div class="mainHeadline">
 	<img src="{@RELATIVE_WCF_DIR}icon/acpL.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}wsis.acp.index{/lang}</h2>
+		<h2>{lang}moxeo.acp.index{/lang}</h2>
 	</div>
 </div>
 
 {if $this->user->getPermission('admin.user.canEditUser')}
 	<form method="post" action="index.php?form=UserSearch">
 		<fieldset>
-			<legend>{lang}wsis.acp.index.searchUsers{/lang}</legend>
+			<legend>{lang}moxeo.acp.index.searchUsers{/lang}</legend>
 			
 			<div class="formElement">
 				<div class="formFieldLabel">
@@ -63,11 +63,11 @@
 
 <div class="tabMenu">
 	<ul>
-		{if $minorUpdates|count > 0 || $majorUpdates|count > 0}<li id="updates"><a onclick="tabMenu.showSubTabMenu('updates');"><span>{lang}wsis.acp.index.updates{/lang}</span></a></li>{/if}
-		{if $news|count > 0}<li id="news"><a onclick="tabMenu.showSubTabMenu('news');"><span>{lang}wsis.acp.index.news{/lang}</span></a></li>{/if}
-		<li id="system"><a onclick="tabMenu.showSubTabMenu('system');"><span>{lang}wsis.acp.index.system{/lang}</span></a></li>
-		<li id="stat"><a onclick="tabMenu.showSubTabMenu('stat');"><span>{lang}wsis.acp.index.stat{/lang}</span></a></li>
-		<li id="credits"><a onclick="tabMenu.showSubTabMenu('credits');"><span>{lang}wsis.acp.index.credits{/lang}</span></a></li>
+		{if $minorUpdates|count > 0 || $majorUpdates|count > 0}<li id="updates"><a onclick="tabMenu.showSubTabMenu('updates');"><span>{lang}moxeo.acp.index.updates{/lang}</span></a></li>{/if}
+		{if $news|count > 0}<li id="news"><a onclick="tabMenu.showSubTabMenu('news');"><span>{lang}moxeo.acp.index.news{/lang}</span></a></li>{/if}
+		<li id="system"><a onclick="tabMenu.showSubTabMenu('system');"><span>{lang}moxeo.acp.index.system{/lang}</span></a></li>
+		<li id="stat"><a onclick="tabMenu.showSubTabMenu('stat');"><span>{lang}moxeo.acp.index.stat{/lang}</span></a></li>
+		<li id="credits"><a onclick="tabMenu.showSubTabMenu('credits');"><span>{lang}moxeo.acp.index.credits{/lang}</span></a></li>
 		{if $additionalTabs|isset}{@$additionalTabs}{/if}
 	</ul>
 </div>
@@ -79,41 +79,41 @@
 	<div class="border tabMenuContent hidden" id="updates-content">
 		<div class="container-1">
 			{if $minorUpdates|count > 0}
-				<h3 class="subHeadline">{lang}wsis.acp.index.minorUpdates{/lang}</h3>
+				<h3 class="subHeadline">{lang}moxeo.acp.index.minorUpdates{/lang}</h3>
 				
 				<form method="post" action="index.php?form=PackageUpdate">
-					<p class="description">{lang}wsis.acp.index.minorUpdates.description{/lang}</p>
+					<p class="description">{lang}moxeo.acp.index.minorUpdates.description{/lang}</p>
 					
 					<ul>
 						{foreach from=$minorUpdates item=update}
 							<li{if $update.version.updateType == 'security'} class="formError"{/if}>
-								{lang}wsis.acp.index.updates.update{/lang}
+								{lang}moxeo.acp.index.updates.update{/lang}
 								<input type="hidden" name="updates[{@$update.packageID}]" value="{$update.version.packageVersion}" />
 							</li>
 						{/foreach}
 					</ul>
 					
-					<p><input type="submit" value="{lang}wsis.acp.index.updates.startUpdate{/lang}" /></p>
+					<p><input type="submit" value="{lang}moxeo.acp.index.updates.startUpdate{/lang}" /></p>
 					<input type="hidden" name="packageID" value="{@PACKAGE_ID}" />
 					{@SID_INPUT_TAG}
 				</form>
 			{/if}
 			{if $majorUpdates|count > 0}
-				<h3 class="subHeadline">{lang}wsis.acp.index.majorUpdates{/lang}</h3>
+				<h3 class="subHeadline">{lang}moxeo.acp.index.majorUpdates{/lang}</h3>
 				
 				<form method="post" action="index.php?form=PackageUpdate">
-					<p class="description">{lang}wsis.acp.index.majorUpdates.description{/lang}</p>
+					<p class="description">{lang}moxeo.acp.index.majorUpdates.description{/lang}</p>
 					
 					<ul>
 						{foreach from=$majorUpdates item=update}
 							<li{if $update.version.updateType == 'security'} class="formError"{/if}>
-								{lang}wsis.acp.index.updates.update{/lang}
+								{lang}moxeo.acp.index.updates.update{/lang}
 								<input type="hidden" name="updates[{@$update.packageID}]" value="{$update.version.packageVersion}" />
 							</li>
 						{/foreach}
 					</ul>
 					
-					<p><input type="submit" value="{lang}wsis.acp.index.updates.startUpdate{/lang}" /></p>
+					<p><input type="submit" value="{lang}moxeo.acp.index.updates.startUpdate{/lang}" /></p>
 					<input type="hidden" name="packageID" value="{@PACKAGE_ID}" />
 					{@SID_INPUT_TAG}
 				</form>
@@ -125,7 +125,7 @@
 {if $news|count > 0}
 	<div class="border tabMenuContent hidden" id="news-content">
 		<div class="container-1">
-			<h3 class="subHeadline">{lang}wsis.acp.index.news{/lang}</h3>
+			<h3 class="subHeadline">{lang}moxeo.acp.index.news{/lang}</h3>
 			
 			{foreach from=$news item=newsItem}
 				<div class="message content">
@@ -146,55 +146,55 @@
 
 <div class="border tabMenuContent hidden" id="system-content">
 	<div class="container-1">
-		<h3 class="subHeadline">{lang}wsis.acp.index.system{/lang}</h3>
+		<h3 class="subHeadline">{lang}moxeo.acp.index.system{/lang}</h3>
 		
 		<fieldset>
-			<legend>{lang}wsis.acp.index.system.software{/lang}</legend>
+			<legend>{lang}moxeo.acp.index.system.software{/lang}</legend>
 		
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.wsis.version{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.moxeo.version{/lang}</p>
 				<p class="formField">{PACKAGE_VERSION}</p>
 			</div>
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.installationDate{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.installationDate{/lang}</p>
 				<p class="formField">{@INSTALL_DATE|time}</p>
 			</div>
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.wcf.version{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.wcf.version{/lang}</p>
 				<p class="formField">{WCF_VERSION}</p>
 			</div>
 		</fieldset>
 		
 		<fieldset>
-			<legend>{lang}wsis.acp.index.system.server{/lang}</legend>
+			<legend>{lang}moxeo.acp.index.system.server{/lang}</legend>
 		
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.os{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.os{/lang}</p>
 				<p class="formField">{$os}</p>
 			</div>
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.webserver{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.webserver{/lang}</p>
 				<p class="formField">{$webserver}</p>
 			</div>
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.php{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.php{/lang}</p>
 				<p class="formField">{PHP_VERSION}</p>
 			</div>
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.sql.type{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.sql.type{/lang}</p>
 				<p class="formField">{$sqlType} &quot;{$dbName}&quot;</p>
 			</div>
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.sql.version{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.sql.version{/lang}</p>
 				<p class="formField">{$sqlVersion}</p>
 			</div>
 			<div class="formElement">
-				<p class="formFieldLabel">{lang}wsis.acp.index.system.cache{/lang}</p>
+				<p class="formFieldLabel">{lang}moxeo.acp.index.system.cache{/lang}</p>
 				<p class="formField">{$cacheSource}</p>
 			</div>
 			{if $load}
 				<div class="formElement">
-					<p class="formFieldLabel">{lang}wsis.acp.index.system.load{/lang}</p>
+					<p class="formFieldLabel">{lang}moxeo.acp.index.system.load{/lang}</p>
 					<p class="formField">{$load}</p>
 				</div>
 			{/if}
@@ -204,22 +204,22 @@
 
 <div class="border tabMenuContent hidden" id="stat-content">
 	<div class="container-1">
-		<h3 class="subHeadline">{lang}wsis.acp.index.stat{/lang}</h3>
+		<h3 class="subHeadline">{lang}moxeo.acp.index.stat{/lang}</h3>
 		
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.stat.members{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.stat.members{/lang}</p>
 			<p class="formField">{#$members}</p>
 		</div>
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.stat.usersOnline{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.stat.usersOnline{/lang}</p>
 			<p class="formField">{#$usersOnline}</p>
 		</div>
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.stat.database.entries{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.stat.database.entries{/lang}</p>
 			<p class="formField">{#$databaseEntries}</p>
 		</div>
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.stat.database.size{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.stat.database.size{/lang}</p>
 			<p class="formField">{@$databaseSize|filesize}</p>
 		</div>
 	</div>
@@ -227,22 +227,22 @@
 
 <div class="border tabMenuContent hidden" id="credits-content">
 	<div class="container-1">
-		<h3 class="subHeadline">{lang}wsis.acp.index.credits{/lang}</h3>
+		<h3 class="subHeadline">{lang}moxeo.acp.index.credits{/lang}</h3>
 		
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.credits.developedBy{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.credits.developedBy{/lang}</p>
 			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.wcfsolutions.com"|rawurlencode}" class="externalURL">WCF Solutions</a></p>
 		</div>	
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.credits.productManager{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.credits.productManager{/lang}</p>
 			<p class="formField">Sebastian &Ouml;ttl</p>
 		</div>		
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.credits.developer{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.credits.developer{/lang}</p>
 			<p class="formField">Sebastian &Ouml;ttl</p>
 		</div>		
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsis.acp.index.credits.icons{/lang}</p>
+			<p class="formFieldLabel">{lang}moxeo.acp.index.credits.icons{/lang}</p>
 			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.everaldo.com"|rawurlencode}" class="externalURL">Everaldo Coelho</a></p>
 		</div>
 		<div class="formElement" style="margin-top: 10px">

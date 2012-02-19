@@ -5,7 +5,7 @@
 	<title>{$pageTitle} - {lang}{PAGE_TITLE}{/lang}</title>
 	
 	<!--
-		This website is powered by Infinite Site, an Open Source CMS licensed under GNU LGPL
+		This website is powered by Moxeo, an Open Source CMS licensed under GNU LGPL
 		Copyright 2009-2011 Sebastian Oettl <http://www.wcfsolutions.com/>
 		Extensions are copyright of their respective owners
 	-->
@@ -74,7 +74,7 @@
 		var SID_ARG_2ND	= '{@SID_ARG_2ND_NOT_ENCODED}';
 		var SECURITY_TOKEN = '{@SECURITY_TOKEN}';
 		var RELATIVE_WCF_DIR = '{@RELATIVE_WCF_DIR}';
-		var RELATIVE_WSIS_DIR = '{@RELATIVE_WSIS_DIR}';
+		var RELATIVE_MOXEO_DIR = '{@RELATIVE_MOXEO_DIR}';
 		//]]>
 	</script>
 	

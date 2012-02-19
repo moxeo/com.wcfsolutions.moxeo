@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
@@ -11,9 +11,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class NewsItem extends DatabaseObject {
 	/**
@@ -32,7 +32,7 @@ class NewsItem extends DatabaseObject {
 	public function __construct($newsItemID, $row = null) {
 		if ($newsItemID !== null) {
 			$sql = "SELECT		news_item.*, user_table.username
-				FROM		wsis".WSIS_N."_news_item news_item
+				FROM		moxeo".MOXEO_N."_news_item news_item
 				LEFT JOIN	wcf".WCF_N."_user user_table
 				ON		(user_table.userID = news_item.userID)
 				WHERE 		news_item.newsItemID = ".$newsItemID;
@@ -105,7 +105,7 @@ class NewsItem extends DatabaseObject {
 	 * @return	NewsItemCommentableObject
 	 */
 	public function getCommentableObject() {
-		require_once(WSIS_DIR.'lib/data/news/NewsItemCommentableObject.class.php');
+		require_once(MOXEO_DIR.'lib/data/news/NewsItemCommentableObject.class.php');
 		return new NewsItemCommentableObject(null, $this->data);
 	}
 	
@@ -117,7 +117,7 @@ class NewsItem extends DatabaseObject {
 	 */
 	public static function getNewsItemByAlias($newsItemAlias) {
 		$sql = "SELECT		news_item.*, user_table.username
-			FROM		wsis".WSIS_N."_news_item news_item
+			FROM		moxeo".MOXEO_N."_news_item news_item
 			LEFT JOIN	wcf".WCF_N."_user user_table
 			ON		(user_table.userID = news_item.userID)
 			WHERE 		news_item.newsItemAlias = '".escapeString($newsItemAlias)."'";

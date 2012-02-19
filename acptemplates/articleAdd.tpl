@@ -1,9 +1,9 @@
 {include file='header'}
 
 <div class="mainHeadline">
-	<img src="{@RELATIVE_WSIS_DIR}icon/article{@$action|ucfirst}L.png" alt="" />
+	<img src="{@RELATIVE_MOXEO_DIR}icon/article{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}wsis.acp.article.{@$action}{/lang}</h2>
+		<h2>{lang}moxeo.acp.article.{@$action}{/lang}</h2>
 		{if $contentItemID}<p>{$contentItem->title}</p>{/if}
 	</div>
 </div>
@@ -13,13 +13,13 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}wsis.acp.article.{@$action}.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.article.{@$action}.success{/lang}</p>	
 {/if}
 
 <div class="contentHeader">
 	<div class="largeButtons">
 		<ul>
-			<li><a href="index.php?page=ArticleList{if $contentItem}&amp;contentItemID={@$contentItem->contentItemID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.article.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/articleM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.article.view{/lang}</span></a></li>
+			<li><a href="index.php?page=ArticleList{if $contentItem}&amp;contentItemID={@$contentItem->contentItemID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.menu.link.content.article.view{/lang}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleM.png" alt="" /> <span>{lang}moxeo.acp.menu.link.content.article.view{/lang}</span></a></li>
 			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
 		</ul>
 	</div>
@@ -28,10 +28,10 @@
 {if $action == 'add'}
 	{if $contentItemOptions|count}
 		<fieldset>
-			<legend>{lang}wsis.acp.article.contentItem{/lang}</legend>
+			<legend>{lang}moxeo.acp.article.contentItem{/lang}</legend>
 			<div class="formElement" id="contentItemIDDiv">
 				<div class="formFieldLabel">
-					<label for="contentItemChange">{lang}wsis.acp.article.contentItemID{/lang}</label>
+					<label for="contentItemChange">{lang}moxeo.acp.article.contentItemID{/lang}</label>
 				</div>
 				<div class="formField">
 					<select id="contentItemChange" onchange="document.location.href=fixURL('index.php?form=ArticleAdd&amp;contentItemID='+this.options[this.selectedIndex].value+'&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}')">
@@ -40,7 +40,7 @@
 					</select>
 				</div>
 				<div class="formFieldDesc hidden" id="contentItemIDHelpMessage">
-					{lang}wsis.acp.article.contentItemID.description{/lang}
+					{lang}moxeo.acp.article.contentItemID.description{/lang}
 				</div>
 			</div>
 			<script type="text/javascript">//<![CDATA[
@@ -50,7 +50,7 @@
 	{else}
 		<div class="border content">
 			<div class="container-1">
-				<p>{lang}wsis.acp.article.view.count.noContentItems{/lang}</p>
+				<p>{lang}moxeo.acp.article.view.count.noContentItems{/lang}</p>
 			</div>
 		</div>
 	{/if}
@@ -61,17 +61,17 @@
 		<div class="border content">
 			<div class="container-1">
 				<fieldset>
-					<legend>{lang}wsis.acp.article.classification{/lang}</legend>
+					<legend>{lang}moxeo.acp.article.classification{/lang}</legend>
 					
 					<div class="formElement" id="showOrderDiv">
 						<div class="formFieldLabel">
-							<label for="showOrder">{lang}wsis.acp.article.showOrder{/lang}</label>
+							<label for="showOrder">{lang}moxeo.acp.article.showOrder{/lang}</label>
 						</div>
 						<div class="formField">	
 							<input type="text" class="inputText" name="showOrder" id="showOrder" value="{$showOrder}" />
 						</div>
 						<div class="formFieldDesc hidden" id="showOrderHelpMessage">
-							{lang}wsis.acp.article.showOrder.description{/lang}
+							{lang}moxeo.acp.article.showOrder.description{/lang}
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -82,11 +82,11 @@
 				</fieldset>
 						
 				<fieldset>
-					<legend>{lang}wsis.acp.article.data{/lang}</legend>
+					<legend>{lang}moxeo.acp.article.data{/lang}</legend>
 					
 					<div class="formElement{if $errorField == 'title'} formError{/if}" id="titleDiv">
 						<div class="formFieldLabel">
-							<label for="title">{lang}wsis.acp.article.title{/lang}</label>
+							<label for="title">{lang}moxeo.acp.article.title{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="title" name="title" value="{$title}" />
@@ -97,7 +97,7 @@
 							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="titleHelpMessage">
-							<p>{lang}wsis.acp.article.title.description{/lang}</p>
+							<p>{lang}moxeo.acp.article.title.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -106,7 +106,7 @@
 					
 					<div class="formElement" id="themeModulePositionDiv">
 						<div class="formFieldLabel">
-							<label for="themeModulePosition">{lang}wsis.acp.article.themeModulePosition{/lang}</label>
+							<label for="themeModulePosition">{lang}moxeo.acp.article.themeModulePosition{/lang}</label>
 						</div>
 						<div class="formField">
 							<select name="themeModulePosition" id="position">
@@ -116,7 +116,7 @@
 							</select>
 						</div>
 						<div class="formFieldDesc hidden" id="themeModulePositionHelpMessage">
-							{lang}wsis.acp.article.themeModulePosition.description{/lang}
+							{lang}moxeo.acp.article.themeModulePosition.description{/lang}
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -127,17 +127,17 @@
 				</fieldset>
 				
 				<fieldset>
-					<legend>{lang}wsis.acp.article.display{/lang}</legend>
+					<legend>{lang}moxeo.acp.article.display{/lang}</legend>
 					
 					<div class="formElement" id="cssIDDiv">
 						<div class="formFieldLabel">
-							<label for="cssID">{lang}wsis.acp.article.cssID{/lang}</label>
+							<label for="cssID">{lang}moxeo.acp.article.cssID{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="cssID" name="cssID" value="{$cssID}" />
 						</div>
 						<div class="formFieldDesc hidden" id="cssIDHelpMessage">
-							{lang}wsis.acp.article.cssID.description{/lang}
+							{lang}moxeo.acp.article.cssID.description{/lang}
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -146,13 +146,13 @@
 					
 					<div class="formElement" id="cssClassesDiv">
 						<div class="formFieldLabel">
-							<label for="cssClasses">{lang}wsis.acp.article.cssClasses{/lang}</label>
+							<label for="cssClasses">{lang}moxeo.acp.article.cssClasses{/lang}</label>
 						</div>
 						<div class="formField">
 							<input type="text" class="inputText" id="cssClasses" name="cssClasses" value="{$cssClasses}" />
 						</div>
 						<div class="formFieldDesc hidden" id="cssClassesHelpMessage">
-							{lang}wsis.acp.article.cssClasses.description{/lang}
+							{lang}moxeo.acp.article.cssClasses.description{/lang}
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[

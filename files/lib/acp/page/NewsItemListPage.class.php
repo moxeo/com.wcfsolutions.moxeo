@@ -1,7 +1,7 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/news/NewsItemList.class.php');
-require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/news/NewsItemList.class.php');
+require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/page/SortablePage.class.php');
@@ -137,7 +137,7 @@ class NewsItemListPage extends SortablePage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('wsis.acp.menu.link.content.newsItem.view');
+		WCFACP::getMenu()->setActiveMenuItem('moxeo.acp.menu.link.content.newsItem.view');
 		
 		parent::show();
 	}

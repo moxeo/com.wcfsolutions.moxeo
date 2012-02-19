@@ -1,7 +1,7 @@
 <form method="get" action="{$additionalData.contentItem->getURL()}">
 	<div class="formElement">
 		<div class="formFieldLabel">
-			<label for="q">{lang}wsis.search.query{/lang}</label>
+			<label for="q">{lang}moxeo.search.query{/lang}</label>
 		</div>
 		<div class="formField">
 			<input type="text" class="inputText" name="q" id="q" value="{$query}" />
@@ -13,7 +13,7 @@
 </form>
 
 {if $query}
-	<h2>{lang}wsis.search.results{/lang}</h2>
+	<h2>{lang}moxeo.search.results{/lang}</h2>
 	
 	{pages print=true assign=pagesOutput link=$contentItem->getURL()|concat:'?pageNo=%d&q=':$query:SID_ARG_2ND_NOT_ENCODED}
 	
@@ -29,7 +29,7 @@
 			{/foreach}
 		</ul>
 	{else}
-		{lang}wsis.search.error.noMatches{/lang}
+		{lang}moxeo.search.error.noMatches{/lang}
 	{/if}
 	
 	{@$pagesOutput}

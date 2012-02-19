@@ -8,9 +8,9 @@
 </script>
 
 <div class="mainHeadline">
-	<img src="{@RELATIVE_WSIS_DIR}icon/contentItem{@$action|ucfirst}L.png" alt="" />
+	<img src="{@RELATIVE_MOXEO_DIR}icon/contentItem{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}wsis.acp.contentItem.{@$action}{/lang}</h2>
+		<h2>{lang}moxeo.acp.contentItem.{@$action}{/lang}</h2>
 		{if $contentItemID|isset}<p>{$contentItem->title}</p>{/if}
 	</div>
 </div>
@@ -20,22 +20,22 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{if $action == 'add'}{lang}wsis.acp.contentItem.add.success{/lang}{else}{lang}wsis.acp.contentItem.edit.success{/lang}{/if}</p>	
+	<p class="success">{if $action == 'add'}{lang}moxeo.acp.contentItem.add.success{/lang}{else}{lang}moxeo.acp.contentItem.edit.success{/lang}{/if}</p>	
 {/if}
 
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Suggestion.class.js"></script>
-<script type="text/javascript" src="{@RELATIVE_WSIS_DIR}acp/js/PermissionList.class.js"></script>
+<script type="text/javascript" src="{@RELATIVE_MOXEO_DIR}acp/js/PermissionList.class.js"></script>
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Calendar.class.js"></script>
 <script type="text/javascript">
 	//<![CDATA[
 	var language = new Object();
-	language['wsis.acp.contentItem.permissions.permissionsFor'] = '{staticlang}wsis.acp.contentItem.permissions.permissionsFor{/staticlang}';
-	language['wsis.acp.contentItem.permissions.fullControl'] = '{lang}wsis.acp.contentItem.permissions.fullControl{/lang}';
+	language['moxeo.acp.contentItem.permissions.permissionsFor'] = '{staticlang}moxeo.acp.contentItem.permissions.permissionsFor{/staticlang}';
+	language['moxeo.acp.contentItem.permissions.fullControl'] = '{lang}moxeo.acp.contentItem.permissions.fullControl{/lang}';
 	{foreach from=$permissionSettings item=permissionSetting}
-		language['wsis.acp.contentItem.permissions.{@$permissionSetting}'] = '{lang}wsis.acp.contentItem.permissions.{@$permissionSetting}{/lang}';
+		language['moxeo.acp.contentItem.permissions.{@$permissionSetting}'] = '{lang}moxeo.acp.contentItem.permissions.{@$permissionSetting}{/lang}';
 	{/foreach}
 	{foreach from=$adminSettings item=adminSetting}
-		language['wsis.acp.contentItem.permissions.{@$adminSetting}'] = '{lang}wsis.acp.contentItem.permissions.{@$adminSetting}{/lang}';
+		language['moxeo.acp.contentItem.permissions.{@$adminSetting}'] = '{lang}moxeo.acp.contentItem.permissions.{@$adminSetting}{/lang}';
 	{/foreach}
 	
 	var permissions = new Hash();
@@ -128,17 +128,17 @@
 
 <div class="contentHeader">
 	<div class="largeButtons">
-		<ul><li><a href="index.php?page=ContentItemList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsis.acp.menu.link.content.contentItem.view{/lang}"><img src="{@RELATIVE_WSIS_DIR}icon/contentItemM.png" alt="" /> <span>{lang}wsis.acp.menu.link.content.contentItem.view{/lang}</span></a></li></ul>
+		<ul><li><a href="index.php?page=ContentItemList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.menu.link.content.contentItem.view{/lang}"><img src="{@RELATIVE_MOXEO_DIR}icon/contentItemM.png" alt="" /> <span>{lang}moxeo.acp.menu.link.content.contentItem.view{/lang}</span></a></li></ul>
 	</div>
 </div>
 
 <form method="post" action="index.php?form=ContentItem{@$action|ucfirst}" id="contentItemAddForm">
 	{if $contentItemID|isset && $contentItemQuickJumpOptions|count > 1}
 		<fieldset>
-			<legend>{lang}wsis.acp.contentItem.edit{/lang}</legend>
+			<legend>{lang}moxeo.acp.contentItem.edit{/lang}</legend>
 			<div class="formElement">
 				<div class="formFieldLabel">
-					<label for="contentItemChange">{lang}wsis.acp.contentItem.edit{/lang}</label>
+					<label for="contentItemChange">{lang}moxeo.acp.contentItem.edit{/lang}</label>
 				</div>
 				<div class="formField">
 					<select id="contentItemChange" onchange="document.location.href=fixURL('index.php?form=ContentItemEdit&amp;contentItemID='+this.options[this.selectedIndex].value+'&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}')">
@@ -151,9 +151,9 @@
 	
 	<div class="tabMenu">
 		<ul>
-			<li id="data"><a onclick="tabMenu.showSubTabMenu('data');"><span>{lang}wsis.acp.contentItem.data{/lang}</span></a></li>
-			<li id="permissions"><a onclick="tabMenu.showSubTabMenu('permissions');"><span>{lang}wsis.acp.contentItem.permissions{/lang}</span></a></li>
-			{if $this->user->getPermission('admin.site.isContentItemAdmin')}<li id="admins"><a onclick="tabMenu.showSubTabMenu('admins');"><span>{lang}wsis.acp.contentItem.admins{/lang}</span></a></li>{/if}
+			<li id="data"><a onclick="tabMenu.showSubTabMenu('data');"><span>{lang}moxeo.acp.contentItem.data{/lang}</span></a></li>
+			<li id="permissions"><a onclick="tabMenu.showSubTabMenu('permissions');"><span>{lang}moxeo.acp.contentItem.permissions{/lang}</span></a></li>
+			{if $this->user->getPermission('admin.site.isContentItemAdmin')}<li id="admins"><a onclick="tabMenu.showSubTabMenu('admins');"><span>{lang}moxeo.acp.contentItem.admins{/lang}</span></a></li>{/if}
 			{if $additionalTabs|isset}{@$additionalTabs}{/if}
 		</ul>
 	</div>
@@ -163,27 +163,27 @@
 	
 	<div class="border tabMenuContent hidden" id="data-content">
 		<div class="container-1">
-			<h3 class="subHeadline">{lang}wsis.acp.contentItem.data{/lang}</h3>
+			<h3 class="subHeadline">{lang}moxeo.acp.contentItem.data{/lang}</h3>
 			
 			<fieldset>
-				<legend>{lang}wsis.acp.contentItem.contentItemType{/lang}</legend>
+				<legend>{lang}moxeo.acp.contentItem.contentItemType{/lang}</legend>
 				<div class="formElement">
 					<ul class="formOptions">
-						<li><label><input onclick="if (IS_SAFARI) setContentItemType(0)" onfocus="setContentItemType(0)" type="radio" name="contentItemType" value="0" {if $contentItemType == 0}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.0{/lang}</label></li>
-						<li><label><input onclick="if (IS_SAFARI) setContentItemType(1)" onfocus="setContentItemType(1)" type="radio" name="contentItemType" value="1" {if $contentItemType == 1}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.1{/lang}</label></li>
-						<li><label><input onclick="if (IS_SAFARI) setContentItemType(2)" onfocus="setContentItemType(2)" type="radio" name="contentItemType" value="2" {if $contentItemType == 2}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.2{/lang}</label></li>
-						<li><label><input onclick="if (IS_SAFARI) setContentItemType(3)" onfocus="setContentItemType(3)" type="radio" name="contentItemType" value="3" {if $contentItemType == 3}checked="checked" {/if}/> {lang}wsis.acp.contentItem.contentItemType.3{/lang}</label></li>
+						<li><label><input onclick="if (IS_SAFARI) setContentItemType(0)" onfocus="setContentItemType(0)" type="radio" name="contentItemType" value="0" {if $contentItemType == 0}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.0{/lang}</label></li>
+						<li><label><input onclick="if (IS_SAFARI) setContentItemType(1)" onfocus="setContentItemType(1)" type="radio" name="contentItemType" value="1" {if $contentItemType == 1}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.1{/lang}</label></li>
+						<li><label><input onclick="if (IS_SAFARI) setContentItemType(2)" onfocus="setContentItemType(2)" type="radio" name="contentItemType" value="2" {if $contentItemType == 2}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.2{/lang}</label></li>
+						<li><label><input onclick="if (IS_SAFARI) setContentItemType(3)" onfocus="setContentItemType(3)" type="radio" name="contentItemType" value="3" {if $contentItemType == 3}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.3{/lang}</label></li>
 					</ul>
 				</div>
 			</fieldset>
 			
 			<fieldset>
-				<legend>{lang}wsis.acp.contentItem.classification{/lang}</legend>
+				<legend>{lang}moxeo.acp.contentItem.classification{/lang}</legend>
 					
 				{if $contentItemOptions|count > 0}
 					<div class="formElement" id="parentIDDiv">
 						<div class="formFieldLabel">
-							<label for="parentID">{lang}wsis.acp.contentItem.parentID{/lang}</label>
+							<label for="parentID">{lang}moxeo.acp.contentItem.parentID{/lang}</label>
 						</div>
 						<div class="formField">
 							<select name="parentID" id="parentID">
@@ -192,7 +192,7 @@
 							</select>
 						</div>
 						<div class="formFieldDesc hidden" id="parentIDHelpMessage">
-							<p>{lang}wsis.acp.contentItem.parentID.description{/lang}</p>
+							<p>{lang}moxeo.acp.contentItem.parentID.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -202,13 +202,13 @@
 				
 				<div class="formElement" id="showOrderDiv">
 					<div class="formFieldLabel">
-						<label for="showOrder">{lang}wsis.acp.contentItem.showOrder{/lang}</label>
+						<label for="showOrder">{lang}moxeo.acp.contentItem.showOrder{/lang}</label>
 					</div>
 					<div class="formField">	
 						<input type="text" class="inputText" name="showOrder" id="showOrder" value="{$showOrder}" />
 					</div>
 					<div class="formFieldDesc hidden" id="showOrderHelpMessage">
-						{lang}wsis.acp.contentItem.showOrder.description{/lang}
+						{lang}moxeo.acp.contentItem.showOrder.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -217,10 +217,10 @@
 				
 				<div class="formElement" id="invisibleDiv">
 					<div class="formField">
-						<label id="invisible"><input type="checkbox" name="invisible" value="1" {if $invisible}checked="checked" {/if}/> {lang}wsis.acp.contentItem.invisible{/lang}</label>
+						<label id="invisible"><input type="checkbox" name="invisible" value="1" {if $invisible}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.invisible{/lang}</label>
 					</div>
 					<div class="formFieldDesc hidden" id="invisibleHelpMessage">
-						<p>{lang}wsis.acp.contentItem.invisible.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.invisible.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -231,11 +231,11 @@
 			</fieldset>
 			
 			<fieldset>
-				<legend>{lang}wsis.acp.contentItem.data{/lang}</legend>
+				<legend>{lang}moxeo.acp.contentItem.data{/lang}</legend>
 				
 				<div class="formElement" id="languageIDDiv">
 					<div class="formFieldLabel">
-						<label for="languageID">{lang}wsis.acp.contentItem.language{/lang}</label>
+						<label for="languageID">{lang}moxeo.acp.contentItem.language{/lang}</label>
 					</div>
 					<div class="formField">
 						<select name="languageID" id="languageID">
@@ -245,7 +245,7 @@
 						</select>
 					</div>
 					<div class="formFieldDesc hidden" id="languageIDHelpMessage">
-						{lang}wsis.acp.contentItem.language.description{/lang}
+						{lang}moxeo.acp.contentItem.language.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -254,7 +254,7 @@
 				
 				<div class="formElement{if $errorField == 'title'} formError{/if}" id="titleDiv">
 					<div class="formFieldLabel">
-						<label for="title">{lang}wsis.acp.contentItem.title{/lang}</label>
+						<label for="title">{lang}moxeo.acp.contentItem.title{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="title" name="title" value="{$title}" />
@@ -265,7 +265,7 @@
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="titleHelpMessage">
-						<p>{lang}wsis.acp.contentItem.title.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.title.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -274,7 +274,7 @@
 				
 				<div class="formElement{if $errorField == 'contentItemAlias'} formError{/if}" id="contentItemAliasDiv">
 					<div class="formFieldLabel">
-						<label for="contentItemAlias">{lang}wsis.acp.contentItem.contentItemAlias{/lang}</label>
+						<label for="contentItemAlias">{lang}moxeo.acp.contentItem.contentItemAlias{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="contentItemAlias" name="contentItemAlias" value="{$contentItemAlias}" />
@@ -285,7 +285,7 @@
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="contentItemAliasHelpMessage">
-						<p>{lang}wsis.acp.contentItem.contentItemAlias.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.contentItemAlias.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -294,13 +294,13 @@
 				
 				<div class="formElement" id="descriptionDiv">
 					<div class="formFieldLabel">
-						<label for="description">{lang}wsis.acp.contentItem.description{/lang}</label>
+						<label for="description">{lang}moxeo.acp.contentItem.description{/lang}</label>
 					</div>
 					<div class="formField">
 						<textarea id="description" name="description" cols="40" rows="5">{$description}</textarea>
 					</div>
 					<div class="formFieldDesc hidden" id="descriptionHelpMessage">
-						<p>{lang}wsis.acp.contentItem.description.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.description.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -309,7 +309,7 @@
 				
 				<div class="formElement{if $errorField == 'externalURL'} formError{/if}" id="externalURLDiv">
 					<div class="formFieldLabel">
-						<label for="externalURL">{lang}wsis.acp.contentItem.externalURL{/lang}</label>
+						<label for="externalURL">{lang}moxeo.acp.contentItem.externalURL{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="externalURL" name="externalURL" value="{$externalURL}" />
@@ -320,7 +320,7 @@
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="externalURLHelpMessage">
-						<p>{lang}wsis.acp.contentItem.externalURL.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.externalURL.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -329,10 +329,10 @@
 				
 				<div class="formElement" id="addSecurityTokenDiv">
 					<div class="formField">
-						<label id="addSecurityToken"><input type="checkbox" name="addSecurityToken" value="1" {if $addSecurityToken}checked="checked" {/if}/> {lang}wsis.acp.contentItem.addSecurityToken{/lang}</label>
+						<label id="addSecurityToken"><input type="checkbox" name="addSecurityToken" value="1" {if $addSecurityToken}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.addSecurityToken{/lang}</label>
 					</div>
 					<div class="formFieldDesc hidden" id="addSecurityTokenHelpMessage">
-						<p>{lang}wsis.acp.contentItem.addSecurityToken.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.addSecurityToken.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -343,17 +343,17 @@
 			</fieldset>
 			
 			<fieldset id="meta">
-				<legend>{lang}wsis.acp.contentItem.meta{/lang}</legend>
+				<legend>{lang}moxeo.acp.contentItem.meta{/lang}</legend>
 				
 				<div class="formElement" id="pageTitleDiv">
 					<div class="formFieldLabel">
-						<label for="pageTitle">{lang}wsis.acp.contentItem.pageTitle{/lang}</label>
+						<label for="pageTitle">{lang}moxeo.acp.contentItem.pageTitle{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="pageTitle" name="pageTitle" value="{$contentItemPageTitle}" />
 					</div>
 					<div class="formFieldDesc hidden" id="pageTitleHelpMessage">
-						<p>{lang}wsis.acp.contentItem.pageTitle.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.pageTitle.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -362,13 +362,13 @@
 				
 				<div class="formElement" id="metaDescriptionDiv">
 					<div class="formFieldLabel">
-						<label for="metaDescription">{lang}wsis.acp.contentItem.metaDescription{/lang}</label>
+						<label for="metaDescription">{lang}moxeo.acp.contentItem.metaDescription{/lang}</label>
 					</div>
 					<div class="formField">
 						<textarea id="metaDescription" name="metaDescription" cols="40" rows="5">{$metaDescription}</textarea>
 					</div>
 					<div class="formFieldDesc hidden" id="metaDescriptionHelpMessage">
-						<p>{lang}wsis.acp.contentItem.metaDescription.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.metaDescription.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -377,13 +377,13 @@
 				
 				<div class="formElement" id="metaKeywordsDiv">
 					<div class="formFieldLabel">
-						<label for="metaKeywords">{lang}wsis.acp.contentItem.metaKeywords{/lang}</label>
+						<label for="metaKeywords">{lang}moxeo.acp.contentItem.metaKeywords{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="metaKeywords" name="metaKeywords" value="{$metaKeywords}" />
 					</div>
 					<div class="formFieldDesc hidden" id="metaKeywordsHelpMessage">
-						<p>{lang}wsis.acp.contentItem.metaKeywords.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.metaKeywords.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -392,7 +392,7 @@
 				
 				<div class="formElement" id="robotsDiv">
 					<div class="formFieldLabel">
-						<label for="robots">{lang}wsis.acp.contentItem.robots{/lang}</label>
+						<label for="robots">{lang}moxeo.acp.contentItem.robots{/lang}</label>
 					</div>
 					<div class="formField">
 						<select name="robots" id="robots">
@@ -403,7 +403,7 @@
 						</select>
 					</div>
 					<div class="formFieldDesc hidden" id="robotsHelpMessage">
-						<p>{lang}wsis.acp.contentItem.robots.description{/lang}</p>
+						<p>{lang}moxeo.acp.contentItem.robots.description{/lang}</p>
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -414,12 +414,12 @@
 			</fieldset>
 			
 			<fieldset>
-				<legend>{lang}wsis.acp.contentItem.display{/lang}</legend>
+				<legend>{lang}moxeo.acp.contentItem.display{/lang}</legend>
 				
 				{if $themeLayoutOptions|count > 0}
 					<div class="formElement" id="themeLayoutIDDiv">
 						<div class="formFieldLabel">
-							<label for="themeLayoutID">{lang}wsis.acp.contentItem.themeLayoutID{/lang}</label>
+							<label for="themeLayoutID">{lang}moxeo.acp.contentItem.themeLayoutID{/lang}</label>
 						</div>
 						<div class="formField">
 							<select name="themeLayoutID" id="themeLayoutID">
@@ -428,7 +428,7 @@
 							</select>
 						</div>
 						<div class="formFieldDesc hidden" id="themeLayoutIDHelpMessage">
-							<p>{lang}wsis.acp.contentItem.themeLayoutID.description{/lang}</p>
+							<p>{lang}moxeo.acp.contentItem.themeLayoutID.description{/lang}</p>
 						</div>
 					</div>
 					<script type="text/javascript">//<![CDATA[
@@ -438,13 +438,13 @@
 				
 				<div class="formElement" id="cssClassesDiv">
 					<div class="formFieldLabel">
-						<label for="cssClasses">{lang}wsis.acp.contentItem.cssClasses{/lang}</label>
+						<label for="cssClasses">{lang}moxeo.acp.contentItem.cssClasses{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="cssClasses" name="cssClasses" value="{$cssClasses}" />
 					</div>
 					<div class="formFieldDesc hidden" id="cssClassesHelpMessage">
-						{lang}wsis.acp.contentItem.cssClasses.description{/lang}
+						{lang}moxeo.acp.contentItem.cssClasses.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
@@ -455,15 +455,15 @@
 			</fieldset>
 					
 			<fieldset id="publishing">
-				<legend>{lang}wsis.acp.contentItem.publishingTime{/lang}</legend>
+				<legend>{lang}moxeo.acp.contentItem.publishingTime{/lang}</legend>
 				
 				<div class="formGroup{if $errorField == 'publishingStartTime'} formError{/if}" id="publishingStartTimeDiv">
 					<div class="formGroupLabel">
-						<label>{lang}wsis.acp.contentItem.publishingStartTime{/lang}</label>
+						<label>{lang}moxeo.acp.contentItem.publishingStartTime{/lang}</label>
 					</div>
 					<div class="formGroupField">
 						<fieldset>
-							<legend><label>{lang}wsis.acp.contentItem.publishingStartTime{/lang}</label></legend>
+							<legend><label>{lang}moxeo.acp.contentItem.publishingStartTime{/lang}</label></legend>
 				
 							<div class="formField">
 								<div class="floatedElement">
@@ -503,13 +503,13 @@
 								
 								{if $errorField == 'publishingStartTime'}
 									<p class="floatedElement innerError">
-										{if $errorType == 'invalid'}{lang}wsis.acp.contentItem.publishingStartTime.error.invalid{/lang}{/if}
+										{if $errorType == 'invalid'}{lang}moxeo.acp.contentItem.publishingStartTime.error.invalid{/lang}{/if}
 									</p>
 								{/if}
 							</div>
 							
 							<div class="formFieldDesc hidden" id="publishingStartTimeHelpMessage">
-								<p>{lang}wsis.acp.contentItem.publishingStartTime.description{/lang}</p>
+								<p>{lang}moxeo.acp.contentItem.publishingStartTime.description{/lang}</p>
 							</div>
 						</fieldset>
 					</div>
@@ -520,11 +520,11 @@
 				
 				<div class="formGroup{if $errorField == 'publishingEndTime'} formError{/if}" id="publishingEndTimeDiv">
 					<div class="formGroupLabel">
-						<label>{lang}wsis.acp.contentItem.publishingEndTime{/lang}</label>
+						<label>{lang}moxeo.acp.contentItem.publishingEndTime{/lang}</label>
 					</div>
 					<div class="formGroupField">
 						<fieldset>
-							<legend><label>{lang}wsis.acp.contentItem.publishingEndTime{/lang}</label></legend>
+							<legend><label>{lang}moxeo.acp.contentItem.publishingEndTime{/lang}</label></legend>
 							
 							<div class="formField">
 								<div class="floatedElement">
@@ -564,13 +564,13 @@
 								
 								{if $errorField == 'publishingEndTime'}
 									<p class="floatedElement innerError">
-										{if $errorType == 'invalid'}{lang}wsis.acp.contentItem.publishingEndTime.error.invalid{/lang}{/if}
+										{if $errorType == 'invalid'}{lang}moxeo.acp.contentItem.publishingEndTime.error.invalid{/lang}{/if}
 									</p>
 								{/if}
 							</div>
 							
 							<div class="formFieldDesc hidden" id="publishingEndTimeHelpMessage">
-								<p>{lang}wsis.acp.contentItem.publishingEndTime.description{/lang}</p>
+								<p>{lang}moxeo.acp.contentItem.publishingEndTime.description{/lang}</p>
 							</div>
 						</fieldset>
 					</div>
@@ -584,14 +584,14 @@
 	
 	<div class="border tabMenuContent hidden" id="permissions-content">
 		<div class="container-1">
-			<h3 class="subHeadline">{lang}wsis.acp.contentItem.permissions{/lang}</h3>
+			<h3 class="subHeadline">{lang}moxeo.acp.contentItem.permissions{/lang}</h3>
 			
 			<fieldset id="permissions">
-				<legend>{lang}wsis.acp.contentItem.permissions{/lang}</legend>
+				<legend>{lang}moxeo.acp.contentItem.permissions{/lang}</legend>
 					
 				<div class="formElement">
 					<div class="formFieldLabel" id="permissionTitle">
-						{lang}wsis.acp.contentItem.permissions.title{/lang}
+						{lang}moxeo.acp.contentItem.permissions.title{/lang}
 					</div>
 					<div class="formField"><div id="permission" class="accessRights"></div></div>
 				</div>
@@ -605,7 +605,7 @@
 							suggestion.init('permissionAddInput');
 							//]]>
 						</script>
-						<input id="permissionAddButton" type="button" value="{lang}wsis.acp.contentItem.permissions.add{/lang}" />
+						<input id="permissionAddButton" type="button" value="{lang}moxeo.acp.contentItem.permissions.add{/lang}" />
 					</div>
 				</div>
 					
@@ -615,8 +615,8 @@
 					</div>
 					<div class="formField">
 						<div id="permissionHeader" class="accessRightsHeader">
-							<span class="deny">{lang}wsis.acp.contentItem.permissions.deny{/lang}</span>
-							<span class="allow">{lang}wsis.acp.contentItem.permissions.allow{/lang}</span>
+							<span class="deny">{lang}moxeo.acp.contentItem.permissions.deny{/lang}</span>
+							<span class="allow">{lang}moxeo.acp.contentItem.permissions.allow{/lang}</span>
 						</div>
 						<div id="permissionSettings" class="accessRights"></div>
 					</div>
@@ -630,14 +630,14 @@
 	{if $this->user->getPermission('admin.site.isContentItemAdmin')}
 		<div class="border tabMenuContent hidden" id="admins-content">
 			<div class="container-1">
-				<h3 class="subHeadline">{lang}wsis.acp.contentItem.admins{/lang}</h3>
+				<h3 class="subHeadline">{lang}moxeo.acp.contentItem.admins{/lang}</h3>
 				
 				<fieldset id="admins">
-					<legend>{lang}wsis.acp.contentItem.admins{/lang}</legend>
+					<legend>{lang}moxeo.acp.contentItem.admins{/lang}</legend>
 						
 					<div class="formElement">
 						<div class="formFieldLabel" id="adminTitle">
-							{lang}wsis.acp.contentItem.permissions.title{/lang}
+							{lang}moxeo.acp.contentItem.permissions.title{/lang}
 						</div>
 						<div class="formField"><div id="admin" class="accessRights"></div></div>
 					</div>
@@ -649,7 +649,7 @@
 								suggestion.init('adminAddInput');
 								//]]>
 							</script>
-							<input id="adminAddButton" type="button" value="{lang}wsis.acp.contentItem.permissions.add{/lang}" />
+							<input id="adminAddButton" type="button" value="{lang}moxeo.acp.contentItem.permissions.add{/lang}" />
 						</div>
 					</div>
 						
@@ -659,8 +659,8 @@
 						</div>
 						<div class="formField">
 							<div id="adminHeader" class="accessRightsHeader">
-								<span class="deny">{lang}wsis.acp.contentItem.permissions.deny{/lang}</span>
-								<span class="allow">{lang}wsis.acp.contentItem.permissions.allow{/lang}</span>
+								<span class="deny">{lang}moxeo.acp.contentItem.permissions.deny{/lang}</span>
+								<span class="allow">{lang}moxeo.acp.contentItem.permissions.allow{/lang}</span>
 							</div>
 							<div id="adminSettings" class="accessRights"></div>
 						</div>

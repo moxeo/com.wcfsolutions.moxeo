@@ -1,6 +1,6 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/news/archive/NewsArchive.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
@@ -11,9 +11,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news.archive
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class NewsArchiveList extends DatabaseObjectList {
 	/**
@@ -35,7 +35,7 @@ class NewsArchiveList extends DatabaseObjectList {
 	 */
 	public function countObjects() {
 		$sql = "SELECT	COUNT(*) AS count
-			FROM	wsis".WSIS_N."_news_archive news_archive
+			FROM	moxeo".MOXEO_N."_news_archive news_archive
 			".(!empty($this->sqlConditions) ? "WHERE ".$this->sqlConditions : '');
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
@@ -47,8 +47,8 @@ class NewsArchiveList extends DatabaseObjectList {
 	public function readObjects() {
 		$sql = "SELECT		".(!empty($this->sqlSelects) ? $this->sqlSelects.',' : '')."
 					news_archive.*,
-					(SELECT COUNT(*) FROM wsis".WSIS_N."_news_item WHERE newsArchiveID = news_archive.newsArchiveID) AS newsItems
-			FROM		wsis".WSIS_N."_news_archive news_archive
+					(SELECT COUNT(*) FROM moxeo".MOXEO_N."_news_item WHERE newsArchiveID = news_archive.newsArchiveID) AS newsItems
+			FROM		moxeo".MOXEO_N."_news_archive news_archive
 			".$this->sqlJoins."
 			".(!empty($this->sqlConditions) ? "WHERE ".$this->sqlConditions : '')."
 			".(!empty($this->sqlOrderBy) ? "ORDER BY ".$this->sqlOrderBy : '');

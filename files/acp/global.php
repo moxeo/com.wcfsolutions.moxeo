@@ -5,7 +5,7 @@
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
 // define paths
-define('RELATIVE_WSIS_DIR', '../');
+define('RELATIVE_MOXEO_DIR', '../');
 
 // include config
 $packageDirs = array();
@@ -13,10 +13,10 @@ require_once(dirname(dirname(__FILE__)).'/config.inc.php');
 
 // include wcf
 require_once(RELATIVE_WCF_DIR.'global.php');
-if (!count($packageDirs)) $packageDirs[] = WSIS_DIR;
+if (!count($packageDirs)) $packageDirs[] = MOXEO_DIR;
 $packageDirs[] = WCF_DIR;
 
-// starting wsis acp
-require_once(WSIS_DIR.'lib/system/WSISACP.class.php');
-new WSISACP();
+// starting moxeo acp
+require_once(MOXEO_DIR.'lib/system/MOXEOACP.class.php');
+new MOXEOACP();
 ?>

@@ -12,7 +12,7 @@
 				<categoryname>general.page</categoryname>
 				<optiontype>text</optiontype>
 				<showorder>1</showorder>
-				<defaultvalue>WCF Solutions Infinite Site</defaultvalue>
+				<defaultvalue>Moxeo Open Source CMS</defaultvalue>
 			</option>
 			<option name="page_url">
 				<categoryname>general.page</categoryname>

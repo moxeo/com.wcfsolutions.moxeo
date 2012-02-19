@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	system.cache
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class CacheBuilderArticleSectionTypes implements CacheBuilder {
 	/**
@@ -20,7 +20,7 @@ class CacheBuilderArticleSectionTypes implements CacheBuilder {
 		$data = array();
 		
 		$sql = "SELECT	*
-			FROM	wsis".WSIS_N."_article_section_type";
+			FROM	moxeo".MOXEO_N."_article_section_type";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$row['className'] = StringUtil::getClassName($row['classFile']);

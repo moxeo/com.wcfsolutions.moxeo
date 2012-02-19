@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.comment
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class Comment extends DatabaseObject {
 	/**
@@ -36,7 +36,7 @@ class Comment extends DatabaseObject {
 	public function __construct($commentID, $row = null) {
 		if ($commentID !== null) {
 			$sql = "SELECT	*
-				FROM 	wsis".WSIS_N."_comment
+				FROM 	moxeo".MOXEO_N."_comment
 				WHERE 	commentID = ".$commentID;
 			$row = WCF::getDB()->getFirstRow($sql);
 		}
@@ -58,7 +58,7 @@ class Comment extends DatabaseObject {
 	 * @return	CommentEditor
 	 */
 	public function getEditor() {
-		require_once(WSIS_DIR.'lib/data/comment/CommentEditor.class.php');
+		require_once(MOXEO_DIR.'lib/data/comment/CommentEditor.class.php');
 		return new CommentEditor(null, $this->data);
 	}
 	
@@ -125,7 +125,7 @@ class Comment extends DatabaseObject {
 	 */
 	public static function getCommentableObjectTypes() {
 		if (self::$commentableObjectTypes === null) {
-			WCF::getCache()->addResource('commentableObjectTypes', WSIS_DIR.'cache/cache.commentableObjectTypes.php', WSIS_DIR.'lib/system/cache/CacheBuilderCommentableObjectTypes.class.php');
+			WCF::getCache()->addResource('commentableObjectTypes', MOXEO_DIR.'cache/cache.commentableObjectTypes.php', MOXEO_DIR.'lib/system/cache/CacheBuilderCommentableObjectTypes.class.php');
 			self::$commentableObjectTypes = WCF::getCache()->get('commentableObjectTypes');
 		}
 		return self::$commentableObjectTypes;
@@ -141,7 +141,7 @@ class Comment extends DatabaseObject {
 			$types = self::getCommentableObjectTypes();
 			foreach ($types as $type) {
 				// get path to class file
-				$path = WSIS_DIR.$type['classFile'];
+				$path = MOXEO_DIR.$type['classFile'];
 				
 				// include class file
 				if (!class_exists($type['className'])) {

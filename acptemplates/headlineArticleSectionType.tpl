@@ -1,9 +1,9 @@
 <fieldset>
-	<legend>{lang}wsis.acp.article.section.headline{/lang}</legend>
+	<legend>{lang}moxeo.acp.article.section.headline{/lang}</legend>
 	
 	<div class="formElement{if $errorField == 'headline'} formError{/if}" id="headlineDiv">
 		<div class="formFieldLabel">
-			<label for="headline">{lang}wsis.acp.article.section.headline{/lang}</label>
+			<label for="headline">{lang}moxeo.acp.article.section.headline{/lang}</label>
 		</div>
 		<div class="formField">
 			<input type="text" class="inputText" id="headline" name="headline" value="{$headline}" />
@@ -14,7 +14,7 @@
 			{/if}
 		</div>
 		<div class="formFieldDesc hidden" id="headlineHelpMessage">
-			<p>{lang}wsis.acp.article.section.headline.description{/lang}</p>
+			<p>{lang}moxeo.acp.article.section.headline.description{/lang}</p>
 		</div>
 	</div>
 	<script type="text/javascript">//<![CDATA[
@@ -23,7 +23,7 @@
 	
 	<div class="formElement{if $errorField == 'headlineSize'} formError{/if}" id="headlineSizeDiv">
 		<div class="formFieldLabel">
-			<label for="headlineSize">{lang}wsis.acp.article.section.headlineSize{/lang}</label>
+			<label for="headlineSize">{lang}moxeo.acp.article.section.headlineSize{/lang}</label>
 		</div>
 		<div class="formField">
 			<select name="headlineSize" id="headlineSize">
@@ -38,7 +38,7 @@
 			{/if}
 		</div>
 		<div class="formFieldDesc hidden" id="headlineSizeHelpMessage">
-			<p>{lang}wsis.acp.article.section.headlineSize.description{/lang}</p>
+			<p>{lang}moxeo.acp.article.section.headlineSize.description{/lang}</p>
 		</div>
 	</div>
 	<script type="text/javascript">//<![CDATA[

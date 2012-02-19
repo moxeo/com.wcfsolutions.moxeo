@@ -5,7 +5,7 @@
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
 try {
-	// include wcf/wsis
+	// include wcf/moxeo
 	require_once('./global.php');	
 	
 	// execute cronjobs

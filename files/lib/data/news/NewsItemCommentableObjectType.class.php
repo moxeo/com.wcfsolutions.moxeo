@@ -1,7 +1,7 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/comment/object/CommentableObjectType.class.php');
-require_once(WSIS_DIR.'lib/data/news/NewsItemCommentableObject.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/comment/object/CommentableObjectType.class.php');
+require_once(MOXEO_DIR.'lib/data/news/NewsItemCommentableObject.class.php');
 
 /**
  * Represents a news item commentable object type.
@@ -9,9 +9,9 @@ require_once(WSIS_DIR.'lib/data/news/NewsItemCommentableObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class NewsItemCommentableObjectType implements CommentableObjectType {	
 	/**
@@ -32,7 +32,7 @@ class NewsItemCommentableObjectType implements CommentableObjectType {
 	public function getObjectsByIDs($objectIDs) {
 		$newsItems = array();
 		$sql = "SELECT	*
-			FROM 	wsis".WSIS_N."_news_item
+			FROM 	moxeo".MOXEO_N."_news_item
 			WHERE 	newsItemID IN (".implode(',', $objectIDs).")";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {

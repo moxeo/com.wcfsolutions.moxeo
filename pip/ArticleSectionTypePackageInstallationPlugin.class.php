@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/acp/package/plugin/AbstractXMLPackageInstallationPlugi
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.php>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.package.plugin
- * @category 	Infinite Site
+ * @category 	Moxeo Open Source CMS
  */
 class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInstallationPlugin {
 	public $tagName = 'articlesectiontype';
@@ -54,7 +54,7 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 						if (isset($articleSectionType['classfile'])) $classFile = $articleSectionType['classfile'];
 						
 						// insert items
-						$sql = "INSERT INTO			wsis".$instanceNo."_article_section_type
+						$sql = "INSERT INTO			moxeo".$instanceNo."_article_section_type
 											(packageID, articleSectionType, category, classFile)
 							VALUES				(".$this->installation->getPackageID().",
 											'".escapeString($name)."',
@@ -82,7 +82,7 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 						$nameArray[] = $articleSectionType['name'];
 					}
 					if (count($nameArray)) {
-						$sql = "DELETE FROM	wsis".$instanceNo."_article_section_type
+						$sql = "DELETE FROM	moxeo".$instanceNo."_article_section_type
 							WHERE		packageID = ".$this->installation->getPackageID()."
 									AND articleSectionType IN ('".implode("','", array_map('escapeString', $nameArray))."')";
 						WCF::getDB()->sendQuery($sql);
@@ -96,11 +96,11 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 	 * @see	PackageInstallationPlugin::hasUninstall()
 	 */
 	public function hasUninstall() {
-		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.wsis') {
+		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {
 			try {				
 				$instanceNo = WCF_N.'_'.$package->getInstanceNo();
 				$sql = "SELECT	COUNT(*) AS count
-					FROM	wsis".$instanceNo."_article_section_type
+					FROM	moxeo".$instanceNo."_article_section_type
 					WHERE	packageID = ".$this->installation->getPackageID();
 				$installationCount = WCF::getDB()->getFirstRow($sql);
 				return $installationCount['count'];
@@ -116,13 +116,13 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 	 * @see	PackageInstallationPlugin::uninstall()
 	 */
 	public function uninstall() {
-		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.wsis') {		
+		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {		
 			$instanceNo = WCF_N.'_'.$package->getInstanceNo();
 			
 			// get article section types
 			$articleSectionTypes = array();
 			$sql = "SELECT	articleSectionType
-				FROM	wsis".$instanceNo."_article_section_type
+				FROM	moxeo".$instanceNo."_article_section_type
 				WHERE	packageID = ".$this->installation->getPackageID();
 			$result = WCF::getDB()->sendQuery($sql);
 			while ($row = WCF::getDB()->fetchArray($result)) {
@@ -131,12 +131,12 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 			
 			if (count($articleSectionTypes)) {
 				// delete article sections
-				$sql = "DELETE FROM	wsis".$instanceNo."_article_section
+				$sql = "DELETE FROM	moxeo".$instanceNo."_article_section
 					WHERE		articleSectionType IN ('".implode("','", array_map('escapeString', $articleSectionTypes))."')";
 				WCF::getDB()->sendQuery($sql);			
 			
 				// delete article section types
-				$sql = "DELETE FROM	wsis".$instanceNo."_article_section_type
+				$sql = "DELETE FROM	moxeo".$instanceNo."_article_section_type
 					WHERE		packageID = ".$this->installation->getPackageID();
 				WCF::getDB()->sendQuery($sql);
 			}

@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/page/SortablePage.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.page
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class FileManagerPage extends SortablePage {
 	// system
@@ -105,7 +105,7 @@ class FileManagerPage extends SortablePage {
 		parent::assignVariables();
 		
 		// init file add form
-		require_once(WSIS_DIR.'lib/acp/form/FileManagerFileAddForm.class.php');
+		require_once(MOXEO_DIR.'lib/acp/form/FileManagerFileAddForm.class.php');
 		new FileManagerFileAddForm($this->dir, $this->path);
 		
 		WCF::getTPL()->assign(array(
@@ -121,7 +121,7 @@ class FileManagerPage extends SortablePage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('wsis.acp.menu.link.system.fileManager');
+		WCFACP::getMenu()->setActiveMenuItem('moxeo.acp.menu.link.system.fileManager');
 		
 		parent::show();
 	}

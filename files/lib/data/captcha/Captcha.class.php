@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.captcha
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class Captcha extends DatabaseObject {
 	/**
@@ -22,7 +22,7 @@ class Captcha extends DatabaseObject {
 	public function __construct($captchaID, $row = null) {
 		if ($captchaID !== null) {
 			$sql = "SELECT	*
-				FROM 	wsis".WSIS_N."_captcha
+				FROM 	moxeo".MOXEO_N."_captcha
 				WHERE 	captchaID = ".$captchaID;
 			$row = WCF::getDB()->getFirstRow($sql);
 		}
@@ -35,7 +35,7 @@ class Captcha extends DatabaseObject {
 	 * @return	string
 	 */
 	public function getQuestion() {
-		return WCF::getLanguage()->getDynamicVariable('wsis.captcha.question.question'.$this->questionNo, array('firstValue' => $this->firstValue, 'secondValue' => $this->secondValue));
+		return WCF::getLanguage()->getDynamicVariable('moxeo.captcha.question.question'.$this->questionNo, array('firstValue' => $this->firstValue, 'secondValue' => $this->secondValue));
 	}
 	
 	/**
@@ -80,7 +80,7 @@ class Captcha extends DatabaseObject {
 	 */
 	public function delete() {
 		if ($this->captchaID) {
-			$sql = "DELETE FROM	wsis".WSIS_N."_captcha
+			$sql = "DELETE FROM	moxeo".MOXEO_N."_captcha
 				WHERE		captchaID = ".$this->captchaID;
 			WCF::getDB()->sendQuery($sql);
 		}
@@ -97,11 +97,11 @@ class Captcha extends DatabaseObject {
 		$secondValue = MathUtil::getRandomValue(1, 10);
 		
 		// save new captcha
-		$sql = "INSERT INTO	wsis".WSIS_N."_captcha
+		$sql = "INSERT INTO	moxeo".MOXEO_N."_captcha
 					(questionNo, firstValue, secondValue, time)
 			VALUES		(".$questionNo.", ".$firstValue.", ".$secondValue.", ".TIME_NOW.")";
 		WCF::getDB()->sendQuery($sql);
-		return WCF::getDB()->getInsertID("wsis".WSIS_N."_captcha", 'captchaID');		
+		return WCF::getDB()->getInsertID("moxeo".MOXEO_N."_captcha", 'captchaID');		
 	}
 }
 ?>

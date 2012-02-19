@@ -30,27 +30,27 @@
 </script>
 
 <div class="mainHeadline">
-	<img src="{@RELATIVE_WSIS_DIR}icon/articleL.png" alt="" />
+	<img src="{@RELATIVE_MOXEO_DIR}icon/articleL.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}wsis.acp.article.view{/lang}</h2>
+		<h2>{lang}moxeo.acp.article.view{/lang}</h2>
 		{if $contentItemID}<p>{$contentItem->title}</p>{/if}
 	</div>
 </div>
 
 {if $deletedArticleID}
-	<p class="success">{lang}wsis.acp.article.delete.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.article.delete.success{/lang}</p>	
 {/if}
 
 {if $successfulSorting}
-	<p class="success">{lang}wsis.acp.article.sort.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.article.sort.success{/lang}</p>	
 {/if}
 
 {if $contentItemOptions|count}
 	<fieldset>
-		<legend>{lang}wsis.acp.article.contentItem{/lang}</legend>
+		<legend>{lang}moxeo.acp.article.contentItem{/lang}</legend>
 		<div class="formElement" id="contentItemDiv">
 			<div class="formFieldLabel">
-				<label for="contentItemChange">{lang}wsis.acp.article.contentItem{/lang}</label>
+				<label for="contentItemChange">{lang}moxeo.acp.article.contentItem{/lang}</label>
 			</div>
 			<div class="formField">
 				<select id="contentItemChange" onchange="document.location.href=fixURL('index.php?page=ArticleList&amp;contentItemID='+this.options[this.selectedIndex].value+'&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}')">
@@ -59,7 +59,7 @@
 				</select>
 			</div>
 			<div class="formFieldDesc hidden" id="contentItemHelpMessage">
-				{lang}wsis.acp.article.contentItem.description{/lang}
+				{lang}moxeo.acp.article.contentItem.description{/lang}
 			</div>
 		</div>
 		<script type="text/javascript">//<![CDATA[
@@ -69,7 +69,7 @@
 {else}
 	<div class="border content">
 		<div class="container-1">
-			<p>{lang}wsis.acp.article.view.count.noContentItems{/lang}</p>
+			<p>{lang}moxeo.acp.article.view.count.noContentItems{/lang}</p>
 		</div>
 	</div>
 {/if}
@@ -80,7 +80,7 @@
 		{if $this->user->getPermission('admin.site.canAddArticle')}
 			<div class="largeButtons">
 				<ul>
-					<li><a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WSIS_DIR}icon/articleAddM.png" alt="" title="{lang}wsis.acp.article.add{/lang}" /> <span>{lang}wsis.acp.article.add{/lang}</span></a></li>
+					<li><a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleAddM.png" alt="" title="{lang}moxeo.acp.article.add{/lang}" /> <span>{lang}moxeo.acp.article.add{/lang}</span></a></li>
 				</ul>
 			</div>
 		{/if}
@@ -88,17 +88,17 @@
 	
 	{if $articles|count}
 		<div class="border titleBarPanel">
-			<div class="containerHead"><h3>{lang}wsis.acp.article.view.count{/lang}</h3></div>
+			<div class="containerHead"><h3>{lang}moxeo.acp.article.view.count{/lang}</h3></div>
 		</div>
 		<div class="border borderMarginRemove">
 			<table class="tableList">
 				<thead>
 					<tr class="tableHead">
-						<th class="columnArticleID{if $sortField == 'articleID'} active{/if}" colspan="2"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=articleID&amp;sortOrder={if $sortField == 'articleID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.article.articleID{/lang}{if $sortField == 'articleID'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-						<th class="columnTitle{if $sortField == 'title'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=title&amp;sortOrder={if $sortField == 'title' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.article.title{/lang}{if $sortField == 'title'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-						<th class="columnArticleSections{if $sortField == 'articleSections'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=articleSections&amp;sortOrder={if $sortField == 'articleSections' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.article.articleSections{/lang}{if $sortField == 'articleSections'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-						<th class="columnThemeModulePosition{if $sortField == 'themeModulePosition'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=themeModulePosition&amp;sortOrder={if $sortField == 'themeModulePosition' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.article.themeModulePosition{/lang}{if $sortField == 'themeModulePosition'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-						<th class="columnShowOrder{if $sortField == 'showOrder'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=showOrder&amp;sortOrder={if $sortField == 'showOrder' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}wsis.acp.article.showOrder{/lang}{if $sortField == 'showOrder'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
+						<th class="columnArticleID{if $sortField == 'articleID'} active{/if}" colspan="2"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=articleID&amp;sortOrder={if $sortField == 'articleID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.articleID{/lang}{if $sortField == 'articleID'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
+						<th class="columnTitle{if $sortField == 'title'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=title&amp;sortOrder={if $sortField == 'title' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.title{/lang}{if $sortField == 'title'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
+						<th class="columnArticleSections{if $sortField == 'articleSections'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=articleSections&amp;sortOrder={if $sortField == 'articleSections' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.articleSections{/lang}{if $sortField == 'articleSections'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
+						<th class="columnThemeModulePosition{if $sortField == 'themeModulePosition'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=themeModulePosition&amp;sortOrder={if $sortField == 'themeModulePosition' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.themeModulePosition{/lang}{if $sortField == 'themeModulePosition'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
+						<th class="columnShowOrder{if $sortField == 'showOrder'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=showOrder&amp;sortOrder={if $sortField == 'showOrder' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.showOrder{/lang}{if $sortField == 'showOrder'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 						
 						{if $additionalColumnHeads|isset}{@$additionalColumnHeads}{/if}
 					</tr>
@@ -108,19 +108,19 @@
 						<tr class="{cycle values="container-1,container-2"}" id="articleRow_{@$article->articleID}">
 							<td class="columnIcon">
 								{if $this->user->getPermission('admin.site.canEditArticle')}
-									<a href="index.php?page=ArticleSectionList&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WSIS_DIR}icon/articleSectionS.png" alt="" title="{lang}wsis.acp.article.sections{/lang}" /></a>
+									<a href="index.php?page=ArticleSectionList&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionS.png" alt="" title="{lang}moxeo.acp.article.sections{/lang}" /></a>
 								{else}
-									<img src="{@RELATIVE_WSIS_DIR}icon/articleSectionDisabledS.png" alt="" title="{lang}wsis.acp.article.sections{/lang}" />
+									<img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionDisabledS.png" alt="" title="{lang}moxeo.acp.article.sections{/lang}" />
 								{/if}
 								{if $this->user->getPermission('admin.site.canEditArticle')}
-									<a href="index.php?form=ArticleEdit&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}wsis.acp.article.edit{/lang}" /></a>
+									<a href="index.php?form=ArticleEdit&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}moxeo.acp.article.edit{/lang}" /></a>
 								{else}
-									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}wsis.acp.article.edit{/lang}" />
+									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}moxeo.acp.article.edit{/lang}" />
 								{/if}
 								{if $this->user->getPermission('admin.site.canDeleteArticle')}
-									<a href="index.php?action=ArticleDelete&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}wsis.acp.article.delete.sure{/lang}')" title="{lang}wsis.acp.article.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
+									<a href="index.php?action=ArticleDelete&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}moxeo.acp.article.delete.sure{/lang}')" title="{lang}moxeo.acp.article.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
 								{else}
-									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}wsis.acp.article.delete{/lang}" />
+									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}moxeo.acp.article.delete{/lang}" />
 								{/if}
 								
 								{if $additionalButtons.$article->articleID|isset}{@$additionalButtons.$article->articleID}{/if}
@@ -152,7 +152,7 @@
 			{if $this->user->getPermission('admin.site.canAddArticle')}
 				<div class="largeButtons">
 					<ul>
-						<li><a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WSIS_DIR}icon/articleAddM.png" alt="" title="{lang}wsis.acp.article.add{/lang}" /> <span>{lang}wsis.acp.article.add{/lang}</span></a></li>
+						<li><a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleAddM.png" alt="" title="{lang}moxeo.acp.article.add{/lang}" /> <span>{lang}moxeo.acp.article.add{/lang}</span></a></li>
 					</ul>
 				</div>
 			{/if}
@@ -160,7 +160,7 @@
 	{else}
 		<div class="border content">
 			<div class="container-1">
-				<p>{lang}wsis.acp.article.view.count.noArticles{/lang}</p>
+				<p>{lang}moxeo.acp.article.view.count.noArticles{/lang}</p>
 			</div>
 		</div>
 	{/if}

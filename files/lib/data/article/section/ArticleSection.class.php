@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class ArticleSection extends DatabaseObject {
 	/**
@@ -43,7 +43,7 @@ class ArticleSection extends DatabaseObject {
 	public function __construct($articleSectionID, $row = null) {
 		if ($articleSectionID !== null) {
 			$sql = "SELECT	*
-				FROM 	wsis".WSIS_N."_article_section
+				FROM 	moxeo".MOXEO_N."_article_section
 				WHERE 	articleSectionID = ".$articleSectionID;
 			$row = WCF::getDB()->getFirstRow($sql);
 		}
@@ -95,7 +95,7 @@ class ArticleSection extends DatabaseObject {
 	 * @return	ArticleSectionCommentableObject
 	 */
 	public function getCommentableObject() {
-		require_once(WSIS_DIR.'lib/data/article/section/ArticleSectionCommentableObject.class.php');
+		require_once(MOXEO_DIR.'lib/data/article/section/ArticleSectionCommentableObject.class.php');
 		return new ArticleSectionCommentableObject(null, $this->data);
 	}
 	
@@ -120,7 +120,7 @@ class ArticleSection extends DatabaseObject {
 	 */
 	public static function getArticleSectionTypes() {
 		if (self::$articleSectionTypes === null) {
-			WCF::getCache()->addResource('articleSectionTypes', WSIS_DIR.'cache/cache.articleSectionTypes.php', WSIS_DIR.'lib/system/cache/CacheBuilderArticleSectionTypes.class.php');
+			WCF::getCache()->addResource('articleSectionTypes', MOXEO_DIR.'cache/cache.articleSectionTypes.php', MOXEO_DIR.'lib/system/cache/CacheBuilderArticleSectionTypes.class.php');
 			self::$articleSectionTypes = WCF::getCache()->get('articleSectionTypes');
 		}
 		return self::$articleSectionTypes;
@@ -136,7 +136,7 @@ class ArticleSection extends DatabaseObject {
 			$types = self::getArticleSectionTypes();
 			foreach ($types as $type) {
 				// get path to class file
-				$path = WSIS_DIR.$type['classFile'];
+				$path = MOXEO_DIR.$type['classFile'];
 				
 				// include class file
 				if (!class_exists($type['className'])) {
@@ -166,15 +166,16 @@ class ArticleSection extends DatabaseObject {
 		
 		$types = self::getArticleSectionTypes();
 		foreach ($types as $type) {
-			$category = WCF::getLanguage()->get('wsis.article.section.type.category.'.$type['category']);
+			$category = WCF::getLanguage()->get('moxeo.article.section.type.category.'.$type['category']);
 			
 			if (!isset($options[$category])) {
 				$options[$category] = array();
 			}
 			
-			$options[$category][$type['articleSectionType']] = WCF::getLanguage()->get('wsis.article.section.type.'.$type['articleSectionType']);
+			$options[$category][$type['articleSectionType']] = WCF::getLanguage()->get('moxeo.article.section.type.'.$type['articleSectionType']);
 		}
 		
 		return $options;
 	}
 }
+?>

@@ -1,7 +1,7 @@
 <?php
-// wsis imports
-require_once(WSIS_DIR.'lib/data/captcha/Captcha.class.php');
-require_once(WSIS_DIR.'lib/data/comment/CommentEditor.class.php');
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/captcha/Captcha.class.php');
+require_once(MOXEO_DIR.'lib/data/comment/CommentEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/form/element/AbstractFormElement.class.php');
@@ -12,9 +12,9 @@ require_once(WCF_DIR.'lib/form/element/AbstractFormElement.class.php');
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.wcfsolutions.wsis
+ * @package	com.wcfsolutions.moxeo
  * @subpackage	form.element
- * @category	Infinite Site
+ * @category	Moxeo Open Source CMS
  */
 class CommentAddFormElement extends AbstractFormElement {
 	// system
