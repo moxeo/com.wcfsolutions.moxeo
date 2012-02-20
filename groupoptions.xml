@@ -2,29 +2,29 @@
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/groupoptions.xsd">
 	<import>
 		<categories>
-			<category name="user.site">
+			<category name="user.moxeo">
 				<parent>user</parent>
 			</category>
 			<category name="user.moxeo.contentItem">
-				<parent>user.site</parent>
+				<parent>user.moxeo</parent>
 			</category>
 			<category name="user.moxeo.comment">
-				<parent>user.site</parent>
+				<parent>user.moxeo</parent>
 			</category>
 			<category name="admin.site">
 				<parent>admin</parent>
 			</category>
 			<category name="admin.moxeo.contentItem">
-				<parent>admin.site</parent>
+				<parent>admin.moxeo</parent>
 			</category>
 			<category name="admin.moxeo.article">
-				<parent>admin.site</parent>
+				<parent>admin.moxeo</parent>
 			</category>
 			<category name="admin.moxeo.news">
-				<parent>admin.site</parent>
+				<parent>admin.moxeo</parent>
 			</category>
 			<category name="admin.moxeo.comment">
-				<parent>admin.site</parent>
+				<parent>admin.moxeo</parent>
 			</category>
 		</categories>
 		<options>
