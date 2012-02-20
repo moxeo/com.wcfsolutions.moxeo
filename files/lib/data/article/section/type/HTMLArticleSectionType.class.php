@@ -4,7 +4,7 @@ require_once(MOXEO_DIR.'lib/data/article/section/type/AbstractArticleSectionType
 
 /**
  * Represents a html article section type.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -16,29 +16,29 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 	// display methods
 	/**
 	 * @see	ArticleSectionType::getContent()
-	 */	
+	 */
 	public function getContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		if ($articleSection->dynamicCode) {
 			return WCF::getTPL()->fetchString($articleSection->dynamicCode);
 		}
 		return $articleSection->code;
 	}
-	
+
 	/**
 	 * @see	ArticleSectionType::getSearchableContent()
-	 */	
+	 */
 	public function getSearchableContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		$code = $this->getContent($articleSection);
+		$code = $this->getContent($articleSection, $article, $contentItem);
 		return StringUtil::stripHTML($code);
 	}
 
 	/**
 	 * @see	ArticleSectionType::getPreviewHTML()
-	 */	
+	 */
 	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		return $articleSection->code;
 	}
-	
+
 	// form methods
 	/**
 	 * @see	ArticleSectionType::readFormParameters()
@@ -47,7 +47,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 		$this->formData['code'] = '';
 		if (isset($_POST['code'])) $this->formData['code'] = StringUtil::trim($_POST['code']);
 	}
-	
+
 	/**
 	 * @see	ArticleSectionType::validate()
 	 */
@@ -56,7 +56,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 		if (empty($this->formData['code'])) {
 			throw new UserInputException('code');
 		}
-		
+
 		// compile dynamic code
 		$this->formData['dynamicCode'] = '';
 		if (strpos($this->formData['code'], '{') !== false) {
@@ -70,7 +70,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 			}
 		}
 	}
-	
+
 	/**
 	 * @see	ArticleSectionType::assignVariables()
 	 */
@@ -79,7 +79,7 @@ class HTMLArticleSectionType extends AbstractArticleSectionType {
 			'code' => (isset($this->formData['code']) ? $this->formData['code'] : '')
 		));
 	}
-	
+
 	/**
 	 * @see	ArticleSectionType::getFormTemplateName()
 	 */
