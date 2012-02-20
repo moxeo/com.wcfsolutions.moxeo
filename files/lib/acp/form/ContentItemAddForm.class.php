@@ -9,7 +9,7 @@ require_once(WCF_DIR.'lib/system/session/UserSession.class.php');
 
 /**
  * Shows the content item add form.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -22,63 +22,63 @@ class ContentItemAddForm extends ACPForm {
 	public $templateName = 'contentItemAdd';
 	public $activeMenuItem = 'moxeo.acp.menu.link.content.contentItem.add';
 	public $activeTabMenuItem = 'data';
-	
+
 	/**
 	 * content item editor object
-	 * 
+	 *
 	 * @var	ContentItemEditor
 	 */
 	public $contentItem = null;
-	
+
 	/**
 	 * list of available parent content items
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $contentItemOptions = array();
-	
+
 	/**
 	 * list of available theme layouts
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $themeLayoutOptions = array();
-	
+
 	/**
 	 * list of available languages
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $languages = array();
-	
+
 	/**
 	 * list of available permisions
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $permissionSettings = array();
-	
+
 	/**
 	 * list of available admin permissions
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $adminSettings = array();
-	
+
 	/**
 	 * publishing start time
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $publishingStartTime = 0;
-	
+
 	/**
 	 * publishing end time
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $publishingEndTime = 0;
-	
+
 	// parameters
 	public $languageID = 0;
 	public $parentID = 0;
@@ -108,52 +108,52 @@ class ContentItemAddForm extends ACPForm {
 	public $addSecurityToken = 0;
 	public $permissions = array();
 	public $admins = array();
-	
+
 	/**
 	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		if (isset($_REQUEST['parentID'])) $this->parentID = intval($_REQUEST['parentID']);
 		if ($this->parentID) {
 			ContentItem::getContentItem($this->parentID)->checkAdminPermission('canAddContentItem');
 		}
 		else {
-			WCF::getUser()->checkPermission('admin.site.canAddContentItem');
+			WCF::getUser()->checkPermission('admin.moxeo.canAddContentItem');
 		}
-		
+
 		// get permission settings
 		$this->permissionSettings = ContentItem::getPermissionSettings();
-		
+
 		// get admin settings
 		$this->adminSettings = ContentItem::getAdminSettings();
-		
+
 		// get language id
 		$this->languageID = WCF::getLanguage()->getLanguageID();
 	}
-	
+
 	/**
 	 * @see	Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
-		
+
 		$this->contentItemOptions = ContentItem::getContentItemSelect(array(), array('canAddContentItem'));
 		$this->themeLayoutOptions = ThemeLayout::getThemeLayouts();
-		
+
 		// get all available languages
 		$this->languages = Language::getLanguageCodes();
 	}
-	
+
 	/**
 	 * @see	Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
-		
+
 		$this->invisible = $this->addSecurityToken = 0;
-		
+
 		if (isset($_POST['languageID'])) $this->languageID = intval($_POST['languageID']);
 		if (isset($_POST['title'])) $this->title = StringUtil::trim($_POST['title']);
 		if (isset($_POST['contentItemAlias'])) $this->contentItemAlias = StringUtil::trim($_POST['contentItemAlias']);
@@ -172,14 +172,14 @@ class ContentItemAddForm extends ACPForm {
 		if (isset($_POST['permission']) && is_array($_POST['permission'])) $this->permissions = $_POST['permission'];
 		if (isset($_POST['admin']) && is_array($_POST['admin'])) $this->admins = $_POST['admin'];
 		if (isset($_POST['activeTabMenuItem'])) $this->activeTabMenuItem = $_POST['activeTabMenuItem'];
-		
+
 		// publishing start time
 		if (isset($_POST['publishingStartTimeDay'])) $this->publishingStartTimeDay = intval($_POST['publishingStartTimeDay']);
 		if (isset($_POST['publishingStartTimeMonth'])) $this->publishingStartTimeMonth = intval($_POST['publishingStartTimeMonth']);
 		if (!empty($_POST['publishingStartTimeYear'])) $this->publishingStartTimeYear = intval($_POST['publishingStartTimeYear']);
 		if (isset($_POST['publishingStartTimeHour'])) $this->publishingStartTimeHour = intval($_POST['publishingStartTimeHour']);
 		if (isset($_POST['publishingStartTimeMinutes'])) $this->publishingStartTimeMinutes = intval($_POST['publishingStartTimeMinutes']);
-		
+
 		// publishing end time
 		if (isset($_POST['publishingEndTimeDay'])) $this->publishingEndTimeDay = intval($_POST['publishingEndTimeDay']);
 		if (isset($_POST['publishingEndTimeMonth'])) $this->publishingEndTimeMonth = intval($_POST['publishingEndTimeMonth']);
@@ -187,43 +187,43 @@ class ContentItemAddForm extends ACPForm {
 		if (isset($_POST['publishingEndTimeHour'])) $this->publishingEndTimeHour = intval($_POST['publishingEndTimeHour']);
 		if (isset($_POST['publishingEndTimeMinutes'])) $this->publishingEndTimeMinutes = intval($_POST['publishingEndTimeMinutes']);
 	}
-	
+
 	/**
 	 * @see	Form::validate()
 	 */
 	public function validate() {
 		parent::validate();
-		
+
 		// language id
 		if (!Language::getLanguage($this->languageID)) {
 			// use default language
 			$this->languageID = Language::getDefaultLanguageID();
 		}
-		
+
 		// content item type
 		if ($this->contentItemType < 0 || $this->contentItemType > 3) {
 			$this->contentItemType = 0;
 		}
-		
+
 		// parent id
 		$this->validateParentID();
-		
+
 		// title
 		if (empty($this->title)) {
 			throw new UserInputException('title');
 		}
-		
+
 		// alias
 		if (empty($this->contentItemAlias)) {
 			$this->contentItemAlias = $this->title;
 		}
 		$this->contentItemAlias = SEOUtil::formatString($this->contentItemAlias);
-		
+
 		// external url
 		if ($this->contentItemType == 1 && empty($this->externalURL)) {
 			throw new UserInputException('externalURL');
 		}
-		
+
 		// publishing start time
 		$this->validatePublishingTime('publishingStartTime', array(
 			'day' => $this->publishingStartTimeDay,
@@ -232,7 +232,7 @@ class ContentItemAddForm extends ACPForm {
 			'hour' => $this->publishingStartTimeHour,
 			'minutes' => $this->publishingStartTimeMinutes
 		));
-		
+
 		// publishing end time
 		$this->validatePublishingTime('publishingEndTime', array(
 			'day' => $this->publishingEndTimeDay,
@@ -241,7 +241,7 @@ class ContentItemAddForm extends ACPForm {
 			'hour' => $this->publishingEndTimeHour,
 			'minutes' => $this->publishingEndTimeMinutes
 		));
-		
+
 		// robots
 		switch ($this->robots) {
 			case 'index,follow':
@@ -250,17 +250,17 @@ class ContentItemAddForm extends ACPForm {
 			case 'noindex,nofollow': break;
 			default: $this->robots = 'index,follow';
 		}
-		
+
 		// meta keywords
 		$this->metaKeywords = implode(',', ArrayUtil::trim(explode(',', $this->metaKeywords)));
-		
+
 		// permissions
 		$this->validatePermissions($this->permissions, $this->permissionSettings);
-		
+
 		// admins
 		$this->validatePermissions($this->admins, $this->adminSettings);
 	}
-	
+
 	/**
 	 * Validates the parent id.
 	 */
@@ -274,10 +274,10 @@ class ContentItemAddForm extends ACPForm {
 			}
 		}
 	}
-	
+
 	/**
 	 * Validates the publishing time with the given name and the given time options.
-	 * 
+	 *
 	 * @param	string		$name
 	 * @param	array		$options
 	 */
@@ -288,20 +288,20 @@ class ContentItemAddForm extends ACPForm {
 			if ($time === false || $time === -1) {
 				throw new UserInputException($name, 'invalid');
 			}
-			
+
 			// get utc time
 			$time = DateUtil::getUTC($time);
 			if ($this->contentItem === null && $time <= TIME_NOW) {
 				throw new UserInputException($name, 'invalid');
 			}
-			
+
 			$this->$name = $time;
 		}
 	}
-	
+
 	/**
 	 * Validates the given permissions.
-	 * 
+	 *
 	 * @param	array		$permissions
 	 * @param	array		$permissionSettings
 	 */
@@ -312,7 +312,7 @@ class ContentItemAddForm extends ACPForm {
 			if (!isset($permission['type']) || ($permission['type'] != 'user' && $permission['type'] != 'group')) {
 				throw new UserInputException();
 			}
-			
+
 			// id
 			if (!isset($permission['id'])) {
 				throw new UserInputException();
@@ -325,19 +325,19 @@ class ContentItemAddForm extends ACPForm {
 				$group = new Group(intval($permission['id']));
 				if (!$group->groupID) throw new UserInputException();
 			}
-			
+
 			// settings
 			if (!isset($permission['settings']) || !is_array($permission['settings'])) {
 				throw new UserInputException();
 			}
-			
+
 			// find invalid settings
 			foreach ($permission['settings'] as $key => $value) {
 				if (!isset($settings[$key]) || ($value != -1 && $value != 0 && $value =! 1)) {
 					throw new UserInputException();
 				}
 			}
-			
+
 			// find missing settings
 			foreach ($settings as $key => $value) {
 				if (!isset($permission['settings'][$key])) {
@@ -346,56 +346,56 @@ class ContentItemAddForm extends ACPForm {
 			}
 		}
 	}
-	
+
 	/**
 	 * @see	Form::save()
 	 */
 	public function save() {
 		parent::save();
-		
+
 		// save content item
 		$this->contentItem = ContentItemEditor::create($this->languageID, $this->parentID, $this->title, $this->contentItemAlias, $this->description, $this->contentItemType, $this->externalURL, $this->pageTitle,
 		$this->metaDescription, $this->metaKeywords, $this->publishingStartTime, $this->publishingEndTime, $this->themeLayoutID, $this->cssClasses, $this->robots, $this->showOrder, $this->invisible, $this->addSecurityToken);
-		
+
 		// save permissions
 		$this->permissions = ContentItemEditor::getCleanedPermissions($this->permissions);
 		$this->contentItem->addPermissions($this->permissions, $this->permissionSettings);
-		
+
 		// save admins
-		if (WCF::getUser()->getPermission('admin.site.isContentItemAdmin')) {
+		if (WCF::getUser()->getPermission('admin.moxeo.isContentItemAdmin')) {
 			$this->admins = ContentItemEditor::getCleanedPermissions($this->admins);
 			$this->contentItem->addAdmins($this->admins, $this->adminSettings);
 		}
-		
+
 		// reset cache
 		ContentItemEditor::resetCache();
-		
+
 		// reset sessions
 		Session::resetSessions(array(), true, false);
 		$this->saved();
-		
+
 		// reset values
 		$this->parentID = $this->contentItemType = $this->themeLayoutID = $this->showOrder = $this->invisible = $this->addSecurityToken = 0;
-		$this->title = $this->contentItemAlias = $this->description = $this->externalURL = $this->pageTitle = $this->metaDescription = $this->metaKeywords = $this->cssClasses = 
+		$this->title = $this->contentItemAlias = $this->description = $this->externalURL = $this->pageTitle = $this->metaDescription = $this->metaKeywords = $this->cssClasses =
 		$this->publishingStartTimeDay = $this->publishingStartTimeMonth = $this->publishingStartTimeYear = $this->publishingStartTimeHour = $this->publishingStartTimeMinutes =
 		$this->publishingEndTimeDay = $this->publishingEndTimeMonth = $this->publishingEndTimeYear = $this->publishingEndTimeHour = $this->publishingEndTimeMinutes = '';
 		$this->robots = 'index,follow';
 		$this->permissions = $this->admins = array();
 		$this->languageID = WCF::getLanguage()->getLanguageID();
-		
+
 		// show success message
 		WCF::getTPL()->assign('success', true);
 	}
-	
+
 	/**
 	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		require_once(WCF_DIR.'lib/page/util/InlineCalendar.class.php');
 		InlineCalendar::assignVariables();
-		
+
 		WCF::getTPL()->assign(array(
 			'action' => 'add',
 			'contentItemOptions' => $this->contentItemOptions,

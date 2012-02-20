@@ -8,7 +8,7 @@
 </div>
 
 {if $deletedCommentID}
-	<p class="success">{lang}moxeo.acp.comment.delete.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.comment.delete.success{/lang}</p>
 {/if}
 
 <div class="contentHeader">
@@ -30,7 +30,7 @@
 					<th class="columnIpAddress{if $sortField == 'ipAddress'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=ipAddress&amp;sortOrder={if $sortField == 'ipAddress' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.comment.ipAddress{/lang}{if $sortField == 'ipAddress'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 					<th class="columnComment{if $sortField == 'comment'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=comment&amp;sortOrder={if $sortField == 'comment' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.comment.comment{/lang}{if $sortField == 'comment'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 					<th class="columnTime{if $sortField == 'time'} active{/if}"><div><a href="index.php?page=CommentList&amp;pageNo={@$pageNo}&amp;sortField=time&amp;sortOrder={if $sortField == 'time' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.comment.time{/lang}{if $sortField == 'time'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-					
+
 					{if $additionalColumnHeads|isset}{@$additionalColumnHeads}{/if}
 				</tr>
 			</thead>
@@ -38,17 +38,17 @@
 				{foreach from=$comments item=comment}
 					<tr class="{cycle values="container-1,container-2"}">
 						<td class="columnIcon">
-							{if $this->user->getPermission('admin.site.canEditComment')}
+							{if $this->user->getPermission('admin.moxeo.canEditComment')}
 								<a href="index.php?form=CommentEdit&amp;commentID={@$comment->commentID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}moxeo.acp.comment.edit{/lang}" /></a>
 							{else}
 								<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}moxeo.acp.comment.edit{/lang}" />
 							{/if}
-							{if $this->user->getPermission('admin.site.canDeleteComment')}
+							{if $this->user->getPermission('admin.moxeo.canDeleteComment')}
 								<a onclick="return confirm('{lang}moxeo.acp.comment.delete.sure{/lang}')" href="index.php?action=CommentDelete&amp;commentID={@$comment->commentID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" title="{lang}moxeo.acp.comment.delete{/lang}" /></a>
 							{else}
 								<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}moxeo.acp.comment.delete{/lang}" />
 							{/if}
-							
+
 							{if $additionalButtons.$comment->commentID|isset}{@$additionalButtons.$comment->commentID}{/if}
 						</td>
 						<td class="columnCommentID columnID">{@$comment->commentID}</td>
@@ -76,7 +76,7 @@
 						<td class="columnTime columnText">
 							{@$comment->time|time}
 						</td>
-						
+
 						{if $additionalColumns.$comment->commentID|isset}{@$additionalColumns.$comment->commentID}{/if}
 					</tr>
 				{/foreach}

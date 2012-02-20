@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/system/language/LanguageEditor.class.php');
 
 /**
  * Provides functions to manage content items.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -29,10 +29,10 @@ class ContentItemEditor extends ContentItem {
 			parent::__construct(null, $row);
 		}
 	}
-	
+
 	/**
 	 * Updates this content item.
-	 * 
+	 *
 	 * @param	integer		$languageID
 	 * @param	integer		$parentID
 	 * @param	string		$title
@@ -72,7 +72,7 @@ class ContentItemEditor extends ContentItem {
 				WCF::getDB()->sendQuery($sql);
 			}
 		}
-		
+
 		// update item
 		$sql = "UPDATE	moxeo".MOXEO_N."_content_item
 			SET	languageID = ".$languageID.",
@@ -96,10 +96,10 @@ class ContentItemEditor extends ContentItem {
 			WHERE	contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Updates the title of this content item.
-	 * 
+	 *
 	 * @param	string		$title
 	 */
 	public function updateTitle($title) {
@@ -108,10 +108,10 @@ class ContentItemEditor extends ContentItem {
 			WHERE	contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Refreshes the searchable content of this content item.
-	 * 
+	 *
 	 * @param	string		$title
 	 */
 	public function refreshSearchableContent() {
@@ -121,11 +121,11 @@ class ContentItemEditor extends ContentItem {
 			WHERE	contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Returns the cleaned permission list.
 	 * Removes default permissions from the given permission list.
-	 * 
+	 *
 	 * @param	array		$permissions
 	 * @return	array
 	 */
@@ -142,7 +142,7 @@ class ContentItemEditor extends ContentItem {
 		}
 		return $permissions;
 	}
-	
+
 	/**
 	 * Removes the user and group permissions of this content item.
 	 */
@@ -151,16 +151,16 @@ class ContentItemEditor extends ContentItem {
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_content_item_to_user
 			WHERE		contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// group
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_content_item_to_group
 			WHERE		contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Adds the given permissions to this content item.
-	 * 
+	 *
 	 * @param	array		$permissions
 	 * @param	array		$permissionSettings
 	 */
@@ -172,7 +172,7 @@ class ContentItemEditor extends ContentItem {
 				$userInserts .= '('.$this->contentItemID.',
 						 '.intval($permission['id']).',
 						 '.(implode(', ', ArrayUtil::toIntegerArray($permission['settings']))).')';
-			
+
 			}
 			else {
 				if (!empty($groupInserts)) $groupInserts .= ',';
@@ -181,14 +181,14 @@ class ContentItemEditor extends ContentItem {
 						 '.(implode(', ', ArrayUtil::toIntegerArray($permission['settings']))).')';
 			}
 		}
-	
+
 		if (!empty($userInserts)) {
 			$sql = "INSERT INTO	moxeo".MOXEO_N."_content_item_to_user
 						(contentItemID, userID, ".implode(', ', $permissionSettings).")
 				VALUES		".$userInserts;
 			WCF::getDB()->sendQuery($sql);
 		}
-		
+
 		if (!empty($groupInserts)) {
 			$sql = "INSERT INTO	moxeo".MOXEO_N."_content_item_to_group
 						(contentItemID, groupID, ".implode(', ', $permissionSettings).")
@@ -196,7 +196,7 @@ class ContentItemEditor extends ContentItem {
 			WCF::getDB()->sendQuery($sql);
 		}
 	}
-	
+
 	/**
 	 * Removes the admin permissions of this content item.
 	 */
@@ -205,10 +205,10 @@ class ContentItemEditor extends ContentItem {
 			WHERE		contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Adds the given admins to this content item.
-	 * 
+	 *
 	 * @param	array		$admins
 	 * @param	array		$adminSettings
 	 */
@@ -221,7 +221,7 @@ class ContentItemEditor extends ContentItem {
 					'.($admin['type'] == 'group' ? intval($admin['id']) : 0).',
 					 '.(implode(', ', ArrayUtil::toIntegerArray($admin['settings']))).')';
 		}
-		
+
 		if (!empty($inserts)) {
 			$sql = "INSERT INTO	moxeo".MOXEO_N."_content_item_admin
 						(contentItemID, userID, groupID, ".implode(', ', $adminSettings).")
@@ -229,7 +229,7 @@ class ContentItemEditor extends ContentItem {
 			WCF::getDB()->sendQuery($sql);
 		}
 	}
-	
+
 	/**
 	 * Deletes this content item.
 	 */
@@ -239,7 +239,7 @@ class ContentItemEditor extends ContentItem {
 			SET	contentItemID = 0
 			WHERE	contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// get all article ids
 		$articleIDs = '';
 		$sql = "SELECT	articleID
@@ -255,49 +255,49 @@ class ContentItemEditor extends ContentItem {
 			require_once(MOXEO_DIR.'lib/data/article/ArticleEditor.class.php');
 			ArticleEditor::deleteAll($articleIDs);
 		}
-		
+
 		// update show order
 		$sql = "UPDATE	moxeo".MOXEO_N."_content_item
 			SET	showOrder = showOrder - 1
 			WHERE	showOrder >= ".$this->showOrder."
 				AND parentID = ".$this->parentID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// update sub content items
 		$sql = "UPDATE	moxeo".MOXEO_N."_content_item
 			SET	parentID = ".$this->parentID."
 			WHERE	parentID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete category group options
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_content_item_to_group
 			WHERE		contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete category user options
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_content_item_to_user
 			WHERE		contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete content item
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_content_item
 			WHERE		contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Returns the searchable content of this content item.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getSearchableContent() {
 		$cache = WCF::getCache()->get('contentItemArticles');
-		
+
 		$articleIDs = '';
 		if (isset($cache[$this->contentItemID]['main'])) {
 			$articleIDs = implode(',', $cache[$this->contentItemID]['main']);
 		}
-		
+
 		$contents = '';
 		if ($articleIDs) {
 			// get article sections
@@ -312,21 +312,21 @@ class ContentItemEditor extends ContentItem {
 				}
 				$articleSections[$row['articleID']][] = new ArticleSection(null, $row);
 			}
-			
+
 			// get articles
 			$sql = "SELECT		*
 				FROM		moxeo".MOXEO_N."_article
 				WHERE		articleID IN (".$articleIDs.")
 				ORDER BY	showOrder";
 			$result = WCF::getDB()->sendQuery($sql);
-			while ($row = WCF::getDB()->fetchArray($result)) {	
+			while ($row = WCF::getDB()->fetchArray($result)) {
 				$article = new Article(null, $row);
-				
+
 				// cache article section data
 				if (isset($articleSections[$row['articleID']])) {
 					foreach ($articleSections[$row['articleID']] as $articleSection) {
 						if (!empty($contents)) $contents .= "\n";
-						
+
 						$content = $articleSection->getArticleSectionType()->getSearchableContent($articleSection, $article, $this);
 						if (!empty($content)) {
 							$contents .= $content;
@@ -335,10 +335,10 @@ class ContentItemEditor extends ContentItem {
 				}
 			}
 		}
-		
+
 		return $contents;
 	}
-	
+
 	/**
 	 * Enables this content item.
 	 */
@@ -348,7 +348,7 @@ class ContentItemEditor extends ContentItem {
 			WHERE	contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Disables this content item.
 	 */
@@ -358,10 +358,10 @@ class ContentItemEditor extends ContentItem {
 			WHERE	contentItemID = ".$this->contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Creates a new content item.
-	 * 
+	 *
 	 * @param	integer		$languageID
 	 * @param	integer		$parentID
 	 * @param	string		$title
@@ -400,39 +400,39 @@ class ContentItemEditor extends ContentItem {
 					AND parentID = ".$parentID;
 			WCF::getDB()->sendQuery($sql);
 		}
-		
+
 		// insert content item
 		$sql = "INSERT INTO	moxeo".MOXEO_N."_content_item
 					(languageID, parentID, title, contentItemAlias, description, pageTitle, metaDescription, metaKeywords, contentItemType, externalURL, publishingStartTime, publishingEndTime, themeLayoutID, cssClasses, robots, showOrder, enabled, invisible, addSecurityToken)
-			VALUES		(".$languageID.", ".$parentID.", '".escapeString($title)."', '".escapeString($contentItemAlias)."', '".escapeString($description)."', '".escapeString($pageTitle)."', '".escapeString($metaDescription)."', '".escapeString($metaKeywords)."', ".$contentItemType.", '".escapeString($externalURL)."', ".$publishingStartTime.", ".$publishingEndTime.", ".$themeLayoutID.", '".escapeString($cssClasses)."', '".escapeString($robots)."', ".$showOrder.", ".intval(WCF::getUser()->getPermission('admin.site.canEnableContentItem')).", ".$invisible.", ".$addSecurityToken.")";
+			VALUES		(".$languageID.", ".$parentID.", '".escapeString($title)."', '".escapeString($contentItemAlias)."', '".escapeString($description)."', '".escapeString($pageTitle)."', '".escapeString($metaDescription)."', '".escapeString($metaKeywords)."', ".$contentItemType.", '".escapeString($externalURL)."', ".$publishingStartTime.", ".$publishingEndTime.", ".$themeLayoutID.", '".escapeString($cssClasses)."', '".escapeString($robots)."', ".$showOrder.", ".intval(WCF::getUser()->getPermission('admin.moxeo.canEnableContentItem')).", ".$invisible.", ".$addSecurityToken.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// get content item id
 		$contentItemID = WCF::getDB()->getInsertID("moxeo".MOXEO_N."_content_item", 'contentItemID');
-		
+
 		// create first article
 		require_once(MOXEO_DIR.'lib/data/article/ArticleEditor.class.php');
 		ArticleEditor::create($contentItemID, 'main', $title, '', '', 0);
-		
+
 		// return content item
 		return new ContentItemEditor($contentItemID, null, null, false);
 	}
-	
+
 	/**
 	 * Updates the position of the content item with the given content item id.
-	 * 
+	 *
 	 * @param	integer		$contentItemID
 	 * @param	integer		$parentID
 	 * @param	integer		$position
 	 */
-	public static function updatePosition($contentItemID, $parentID, $position) {		
+	public static function updatePosition($contentItemID, $parentID, $position) {
 		$sql = "UPDATE	moxeo".MOXEO_N."_content_item
 			SET	parentID = ".$parentID.",
 				showOrder = ".$position."
 			WHERE 	contentItemID = ".$contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Resets the content item cache.
 	 */
@@ -442,10 +442,10 @@ class ContentItemEditor extends ContentItem {
 		WCF::getCache()->clearResource('contentItemStructure');
 		WCF::getCache()->clearResource('contentItemAlias');
 		WCF::getCache()->clearResource('contentItemArticles');
-		
+
 		// reset permissions cache
 		WCF::getCache()->clear(MOXEO_DIR.'cache/', 'cache.contentItemPermissions-*', true);
-		
+
 		self::$contentItems = self::$contentItemStructure = self::$contentItemSelect = null;
 	}
 }

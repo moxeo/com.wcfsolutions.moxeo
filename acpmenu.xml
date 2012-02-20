@@ -4,7 +4,7 @@
 		<acpmenuitem name="moxeo.acp.menu.link.system.fileManager">
 			<parent>wcf.acp.menu.link.system</parent>
 			<link>index.php?page=FileManager</link>
-			<permissions>admin.site.canUseFileManager</permissions>
+			<permissions>admin.moxeo.canUseFileManager</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.contentItem">
 			<parent>wcf.acp.menu.link.content</parent>
@@ -15,13 +15,13 @@
 			<showorder>1</showorder>
 			<link>index.php?page=ContentItemList</link>
 			<icon>icon/contentItemM.png</icon>
-			<permissions>admin.site.canEditContentItem,admin.site.canDeleteContentItem</permissions>
+			<permissions>admin.moxeo.canEditContentItem,admin.moxeo.canDeleteContentItem</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.contentItem.add">
 			<parent>moxeo.acp.menu.link.content.contentItem</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=ContentItemAdd</link>
-			<permissions>admin.site.canAddContentItem</permissions>
+			<permissions>admin.moxeo.canAddContentItem</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.article">
 			<parent>wcf.acp.menu.link.content</parent>
@@ -32,13 +32,13 @@
 			<showorder>1</showorder>
 			<link>index.php?page=ArticleList</link>
 			<icon>icon/articleM.png</icon>
-			<permissions>admin.site.canEditArticle,admin.site.canDeleteArticle</permissions>
+			<permissions>admin.moxeo.canEditArticle,admin.moxeo.canDeleteArticle</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.article.add">
 			<parent>moxeo.acp.menu.link.content.article</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=ArticleAdd</link>
-			<permissions>admin.site.canAddArticle</permissions>
+			<permissions>admin.moxeo.canAddArticle</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.news">
 			<parent>wcf.acp.menu.link.content</parent>
@@ -53,13 +53,13 @@
 			<showorder>1</showorder>
 			<link>index.php?page=NewsArchiveList</link>
 			<icon>icon/newsArchiveM.png</icon>
-			<permissions>admin.site.canEditNewsArchive,admin.site.canDeleteNewsArchive</permissions>
+			<permissions>admin.moxeo.canEditNewsArchive,admin.moxeo.canDeleteNewsArchive</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive.add">
 			<parent>moxeo.acp.menu.link.content.newsArchive</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=NewsArchiveAdd</link>
-			<permissions>admin.site.canAddNewsArchive</permissions>
+			<permissions>admin.moxeo.canAddNewsArchive</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem">
 			<parent>moxeo.acp.menu.link.content.news</parent>
@@ -70,13 +70,13 @@
 			<showorder>1</showorder>
 			<link>index.php?page=NewsItemList</link>
 			<icon>icon/newsItemM.png</icon>
-			<permissions>admin.site.canEditNewsItem,admin.site.canDeleteNewsItem</permissions>
+			<permissions>admin.moxeo.canEditNewsItem,admin.moxeo.canDeleteNewsItem</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem.add">
 			<parent>moxeo.acp.menu.link.content.newsItem</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=NewsItemAdd</link>
-			<permissions>admin.site.canAddNewsItem</permissions>
+			<permissions>admin.moxeo.canAddNewsItem</permissions>
 		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.comment">
 			<parent>wcf.acp.menu.link.content</parent>
@@ -87,7 +87,7 @@
 			<showorder>1</showorder>
 			<link>index.php?page=CommentList</link>
 			<icon>icon/commentM.png</icon>
-			<permissions>admin.site.canEditComment,admin.site.canDeleteComment</permissions>
+			<permissions>admin.moxeo.canEditComment,admin.moxeo.canDeleteComment</permissions>
 		</acpmenuitem>
 	</import>
 </data>

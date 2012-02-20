@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/page/SortablePage.class.php');
 
 /**
  * Shows a list of all news items.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -21,84 +21,84 @@ class NewsItemListPage extends SortablePage {
 	public $templateName = 'newsItemList';
 	public $defaultSortField = 'time';
 	public $defaultSortOrder = 'DESC';
-	public $neededPermissions = array('admin.site.canEditNewsItem', 'admin.site.canDeleteNewsItem');
-	
+	public $neededPermissions = array('admin.moxeo.canEditNewsItem', 'admin.moxeo.canDeleteNewsItem');
+
 	/**
 	 * news archive id
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $newsArchiveID = 0;
-	
+
 	/**
 	 * news archive editor object
-	 * 
+	 *
 	 * @var	NewsArchiveEditor
 	 */
 	public $newsArchive = null;
-	
+
 	/**
 	 * deleted news item id
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $deletedNewsItemID = 0;
-	
+
 	/**
 	 * news item list object
-	 * 
+	 *
 	 * @var	NewsItemList
 	 */
 	public $newsItemList = null;
-	
+
 	/**
 	 * list of available news archives
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $newsArchiveOptions = array();
-	
+
 	/**
 	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		if (isset($_REQUEST['deletedNewsItemID'])) $this->deletedNewsItemID = intval($_REQUEST['deletedNewsItemID']);
-		
+
 		// get news archive
 		if (isset($_REQUEST['newsArchiveID'])) $this->newsArchiveID = intval($_REQUEST['newsArchiveID']);
 		if ($this->newsArchiveID) {
-			$this->newsArchive = new NewsArchive($this->newsArchiveID);	
+			$this->newsArchive = new NewsArchive($this->newsArchiveID);
 		}
-		
+
 		// init news item list
 		$this->newsItemList = new NewsItemList();
 		$this->newsItemList->sqlConditions = 'news_item.newsArchiveID = '.$this->newsArchiveID;
 	}
-	
+
 	/**
 	 * @see	Page::assignVariables()
 	 */
 	public function readData() {
 		parent::readData();
-		
+
 		// get news archive options
 		$this->newsArchiveOptions = NewsArchive::getNewsArchives();
-		
+
 		// read news items
 		$this->newsItemList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
 		$this->newsItemList->sqlLimit = $this->itemsPerPage;
 		$this->newsItemList->sqlOrderBy = 'news_item.'.$this->sortField." ".$this->sortOrder;
 		$this->newsItemList->readObjects();
 	}
-	
+
 	/**
 	 * @see	SortablePage::validateSortField()
 	 */
 	public function validateSortField() {
 		parent::validateSortField();
-		
+
 		switch ($this->sortField) {
 			case 'newsItemID':
 			case 'title':
@@ -106,23 +106,23 @@ class NewsItemListPage extends SortablePage {
 			default: $this->sortField = $this->defaultSortField;
 		}
 	}
-	
+
 	/**
 	 * @see	MultipleLinkPage::countItems()
 	 */
 	public function countItems() {
 		parent::countItems();
-		
+
 		return $this->newsItemList->countObjects();
 	}
-	
-	
+
+
 	/**
 	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		WCF::getTPL()->assign(array(
 			'newsArchiveID' => $this->newsArchiveID,
 			'newsArchive' => $this->newsArchive,
@@ -131,14 +131,14 @@ class NewsItemListPage extends SortablePage {
 			'deletedNewsItemID' => $this->deletedNewsItemID
 		));
 	}
-	
+
 	/**
 	 * @see	Page::show()
 	 */
 	public function show() {
 		// enable menu item
 		WCFACP::getMenu()->setActiveMenuItem('moxeo.acp.menu.link.content.newsItem.view');
-		
+
 		parent::show();
 	}
 }

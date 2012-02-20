@@ -4,7 +4,7 @@ require_once(MOXEO_DIR.'lib/data/news/NewsItem.class.php');
 
 /**
  * Provides functions to manage news items.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -15,7 +15,7 @@ require_once(MOXEO_DIR.'lib/data/news/NewsItem.class.php');
 class NewsItemEditor extends NewsItem {
 	/**
 	 * Updates this news item.
-	 * 
+	 *
 	 * @param	integer		$userID
 	 * @param	string		$title
 	 * @param	string		$newsItemAlias
@@ -40,7 +40,7 @@ class NewsItemEditor extends NewsItem {
 			WHERE	newsItemID = ".$this->newsItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Enables this news item.
 	 */
@@ -50,7 +50,7 @@ class NewsItemEditor extends NewsItem {
 			WHERE	newsItemID = ".$this->newsItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Disables this news item.
 	 */
@@ -60,7 +60,7 @@ class NewsItemEditor extends NewsItem {
 			WHERE	newsItemID = ".$this->newsItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Deletes this news item.
 	 */
@@ -69,10 +69,10 @@ class NewsItemEditor extends NewsItem {
 			WHERE		newsItemID = ".$this->newsItemID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Creates a new news item.
-	 * 
+	 *
 	 * @param	integer		$newsArchiveID
 	 * @param	integer		$userID
 	 * @param	string		$title
@@ -88,9 +88,9 @@ class NewsItemEditor extends NewsItem {
 	public static function create($newsArchiveID, $userID, $title, $newsItemAlias, $teaser, $text, $cssID, $cssClasses, $publishingStartTime, $publishingEndTime) {
 		$sql = "INSERT INTO	moxeo".MOXEO_N."_news_item
 					(newsArchiveID, userID, title, newsItemAlias, cssID, cssClasses, teaser, text, time, publishingStartTime, publishingEndTime, enabled)
-			VALUES		(".$newsArchiveID.", ".$userID.", '".escapeString($title)."', '".escapeString($newsItemAlias)."', '".escapeString($cssID)."', '".escapeString($cssClasses)."', '".escapeString($teaser)."', '".escapeString($text)."', ".TIME_NOW.", '".escapeString($publishingStartTime)."', '".escapeString($publishingEndTime)."', ".intval(WCF::getUser()->getPermission('admin.site.canEnableNewsItem')).")";
+			VALUES		(".$newsArchiveID.", ".$userID.", '".escapeString($title)."', '".escapeString($newsItemAlias)."', '".escapeString($cssID)."', '".escapeString($cssClasses)."', '".escapeString($teaser)."', '".escapeString($text)."', ".TIME_NOW.", '".escapeString($publishingStartTime)."', '".escapeString($publishingEndTime)."', ".intval(WCF::getUser()->getPermission('admin.moxeo.canEnableNewsItem')).")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		$newsItemID = WCF::getDB()->getInsertID("moxeo".MOXEO_N."_news_item", 'newsItemID');
 		return new NewsItemEditor($newsItemID);
 	}

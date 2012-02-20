@@ -6,8 +6,8 @@
 		var articleList = $('articleList');
 		if (articleList) {
 			articleList.addClassName('dragable');
-			
-			Sortable.create(articleList, { 
+
+			Sortable.create(articleList, {
 				tag: 'tr',
 				onUpdate: function(list) {
 					var rows = list.select('tr');
@@ -38,11 +38,11 @@
 </div>
 
 {if $deletedArticleID}
-	<p class="success">{lang}moxeo.acp.article.delete.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.article.delete.success{/lang}</p>
 {/if}
 
 {if $successfulSorting}
-	<p class="success">{lang}moxeo.acp.article.sort.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.article.sort.success{/lang}</p>
 {/if}
 
 {if $contentItemOptions|count}
@@ -77,7 +77,7 @@
 {if $contentItemID}
 	<div class="contentHeader">
 		{pages print=true assign=pagesLinks link="index.php?page=ArticleList&contentItemID=$contentItemID&pageNo=%d&sortField=$sortField&sortOrder=$sortOrder&packageID="|concat:PACKAGE_ID:SID_ARG_2ND_NOT_ENCODED}
-		{if $this->user->getPermission('admin.site.canAddArticle')}
+		{if $this->user->getPermission('admin.moxeo.canAddArticle')}
 			<div class="largeButtons">
 				<ul>
 					<li><a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleAddM.png" alt="" title="{lang}moxeo.acp.article.add{/lang}" /> <span>{lang}moxeo.acp.article.add{/lang}</span></a></li>
@@ -85,7 +85,7 @@
 			</div>
 		{/if}
 	</div>
-	
+
 	{if $articles|count}
 		<div class="border titleBarPanel">
 			<div class="containerHead"><h3>{lang}moxeo.acp.article.view.count{/lang}</h3></div>
@@ -99,7 +99,7 @@
 						<th class="columnArticleSections{if $sortField == 'articleSections'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=articleSections&amp;sortOrder={if $sortField == 'articleSections' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.articleSections{/lang}{if $sortField == 'articleSections'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 						<th class="columnThemeModulePosition{if $sortField == 'themeModulePosition'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=themeModulePosition&amp;sortOrder={if $sortField == 'themeModulePosition' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.themeModulePosition{/lang}{if $sortField == 'themeModulePosition'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 						<th class="columnShowOrder{if $sortField == 'showOrder'} active{/if}"><div><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItemID}&amp;pageNo={@$pageNo}&amp;sortField=showOrder&amp;sortOrder={if $sortField == 'showOrder' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.showOrder{/lang}{if $sortField == 'showOrder'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-						
+
 						{if $additionalColumnHeads|isset}{@$additionalColumnHeads}{/if}
 					</tr>
 				</thead>
@@ -107,27 +107,27 @@
 					{foreach from=$articles item=article}
 						<tr class="{cycle values="container-1,container-2"}" id="articleRow_{@$article->articleID}">
 							<td class="columnIcon">
-								{if $this->user->getPermission('admin.site.canEditArticle')}
+								{if $this->user->getPermission('admin.moxeo.canEditArticle')}
 									<a href="index.php?page=ArticleSectionList&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionS.png" alt="" title="{lang}moxeo.acp.article.sections{/lang}" /></a>
 								{else}
 									<img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionDisabledS.png" alt="" title="{lang}moxeo.acp.article.sections{/lang}" />
 								{/if}
-								{if $this->user->getPermission('admin.site.canEditArticle')}
+								{if $this->user->getPermission('admin.moxeo.canEditArticle')}
 									<a href="index.php?form=ArticleEdit&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}moxeo.acp.article.edit{/lang}" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}moxeo.acp.article.edit{/lang}" />
 								{/if}
-								{if $this->user->getPermission('admin.site.canDeleteArticle')}
+								{if $this->user->getPermission('admin.moxeo.canDeleteArticle')}
 									<a href="index.php?action=ArticleDelete&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}moxeo.acp.article.delete.sure{/lang}')" title="{lang}moxeo.acp.article.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}moxeo.acp.article.delete{/lang}" />
 								{/if}
-								
+
 								{if $additionalButtons.$article->articleID|isset}{@$additionalButtons.$article->articleID}{/if}
 							</td>
 							<td class="columnArticleID columnID">{@$article->articleID}</td>
 							<td class="columnTitle columnText">
-								{if $this->user->getPermission('admin.site.canEditArticle')}
+								{if $this->user->getPermission('admin.moxeo.canEditArticle')}
 									<a href="index.php?form=ArticleEdit&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$article->title}</a>
 								{else}
 									{$article->title}
@@ -138,18 +138,18 @@
 								{lang}wcf.theme.module.position.{@$article->themeModulePosition}{/lang}
 							</td>
 							<td class="columnShowOrder columnNumbers">{@$article->showOrder}</td>
-							
+
 							{if $additionalColumns.$article->articleID|isset}{@$additionalColumns.$article->articleID}{/if}
 						</tr>
 					{/foreach}
 				</tbody>
 			</table>
 		</div>
-		
+
 		<div class="contentFooter">
 			{@$pagesLinks}
-			
-			{if $this->user->getPermission('admin.site.canAddArticle')}
+
+			{if $this->user->getPermission('admin.moxeo.canAddArticle')}
 				<div class="largeButtons">
 					<ul>
 						<li><a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleAddM.png" alt="" title="{lang}moxeo.acp.article.add{/lang}" /> <span>{lang}moxeo.acp.article.add{/lang}</span></a></li>

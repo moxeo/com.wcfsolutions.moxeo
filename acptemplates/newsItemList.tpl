@@ -9,7 +9,7 @@
 </div>
 
 {if $deletedNewsItemID}
-	<p class="success">{lang}moxeo.acp.news.item.delete.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.news.item.delete.success{/lang}</p>
 {/if}
 
 {if $newsArchiveOptions|count}
@@ -44,13 +44,13 @@
 {if $newsArchiveID}
 	<div class="contentHeader">
 		{pages print=true assign=pagesLinks link="index.php?page=NewsItemList&newsArchiveID=$newsArchiveID&pageNo=%d&sortField=$sortField&sortOrder=$sortOrder&packageID="|concat:PACKAGE_ID:SID_ARG_2ND_NOT_ENCODED}
-		{if $this->user->getPermission('admin.site.canAddNewsItem')}
+		{if $this->user->getPermission('admin.moxeo.canAddNewsItem')}
 			<div class="largeButtons">
 				<ul><li><a href="index.php?form=NewsItemAdd&amp;newsArchiveID={@$newsArchiveID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/newsItemAddM.png" alt="" title="{lang}moxeo.acp.news.item.add{/lang}" /> <span>{lang}moxeo.acp.news.item.add{/lang}</span></a></li></ul>
 			</div>
 		{/if}
 	</div>
-	
+
 	{if $newsItems|count}
 		<div class="border titleBarPanel">
 			<div class="containerHead"><h3>{lang}moxeo.acp.news.item.view.count{/lang}</h3></div>
@@ -62,7 +62,7 @@
 						<th class="columnNewsItemID{if $sortField == 'newsItemID'} active{/if}" colspan="2"><div><a href="index.php?page=NewsItemList&amp;newsArchiveID={@$newsArchiveID}&amp;pageNo={@$pageNo}&amp;sortField=newsItemID&amp;sortOrder={if $sortField == 'newsItemID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.news.item.newsItemID{/lang}{if $sortField == 'newsItemID'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 						<th class="columnNewsItemTitle{if $sortField == 'title'} active{/if}"><div><a href="index.php?page=NewsItemList&amp;newsArchiveID={@$newsArchiveID}&amp;pageNo={@$pageNo}&amp;sortField=title&amp;sortOrder={if $sortField == 'title' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.news.item.title{/lang}{if $sortField == 'title'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 						<th class="columnTime{if $sortField == 'time'} active{/if}"><div><a href="index.php?page=NewsItemList&amp;newsArchiveID={@$newsArchiveID}&amp;pageNo={@$pageNo}&amp;sortField=time&amp;sortOrder={if $sortField == 'time' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.news.item.time{/lang}{if $sortField == 'time'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-						
+
 						{if $additionalColumnHeads|isset}{@$additionalColumnHeads}{/if}
 					</tr>
 				</thead>
@@ -70,7 +70,7 @@
 					{foreach from=$newsItems item=newsItem}
 						<tr class="{cycle values="container-1,container-2"}">
 							<td class="columnIcon">
-								{if $this->user->getPermission('admin.site.canEnableNewsItem')}
+								{if $this->user->getPermission('admin.moxeo.canEnableNewsItem')}
 									{if $newsItem->enabled}
 										<a href="index.php?action=NewsItemDisable&amp;newsItemID={@$newsItem->newsItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/enabledS.png" alt="" title="{lang}moxeo.acp.news.item.disable{/lang}" /></a>
 									{else}
@@ -83,22 +83,22 @@
 										<img src="{@RELATIVE_WCF_DIR}icon/disabledDisabledS.png" alt="" title="{lang}moxeo.acp.news.item.enable{/lang}" />
 									{/if}
 								{/if}
-								{if $this->user->getPermission('admin.site.canEditNewsItem')}
+								{if $this->user->getPermission('admin.moxeo.canEditNewsItem')}
 									<a href="index.php?form=NewsItemEdit&amp;newsItemID={@$newsItem->newsItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}moxeo.acp.news.item.edit{/lang}" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}moxeo.acp.news.item.edit{/lang}" />
 								{/if}
-								{if $this->user->getPermission('admin.site.canDeleteNewsItem')}
+								{if $this->user->getPermission('admin.moxeo.canDeleteNewsItem')}
 									<a onclick="return confirm('{lang}moxeo.acp.news.item.delete.sure{/lang}')" href="index.php?action=NewsItemDelete&amp;newsItemID={@$newsItem->newsItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" title="{lang}moxeo.acp.news.item.delete{/lang}" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}moxeo.acp.news.item.delete{/lang}" />
 								{/if}
-								
+
 								{if $additionalButtons.$newsItem->newsItemID|isset}{@$additionalButtons.$newsItem->newsItemID}{/if}
 							</td>
 							<td class="columnNewsItemID columnID">{@$newsItem->newsItemID}</td>
 							<td class="columnNewsItemTitle columnText">
-								{if $this->user->getPermission('admin.site.canEditNewsItem')}
+								{if $this->user->getPermission('admin.moxeo.canEditNewsItem')}
 									<a href="index.php?form=NewsItemEdit&amp;newsItemID={@$newsItem->newsItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$newsItem->title}</a>
 								{else}
 									{$newsItem->title}
@@ -107,18 +107,18 @@
 							<td class="columnTime columnText">
 								{@$newsItem->time|time}
 							</td>
-							
+
 							{if $additionalColumns.$newsItem->newsItemID|isset}{@$additionalColumns.$newsItem->newsItemID}{/if}
 						</tr>
 					{/foreach}
 				</tbody>
 			</table>
 		</div>
-		
+
 		<div class="contentFooter">
 			{@$pagesLinks}
-			
-			{if $this->user->getPermission('admin.site.canAddNewsItem')}
+
+			{if $this->user->getPermission('admin.moxeo.canAddNewsItem')}
 				<div class="largeButtons">
 					<ul><li><a href="index.php?form=NewsItemAdd&amp;newsArchiveID={@$newsArchiveID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/newsItemAddM.png" alt="" title="{lang}moxeo.acp.news.item.add{/lang}" /> <span>{lang}moxeo.acp.news.item.add{/lang}</span></a></li></ul>
 				</div>

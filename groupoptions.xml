@@ -5,140 +5,140 @@
 			<category name="user.site">
 				<parent>user</parent>
 			</category>
-			<category name="user.site.contentItem">
+			<category name="user.moxeo.contentItem">
 				<parent>user.site</parent>
 			</category>
-			<category name="user.site.comment">
+			<category name="user.moxeo.comment">
 				<parent>user.site</parent>
 			</category>
 			<category name="admin.site">
 				<parent>admin</parent>
 			</category>
-			<category name="admin.site.contentItem">
+			<category name="admin.moxeo.contentItem">
 				<parent>admin.site</parent>
 			</category>
-			<category name="admin.site.article">
+			<category name="admin.moxeo.article">
 				<parent>admin.site</parent>
 			</category>
-			<category name="admin.site.news">
+			<category name="admin.moxeo.news">
 				<parent>admin.site</parent>
 			</category>
-			<category name="admin.site.comment">
+			<category name="admin.moxeo.comment">
 				<parent>admin.site</parent>
 			</category>
 		</categories>
 		<options>
-			<option name="user.site.canViewContentItem">
-				<categoryname>user.site.contentItem</categoryname>
+			<option name="user.moxeo.canViewContentItem">
+				<categoryname>user.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
-			<option name="user.site.canEnterContentItem">
-				<categoryname>user.site.contentItem</categoryname>
+			<option name="user.moxeo.canEnterContentItem">
+				<categoryname>user.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
-			<option name="user.site.canViewHiddenContentItem">
-				<categoryname>user.site.contentItem</categoryname>
+			<option name="user.moxeo.canViewHiddenContentItem">
+				<categoryname>user.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="user.site.canComment">
-				<categoryname>user.site.comment</categoryname>
+			<option name="user.moxeo.canComment">
+				<categoryname>user.moxeo.comment</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
-			<option name="user.site.maxCommentLength">
-				<categoryname>user.site.comment</categoryname>
+			<option name="user.moxeo.maxCommentLength">
+				<categoryname>user.moxeo.comment</categoryname>
 				<optiontype>integer</optiontype>
 				<defaultvalue>1000</defaultvalue>
 			</option>
-			<option name="admin.site.isContentItemAdmin">
-				<categoryname>admin.site.contentItem</categoryname>
+			<option name="admin.moxeo.isContentItemAdmin">
+				<categoryname>admin.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canAddContentItem">
-				<categoryname>admin.site.contentItem</categoryname>
+			<option name="admin.moxeo.canAddContentItem">
+				<categoryname>admin.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canEditContentItem">
-				<categoryname>admin.site.contentItem</categoryname>
+			<option name="admin.moxeo.canEditContentItem">
+				<categoryname>admin.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canDeleteContentItem">
-				<categoryname>admin.site.contentItem</categoryname>
+			<option name="admin.moxeo.canDeleteContentItem">
+				<categoryname>admin.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canEnableContentItem">
-				<categoryname>admin.site.contentItem</categoryname>
+			<option name="admin.moxeo.canEnableContentItem">
+				<categoryname>admin.moxeo.contentItem</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canAddArticle">
-				<categoryname>admin.site.article</categoryname>
+			<option name="admin.moxeo.canAddArticle">
+				<categoryname>admin.moxeo.article</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canEditArticle">
-				<categoryname>admin.site.article</categoryname>
+			<option name="admin.moxeo.canEditArticle">
+				<categoryname>admin.moxeo.article</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canDeleteArticle">
-				<categoryname>admin.site.article</categoryname>
+			<option name="admin.moxeo.canDeleteArticle">
+				<categoryname>admin.moxeo.article</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canAddNewsArchive">
-				<categoryname>admin.site.news</categoryname>
+			<option name="admin.moxeo.canAddNewsArchive">
+				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canEditNewsArchive">
-				<categoryname>admin.site.news</categoryname>
+			<option name="admin.moxeo.canEditNewsArchive">
+				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canDeleteNewsArchive">
-				<categoryname>admin.site.news</categoryname>
+			<option name="admin.moxeo.canDeleteNewsArchive">
+				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canAddNewsItem">
-				<categoryname>admin.site.news</categoryname>
+			<option name="admin.moxeo.canAddNewsItem">
+				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canEditNewsItem">
-				<categoryname>admin.site.news</categoryname>
+			<option name="admin.moxeo.canEditNewsItem">
+				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canDeleteNewsItem">
-				<categoryname>admin.site.news</categoryname>
+			<option name="admin.moxeo.canDeleteNewsItem">
+				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canEnableNewsItem">
-				<categoryname>admin.site.news</categoryname>
+			<option name="admin.moxeo.canEnableNewsItem">
+				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canEditComment">
-				<categoryname>admin.site.comment</categoryname>
+			<option name="admin.moxeo.canEditComment">
+				<categoryname>admin.moxeo.comment</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canDeleteComment">
-				<categoryname>admin.site.comment</categoryname>
+			<option name="admin.moxeo.canDeleteComment">
+				<categoryname>admin.moxeo.comment</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
-			<option name="admin.site.canUseFileManager">
+			<option name="admin.moxeo.canUseFileManager">
 				<categoryname>admin.system</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
