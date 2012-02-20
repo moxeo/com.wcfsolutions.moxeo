@@ -3,41 +3,41 @@
 	<packageinformation>
 		<packagename>Moxeo Open Source CMS</packagename>
 		<standalone>1</standalone>
-		<version>1.0.0 Alpha 10</version>
-		<date>2011-08-06</date>
+		<version>1.0.0 Beta 1</version>
+		<date>2012-02-20</date>
 	</packageinformation>
-	
+
 	<authorinformation>
 		<author>WCF Solutions</author>
 		<authorurl>http://www.wcfsolutions.com</authorurl>
 	</authorinformation>
-	
+
 	<requiredpackages>
 		<!-- basics -->
 		<requiredpackage minversion="1.1.4 Beta 1">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="1.1.3">com.woltlab.wcf.data.cronjobs</requiredpackage>
 		<requiredpackage minversion="1.0.3">com.woltlab.wcf.data.feed.reader</requiredpackage>
 		<requiredpackage minversion="1.1.0 Beta 1">com.woltlab.wcf.imageViewer</requiredpackage>
-		
+
 		<!-- wcfsolutions packages -->
-		<requiredpackage minversion="1.0.0 Alpha 10" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
+		<requiredpackage minversion="1.0.0 Beta 1" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
 	</requiredpackages>
-	
+
 	<optionalpackages>
 		<optionalpackage file="optionals/com.wcfsolutions.moxeo.sampleContents.tar">com.wcfsolutions.moxeo.sampleContents</optionalpackage>
 	</optionalpackages>
-	
+
 	<instructions type="install">
 		<!-- pips -->
 		<packageinstallationplugins>pip.tar</packageinstallationplugins>
-		
+
 		<!-- files -->
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>install.sql</sql>
 		<script>acp/install.php</script>
-		
+
 		<!-- config -->
 		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
@@ -48,33 +48,7 @@
 		<articlesectiontype>articlesectiontype.xml</articlesectiontype>
 		<thememoduletype>thememoduletype.xml</thememoduletype>
 		<commentableobjecttype>commentableobjecttype.xml</commentableobjecttype>
-		
-		<!-- languages -->
-		<languages languagecode="de">de.xml</languages>
-		<!--<languages languagecode="en">en.xml</languages>-->
-	</instructions>
-	
-	<instructions type="update" fromversion="1.0.0 Alpha 9">
-		<!-- pips -->
-		<packageinstallationplugins>pip.tar</packageinstallationplugins>
-		
-		<!-- files -->
-		<files>files.tar</files>
-		<templates>templates.tar</templates>
-		<acptemplates>acptemplates.tar</acptemplates>
-		<sql>update.sql</sql>
-		
-		<!-- config -->
-		<groupoptions>groupoptions.xml</groupoptions>
-		<options>options.xml</options>
-		<cronjobs>cronjobs.xml</cronjobs>
-		<acpmenu>acpmenu.xml</acpmenu>
-		<feedsource>feedsource.xml</feedsource>
-		<eventlistener>eventlistener.xml</eventlistener>
-		<articlesectiontype>articlesectiontype.xml</articlesectiontype>
-		<thememoduletype>thememoduletype.xml</thememoduletype>
-		<commentableobjecttype>commentableobjecttype.xml</commentableobjecttype>
-		
+
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
 		<!--<languages languagecode="en">en.xml</languages>-->
