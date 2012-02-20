@@ -5,15 +5,15 @@ require_once(MOXEO_DIR.'lib/data/comment/object/CommentableObjectType.class.php'
 
 /**
  * Represents an article section commentable object type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
  * @category	Moxeo Open Source CMS
  */
-class ArticleSectionCommentableObjectType implements CommentableObjectType {	
+class ArticleSectionCommentableObjectType implements CommentableObjectType {
 	/**
 	 * @see CommentableObjectType::getObjectByID()
 	 */
@@ -21,11 +21,11 @@ class ArticleSectionCommentableObjectType implements CommentableObjectType {
 		// get object
 		$articleSection = new ArticleSectionCommentableObject($objectID);
 		if (!$articleSection->articleSectionID) return null;
-		
+
 		// return object
 		return $articleSection;
 	}
-	
+
 	/**
 	 * @see CommentableObjectType::getObjectsByIDs()
 	 */
@@ -40,7 +40,7 @@ class ArticleSectionCommentableObjectType implements CommentableObjectType {
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$articleSections[$row['articleSectionID']] = new ArticleSectionCommentableObject(null, $row);
 		}
-		
+
 		return (count($articleSections) > 0 ? $articleSections : null);
 	}
 }

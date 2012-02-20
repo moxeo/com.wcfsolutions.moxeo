@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.p
 
 /**
  * Represents a custom navigation theme module type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
@@ -23,20 +23,20 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 	public function getContent(ThemeModule $themeModule, $themeModulePosition, $additionalData) {
 		if (!isset($additionalData['contentItem'])) return '';
 		$activeContentItem = $additionalData['contentItem'];
-		
+
 		// get content items
 		$contentItems = array();
 		foreach ($themeModule->contentItemIDs as $contentItemID) {
 			$contentItems[] = ContentItem::getContentItem($contentItemID);
 		}
-		
+
 		WCF::getTPL()->assign(array(
 			'activeContentItemID' => $activeContentItem->contentItemID,
 			'contentItems' => $contentItems
 		));
 		return WCF::getTPL()->fetch('customNavigationThemeModuleType');
 	}
-	
+
 	// form methods
 	/**
 	 * @see	ThemeModuleType::readFormParameters()
@@ -45,7 +45,7 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 		$this->formData['contentItemIDs'] = array();
 		if (isset($_POST['contentItemIDs'])) $this->formData['contentItemIDs'] = ArrayUtil::toIntegerArray($_POST['contentItemIDs']);
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::validate()
 	 */
@@ -63,7 +63,7 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 			throw new UserInputException('contentItemIDs');
 		}
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::assignVariables()
 	 */
@@ -73,7 +73,7 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 			'contentItemIDs' => (isset($this->formData['contentItemIDs']) ? $this->formData['contentItemIDs'] : array())
 		));
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::getFormTemplateName()
 	 */

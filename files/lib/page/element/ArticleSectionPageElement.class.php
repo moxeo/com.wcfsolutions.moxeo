@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/page/element/AbstractPageElement.class.php');
 
 /**
  * Provides default implementations for article section page elements.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	page.element
@@ -18,28 +18,28 @@ require_once(WCF_DIR.'lib/page/element/AbstractPageElement.class.php');
 abstract class ArticleSectionPageElement extends AbstractPageElement {
 	/**
 	 * article section object
-	 * 
+	 *
 	 * @var	ArticleSection
 	 */
 	public $articleSection = null;
-	
+
 	/**
 	 * article object
-	 * 
+	 *
 	 * @var	Article
 	 */
 	public $article = null;
-	
+
 	/**
 	 * content item object
-	 * 
+	 *
 	 * @var	ContentItem
 	 */
 	public $contentItem = null;
-	
+
 	/**
 	 * Creates a new ArticleSectionPageElement object.
-	 * 
+	 *
 	 * @param	ArticleSection		$articleSection
 	 */
 	public function __construct(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
@@ -48,20 +48,20 @@ abstract class ArticleSectionPageElement extends AbstractPageElement {
 		$this->contentItem = $contentItem;
 		parent::__construct();
 	}
-	
+
 	/**
 	 * @see	PageElement::getIdentifier()
-	 */	
+	 */
 	public function getIdentifier() {
 		return $this->articleSection->articleSectionID;
 	}
-	
+
 	/**
 	 * @see	Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		// assign parameters
 		WCF::getTPL()->assign(array(
 			'articleSection' => $this->articleSection,

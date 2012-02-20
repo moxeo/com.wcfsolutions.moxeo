@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * Represents a list of news items.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news
@@ -18,18 +18,18 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class NewsItemList extends DatabaseObjectList {
 	/**
 	 * list of news items
-	 * 
+	 *
 	 * @var array<NewsItem>
 	 */
 	public $newsItems = array();
-	
+
 	/**
 	 * sql order by statement
-	 * 
+	 *
 	 * @var	string
 	 */
 	public $sqlOrderBy = 'news_item.time DESC';
-	
+
 	/**
 	 * @see	DatabaseObjectList::countObjects()
 	 */
@@ -40,7 +40,7 @@ class NewsItemList extends DatabaseObjectList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::readObjects()
 	 */
@@ -58,7 +58,7 @@ class NewsItemList extends DatabaseObjectList {
 			$this->newsItems[] = new NewsItem(null, $row);
 		}
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::getObjects()
 	 */

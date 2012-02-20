@@ -1,9 +1,9 @@
 <?php
 /**
  * MOXEOIllegalLinkException shows the unknown link error page.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	system.exception
@@ -20,7 +20,7 @@ class MOXEOIllegalLinkException extends IllegalLinkException {
 		if ($contentItemID) {
 			// send headers
 			@header('HTTP/1.0 404 Not Found');
-			
+
 			// render content item
 			require_once(MOXEO_DIR.'lib/system/request/ContentItemRequest.class.php');
 			$request = new ContentItemRequest($contentItemID);

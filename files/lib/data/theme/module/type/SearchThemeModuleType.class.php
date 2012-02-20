@@ -4,9 +4,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/ViewableThemeModuleType.class.p
 
 /**
  * Represents the search theme module type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
@@ -17,12 +17,12 @@ class SearchThemeModuleType extends ViewableThemeModuleType {
 	 * @see	ViewableThemeModuleType::$pageElement
 	 */
 	public $pageElement = 'search';
-	
+
 	/**
 	 * @see	ViewableThemeModuleType::$pageElementDir
 	 */
 	public $pageElementDir = MOXEO_DIR;
-	
+
 	// form methods
 	/**
 	 * @see	ThemeModuleType::readFormParameters()
@@ -31,7 +31,7 @@ class SearchThemeModuleType extends ViewableThemeModuleType {
 		$this->formData['itemsPerPage'] = 10;
 		if (isset($_POST['itemsPerPage'])) $this->formData['itemsPerPage'] = intval($_POST['itemsPerPage']);
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::assignVariables()
 	 */
@@ -40,7 +40,7 @@ class SearchThemeModuleType extends ViewableThemeModuleType {
 			'itemsPerPage' => (isset($this->formData['itemsPerPage']) ? $this->formData['itemsPerPage'] : 10)
 		));
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::getFormTemplateName()
 	 */

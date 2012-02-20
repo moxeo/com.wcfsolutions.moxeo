@@ -9,9 +9,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.p
 
 /**
  * Represents an article theme module type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
@@ -20,18 +20,18 @@ require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.p
 class ArticleThemeModuleType extends AbstractThemeModuleType {
 	/**
 	 * list of articles
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $articles = null;
-	
+
 	/**
 	 * list of article sections
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $articleSections = null;
-	
+
 	// display methods
 	/**
 	 * @see	ThemeModuleType::cache()
@@ -39,10 +39,10 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 	public function cache(ThemeModule $themeModule, $themeModulePosition, $additionalData) {
 		if (!isset($additionalData['contentItem'])) return;
 		$contentItem = $additionalData['contentItem'];
-		
+
 		if ($this->articles === null) {
 			$this->articles = $this->articleSections = array();
-			
+
 			// get required article ids of ALL theme module positions
 			$cache = WCF::getCache()->get('contentItemArticles');
 			$articleIDs = '';
@@ -50,7 +50,7 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 				if (!empty($articleIDs)) $articleIDs .= ',';
 				$articleIDs .= implode(',', $articleIDArray);
 			}
-			
+
 			if ($articleIDs) {
 				// get article sections
 				$sql = "SELECT		*
@@ -64,21 +64,21 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 					}
 					$this->articleSections[$row['articleID']][] = new ArticleSection(null, $row);
 				}
-				
+
 				// get articles
 				$sql = "SELECT		*
 					FROM		moxeo".MOXEO_N."_article
 					WHERE		articleID IN (".$articleIDs.")
 					ORDER BY	themeModulePosition, showOrder";
 				$result = WCF::getDB()->sendQuery($sql);
-				while ($row = WCF::getDB()->fetchArray($result)) {	
+				while ($row = WCF::getDB()->fetchArray($result)) {
 					$article = new Article(null, $row);
-					
+
 					if (!isset($this->articles[$row['themeModulePosition']])) {
 						$this->articles[$row['themeModulePosition']] = array();
 					}
 					$this->articles[$row['themeModulePosition']][] = $article;
-					
+
 					// cache article section data
 					if (isset($this->articleSections[$row['articleID']])) {
 						foreach ($this->articleSections[$row['articleID']] as $articleSection) {
@@ -86,17 +86,17 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 						}
 					}
 				}
-			}			
+			}
 		}
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::getContent()
 	 */
 	public function getContent(ThemeModule $themeModule, $themeModulePosition, $additionalData) {
 		if (!isset($additionalData['contentItem'])) return '';
 		$contentItem = $additionalData['contentItem'];
-		
+
 		WCF::getTPL()->assign(array(
 			'contentItem' => $contentItem,
 			'articles' => (isset($this->articles[$themeModulePosition]) ? $this->articles[$themeModulePosition] : array()),

@@ -8,9 +8,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
  * Represents a news item commentable object.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news
@@ -24,21 +24,21 @@ class NewsItemCommentableObject extends NewsItem implements CommentableObject {
 	public function getCommentableObjectID() {
 		return $this->newsItemID;
 	}
-	
+
 	/**
 	 * @see	CommentableObject::getCommentableObjectType()
 	 */
 	public function getCommentableObjectType() {
 		return 'newsItem';
 	}
-	
+
 	/**
 	 * @see	CommentableObject::getTitle()
 	 */
 	public function getTitle() {
 		return $this->title;
 	}
-	
+
 	/**
 	 * @see	CommentableObject::getURL()
 	 * @see	NewsItem::getURL()

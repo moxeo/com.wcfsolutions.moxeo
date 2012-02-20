@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * Represents a list of comments.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.comment
@@ -18,18 +18,18 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class CommentList extends DatabaseObjectList {
 	/**
 	 * list of comments
-	 * 
+	 *
 	 * @var array<Comment>
 	 */
 	public $comments = array();
-	
+
 	/**
 	 * sql order by statement
-	 * 
+	 *
 	 * @var	string
 	 */
 	public $sqlOrderBy = 'comment.time DESC';
-	
+
 	/**
 	 * @see	DatabaseObjectList::countObjects()
 	 */
@@ -40,7 +40,7 @@ class CommentList extends DatabaseObjectList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::readObjects()
 	 */
@@ -58,7 +58,7 @@ class CommentList extends DatabaseObjectList {
 			$this->comments[] = new Comment(null, $row);
 		}
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::getObjects()
 	 */

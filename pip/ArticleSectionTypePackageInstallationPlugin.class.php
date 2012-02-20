@@ -4,9 +4,9 @@ require_once(WCF_DIR.'lib/acp/package/plugin/AbstractXMLPackageInstallationPlugi
 
 /**
  * This PIP installs, updates or deletes article section types.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.php>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.package.plugin
@@ -15,23 +15,23 @@ require_once(WCF_DIR.'lib/acp/package/plugin/AbstractXMLPackageInstallationPlugi
 class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInstallationPlugin {
 	public $tagName = 'articlesectiontype';
 	public $tableName = 'article_section_type';
-	
-	/** 
+
+	/**
 	 * @see	PackageInstallationPlugin::install()
 	 */
 	public function install() {
 		parent::install();
-		
+
 		if (!$xml = $this->getXML()) {
 			return;
 		}
-		
+
 		// get instance no
 		$instanceNo = WCF_N.'_'.$this->getApplicationPackage()->getInstanceNo();
-		
+
 		// Create an array with the data blocks (import or delete) from the xml file.
 		$articleSectionTypeXML = $xml->getElementTree('data');
-		
+
 		// Loop through the array and install or uninstall items.
 		foreach ($articleSectionTypeXML['children'] as $key => $block) {
 			if (count($block['children'])) {
@@ -44,15 +44,15 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 							if (!isset($child['cdata'])) continue;
 							$articleSectionType[$child['name']] = $child['cdata'];
 						}
-					
+
 						// default values
 						$name = $category = $classFile = '';
-						
+
 						// get values
 						if (isset($articleSectionType['name'])) $name = $articleSectionType['name'];
 						if (isset($articleSectionType['category'])) $category = $articleSectionType['category'];
 						if (isset($articleSectionType['classfile'])) $classFile = $articleSectionType['classfile'];
-						
+
 						// insert items
 						$sql = "INSERT INTO			moxeo".$instanceNo."_article_section_type
 											(packageID, articleSectionType, category, classFile)
@@ -75,9 +75,9 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 							if (!isset($child['cdata'])) continue;
 							$articleSectionType[$child['name']] = $child['cdata'];
 						}
-					
+
 						if (empty($articleSectionType['name'])) {
-							throw new SystemException("Required 'name' attribute for article section type is missing", 13023); 
+							throw new SystemException("Required 'name' attribute for article section type is missing", 13023);
 						}
 						$nameArray[] = $articleSectionType['name'];
 					}
@@ -91,13 +91,13 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 			}
 		}
 	}
-	
+
 	/**
 	 * @see	PackageInstallationPlugin::hasUninstall()
 	 */
 	public function hasUninstall() {
 		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {
-			try {				
+			try {
 				$instanceNo = WCF_N.'_'.$package->getInstanceNo();
 				$sql = "SELECT	COUNT(*) AS count
 					FROM	moxeo".$instanceNo."_article_section_type
@@ -106,19 +106,19 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 				return $installationCount['count'];
 			}
 			catch (Exception $e) {
-				return false;	
+				return false;
 			}
 		}
 		else return false;
 	}
-	
+
 	/**
 	 * @see	PackageInstallationPlugin::uninstall()
 	 */
 	public function uninstall() {
-		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {		
+		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {
 			$instanceNo = WCF_N.'_'.$package->getInstanceNo();
-			
+
 			// get article section types
 			$articleSectionTypes = array();
 			$sql = "SELECT	articleSectionType
@@ -128,13 +128,13 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 			while ($row = WCF::getDB()->fetchArray($result)) {
 				$articleSectionTypes[] = $row['articleSectionType'];
 			}
-			
+
 			if (count($articleSectionTypes)) {
 				// delete article sections
 				$sql = "DELETE FROM	moxeo".$instanceNo."_article_section
 					WHERE		articleSectionType IN ('".implode("','", array_map('escapeString', $articleSectionTypes))."')";
-				WCF::getDB()->sendQuery($sql);			
-			
+				WCF::getDB()->sendQuery($sql);
+
 				// delete article section types
 				$sql = "DELETE FROM	moxeo".$instanceNo."_article_section_type
 					WHERE		packageID = ".$this->installation->getPackageID();
@@ -142,10 +142,10 @@ class ArticleSectionTypePackageInstallationPlugin extends AbstractXMLPackageInst
 			}
 		}
 	}
-	
+
 	/**
 	 * Returns the application package instance.
-	 * 
+	 *
 	 * @return	Package
 	 */
 	protected function getApplicationPackage() {

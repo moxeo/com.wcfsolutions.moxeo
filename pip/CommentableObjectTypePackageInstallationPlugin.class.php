@@ -4,9 +4,9 @@ require_once(WCF_DIR.'lib/acp/package/plugin/AbstractXMLPackageInstallationPlugi
 
 /**
  * This PIP installs, updates or deletes commentable object types.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.php>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.package.plugin
@@ -15,23 +15,23 @@ require_once(WCF_DIR.'lib/acp/package/plugin/AbstractXMLPackageInstallationPlugi
 class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageInstallationPlugin {
 	public $tagName = 'commentableobjecttype';
 	public $tableName = 'commentable_object_type';
-	
-	/** 
+
+	/**
 	 * @see	PackageInstallationPlugin::install()
 	 */
 	public function install() {
 		parent::install();
-		
+
 		if (!$xml = $this->getXML()) {
 			return;
 		}
-		
+
 		// get instance no
 		$instanceNo = WCF_N.'_'.$this->getApplicationPackage()->getInstanceNo();
-		
+
 		// Create an array with the data blocks (import or delete) from the xml file.
 		$commentableObjectTypeXML = $xml->getElementTree('data');
-		
+
 		// Loop through the array and install or uninstall items.
 		foreach ($commentableObjectTypeXML['children'] as $key => $block) {
 			if (count($block['children'])) {
@@ -44,14 +44,14 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 							if (!isset($child['cdata'])) continue;
 							$commentableObjectType[$child['name']] = $child['cdata'];
 						}
-					
+
 						// default values
 						$name = $classFile = '';
-						
+
 						// get values
 						if (isset($commentableObjectType['name'])) $name = $commentableObjectType['name'];
 						if (isset($commentableObjectType['classfile'])) $classFile = $commentableObjectType['classfile'];
-						
+
 						// insert items
 						$sql = "INSERT INTO			moxeo".$instanceNo."_commentable_object_type
 											(packageID, commentableObjectType, classFile)
@@ -72,9 +72,9 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 							if (!isset($child['cdata'])) continue;
 							$commentableObjectType[$child['name']] = $child['cdata'];
 						}
-					
+
 						if (empty($commentableObjectType['name'])) {
-							throw new SystemException("Required 'name' attribute for commentable object type is missing", 13023); 
+							throw new SystemException("Required 'name' attribute for commentable object type is missing", 13023);
 						}
 						$nameArray[] = $commentableObjectType['name'];
 					}
@@ -88,13 +88,13 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 			}
 		}
 	}
-	
+
 	/**
 	 * @see	PackageInstallationPlugin::hasUninstall()
 	 */
 	public function hasUninstall() {
 		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {
-			try {				
+			try {
 				$instanceNo = WCF_N.'_'.$package->getInstanceNo();
 				$sql = "SELECT	COUNT(*) AS count
 					FROM	moxeo".$instanceNo."_commentable_object_type
@@ -103,19 +103,19 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 				return $installationCount['count'];
 			}
 			catch (Exception $e) {
-				return false;	
+				return false;
 			}
 		}
 		else return false;
 	}
-	
+
 	/**
 	 * @see	PackageInstallationPlugin::uninstall()
 	 */
 	public function uninstall() {
-		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {		
+		if (($package = $this->getApplicationPackage()) !== null && $package->getPackage() == 'com.wcfsolutions.moxeo') {
 			$instanceNo = WCF_N.'_'.$package->getInstanceNo();
-			
+
 			// get commentable object types
 			$commentableObjectTypes = array();
 			$sql = "SELECT	commentableObjectType
@@ -125,13 +125,13 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 			while ($row = WCF::getDB()->fetchArray($result)) {
 				$commentableObjectTypes[] = $row['commentableObjectType'];
 			}
-			
+
 			if (count($commentableObjectTypes)) {
 				// delete comments
 				$sql = "DELETE FROM	moxeo".$instanceNo."_comment
 					WHERE		commentableObjectType IN ('".implode("','", array_map('escapeString', $commentableObjectTypes))."')";
-				WCF::getDB()->sendQuery($sql);			
-			
+				WCF::getDB()->sendQuery($sql);
+
 				// delete commentable object types
 				$sql = "DELETE FROM	moxeo".$instanceNo."_commentable_object_type
 					WHERE		packageID = ".$this->installation->getPackageID();
@@ -139,10 +139,10 @@ class CommentableObjectTypePackageInstallationPlugin extends AbstractXMLPackageI
 			}
 		}
 	}
-	
+
 	/**
 	 * Returns the application package instance.
-	 * 
+	 *
 	 * @return	Package
 	 */
 	protected function getApplicationPackage() {

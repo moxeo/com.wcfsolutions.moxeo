@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * Represents a list of news archives.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news.archive
@@ -18,18 +18,18 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class NewsArchiveList extends DatabaseObjectList {
 	/**
 	 * list of news archives
-	 * 
+	 *
 	 * @var array<NewsArchive>
 	 */
 	public $newsArchives = array();
-	
+
 	/**
 	 * sql order by statement
-	 * 
+	 *
 	 * @var	string
 	 */
 	public $sqlOrderBy = 'news_archive.title ASC';
-	
+
 	/**
 	 * @see	DatabaseObjectList::countObjects()
 	 */
@@ -40,7 +40,7 @@ class NewsArchiveList extends DatabaseObjectList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::readObjects()
 	 */
@@ -57,7 +57,7 @@ class NewsArchiveList extends DatabaseObjectList {
 			$this->newsArchives[] = new NewsArchive(null, $row);
 		}
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::getObjects()
 	 */

@@ -4,9 +4,9 @@ require_once(MOXEO_DIR.'lib/data/content/ContentItemList.class.php');
 
 /**
  * Represents a viewable list of content items.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.content
@@ -15,21 +15,21 @@ require_once(MOXEO_DIR.'lib/data/content/ContentItemList.class.php');
 class ViewableContentItemList extends ContentItemList {
 	/**
 	 * level offset
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $levelOffset = 0;
-	
+
 	/**
 	 * level limit
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $levelLimit = 0;
-	
+
 	/**
 	 * Creates a new ViewableContentItemList.
-	 * 
+	 *
 	 * @param	integer		$contentItemID
 	 * @param	integer		$levelOffset
 	 * @param	integer		$levelLimit
@@ -39,7 +39,7 @@ class ViewableContentItemList extends ContentItemList {
 		$this->levelLimit = $levelLimit;
 		parent::__construct($contentItemID);
 	}
-	
+
 	/**
 	 * @see	ContentItemList::isVisible()
 	 */

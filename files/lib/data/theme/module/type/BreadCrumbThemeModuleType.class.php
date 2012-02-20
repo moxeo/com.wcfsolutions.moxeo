@@ -7,26 +7,26 @@ require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.p
 
 /**
  * Represents a breadcrumb theme module type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
  * @category	Moxeo Open Source CMS
  */
 class BreadCrumbThemeModuleType extends AbstractThemeModuleType {
-	// display methods	
+	// display methods
 	/**
 	 * @see	ThemeModuleType::getContent()
 	 */
 	public function getContent(ThemeModule $themeModule, $themeModulePosition, $additionalData) {
 		if (!isset($additionalData['contentItem'])) return '';
 		$contentItem = $additionalData['contentItem'];
-		
+
 		$indexID = ContentItem::getIndexContentItemID();
 		$index = ContentItem::getContentItem($indexID);
-		
+
 		WCF::getTPL()->assign(array(
 			'index' => $index,
 			'contentItem' => $contentItem

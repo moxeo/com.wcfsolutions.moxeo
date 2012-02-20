@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
  * Represents a news item.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news
@@ -18,14 +18,14 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 class NewsItem extends DatabaseObject {
 	/**
 	 * news archive object
-	 * 
+	 *
 	 * @var	NewsArchive
 	 */
 	protected $archive = null;
-	
+
 	/**
 	 * Creates a new NewsItem object.
-	 * 
+	 *
 	 * @param	integer		$newsItemID
 	 * @param 	array<mixed>	$row
 	 */
@@ -40,20 +40,20 @@ class NewsItem extends DatabaseObject {
 		}
 		parent::__construct($row);
 	}
-	
+
 	/**
 	 * Enters this news item.
 	 */
-	public function enter() {		
+	public function enter() {
 		// check permissions
 		if (!$this->enabled || !$this->isPublished()) {
 			throw new PermissionDeniedException();
 		}
 	}
-	
+
 	/**
 	 * Returns true, if this news item is published.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	public function isPublished() {
@@ -65,19 +65,19 @@ class NewsItem extends DatabaseObject {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Returns the formatted tesaer.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getFormattedTeaser() {
 		return nl2br(StringUtil::encodeHTML($this->teaser));
 	}
-	
+
 	/**
 	 * Returns the news archive object of this news item.
-	 * 
+	 *
 	 * @return	NewsArchive
 	 */
 	public function getArchive() {
@@ -86,10 +86,10 @@ class NewsItem extends DatabaseObject {
 		}
 		return $this->archive;
 	}
-	
+
 	/**
 	 * Returns the url of this news item.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getURL() {
@@ -98,7 +98,7 @@ class NewsItem extends DatabaseObject {
 		}
 		return '';
 	}
-	
+
 	/**
 	 * Returns an commmentable object object for this news item.
 	 *
@@ -108,10 +108,10 @@ class NewsItem extends DatabaseObject {
 		require_once(MOXEO_DIR.'lib/data/news/NewsItemCommentableObject.class.php');
 		return new NewsItemCommentableObject(null, $this->data);
 	}
-	
+
 	/**
 	 * Returns the news item object with the given news item alias.
-	 * 
+	 *
 	 * @param	string		$newsItemAlias
 	 * @return	NewsItem
 	 */

@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.p
 
 /**
  * Represents a sitemap theme module type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
@@ -24,13 +24,13 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 		// init content item list
 		$contentItemList = new ViewableContentItemList($themeModule->contentItemID);
 		$contentItemList->readContentItems();
-		
+
 		WCF::getTPL()->assign(array(
 			'contentItems' => $contentItemList->getContentItemList()
 		));
 		return WCF::getTPL()->fetch('sitemapThemeModuleType');
 	}
-	
+
 	// form methods
 	/**
 	 * @see	ThemeModuleType::readFormParameters()
@@ -39,7 +39,7 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 		$this->formData['contentItemID'] = 0;
 		if (isset($_POST['contentItemID'])) $this->formData['contentItemID'] = intval($_POST['contentItemID']);
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::validate()
 	 */
@@ -54,7 +54,7 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 			}
 		}
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::assignVariables()
 	 */
@@ -64,7 +64,7 @@ class SitemapThemeModuleType extends AbstractThemeModuleType {
 			'contentItemID' => (isset($this->formData['contentItemID']) ? $this->formData['contentItemID'] : 0)
 		));
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::getFormTemplateName()
 	 */

@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * Represents a list of article sections.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
@@ -18,11 +18,11 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class ArticleSectionList extends DatabaseObjectList {
 	/**
 	 * list of article sections
-	 * 
+	 *
 	 * @var array<ArticleSection>
 	 */
 	public $articleSections = array();
-	
+
 	/**
 	 * @see	DatabaseObjectList::countObjects()
 	 */
@@ -33,7 +33,7 @@ class ArticleSectionList extends DatabaseObjectList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::readObjects()
 	 */
@@ -49,7 +49,7 @@ class ArticleSectionList extends DatabaseObjectList {
 			$this->articleSections[] = new ArticleSection(null, $row);
 		}
 	}
-	
+
 	/**
 	 * @see	DatabaseObjectList::getObjects()
 	 */

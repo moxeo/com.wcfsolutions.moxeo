@@ -4,18 +4,18 @@ require_once(MOXEO_DIR.'lib/data/article/Article.class.php');
 
 /**
  * Provides functions to manage articles.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article
  * @category	Moxeo Open Source CMS
  */
-class ArticleEditor extends Article {	
+class ArticleEditor extends Article {
 	/**
 	 * Updates this article.
-	 * 
+	 *
 	 * @param	string		$themeModulePosition
 	 * @param	string		$title
 	 * @param	string		$cssID
@@ -42,7 +42,7 @@ class ArticleEditor extends Article {
 				WCF::getDB()->sendQuery($sql);
 			}
 		}
-		
+
 		// update article
 		$sql = "UPDATE	moxeo".MOXEO_N."_article
 			SET	themeModulePosition = '".escapeString($themeModulePosition)."',
@@ -53,10 +53,10 @@ class ArticleEditor extends Article {
 			WHERE	articleID = ".$this->articleID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Updates the show order of this article.
-	 * 
+	 *
 	 * @param	integer		$showOrder
 	 */
 	public function updateShowOrder($showOrder) {
@@ -65,17 +65,17 @@ class ArticleEditor extends Article {
 			WHERE 	articleID = ".$this->articleID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Deletes this article.
 	 */
 	public function delete() {
 		self::deleteAll($this->articleID);
 	}
-	
+
 	/**
 	 * Creates a new article.
-	 * 
+	 *
 	 * @param	integer		$contentItemID
 	 * @param	string		$themeModulePosition
 	 * @param	string		$title
@@ -102,25 +102,25 @@ class ArticleEditor extends Article {
 					AND contentItemID = ".$contentItemID;
 			WCF::getDB()->sendQuery($sql);
 		}
-		
+
 		// save article
 		$sql = "INSERT INTO	moxeo".MOXEO_N."_article
 					(contentItemID, themeModulePosition, title, cssID, cssClasses, showOrder)
 			VALUES		(".$contentItemID.", '".escapeString($themeModulePosition)."', '".escapeString($title)."', '".escapeString($cssID)."', '".escapeString($cssClasses)."', ".$showOrder.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		$articleID = WCF::getDB()->getInsertID("moxeo".MOXEO_N."_article", 'articleID');
 		return new ArticleEditor($articleID);
 	}
-	
+
 	/**
 	 * Deletes all articles with the given article ids.
-	 * 
+	 *
 	 * @param	string		$articleIDs
 	 */
 	public static function deleteAll($articleIDs) {
 		if (empty($articleIDs)) return;
-		
+
 		// get all article section ids
 		$articleSectionIDs = '';
 		$sql = "SELECT	articleSectionID
@@ -136,7 +136,7 @@ class ArticleEditor extends Article {
 			require_once(MOXEO_DIR.'lib/data/article/section/ArticleSectionEditor.class.php');
 			ArticleSectionEditor::deleteAll($articleSectionIDs);
 		}
-		
+
 		// update show order
 		$sql = "SELECT	contentItemID, showOrder
 			FROM	moxeo".MOXEO_N."_article
@@ -149,12 +149,12 @@ class ArticleEditor extends Article {
 					AND contentItemID = ".$row['contentItemID'];
 			WCF::getDB()->sendQuery($sql);
 		}
-				
+
 		// delete article sections
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_article_section
 			WHERE		articleID IN (".$articleIDs.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete article
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_article
 			WHERE		articleID IN (".$articleIDs.")";

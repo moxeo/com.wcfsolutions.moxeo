@@ -4,9 +4,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/ViewableThemeModuleType.class.p
 
 /**
  * Represents the news item theme module type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
@@ -17,12 +17,12 @@ class NewsItemThemeModuleType extends ViewableThemeModuleType {
 	 * @see	ViewableThemeModuleType::$pageElement
 	 */
 	public $pageElement = 'newsItem';
-	
+
 	/**
 	 * @see	ViewableThemeModuleType::$pageElementDir
 	 */
 	public $pageElementDir = MOXEO_DIR;
-	
+
 	// form methods
 	/**
 	 * @see	ThemeModuleType::readFormParameters()
@@ -31,12 +31,12 @@ class NewsItemThemeModuleType extends ViewableThemeModuleType {
 		// news archive ids
 		$this->formData['newsArchiveIDs'] = array();
 		if (isset($_POST['newsArchiveIDs'])) $this->formData['newsArchiveIDs'] = ArrayUtil::toIntegerArray($_POST['newsArchiveIDs']);
-		
+
 		// display type
 		$this->formData['displayType'] = 'full';
 		if (isset($_POST['displayType'])) $this->formData['displayType'] = $_POST['displayType'];
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::validate()
 	 */
@@ -53,7 +53,7 @@ class NewsItemThemeModuleType extends ViewableThemeModuleType {
 		if (!count($this->formData['newsArchiveIDs'])) {
 			throw new UserInputException('newsArchiveIDs');
 		}
-		
+
 		// display type
 		switch ($this->formData['displayType']) {
 			case 'full':
@@ -61,7 +61,7 @@ class NewsItemThemeModuleType extends ViewableThemeModuleType {
 			default: $this->formData['displayType'] = 'full';
 		}
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::assignVariables()
 	 */
@@ -72,7 +72,7 @@ class NewsItemThemeModuleType extends ViewableThemeModuleType {
 			'displayType' => (isset($this->formData['displayType']) ? $this->formData['displayType'] : 'full')
 		));
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::getFormTemplateName()
 	 */

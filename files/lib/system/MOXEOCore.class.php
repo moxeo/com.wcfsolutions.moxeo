@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/system/theme/ThemeLayoutManager.class.php');
 
 /**
  * This class extends the main WCF class by site specific functions.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	system
@@ -23,30 +23,30 @@ class MOXEOCore extends WCF {
 		$languageID = ContentItemRequestHandler::getInstance()->getLanguageID();
 		self::$languageObj = new Language($languageID);
 	}
-	
+
 	/**
 	 * @see	WCF::initTPL()
 	 */
 	protected function initTPL() {
 		// init theme layout to get template pack id
 		$this->initThemeLayout();
-		
+
 		global $packageDirs;
 		require_once(WCF_DIR.'lib/system/template/StructuredTemplate.class.php');
 		self::$tplObj = new StructuredTemplate(self::getThemeLayout()->getTheme()->templatePackID, self::getLanguage()->getLanguageID(), ArrayUtil::appendSuffix($packageDirs, 'templates/'));
 		$this->assignDefaultTemplateVariables();
-		
+
 		// init cronjobs
 		$this->initCronjobs();
 	}
-	
+
 	/**
 	 * Initialises the cronjobs.
 	 */
 	protected function initCronjobs() {
 		self::getTPL()->assign('executeCronjobs', WCF::getCache()->get('cronjobs-'.PACKAGE_ID, 'nextExec') < TIME_NOW);
 	}
-	
+
 	/**
 	 * @see	WCF::loadDefaultCacheResources()
 	 */
@@ -54,7 +54,7 @@ class MOXEOCore extends WCF {
 		parent::loadDefaultCacheResources();
 		self::loadDefaultMOXEOCacheResources();
 	}
-	
+
 	/**
 	 * Loads default cache resources of content management system.
 	 * Can be called statically from other applications or plugins.
@@ -70,30 +70,30 @@ class MOXEOCore extends WCF {
 		WCF::getCache()->addResource('themeLayout-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeLayout-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeLayout.class.php');
 		WCF::getCache()->addResource('themeModule-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeModule-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeModule.class.php');
 	}
-	
+
 	/**
 	 * @see	WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
 		return MOXEO_DIR.'options.inc.php';
 	}
-	
+
 	/**
 	 * Initialises the theme layout system.
 	 */
 	protected function initThemeLayout() {
 		ThemeLayoutManager::changeThemeLayout();
 	}
-	
+
 	/**
 	 * Returns the active theme layout object.
-	 * 
+	 *
 	 * @return	ThemeLayout
 	 */
 	public static final function getThemeLayout() {
 		return ThemeLayoutManager::getThemeLayout();
 	}
-	
+
 	/**
 	 * @see	WCF::initSession()
 	 */

@@ -7,9 +7,9 @@ require_once(WCF_DIR.'lib/data/theme/module/type/ViewableThemeModuleType.class.p
 
 /**
  * Represents the news item list theme module type.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.theme.module.type
@@ -20,12 +20,12 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 	 * @see	ViewableThemeModuleType::$pageElement
 	 */
 	public $pageElement = 'newsItemList';
-	
+
 	/**
 	 * @see	ViewableThemeModuleType::$pageElementDir
 	 */
 	public $pageElementDir = MOXEO_DIR;
-	
+
 	// form methods
 	/**
 	 * @see	ThemeModuleType::readFormParameters()
@@ -34,16 +34,16 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 		// news archive ids
 		$this->formData['newsArchiveIDs'] = array();
 		if (isset($_POST['newsArchiveIDs'])) $this->formData['newsArchiveIDs'] = ArrayUtil::toIntegerArray($_POST['newsArchiveIDs']);
-		
+
 		// display type
 		$this->formData['displayType'] = 'short';
 		if (isset($_POST['displayType'])) $this->formData['displayType'] = $_POST['displayType'];
-		
+
 		// news items per page
 		$this->formData['newsItemsPerPage'] = 10;
 		if (isset($_POST['newsItemsPerPage'])) $this->formData['newsItemsPerPage'] = intval($_POST['newsItemsPerPage']);
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::validate()
 	 */
@@ -60,7 +60,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 		if (!count($this->formData['newsArchiveIDs'])) {
 			throw new UserInputException('newsArchiveIDs');
 		}
-		
+
 		// display type
 		switch ($this->formData['displayType']) {
 			case 'full':
@@ -68,7 +68,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 			default: $this->formData['displayType'] = 'short';
 		}
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::assignVariables()
 	 */
@@ -80,7 +80,7 @@ class NewsItemListThemeModuleType extends ViewableThemeModuleType {
 			'newsItemsPerPage' => (isset($this->formData['newsItemsPerPage']) ? $this->formData['newsItemsPerPage'] : 10)
 		));
 	}
-	
+
 	/**
 	 * @see	ThemeModuleType::getFormTemplateName()
 	 */

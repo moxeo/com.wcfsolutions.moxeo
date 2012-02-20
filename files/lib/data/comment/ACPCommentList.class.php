@@ -4,15 +4,15 @@ require_once(MOXEO_DIR.'lib/data/comment/CommentList.class.php');
 
 /**
  * Represents an acp list of comments.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.comment
  * @category	Moxeo Open Source CMS
  */
-class ACPCommentList extends CommentList {	
+class ACPCommentList extends CommentList {
 	/**
 	 * @see	DatabaseObjectList::readObjects()
 	 */
@@ -27,13 +27,13 @@ class ACPCommentList extends CommentList {
 		$result = WCF::getDB()->sendQuery($sql, $this->sqlLimit, $this->sqlOffset);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$commentIDArray[] = $row['commentID'];
-			
+
 			if (!isset($commentableObjectIDArray[$row['commentableObjectType']])) {
 				$commentableObjectIDArray[$row['commentableObjectType']] = array();
 			}
 			$commentableObjectIDArray[$row['commentableObjectType']][] = $row['commentableObjectID'];
 		}
-		
+
 		if (count($commentIDArray)) {
 			// get commentable objects
 			$commentableObjects = array();
@@ -42,7 +42,7 @@ class ACPCommentList extends CommentList {
 					$commentableObjects[$commentableObjectType] = $result;
 				}
 			}
-			
+
 			// get comments
 			$sql = "SELECT		".(!empty($this->sqlSelects) ? $this->sqlSelects.',' : '')."
 						user_table.*, comment.*

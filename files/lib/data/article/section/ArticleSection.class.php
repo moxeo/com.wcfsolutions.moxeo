@@ -4,9 +4,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
  * Represents an article section.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
@@ -15,28 +15,28 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 class ArticleSection extends DatabaseObject {
 	/**
 	 * list of article section types
-	 * 
+	 *
 	 * @var	array
 	 */
 	public static $articleSectionTypes = null;
-	
+
 	/**
 	 * list of available article section types
-	 * 
+	 *
 	 * @var	array<ArticleSectionType>
 	 */
 	public static $availableArticleSectionTypes = null;
-	
+
 	/**
 	 * list of article section options
-	 * 
+	 *
 	 * @var	array
 	 */
 	protected $articleSectionOptions = null;
-	
+
 	/**
 	 * Creates a new ArticleSection object.
-	 * 
+	 *
 	 * @param 	integer		$articleSectionID
 	 * @param 	array		$row
 	 */
@@ -49,19 +49,19 @@ class ArticleSection extends DatabaseObject {
 		}
 		parent::__construct($row);
 	}
-	
+
 	/**
 	 * Returns the article section type of this article section.
-	 * 
+	 *
 	 * @return	ArticleSection
 	 */
 	public function getArticleSectionType() {
 		return self::getArticleSectionTypeObject($this->articleSectionType);
 	}
-	
+
 	/**
 	 * Returns the value of the article section option with the given name.
-	 * 
+	 *
 	 * @param	string		$name
 	 * @return	mixed
 	 */
@@ -72,14 +72,14 @@ class ArticleSection extends DatabaseObject {
 				$this->articleSectionOptions = unserialize($this->data['articleSectionData']);
 			}
 		}
-		
+
 		if (isset($this->articleSectionOptions[$name])) {
 			return $this->articleSectionOptions[$name];
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * @see	DatabaseObject::__get()
 	 */
@@ -88,7 +88,7 @@ class ArticleSection extends DatabaseObject {
 		if ($value === null) $value = $this->getArticleSectionOption($name);
 		return $value;
 	}
-	
+
 	/**
 	 * Returns an commmentable object object for this article section.
 	 *
@@ -98,10 +98,10 @@ class ArticleSection extends DatabaseObject {
 		require_once(MOXEO_DIR.'lib/data/article/section/ArticleSectionCommentableObject.class.php');
 		return new ArticleSectionCommentableObject(null, $this->data);
 	}
-	
+
 	/**
 	 * Returns the object of an article section type.
-	 * 
+	 *
 	 * @param	string			$articleSectionType
 	 * @return	ArticleSectionType
 	 */
@@ -109,13 +109,13 @@ class ArticleSection extends DatabaseObject {
 		$types = self::getAvailableArticleSectionTypes();
 		if (!isset($types[$articleSectionType])) {
 			throw new SystemException("Unknown article section type '".$articleSectionType."'", 11000);
-		}	
+		}
 		return $types[$articleSectionType];
 	}
-	
+
 	/**
 	 * Returns a list of article section types.
-	 * 
+	 *
 	 * @return	array
 	 */
 	public static function getArticleSectionTypes() {
@@ -125,10 +125,10 @@ class ArticleSection extends DatabaseObject {
 		}
 		return self::$articleSectionTypes;
 	}
-	
+
 	/**
 	 * Returns a list of available article section types.
-	 * 
+	 *
 	 * @return	array<ArticleSectionType>
 	 */
 	public static function getAvailableArticleSectionTypes() {
@@ -137,7 +137,7 @@ class ArticleSection extends DatabaseObject {
 			foreach ($types as $type) {
 				// get path to class file
 				$path = MOXEO_DIR.$type['classFile'];
-				
+
 				// include class file
 				if (!class_exists($type['className'])) {
 					if (!file_exists($path)) {
@@ -145,7 +145,7 @@ class ArticleSection extends DatabaseObject {
 					}
 					require_once($path);
 				}
-				
+
 				// instance object
 				if (!class_exists($type['className'])) {
 					throw new SystemException("Unable to find class '".$type['className']."'", 11001);
@@ -155,26 +155,26 @@ class ArticleSection extends DatabaseObject {
 		}
 		return self::$availableArticleSectionTypes;
 	}
-	
+
 	/**
 	 * Returns the article section type options.
-	 * 
+	 *
 	 * @return	array
 	 */
 	public static function getArticleSectionTypeOptions() {
 		$options = array();
-		
+
 		$types = self::getArticleSectionTypes();
 		foreach ($types as $type) {
 			$category = WCF::getLanguage()->get('moxeo.article.section.type.category.'.$type['category']);
-			
+
 			if (!isset($options[$category])) {
 				$options[$category] = array();
 			}
-			
+
 			$options[$category][$type['articleSectionType']] = WCF::getLanguage()->get('moxeo.article.section.type.'.$type['articleSectionType']);
 		}
-		
+
 		return $options;
 	}
 }

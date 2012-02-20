@@ -4,26 +4,26 @@ require_once(WCF_DIR.'lib/action/element/ThemeModuleActionElement.class.php');
 
 /**
  * Represents a logout element.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	action.element
  * @category	Moxeo Open Source CMS
  */
-class LogoutActionElement extends ThemeModuleActionElement {	
+class LogoutActionElement extends ThemeModuleActionElement {
 	/**
 	 * @see	Action::execute()
 	 */
 	public function execute() {
 		parent::execute();
-		
+
 		if (WCF::getUser()->userID) {
 			// delete session
 			require_once(WCF_DIR.'lib/system/session/UserSession.class.php');
 			WCF::getSession()->delete();
-			
+
 			// remove cookies
 			if (isset($_COOKIE[COOKIE_PREFIX.'userID'])) {
 				HeaderUtil::setCookie('userID', 0);
@@ -32,7 +32,7 @@ class LogoutActionElement extends ThemeModuleActionElement {
 				HeaderUtil::setCookie('password', '');
 			}
 			$this->executed();
-			
+
 			// forward
 			HeaderUtil::redirect(URL_PREFIX.SID_ARG_1ST);
 			exit;

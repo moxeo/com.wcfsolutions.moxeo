@@ -4,9 +4,9 @@ require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
 /**
  * Provides functions to manage news archives.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.news.archive
@@ -26,10 +26,10 @@ class NewsArchiveEditor extends NewsArchive {
 			parent::__construct(null, $row);
 		}
 	}
-	
+
 	/**
 	 * Updates this news archive.
-	 * 
+	 *
 	 * @param	string		$title
 	 * @param	integer		$contentItemID
 	 */
@@ -40,7 +40,7 @@ class NewsArchiveEditor extends NewsArchive {
 			WHERE	newsArchiveID = ".$this->newsArchiveID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Deletes this news archive.
 	 */
@@ -48,17 +48,17 @@ class NewsArchiveEditor extends NewsArchive {
 		// delete news items
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_news_item
 			WHERE		newsArchiveID = ".$this->newsArchiveID;
-		WCF::getDB()->sendQuery($sql);		
-		
+		WCF::getDB()->sendQuery($sql);
+
 		// delete news archive
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_news_archive
 			WHERE		newsArchiveID = ".$this->newsArchiveID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Creates a new news archive.
-	 * 
+	 *
 	 * @param	string		$title
 	 * @param	integer		$contentItemID
 	 * @return	NewsArchiveEditor
@@ -68,11 +68,11 @@ class NewsArchiveEditor extends NewsArchive {
 					(title, contentItemID)
 			VALUES		('".escapeString($title)."', ".$contentItemID.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		$newsArchiveID = WCF::getDB()->getInsertID("moxeo".MOXEO_N."_news_archive", 'newsArchiveID');
 		return new NewsArchiveEditor($newsArchiveID, null, null, false);
 	}
-	
+
 	/**
 	 * Resets the news archive cache.
 	 */

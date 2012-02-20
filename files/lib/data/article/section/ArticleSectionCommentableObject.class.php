@@ -9,9 +9,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
  * Represents an article section commentable object.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
@@ -32,7 +32,7 @@ class ArticleSectionCommentableObject extends ArticleSection implements Commenta
 		}
 		DatabaseObject::__construct($row);
 	}
-	
+
 	// CommentableObject implementation
 	/**
 	 * @see	CommentableObject::getCommentableObjectID()
@@ -40,21 +40,21 @@ class ArticleSectionCommentableObject extends ArticleSection implements Commenta
 	public function getCommentableObjectID() {
 		return $this->articleSectionID;
 	}
-	
+
 	/**
 	 * @see	CommentableObject::getCommentableObjectType()
 	 */
 	public function getCommentableObjectType() {
 		return 'articleSection';
 	}
-	
+
 	/**
 	 * @see	CommentableObject::getTitle()
 	 */
 	public function getTitle() {
 		return ContentItem::getContentItem($this->contentItemID)->title;
 	}
-	
+
 	/**
 	 * @see	CommentableObject::getURL()
 	 */

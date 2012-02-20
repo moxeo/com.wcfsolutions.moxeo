@@ -9,9 +9,9 @@ require_once(WCF_DIR.'lib/data/user/User.class.php');
 
 /**
  * MOXEOSession extends the CookieSession class with site specific functions.
- * 
+ *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	system.session
