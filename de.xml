@@ -73,8 +73,6 @@
 		<item name="wcf.acp.option.page_title.description"><![CDATA[Geben Sie hier den globalen Titel der Seite an.]]></item>
 		<item name="wcf.acp.option.page_url"><![CDATA[Adresse (URL) der Seite]]></item>
 		<item name="wcf.acp.option.page_url.description"><![CDATA[Geben Sie an, unter welcher Adresse (URL) die Seite aufzurufen ist (ohne abschließenden Slash).]]></item>
-		<item name="wcf.acp.option.show_version_number"><![CDATA[Versionsnummer des Portals im Copyright-Hinweis anzeigen]]></item>
-		<item name="wcf.acp.option.show_version_number.description"><![CDATA[Durch Aktivierung dieser Option wird die Versionsnummer im Copyright-Hinweis angezeigt.]]></item>
 	</category>
 	<category name="wcf.theme">
 		<item name="wcf.theme.module.type.accountManagement"><![CDATA[Accountverwaltung]]></item>
