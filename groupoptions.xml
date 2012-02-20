@@ -11,7 +11,7 @@
 			<category name="user.moxeo.comment">
 				<parent>user.moxeo</parent>
 			</category>
-			<category name="admin.site">
+			<category name="admin.moxeo">
 				<parent>admin</parent>
 			</category>
 			<category name="admin.moxeo.contentItem">
