@@ -1,5 +1,7 @@
 {include file='header'}
 
+{@$ckeditor->getConfigurationHTML()}
+
 <div class="mainHeadline">
 	<img src="{@RELATIVE_MOXEO_DIR}icon/newsItem{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">

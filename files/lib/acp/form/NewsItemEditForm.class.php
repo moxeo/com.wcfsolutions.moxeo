@@ -39,6 +39,13 @@ class NewsItemEditForm extends NewsItemAddForm {
 
 		// get news archive
 		$this->newsArchive = new NewsArchiveEditor($this->newsItem->newsArchiveID);
+
+		// init ckeditor
+		$this->ckeditor = new CKEditor('text');
+		$this->ckeditor->setConfigOptions(array(
+			'baseHref' => "'".$this->ckeditor->encodeJS('../')."'",
+			'height' => "'300px'"
+		));
 	}
 
 	/**

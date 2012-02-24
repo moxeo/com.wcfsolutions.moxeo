@@ -5,6 +5,7 @@ require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchiveEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/acp/form/ACPForm.class.php');
+require_once(WCF_DIR.'lib/data/ckeditor/CKEditor.class.php');
 
 /**
  * Shows the news item add form.
@@ -64,6 +65,13 @@ class NewsItemAddForm extends ACPForm {
 	 */
 	public $publishingEndTime = 0;
 
+	/**
+	 * ckeditor object
+	 *
+	 * @var	CKEditor
+	 */
+	public $ckeditor = null;
+
 	// parameters
 	public $username = '';
 	public $title = '';
@@ -95,6 +103,13 @@ class NewsItemAddForm extends ACPForm {
 		if ($this->newsArchiveID) {
 			$this->newsArchive = new NewsArchiveEditor($this->newsArchiveID);
 		}
+
+		// init ckeditor
+		$this->ckeditor = new CKEditor('text');
+		$this->ckeditor->setConfigOptions(array(
+			'baseHref' => "'".$this->ckeditor->encodeJS('../')."'",
+			'height' => "'300px'"
+		));
 	}
 
 	/**
@@ -230,7 +245,8 @@ class NewsItemAddForm extends ACPForm {
 			'publishingEndTimeYear' => $this->publishingEndTimeYear,
 			'publishingEndTimeHour' => $this->publishingEndTimeHour,
 			'publishingEndTimeMinutes' => $this->publishingEndTimeMinutes,
-			'newsArchiveOptions' => NewsArchive::getNewsArchives()
+			'newsArchiveOptions' => NewsArchive::getNewsArchives(),
+			'ckeditor' => $this->ckeditor
 		));
 	}
 }
