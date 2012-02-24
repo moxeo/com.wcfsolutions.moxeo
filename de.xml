@@ -446,6 +446,8 @@
 		<item name="moxeo.acp.news.item.edit"><![CDATA[Nachricht bearbeiten]]></item>
 		<item name="moxeo.acp.news.item.edit.success"><![CDATA[Die Nachricht wurde erfolgreich bearbeitet.]]></item>
 		<item name="moxeo.acp.news.item.enable"><![CDATA[Nachricht aktivieren]]></item>
+		<item name="moxeo.acp.news.item.enableComments"><![CDATA[Kommentare aktivieren]]></item>
+		<item name="moxeo.acp.news.item.enableComments.description"><![CDATA[Soll diese Nachricht kommentiert werden können?]]></item>
 		<item name="moxeo.acp.news.item.newsArchiveID"><![CDATA[Archiv]]></item>
 		<item name="moxeo.acp.news.item.newsArchiveID.description"><![CDATA[Wählen Sie ein Archiv.]]></item>
 		<item name="moxeo.acp.news.item.newsItemAlias"><![CDATA[Alias]]></item>

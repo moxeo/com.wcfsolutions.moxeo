@@ -1,0 +1,1 @@
+ALTER TABLE moxeo1_1_news_item ADD enableComments TINYINT(1) NOT NULL DEFAULT 1 AFTER text;

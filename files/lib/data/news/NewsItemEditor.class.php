@@ -21,18 +21,20 @@ class NewsItemEditor extends NewsItem {
 	 * @param	string		$newsItemAlias
 	 * @param	string		$teaser
 	 * @param	string		$text
+	 * @param	integer		$enableComments
 	 * @param	string		$cssID
 	 * @param	string		$cssClasses
  	 * @param	string		$publishingStartTime
 	 * @param	string		$publishingEndTime
 	 */
-	public function update($userID, $title, $newsItemAlias, $teaser, $text, $cssID, $cssClasses, $publishingStartTime, $publishingEndTime) {
+	public function update($userID, $title, $newsItemAlias, $teaser, $text, $enableComments, $cssID, $cssClasses, $publishingStartTime, $publishingEndTime) {
 		$sql = "UPDATE	moxeo".MOXEO_N."_news_item
 			SET	userID = ".$userID.",
 				title = '".escapeString($title)."',
 				newsItemAlias = '".escapeString($newsItemAlias)."',
 				teaser = '".escapeString($teaser)."',
 				text = '".escapeString($text)."',
+				enableComments = ".$enableComments.",
 				cssID = '".escapeString($cssID)."',
 				cssClasses = '".escapeString($cssClasses)."',
 				publishingStartTime = ".$publishingStartTime.",
@@ -79,16 +81,17 @@ class NewsItemEditor extends NewsItem {
 	 * @param	string		$newsItemAlias
 	 * @param	string		$teaser
 	 * @param	string		$text
+	 * @param	integer		$enableComments
 	 * @param	string		$cssID
 	 * @param	string		$cssClasses
 	 * @param	string		$publishingStartTime
 	 * @param	string		$publishingEndTime
 	 * @return	NewsItemEditor
 	 */
-	public static function create($newsArchiveID, $userID, $title, $newsItemAlias, $teaser, $text, $cssID, $cssClasses, $publishingStartTime, $publishingEndTime) {
+	public static function create($newsArchiveID, $userID, $title, $newsItemAlias, $teaser, $text, $enableComments, $cssID, $cssClasses, $publishingStartTime, $publishingEndTime) {
 		$sql = "INSERT INTO	moxeo".MOXEO_N."_news_item
-					(newsArchiveID, userID, title, newsItemAlias, cssID, cssClasses, teaser, text, time, publishingStartTime, publishingEndTime, enabled)
-			VALUES		(".$newsArchiveID.", ".$userID.", '".escapeString($title)."', '".escapeString($newsItemAlias)."', '".escapeString($cssID)."', '".escapeString($cssClasses)."', '".escapeString($teaser)."', '".escapeString($text)."', ".TIME_NOW.", '".escapeString($publishingStartTime)."', '".escapeString($publishingEndTime)."', ".intval(WCF::getUser()->getPermission('admin.moxeo.canEnableNewsItem')).")";
+					(newsArchiveID, userID, title, newsItemAlias, cssID, cssClasses, teaser, text, enableComments, time, publishingStartTime, publishingEndTime, enabled)
+			VALUES		(".$newsArchiveID.", ".$userID.", '".escapeString($title)."', '".escapeString($newsItemAlias)."', '".escapeString($cssID)."', '".escapeString($cssClasses)."', '".escapeString($teaser)."', '".escapeString($text)."', ".$enableComments.", ".TIME_NOW.", '".escapeString($publishingStartTime)."', '".escapeString($publishingEndTime)."', ".intval(WCF::getUser()->getPermission('admin.moxeo.canEnableNewsItem')).")";
 		WCF::getDB()->sendQuery($sql);
 
 		$newsItemID = WCF::getDB()->getInsertID("moxeo".MOXEO_N."_news_item", 'newsItemID');

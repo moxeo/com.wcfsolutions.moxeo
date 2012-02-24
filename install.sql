@@ -141,6 +141,7 @@ CREATE TABLE moxeo1_1_news_item (
 	cssClasses VARCHAR(255) NOT NULL DEFAULT '',
 	teaser TINYTEXT,
 	text TEXT NULL,
+	enableComments TINYINT(1) NOT NULL DEFAULT 1,
 	time INT(10) NOT NULL DEFAULT 0,
 	publishingStartTime INT(10) NOT NULL DEFAULT 0,
 	publishingEndTime INT(10) NOT NULL DEFAULT 0,

@@ -1,6 +1,5 @@
 <?php
 // moxeo imports
-require_once(MOXEO_DIR.'lib/data/comment/CommentList.class.php');
 require_once(MOXEO_DIR.'lib/data/news/NewsItem.class.php');
 require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
 
@@ -72,9 +71,11 @@ class NewsItemPageElement extends ThemeModulePageElement {
 		}
 
 		// init comment list
-		$this->commentList = new CommentList();
-		$this->commentList->sqlConditions .= "comment.commentableObjectID = ".$this->newsItem->newsItemID." AND comment.commentableObjectType = 'newsItem'";
-		$this->commentList->sqlOrderBy = 'comment.time DESC';
+		if ($this->newsItem->enableComments) {
+			$this->commentList = new CommentList();
+			$this->commentList->sqlConditions .= "comment.commentableObjectID = ".$this->newsItem->newsItemID." AND comment.commentableObjectType = 'newsItem'";
+			$this->commentList->sqlOrderBy = 'comment.time DESC';
+		}
 	}
 
 	/**
@@ -83,7 +84,10 @@ class NewsItemPageElement extends ThemeModulePageElement {
 	public function countItems() {
 		parent::countItems();
 
-		return $this->commentList->countObjects();
+		if ($this->commentList !== null) {
+			return $this->commentList->countObjects();
+		}
+		return 0;
 	}
 
 	/**
@@ -93,9 +97,11 @@ class NewsItemPageElement extends ThemeModulePageElement {
 		parent::readData();
 
 		// read comments
-		$this->commentList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
-		$this->commentList->sqlLimit = $this->itemsPerPage;
-		$this->commentList->readObjects();
+		if ($this->commentList !== null) {
+			$this->commentList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
+			$this->commentList->sqlLimit = $this->itemsPerPage;
+			$this->commentList->readObjects();
+		}
 	}
 
 	/**
@@ -105,14 +111,16 @@ class NewsItemPageElement extends ThemeModulePageElement {
 		parent::assignVariables();
 
 		// init comment add form
-		require_once(MOXEO_DIR.'lib/form/element/CommentAddFormElement.class.php');
-		$commentAddForm = new CommentAddFormElement($this->newsItem->getCommentableObject(), $this->additionalData['contentItem'], $this->newsItem->getURL());
+		if ($this->commentList !== null) {
+			require_once(MOXEO_DIR.'lib/form/element/CommentAddFormElement.class.php');
+			$commentAddForm = new CommentAddFormElement($this->newsItem->getCommentableObject(), $this->additionalData['contentItem'], $this->newsItem->getURL());
+		}
 
 		WCF::getTPL()->assign(array(
 			'newsArchive' => $this->newsArchive,
 			'newsItem' => $this->newsItem,
 			'newsItemAlias' => $this->newsItemAlias,
-			'comments' => $this->commentList->getObjects(),
+			'comments' => ($this->commentList !== null ? $this->commentList->getObjects() : array()),
 			'commentForm' => $commentAddForm->getContent()
 		));
 	}

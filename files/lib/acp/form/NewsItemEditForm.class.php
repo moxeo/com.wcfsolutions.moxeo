@@ -53,6 +53,7 @@ class NewsItemEditForm extends NewsItemAddForm {
 			$this->newsItemAlias = $this->newsItem->newsItemAlias;
 			$this->teaser = $this->newsItem->teaser;
 			$this->text = $this->newsItem->text;
+			$this->enableComments = $this->newsItem->enableComments;
 			$this->cssID = $this->newsItem->cssID;
 			$this->cssClasses = $this->newsItem->cssClasses;
 
@@ -89,7 +90,7 @@ class NewsItemEditForm extends NewsItemAddForm {
 		ACPForm::save();
 
 		// update news item
-		$this->newsItem->update($this->userID, $this->title, $this->newsItemAlias, $this->teaser, $this->text, $this->cssID, $this->cssClasses, $this->publishingStartTime, $this->publishingEndTime);
+		$this->newsItem->update($this->userID, $this->title, $this->newsItemAlias, $this->teaser, $this->text, $this->enableComments, $this->cssID, $this->cssClasses, $this->publishingStartTime, $this->publishingEndTime);
 		$this->saved();
 
 		// show success message

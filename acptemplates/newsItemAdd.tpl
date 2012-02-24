@@ -12,7 +12,7 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}moxeo.acp.news.item.{@$action}.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.news.item.{@$action}.success{/lang}</p>
 {/if}
 
 <div class="contentHeader">
@@ -58,17 +58,17 @@
 {if $newsArchiveID || $action == 'edit'}
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Calendar.class.js"></script>
 	<script type="text/javascript">
-		//<![CDATA[	
+		//<![CDATA[
 		var calendar = new Calendar('{$monthList}', '{$weekdayList}', {@$startOfWeek});
 		//]]>
 	</script>
-	
+
 	<form method="post" action="index.php?form=NewsItem{@$action|ucfirst}">
 		<div class="border content">
-			<div class="container-1">					
+			<div class="container-1">
 				<fieldset>
 					<legend>{lang}moxeo.acp.news.item.data{/lang}</legend>
-					
+
 					<div class="formElement{if $errorField == 'username'} formError{/if}" id="usernameDiv">
 						<div class="formFieldLabel">
 							<label for="username">{lang}moxeo.acp.news.item.username{/lang}</label>
@@ -89,7 +89,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('username');
 					//]]></script>
-					
+
 					<div class="formElement{if $errorField == 'title'} formError{/if}" id="titleDiv">
 						<div class="formFieldLabel">
 							<label for="title">{lang}moxeo.acp.news.item.title{/lang}</label>
@@ -109,7 +109,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('title');
 					//]]></script>
-					
+
 					<div class="formElement{if $errorField == 'newsItemAlias'} formError{/if}" id="newsItemAliasDiv">
 						<div class="formFieldLabel">
 							<label for="newsItemAlias">{lang}moxeo.acp.news.item.newsItemAlias{/lang}</label>
@@ -129,7 +129,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('newsItemAlias');
 					//]]></script>
-					
+
 					<div class="formElement{if $errorField == 'teaser'} formError{/if}" id="teaserDiv">
 						<div class="formFieldLabel">
 							<label for="teaser">{lang}moxeo.acp.news.item.teaser{/lang}</label>
@@ -149,7 +149,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('teaser');
 					//]]></script>
-					
+
 					<div class="formElement{if $errorField == 'text'} formError{/if}" id="textDiv">
 						<div class="formFieldLabel">
 							<label for="text">{lang}moxeo.acp.news.item.text{/lang}</label>
@@ -169,13 +169,25 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('text');
 					//]]></script>
-					
+
+					<div class="formElement" id="enableCommentsDiv">
+						<div class="formField">
+							<label id="enableComments"><input type="checkbox" name="enableComments" value="1" {if $enableComments}checked="checked" {/if}/> {lang}moxeo.acp.news.item.enableComments{/lang}</label>
+						</div>
+						<div class="formFieldDesc hidden" id="enableCommentsHelpMessage">
+							<p>{lang}moxeo.acp.news.item.enableComments.description{/lang}</p>
+						</div>
+					</div>
+					<script type="text/javascript">//<![CDATA[
+					inlineHelp.register('enableComments');
+					//]]></script>
+
 					{if $additionalDataFields|isset}{@$additionalDataFields}{/if}
 				</fieldset>
-				
+
 				<fieldset>
 					<legend>{lang}moxeo.acp.news.item.display{/lang}</legend>
-					
+
 					<div class="formElement" id="cssIDDiv">
 						<div class="formFieldLabel">
 							<label for="cssID">{lang}moxeo.acp.news.item.cssID{/lang}</label>
@@ -190,7 +202,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('cssID');
 					//]]></script>
-					
+
 					<div class="formElement" id="cssClassesDiv">
 						<div class="formFieldLabel">
 							<label for="cssClasses">{lang}moxeo.acp.news.item.cssClasses{/lang}</label>
@@ -205,13 +217,13 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('cssClasses');
 					//]]></script>
-					
+
 					{if $additionalDisplayFields|isset}{@$additionalDisplayFields}{/if}
 				</fieldset>
-				
+
 				<fieldset>
 					<legend>{lang}moxeo.acp.news.item.publishingTime{/lang}</legend>
-					
+
 					<div class="formGroup{if $errorField == 'publishingStartTime'} formError{/if}" id="publishingStartTimeDiv">
 						<div class="formGroupLabel">
 							<label>{lang}moxeo.acp.news.item.publishingStartTime{/lang}</label>
@@ -219,33 +231,33 @@
 						<div class="formGroupField">
 							<fieldset>
 								<legend><label>{lang}moxeo.acp.news.item.publishingStartTime{/lang}</label></legend>
-					
+
 								<div class="formField">
 									<div class="floatedElement">
 										<label for="publishingStartTimeDay">{lang}wcf.global.date.day{/lang}</label>
 										{htmlOptions options=$dayOptions selected=$publishingStartTimeDay id=publishingStartTimeDay name=publishingStartTimeDay}
 									</div>
-									
+
 									<div class="floatedElement">
 										<label for="publishingStartTimeMonth">{lang}wcf.global.date.month{/lang}</label>
 										{htmlOptions options=$monthOptions selected=$publishingStartTimeMonth id=publishingStartTimeMonth name=publishingStartTimeMonth}
 									</div>
-									
+
 									<div class="floatedElement">
 										<label for="publishingStartTimeYear">{lang}wcf.global.date.year{/lang}</label>
 										<input id="publishingStartTimeYear" class="inputText fourDigitInput" type="text" name="publishingStartTimeYear" value="{@$publishingStartTimeYear}" maxlength="4" />
 									</div>
-									
+
 									<div class="floatedElement">
 										<label for="publishingStartTimeHour">{lang}wcf.global.date.hour{/lang}</label>
 										{htmlOptions options=$hourOptions selected=$publishingStartTimeHour id=publishingStartTimeHour name=publishingStartTimeHour} :
 									</div>
-																		
+
 									<div class="floatedElement">
 										<label for="publishingStartTimeMinutes">{lang}wcf.global.date.minutes{/lang}</label>
 										{htmlOptions options=$minuteOptions selected=$publishingStartTimeMinutes id=publishingStartTimeMinutes name=publishingStartTimeMinutes}
 									</div>
-									
+
 									<div class="floatedElement">
 										<a id="publishingStartTimeButton"><img src="{@RELATIVE_WCF_DIR}icon/datePickerOptionsM.png" alt="" /></a>
 										<div id="publishingStartTimeCalendar" class="inlineCalendar"></div>
@@ -255,14 +267,14 @@
 											//]]>
 										</script>
 									</div>
-									
+
 									{if $errorField == 'publishingStartTime'}
 										<p class="floatedElement innerError">
 											{if $errorType == 'invalid'}{lang}moxeo.acp.news.item.publishingStartTime.error.invalid{/lang}{/if}
 										</p>
 									{/if}
 								</div>
-								
+
 								<div class="formFieldDesc hidden" id="publishingStartTimeHelpMessage">
 									<p>{lang}moxeo.acp.news.item.publishingStartTime.description{/lang}</p>
 								</div>
@@ -272,7 +284,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('publishingStartTime');
 					//]]></script>
-					
+
 					<div class="formGroup{if $errorField == 'publishingEndTime'} formError{/if}" id="publishingEndTimeDiv">
 						<div class="formGroupLabel">
 							<label>{lang}moxeo.acp.news.item.publishingEndTime{/lang}</label>
@@ -280,33 +292,33 @@
 						<div class="formGroupField">
 							<fieldset>
 								<legend><label>{lang}moxeo.acp.news.item.publishingEndTime{/lang}</label></legend>
-								
+
 								<div class="formField">
 									<div class="floatedElement">
 										<label for="publishingEndTimeDay">{lang}wcf.global.date.day{/lang}</label>
 										{htmlOptions options=$dayOptions selected=$publishingEndTimeDay id=publishingEndTimeDay name=publishingEndTimeDay}
 									</div>
-									
+
 									<div class="floatedElement">
 										<label for="publishingEndTimeMonth">{lang}wcf.global.date.month{/lang}</label>
 										{htmlOptions options=$monthOptions selected=$publishingEndTimeMonth id=publishingEndTimeMonth name=publishingEndTimeMonth}
 									</div>
-									
+
 									<div class="floatedElement">
 										<label for="publishingEndTimeYear">{lang}wcf.global.date.year{/lang}</label>
 										<input id="publishingEndTimeYear" class="inputText fourDigitInput" type="text" name="publishingEndTimeYear" value="{@$publishingEndTimeYear}" maxlength="4" />
 									</div>
-									
+
 									<div class="floatedElement">
 										<label for="publishingEndTimeHour">{lang}wcf.global.date.hour{/lang}</label>
 										{htmlOptions options=$hourOptions selected=$publishingEndTimeHour id=publishingEndTimeHour name=publishingEndTimeHour} :
 									</div>
-																		
+
 									<div class="floatedElement">
 										<label for="publishingEndTimeMinutes">{lang}wcf.global.date.minutes{/lang}</label>
 										{htmlOptions options=$minuteOptions selected=$publishingEndTimeMinutes id=publishingEndTimeMinutes name=publishingEndTimeMinutes}
 									</div>
-									
+
 									<div class="floatedElement">
 										<a id="publishingEndTimeButton"><img src="{@RELATIVE_WCF_DIR}icon/datePickerOptionsM.png" alt="" /></a>
 										<div id="publishingEndTimeCalendar" class="inlineCalendar"></div>
@@ -316,14 +328,14 @@
 											//]]>
 										</script>
 									</div>
-									
+
 									{if $errorField == 'publishingEndTime'}
 										<p class="floatedElement innerError">
 											{if $errorType == 'invalid'}{lang}moxeo.acp.news.item.publishingEndTime.error.invalid{/lang}{/if}
 										</p>
 									{/if}
 								</div>
-								
+
 								<div class="formFieldDesc hidden" id="publishingEndTimeHelpMessage">
 									<p>{lang}moxeo.acp.news.item.publishingEndTime.description{/lang}</p>
 								</div>
@@ -334,11 +346,11 @@
 						inlineHelp.register('publishingEndTime');
 					//]]></script>
 				</fieldset>
-				
+
 				{if $additionalFields|isset}{@$additionalFields}{/if}
 			</div>
 		</div>
-		
+
 		<div class="formSubmit">
 			<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 			<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />

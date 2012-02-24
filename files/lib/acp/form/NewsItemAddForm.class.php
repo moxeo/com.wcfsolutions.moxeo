@@ -70,6 +70,7 @@ class NewsItemAddForm extends ACPForm {
 	public $newsItemAlias = '';
 	public $teaser = '';
 	public $text = '';
+	public $enableComments = 1;
 	public $cssID = '';
 	public $cssClasses = '';
 	public $publishingStartTimeDay = '';
@@ -114,11 +115,14 @@ class NewsItemAddForm extends ACPForm {
 	public function readFormParameters() {
 		parent::readFormParameters();
 
+		$this->enableComments = 0;
+
 		if (isset($_POST['username'])) $this->username = StringUtil::trim($_POST['username']);
 		if (isset($_POST['title'])) $this->title = StringUtil::trim($_POST['title']);
 		if (isset($_POST['newsItemAlias'])) $this->newsItemAlias = StringUtil::trim($_POST['newsItemAlias']);
 		if (isset($_POST['teaser'])) $this->teaser = StringUtil::trim($_POST['teaser']);
 		if (isset($_POST['text'])) $this->text = StringUtil::trim($_POST['text']);
+		if (isset($_POST['enableComments'])) $this->enableComments = intval($_POST['enableComments']);
 		if (isset($_POST['cssID'])) $this->cssID = StringUtil::trim($_POST['cssID']);
 		if (isset($_POST['cssClasses'])) $this->cssClasses = StringUtil::trim($_POST['cssClasses']);
 
@@ -181,7 +185,7 @@ class NewsItemAddForm extends ACPForm {
 		parent::save();
 
 		// save news item
-		$this->newsItem = NewsItemEditor::create($this->newsArchiveID, $this->userID, $this->title, $this->newsItemAlias, $this->teaser, $this->text, $this->cssID, $this->cssClasses, $this->publishingStartTime, $this->publishingEndTime);
+		$this->newsItem = NewsItemEditor::create($this->newsArchiveID, $this->userID, $this->title, $this->newsItemAlias, $this->teaser, $this->text, $this->enableComments, $this->cssID, $this->cssClasses, $this->publishingStartTime, $this->publishingEndTime);
 		$this->saved();
 
 		// reset values
@@ -189,6 +193,7 @@ class NewsItemAddForm extends ACPForm {
 		$this->publishingStartTimeDay = $this->publishingStartTimeMonth = $this->publishingStartTimeYear = $this->publishingStartTimeHour = $this->publishingStartTimeMinutes =
 		$this->publishingEndTimeDay = $this->publishingEndTimeMonth = $this->publishingEndTimeYear = $this->publishingEndTimeHour = $this->publishingEndTimeMinutes = '';
 		$this->username = WCF::getUser()->username;
+		$this->enableComments = 1;
 
 		// show success message
 		WCF::getTPL()->assign('success', true);
@@ -212,6 +217,7 @@ class NewsItemAddForm extends ACPForm {
 			'newsItemAlias' => $this->newsItemAlias,
 			'teaser' => $this->teaser,
 			'text' => $this->text,
+			'enableComments' => $this->enableComments,
 			'cssID' => $this->cssID,
 			'cssClasses' => $this->cssClasses,
 			'publishingStartTimeDay' => $this->publishingStartTimeDay,
