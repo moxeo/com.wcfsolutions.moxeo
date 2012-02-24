@@ -1,8 +1,10 @@
 {include file='headlineArticleSectionType'}
 
+{@$ckeditor->getConfigurationHTML()}
+
 <fieldset>
 	<legend>{lang}moxeo.acp.article.section.text.data{/lang}</legend>
-	
+
 	<div class="formElement{if $errorField == 'code'} formError{/if}" id="codeDiv">
 		<div class="formFieldLabel">
 			<label for="code">{lang}moxeo.acp.article.section.text.code{/lang}</label>
@@ -32,14 +34,14 @@
 		if (enableThumbnail) {
 			enableThumbnail.observe('click', function() { openList('thumbnailSettings'); });
 		}
-		
+
 		{if !$enableThumbnail}
 			var thumbnailSettings = $('thumbnailSettings');
 			if (thumbnailSettings) {
 				thumbnailSettings.hide();
 			}
 		{/if}
-		
+
 		// thumbnail enable fullsize
 		var thumbnailEnableFullsize = $('thumbnailEnableFullsize');
 		if (thumbnailEnableFullsize) {
@@ -52,7 +54,7 @@
 				}
 			});
 		}
-		
+
 		{if !$thumbnailEnableFullsize}
 			disableOptions('thumbnailURL');
 		{/if}
@@ -62,7 +64,7 @@
 
 <fieldset>
 	<legend><label for="enableThumbnail"><input type="checkbox" name="enableThumbnail" id="enableThumbnail" value="1" {if $enableThumbnail}checked="checked" {/if}/> {lang}moxeo.acp.article.section.text.thumbnail{/lang}</label></legend>
-	
+
 	<div id="thumbnailSettings">
 		<div class="formElement{if $errorField == 'thumbnail'} formError{/if}" id="thumbnailDiv">
 			<div class="formFieldLabel">
@@ -83,7 +85,7 @@
 		<script type="text/javascript">//<![CDATA[
 			inlineHelp.register('thumbnail');
 		//]]></script>
-		
+
 		<div class="formElement" id="thumbnailCaptionDiv">
 			<div class="formFieldLabel">
 				<label for="thumbnailCaption">{lang}moxeo.acp.article.section.text.thumbnailCaption{/lang}</label>
@@ -98,7 +100,7 @@
 		<script type="text/javascript">//<![CDATA[
 			inlineHelp.register('thumbnailCaption');
 		//]]></script>
-		
+
 		<div class="formElement" id="thumbnailAlternativeTitleDiv">
 			<div class="formFieldLabel">
 				<label for="thumbnailAlternativeTitle">{lang}moxeo.acp.article.section.text.thumbnailAlternativeTitle{/lang}</label>
@@ -113,7 +115,7 @@
 		<script type="text/javascript">//<![CDATA[
 			inlineHelp.register('thumbnailAlternativeTitle');
 		//]]></script>
-		
+
 		<div class="formElement" id="thumbnailEnableFullsizeDiv">
 			<div class="formField">
 				<label for="thumbnailEnableFullsize"><input type="checkbox" name="thumbnailEnableFullsize" id="thumbnailEnableFullsize" value="1" {if $thumbnailEnableFullsize}checked="checked" {/if}/> {lang}moxeo.acp.article.section.text.thumbnailEnableFullsize{/lang}</label>
@@ -125,7 +127,7 @@
 		<script type="text/javascript">//<![CDATA[
 			inlineHelp.register('thumbnailEnableFullsize');
 		//]]></script>
-		
+
 		<div class="formElement" id="thumbnailURLDiv">
 			<div class="formFieldLabel">
 				<label for="thumbnailURL">{lang}moxeo.acp.article.section.text.thumbnailURL{/lang}</label>
@@ -163,7 +165,7 @@
 			langClose:			'{lang}wcf.global.button.close{/lang}',
 			multipleSelect:			false
 		});
-		
+
 		var form = $$('form')[0];
 		if (form) {
 			form.observe('submit', function(form) { this.submit(form); }.bind(fileManager, form));

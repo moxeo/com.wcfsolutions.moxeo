@@ -85,7 +85,16 @@ class TextArticleSectionType extends HeadlineArticleSectionType {
 	public function assignVariables() {
 		parent::assignVariables();
 
+		// init ckeditor
+		require_once(WCF_DIR.'lib/data/ckeditor/CKEditor.class.php');
+		$ckeditor = new CKEditor('code');
+		$ckeditor->setConfigOptions(array(
+			'baseHref' => "'".$ckeditor->encodeJS('../')."'",
+			'height' => "'300px'"
+		));
+
 		WCF::getTPL()->assign(array(
+			'ckeditor' => $ckeditor,
 			'code' => (isset($this->formData['code']) ? $this->formData['code'] : ''),
 			'enableThumbnail' => (isset($this->formData['enableThumbnail']) ? $this->formData['enableThumbnail'] : 0),
 			'thumbnail' => (isset($this->formData['thumbnail']) ? $this->formData['thumbnail'] : ''),

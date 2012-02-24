@@ -20,6 +20,7 @@
 		<requiredpackage minversion="1.1.0 Beta 1">com.woltlab.wcf.imageViewer</requiredpackage>
 
 		<!-- wcfsolutions packages -->
+		<requiredpackage minversion="1.0.1" file="requirements/com.wcfsolutions.wcf.ckeditor.tar">com.wcfsolutions.wcf.ckeditor</requiredpackage>
 		<requiredpackage minversion="1.0.0 Beta 1" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
 	</requiredpackages>
 
