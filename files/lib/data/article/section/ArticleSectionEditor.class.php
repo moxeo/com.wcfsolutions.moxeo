@@ -121,7 +121,8 @@ class ArticleSectionEditor extends ArticleSection {
 		$commentIDs = '';
 		$sql = "SELECT	commentID
 			FROM	moxeo".MOXEO_N."_comment
-			WHERE	articleSectionID IN (".$articleSectionIDs.")";
+			WHERE	commentableObjectID IN (".$articleSectionIDs.")
+				AND commentableObjectType = 'articleSection'";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			if (!empty($commentIDs)) $commentIDs .= ',';

@@ -67,6 +67,24 @@ class NewsItemEditor extends NewsItem {
 	 * Deletes this news item.
 	 */
 	public function delete() {
+		// get all comment ids
+		$commentIDs = '';
+		$sql = "SELECT	commentID
+			FROM	moxeo".MOXEO_N."_comment
+			WHERE	commentableObjectID = ".$this->newsItemID."
+				AND commentableObjectType = 'newsItem'";
+		$result = WCF::getDB()->sendQuery($sql);
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			if (!empty($commentIDs)) $commentIDs .= ',';
+			$commentIDs .= $row['commentID'];
+		}
+		if (!empty($commentIDs)) {
+			// delete comments
+			require_once(MOXEO_DIR.'lib/data/comment/CommentEditor.class.php');
+			CommentEditor::deleteAll($commentIDs);
+		}
+
+		// delete news item
 		$sql = "DELETE FROM	moxeo".MOXEO_N."_news_item
 			WHERE		newsItemID = ".$this->newsItemID;
 		WCF::getDB()->sendQuery($sql);
