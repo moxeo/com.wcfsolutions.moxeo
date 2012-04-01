@@ -122,7 +122,7 @@ class NewsItemPageElement extends ThemeModulePageElement {
 			'newsItem' => $this->newsItem,
 			'newsItemAlias' => $this->newsItemAlias,
 			'comments' => ($this->commentList !== null ? $this->commentList->getObjects() : array()),
-			'commentForm' => $commentAddForm->getContent()
+			'commentForm' => ($this->commentList !== null ? $commentAddForm->getContent() : '')
 		));
 	}
 
