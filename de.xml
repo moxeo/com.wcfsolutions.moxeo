@@ -543,9 +543,9 @@
 	<category name="moxeo.comment">
 		<item name="moxeo.comment.add"><![CDATA[Kommentar hinzufügen]]></item>
 		<item name="moxeo.comment.comment"><![CDATA[Kommentar]]></item>
-		<item name="moxeo.comment.comment.comments"><![CDATA[Kommentare]]></item>
 		<item name="moxeo.comment.commentableObjectType.articleSection"><![CDATA[Abschnitt]]></item>
 		<item name="moxeo.comment.commentableObjectType.newsItem"><![CDATA[Nachricht]]></item>
+		<item name="moxeo.comment.comments"><![CDATA[Kommentare]]></item>
 	</category>
 	<category name="moxeo.search">
 		<item name="moxeo.search.error.noMatches"><![CDATA[Es wurde keine mit Ihrer Suchanfrage &raquo;{$query}&laquo; übereinstimmende Seite gefunden.]]></item>
