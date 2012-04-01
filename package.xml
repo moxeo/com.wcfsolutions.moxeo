@@ -3,8 +3,8 @@
 	<packageinformation>
 		<packagename>Moxeo Open Source CMS</packagename>
 		<standalone>1</standalone>
-		<version>1.0.0 Beta 2</version>
-		<date>2012-02-24</date>
+		<version>1.0.0 RC 1</version>
+		<date>2012-04-01</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -60,7 +60,6 @@
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
-		<sql>update.sql</sql>
 
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
