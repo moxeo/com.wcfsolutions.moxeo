@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{lang}wcf.global.pageDirection{/lang}" xml:lang="{@LANGUAGE_CODE}">
 <head>
 	<title>{$pageTitle} - {lang}{PAGE_TITLE}{/lang}</title>
-	
+
 	<!--
 		This website is powered by Moxeo, an Open Source CMS licensed under GNU LGPL
 		Copyright 2009-2011 Sebastian Oettl <http://www.wcfsolutions.com/>
 		Extensions are copyright of their respective owners
 	-->
-	
+
 	<base href="{PAGE_URL}/" />
 	<meta http-equiv="content-type" content="text/html; charset={@CHARSET}" />
 	<meta http-equiv="content-script-type" content="text/javascript" />
@@ -18,14 +18,14 @@
 	{if $metaDescription}<meta name="description" content="{$metaDescription}" />{/if}
 	{if $metaKeywords}<meta name="keywords" content="{$metaKeywords}" />{/if}
 	<meta name="robots" content="{@$contentItem->robots}" />
-	
+
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/3rdParty/protoaculous.1.8.2.min.js"></script>
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/default.js"></script>
-	
-	<!-- image viewer -->	
+
+	<!-- image viewer -->
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/ImageViewer.class.js"></script>
 	<script type="text/javascript">
-		//<![CDATA[			
+		//<![CDATA[
 		document.observe('dom:loaded', function() {
 			new ImageViewer($$('.enlargable'), {
 				langCaption		: '{lang}wcf.imageViewer.caption{/lang}',
@@ -48,26 +48,26 @@
 				imgNextHoverSrc		: '{@RELATIVE_WCF_DIR}icon/imageViewer/nextHoverM.png',
 				imgEnlargeHoverSrc	: '{@RELATIVE_WCF_DIR}icon/imageViewer/enlargeHoverM.png',
 				imgPauseHoverSrc	: '{@RELATIVE_WCF_DIR}icon/imageViewer/pauseHoverM.png',
-				imgCloseHoverSrc	: '{@RELATIVE_WCF_DIR}icon/imageViewer/closeHoverM.png'	
+				imgCloseHoverSrc	: '{@RELATIVE_WCF_DIR}icon/imageViewer/closeHoverM.png'
 			});
 		});
 	//]]>
-	</script>		
-	
+	</script>
+
 	<!-- theme styles -->
 	<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}theme/global.css" />
 	{foreach from=$this->getThemeLayout()->getStyleSheets() item=styleSheet}
 		<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}theme/{$this->getThemeLayout()->getTheme()->dataLocation}/{$styleSheet}.css" />
 	{/foreach}
-	
+
 	<!-- additional styles -->
 	<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}style/imageViewer.css" />
-	
+
 	{if $specialStyles|isset}
 		<!-- special styles -->
 		{@$specialStyles}
 	{/if}
-	
+
 	<script type="text/javascript">
 		//<![CDATA[
 		var SID_ARG_1ST	= '{@SID_ARG_1ST}';
@@ -77,7 +77,7 @@
 		var RELATIVE_MOXEO_DIR = '{@RELATIVE_MOXEO_DIR}';
 		//]]>
 	</script>
-	
+
 	{if $executeCronjobs}
 		<script type="text/javascript">
 			//<![CDATA[
@@ -89,7 +89,7 @@
 <body{if $contentItem->cssClasses} class="{$contentItem->cssClasses}"{/if}>
 
 <div id="container">
-	
+
 	{assign var=headerThemeModules value=$this->getThemeLayout()->getModules('header', $additionalThemeModuleData)}
 	{if $headerThemeModules|count}
 		<div id="header">
@@ -98,15 +98,15 @@
 			</div>
 		</div>
 	{/if}
-	
+
 	<div id="content">
-		
+
 		{assign var=leftThemeModules value=$this->getThemeLayout()->getModules('left', $additionalThemeModuleData)}
 		{assign var=rightThemeModules value=$this->getThemeLayout()->getModules('right', $additionalThemeModuleData)}
 		{assign var=mainThemeModules value=$this->getThemeLayout()->getModules('main', $additionalThemeModuleData)}
-		
+
 		<div id="layout-{if $leftThemeModules|count && $rightThemeModules|count}4{elseif $leftThemeModules|count}3{elseif $rightThemeModules|count}2{else}1{/if}">
-			
+
 			{if $leftThemeModules|count}
 				<div id="left">
 					<div class="inner">
@@ -114,7 +114,15 @@
 					</div>
 				</div>
 			{/if}
-			
+
+			{if $mainThemeModules|count}
+				<div id="main">
+					<div class="inner">
+					{include file='themeModules' themeModulePosition='main' themeModules=$mainThemeModules additionalData=$additionalThemeModuleData}
+					</div>
+				</div>
+			{/if}
+
 			{if $rightThemeModules|count}
 				<div id="right">
 					<div class="inner">
@@ -122,19 +130,11 @@
 					</div>
 				</div>
 			{/if}
-			
-			{if $mainThemeModules|count}
-				<div id="main">
-					<div class="inner">
-						{include file='themeModules' themeModulePosition='main' themeModules=$mainThemeModules additionalData=$additionalThemeModuleData}
-					</div>
-				</div>
-			{/if}
-			
+
 		</div>
-		
+
 	</div>
-	
+
 	{assign var=footerThemeModules value=$this->getThemeLayout()->getModules('footer', $additionalThemeModuleData)}
 	{if $footerThemeModules|count}
 		<div id="footer">
@@ -143,7 +143,7 @@
 			</div>
 		</div>
 	{/if}
-	
+
 </div>
 
 </body>
