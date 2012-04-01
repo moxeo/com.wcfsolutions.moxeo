@@ -40,44 +40,6 @@
 			<link>index.php?form=ArticleAdd</link>
 			<permissions>admin.moxeo.canAddArticle</permissions>
 		</acpmenuitem>
-		<acpmenuitem name="moxeo.acp.menu.link.content.news">
-			<parent>wcf.acp.menu.link.content</parent>
-			<showorder>3</showorder>
-		</acpmenuitem>
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive">
-			<parent>moxeo.acp.menu.link.content.news</parent>
-			<showorder>1</showorder>
-		</acpmenuitem>
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive.view">
-			<parent>moxeo.acp.menu.link.content.newsArchive</parent>
-			<showorder>1</showorder>
-			<link>index.php?page=NewsArchiveList</link>
-			<icon>icon/newsArchiveM.png</icon>
-			<permissions>admin.moxeo.canEditNewsArchive,admin.moxeo.canDeleteNewsArchive</permissions>
-		</acpmenuitem>
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive.add">
-			<parent>moxeo.acp.menu.link.content.newsArchive</parent>
-			<showorder>2</showorder>
-			<link>index.php?form=NewsArchiveAdd</link>
-			<permissions>admin.moxeo.canAddNewsArchive</permissions>
-		</acpmenuitem>
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem">
-			<parent>moxeo.acp.menu.link.content.news</parent>
-			<showorder>2</showorder>
-		</acpmenuitem>
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem.view">
-			<parent>moxeo.acp.menu.link.content.newsItem</parent>
-			<showorder>1</showorder>
-			<link>index.php?page=NewsItemList</link>
-			<icon>icon/newsItemM.png</icon>
-			<permissions>admin.moxeo.canEditNewsItem,admin.moxeo.canDeleteNewsItem</permissions>
-		</acpmenuitem>
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem.add">
-			<parent>moxeo.acp.menu.link.content.newsItem</parent>
-			<showorder>2</showorder>
-			<link>index.php?form=NewsItemAdd</link>
-			<permissions>admin.moxeo.canAddNewsItem</permissions>
-		</acpmenuitem>
 		<acpmenuitem name="moxeo.acp.menu.link.content.comment">
 			<parent>wcf.acp.menu.link.content</parent>
 			<showorder>4</showorder>

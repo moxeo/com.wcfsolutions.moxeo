@@ -1,8 +1,4 @@
 <?php
-// moxeo imports
-require_once(MOXEO_DIR.'lib/data/news/NewsItem.class.php');
-require_once(MOXEO_DIR.'lib/data/news/archive/NewsArchive.class.php');
-
 // wcf imports
 require_once(WCF_DIR.'lib/page/element/ThemeModulePageElement.class.php');
 

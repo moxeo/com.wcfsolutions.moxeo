@@ -20,9 +20,6 @@
 			<category name="admin.moxeo.article">
 				<parent>admin.moxeo</parent>
 			</category>
-			<category name="admin.moxeo.news">
-				<parent>admin.moxeo</parent>
-			</category>
 			<category name="admin.moxeo.comment">
 				<parent>admin.moxeo</parent>
 			</category>
@@ -90,41 +87,6 @@
 			</option>
 			<option name="admin.moxeo.canDeleteArticle">
 				<categoryname>admin.moxeo.article</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-			<option name="admin.moxeo.canAddNewsArchive">
-				<categoryname>admin.moxeo.news</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-			<option name="admin.moxeo.canEditNewsArchive">
-				<categoryname>admin.moxeo.news</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-			<option name="admin.moxeo.canDeleteNewsArchive">
-				<categoryname>admin.moxeo.news</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-			<option name="admin.moxeo.canAddNewsItem">
-				<categoryname>admin.moxeo.news</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-			<option name="admin.moxeo.canEditNewsItem">
-				<categoryname>admin.moxeo.news</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-			<option name="admin.moxeo.canDeleteNewsItem">
-				<categoryname>admin.moxeo.news</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-			<option name="admin.moxeo.canEnableNewsItem">
-				<categoryname>admin.moxeo.news</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>

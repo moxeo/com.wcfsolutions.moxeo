@@ -122,30 +122,3 @@ CREATE TABLE moxeo1_1_content_item_to_user (
 	canViewHiddenContentItem TINYINT(1) NOT NULL DEFAULT -1,
 	PRIMARY KEY (userID, contentItemID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS moxeo1_1_news_archive;
-CREATE TABLE moxeo1_1_news_archive (
-	newsArchiveID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	title VARCHAR(255) NOT NULL DEFAULT '',
-	contentItemID INT(10) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS moxeo1_1_news_item;
-CREATE TABLE moxeo1_1_news_item (
-	newsItemID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	newsArchiveID INT(10) NOT NULL DEFAULT 0,
-	userID INT(10) NOT NULL DEFAULT 0,
-	title VARCHAR(255) NOT NULL DEFAULT '',
-	newsItemAlias VARCHAR(255) NOT NULL DEFAULT '',
-	cssID VARCHAR(255) NOT NULL DEFAULT '',
-	cssClasses VARCHAR(255) NOT NULL DEFAULT '',
-	teaser TINYTEXT,
-	text TEXT NULL,
-	enableComments TINYINT(1) NOT NULL DEFAULT 1,
-	time INT(10) NOT NULL DEFAULT 0,
-	publishingStartTime INT(10) NOT NULL DEFAULT 0,
-	publishingEndTime INT(10) NOT NULL DEFAULT 0,
-	enabled TINYINT(1) NOT NULL DEFAULT 1,
-	KEY (newsArchiveID),
-	KEY (newsArchiveID, enabled, publishingStartTime, publishingEndTime)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;

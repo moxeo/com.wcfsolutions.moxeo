@@ -50,18 +50,6 @@
 			<classfile>lib/data/theme/module/type/AccountManagementThemeModuleType.class.php</classfile>
 		</type>
 		
-		<!-- news elements -->
-		<type>
-			<name>newsItemList</name>
-			<category>news</category>
-			<classfile>lib/data/theme/module/type/NewsItemListThemeModuleType.class.php</classfile>
-		</type>
-		<type>
-			<name>newsItem</name>
-			<category>news</category>
-			<classfile>lib/data/theme/module/type/NewsItemThemeModuleType.class.php</classfile>
-		</type>
-		
 		<!-- misc elements -->
 		<type>
 			<name>article</name>
