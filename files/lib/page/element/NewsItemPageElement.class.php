@@ -72,6 +72,7 @@ class NewsItemPageElement extends ThemeModulePageElement {
 
 		// init comment list
 		if ($this->newsItem->enableComments) {
+			require_once(MOXEO_DIR.'lib/data/comment/CommentList.class.php');
 			$this->commentList = new CommentList();
 			$this->commentList->sqlConditions .= "comment.commentableObjectID = ".$this->newsItem->newsItemID." AND comment.commentableObjectType = 'newsItem'";
 			$this->commentList->sqlOrderBy = 'comment.time DESC';
