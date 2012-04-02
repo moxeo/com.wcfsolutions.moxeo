@@ -23,7 +23,7 @@
 		<item name="wcf.acp.group.option.admin.moxeo.canUseFileManager.description"><![CDATA[Mitglieder dieser Benutzergruppe können den Dateimanager benutzen.]]></item>
 		<item name="wcf.acp.group.option.admin.moxeo.isContentItemAdmin"><![CDATA[Ist Seiten-Administrator]]></item>
 		<item name="wcf.acp.group.option.admin.moxeo.isContentItemAdmin.description"><![CDATA[Mitglieder dieser Benutzergruppe sind Seiten-Administratoren.]]></item>
-		<item name="wcf.acp.group.option.category.admin.moxeo"><![CDATA[Portal]]></item>
+		<item name="wcf.acp.group.option.category.admin.moxeo"><![CDATA[CMS]]></item>
 		<item name="wcf.acp.group.option.category.admin.moxeo.article"><![CDATA[Artikel]]></item>
 		<item name="wcf.acp.group.option.category.admin.moxeo.article.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.category.admin.moxeo.comment"><![CDATA[Kommentare]]></item>
@@ -31,7 +31,7 @@
 		<item name="wcf.acp.group.option.category.admin.moxeo.contentItem"><![CDATA[Seiten]]></item>
 		<item name="wcf.acp.group.option.category.admin.moxeo.contentItem.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.category.admin.moxeo.description"><![CDATA[]]></item>
-		<item name="wcf.acp.group.option.category.user.moxeo"><![CDATA[Portal]]></item>
+		<item name="wcf.acp.group.option.category.user.moxeo"><![CDATA[CMS]]></item>
 		<item name="wcf.acp.group.option.category.user.moxeo.comment"><![CDATA[Kommentare]]></item>
 		<item name="wcf.acp.group.option.category.user.moxeo.comment.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.category.user.moxeo.contentItem"><![CDATA[Seiten]]></item>
