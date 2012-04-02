@@ -25,6 +25,7 @@
 	</requiredpackages>
 
 	<optionalpackages>
+		<optionalpackage file="optionals/com.wcfsolutions.moxeo.news.tar">com.wcfsolutions.moxeo.news</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.moxeo.sampleContents.tar">com.wcfsolutions.moxeo.sampleContents</optionalpackage>
 	</optionalpackages>
 
