@@ -65,7 +65,6 @@
 		<item name="wcf.theme.module.type.breadCrumb"><![CDATA[Navigationspfad]]></item>
 		<item name="wcf.theme.module.type.category.misc"><![CDATA[Verschiedenes]]></item>
 		<item name="wcf.theme.module.type.category.navigation"><![CDATA[Navigation]]></item>
-		<item name="wcf.theme.module.type.category.news"><![CDATA[Nachrichten]]></item>
 		<item name="wcf.theme.module.type.category.user"><![CDATA[Benutzer]]></item>
 		<item name="wcf.theme.module.type.customNavigation"><![CDATA[Individuelle Navigation]]></item>
 		<item name="wcf.theme.module.type.login"><![CDATA[Login]]></item>
