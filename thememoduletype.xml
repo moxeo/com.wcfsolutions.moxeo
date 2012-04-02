@@ -27,7 +27,7 @@
 			<category>navigation</category>
 			<classfile>lib/data/theme/module/type/SitemapThemeModuleType.class.php</classfile>
 		</type>
-		
+
 		<!-- user elements -->
 		<type>
 			<name>login</name>
@@ -49,7 +49,7 @@
 			<category>user</category>
 			<classfile>lib/data/theme/module/type/AccountManagementThemeModuleType.class.php</classfile>
 		</type>
-		
+
 		<!-- misc elements -->
 		<type>
 			<name>article</name>
@@ -62,4 +62,12 @@
 			<classfile>lib/data/theme/module/type/SearchThemeModuleType.class.php</classfile>
 		</type>
 	</import>
+	<delete>
+		<type>
+			<name>newsItemList</name>
+		</type>
+		<type>
+			<name>newsItem</name>
+		</type>
+	</delete>
 </data>

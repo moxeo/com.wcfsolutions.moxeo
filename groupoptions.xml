@@ -107,4 +107,7 @@
 			</option>
 		</options>
 	</import>
+	<delete>
+		<category name="admin.moxeo.news" />
+	</delete>
 </data>

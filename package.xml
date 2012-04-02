@@ -61,6 +61,14 @@
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
+		<sql>update.sql</sql>
+		<script>acp/update.php</script>
+
+		<!-- config -->
+		<groupoptions>groupoptions.xml</groupoptions>
+		<acpmenu>acpmenu.xml</acpmenu>
+		<thememoduletype>thememoduletype.xml</thememoduletype>
+		<commentableobjecttype>commentableobjecttype.xml</commentableobjecttype>
 
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
