@@ -108,6 +108,6 @@
 		</options>
 	</import>
 	<delete>
-		<category name="admin.moxeo.news" />
+		<optioncategory name="admin.moxeo.news" />
 	</delete>
 </data>
