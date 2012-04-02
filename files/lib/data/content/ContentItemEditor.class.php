@@ -234,12 +234,6 @@ class ContentItemEditor extends ContentItem {
 	 * Deletes this content item.
 	 */
 	public function delete() {
-		// update news archives
-		$sql = "UPDATE	moxeo".MOXEO_N."_news_archive
-			SET	contentItemID = 0
-			WHERE	contentItemID = ".$this->contentItemID;
-		WCF::getDB()->sendQuery($sql);
-
 		// get all article ids
 		$articleIDs = '';
 		$sql = "SELECT	articleID

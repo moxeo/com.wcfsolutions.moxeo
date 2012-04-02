@@ -79,7 +79,6 @@ class MOXEOACP extends WCFACP {
 		WCF::getCache()->addResource('contentItemAlias', MOXEO_DIR.'cache/cache.contentItemAlias.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemAlias.class.php');
 		WCF::getCache()->addResource('contentItemStructure', MOXEO_DIR.'cache/cache.contentItemStructure.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemStructure.class.php');
 		WCF::getCache()->addResource('contentItemArticles', MOXEO_DIR.'cache/cache.contentItemArticles.php', MOXEO_DIR.'lib/system/cache/CacheBuilderContentItemArticles.class.php');
-		WCF::getCache()->addResource('newsArchive', MOXEO_DIR.'cache/cache.newsArchive.php', MOXEO_DIR.'lib/system/cache/CacheBuilderNewsArchive.class.php');
 		WCF::getCache()->addResource('theme-'.PACKAGE_ID, WCF_DIR.'cache/cache.theme-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderTheme.class.php');
 		WCF::getCache()->addResource('themeLayout-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeLayout-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeLayout.class.php');
 		WCF::getCache()->addResource('themeModule-'.PACKAGE_ID, WCF_DIR.'cache/cache.themeModule-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderThemeModule.class.php');
