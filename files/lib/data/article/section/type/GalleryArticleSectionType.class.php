@@ -28,7 +28,10 @@ class GalleryArticleSectionType extends HeadlineArticleSectionType {
 		// get images
 		foreach ($articleSection->images as $image) {
 			$path = FileManagerUtil::getPath($image);
-			$images[] = FileManagerUtil::getFileInfo($path);
+			$images[] = array(
+				'path' => $image,
+				'info' => FileManagerUtil::getFileInfo($path)
+			);
 		}
 
 		WCF::getTPL()->assign(array(

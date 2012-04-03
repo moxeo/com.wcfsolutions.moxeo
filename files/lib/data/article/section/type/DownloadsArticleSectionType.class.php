@@ -28,7 +28,10 @@ class DownloadsArticleSectionType extends HeadlineArticleSectionType {
 		// get files
 		foreach ($articleSection->files as $file) {
 			$path = FileManagerUtil::getPath($file);
-			$files[] = FileManagerUtil::getFileInfo($path);
+			$files[] = array(
+				'path' => $file,
+				'info' => FileManagerUtil::getFileInfo($path)
+			);
 		}
 
 		WCF::getTPL()->assign(array(

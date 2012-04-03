@@ -23,7 +23,11 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 	 * @see	ArticleSectionType::getContent()
 	 */
 	public function getContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		WCF::getTPL()->assign('articleSection', $articleSection);
+		$path = FileManagerUtil::getPath($articleSection->image);
+		WCF::getTPL()->assign(array(
+			'articleSection' => $articleSection,
+			'file' => FileManagerUtil::getFileInfo($path)
+		));
 		return WCF::getTPL()->fetch('imageArticleSectionType');
 	}
 
