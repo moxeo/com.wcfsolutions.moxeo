@@ -28,7 +28,7 @@ class FileManagerFileAddForm extends AbstractForm {
 	public $path = '';
 
 	// parameters
-	public $fileType = 'folder';
+	public $fileType = 'file';
 	public $dirName = '';
 	public $fileUpload;
 
