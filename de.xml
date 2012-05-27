@@ -58,6 +58,14 @@
 		<item name="wcf.acp.option.page_url"><![CDATA[Adresse (URL) der Seite]]></item>
 		<item name="wcf.acp.option.page_url.description"><![CDATA[Geben Sie an, unter welcher Adresse (URL) die Seite aufzurufen ist (ohne abschließenden Slash).]]></item>
 	</category>
+	<category name="wcf.acp.package">
+		<item name="wcf.acp.package.step.install.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Abschnitts-Typen werden installiert ...]]></item>
+		<item name="wcf.acp.package.step.install.CommentableObjectTypePackageInstallationPlugin"><![CDATA[Kommentar-Typen werden installiert ...]]></item>
+		<item name="wcf.acp.package.step.uninstall.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Abschnitts-Typen werden deinstalliert ...]]></item>
+		<item name="wcf.acp.package.step.uninstall.CommentableObjectTypePackageInstallationPlugin"><![CDATA[Kommentar-Typen werden deinstalliert ...]]></item>
+		<item name="wcf.acp.package.step.update.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Abschnitts-Typen werden aktualisiert ...]]></item>
+		<item name="wcf.acp.package.step.update.CommentableObjectTypePackageInstallationPlugin"><![CDATA[Kommentar-Typen werden aktualisiert ...]]></item>
+	</category>
 	<category name="wcf.theme">
 		<item name="wcf.theme.module.type.accountManagement"><![CDATA[Accountverwaltung]]></item>
 		<item name="wcf.theme.module.type.article"><![CDATA[Artikel]]></item>
