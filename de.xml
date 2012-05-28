@@ -343,17 +343,17 @@
 		<item name="moxeo.acp.fileManager.file.permissions"><![CDATA[Zugriffsrechte]]></item>
 		<item name="moxeo.acp.fileManager.file.size"><![CDATA[Größe]]></item>
 		<item name="moxeo.acp.fileManager.fileUpload"><![CDATA[Datei]]></item>
+		<item name="moxeo.acp.fileManager.selection.apply"><![CDATA[Auswahl anwenden]]></item>
+		<item name="moxeo.acp.fileManager.selection.change"><![CDATA[Auswahl ändern]]></item>
 	</category>
 	<category name="moxeo.acp.index">
 		<item name="moxeo.acp.index"><![CDATA[Moxeo Open Source CMS Administrationsoberfläche]]></item>
 		<item name="moxeo.acp.index.credits"><![CDATA[Über Moxeo Open Source CMS]]></item>
 		<item name="moxeo.acp.index.credits.contributor"><![CDATA[Mitwirkende]]></item>
-		<item name="moxeo.acp.index.credits.designer"><![CDATA[Design]]></item>
 		<item name="moxeo.acp.index.credits.developedBy"><![CDATA[Software entwickelt von]]></item>
 		<item name="moxeo.acp.index.credits.developer"><![CDATA[Programmierung]]></item>
 		<item name="moxeo.acp.index.credits.icons"><![CDATA[Icons]]></item>
 		<item name="moxeo.acp.index.credits.productManager"><![CDATA[Projektleitung]]></item>
-		<item name="moxeo.acp.index.credits.translators"><![CDATA[Übersetzung]]></item>
 		<item name="moxeo.acp.index.majorUpdates"><![CDATA[Optionale Updates]]></item>
 		<item name="moxeo.acp.index.majorUpdates.description"><![CDATA[Es stehen derzeit folgende optionale Updates zur Verfügung:]]></item>
 		<item name="moxeo.acp.index.minorUpdates"><![CDATA[Wichtige Updates]]></item>
@@ -368,7 +368,6 @@
 		<item name="moxeo.acp.index.stat.usersOnline"><![CDATA[Benutzer online]]></item>
 		<item name="moxeo.acp.index.system"><![CDATA[System]]></item>
 		<item name="moxeo.acp.index.system.cache"><![CDATA[Cache]]></item>
-		<item name="moxeo.acp.index.system.exportInformation"><![CDATA[System-Informationen herunterladen]]></item>
 		<item name="moxeo.acp.index.system.installationDate"><![CDATA[Installationsdatum]]></item>
 		<item name="moxeo.acp.index.system.load"><![CDATA[Aktueller UNIX Load]]></item>
 		<item name="moxeo.acp.index.system.os"><![CDATA[Betriebssystem]]></item>

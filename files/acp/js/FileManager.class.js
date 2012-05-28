@@ -10,19 +10,20 @@ var FileManager = Class.create({
 	initialize: function(key, selectedFiles) {
 		this.key = key;
 		this.selectedFiles = selectedFiles;
+		this.previousSelectedFiles = this.selectedFiles.clone();
 		this.options = Object.extend({
 			iconCloseSrc:			'',
 			iconFileManagerSrc:		'',
 			iconFileManagerFileSrc:		'',
 			iconFileManagerFolderSrc:	'',
-			langFileManager:		'',
+			langClose:			'',
 			langFileName:			'',
 			langFileSize:			'',
 			langFileDate:			'',
 			langFilePermissions:		'',
 			langFileTypeFolder:		'',
 			langFileTypeFile:		'',
-			langClose:			'',
+			langSelectionApply:		'',
 			multipleSelect:			false
 		}, arguments[2] || { });
 		this.background = null;
@@ -59,8 +60,7 @@ var FileManager = Class.create({
 								size: files[0].childNodes[i].childNodes[2].childNodes[0].nodeValue,
 								date: files[0].childNodes[i].childNodes[3].childNodes[0].nodeValue,
 								permissions: files[0].childNodes[i].childNodes[4].childNodes[0].nodeValue,
-								relativePath: files[0].childNodes[i].childNodes[5].childNodes[0].nodeValue,
-								selected: (this.selectedFiles.indexOf(files[0].childNodes[i].childNodes[5].childNodes[0].nodeValue) != -1 ? 1 : 0)
+								relativePath: files[0].childNodes[i].childNodes[5].childNodes[0].nodeValue
 							});
 						}
 
@@ -132,15 +132,14 @@ var FileManager = Class.create({
 			var columnSelect = new Element('td').addClassName('columnIcon').addClassName('columnSelect');
 			if (file.isDir == 0) {
 				var fileSelect = new Element('input', { name: 'fileManagerFileSelect', type: (this.options.multipleSelect ? 'checkbox' : 'radio') });
-				if (file.selected == 1) {
+				if (this.selectedFiles.indexOf(file.relativePath) != -1) {
 					fileSelect.checked = 1;
 				}
 				fileSelect.observe('change', function(file, fileSelect) {
 					if (!this.options.multipleSelect) {
 						this.uncheckAll();
 					}
-					file.selected = (fileSelect.checked ? 1 : 0);
-					if (file.selected) {
+					if (fileSelect.checked) {
 						this.selectedFiles.push(file.relativePath);
 					}
 					else {
@@ -197,9 +196,9 @@ var FileManager = Class.create({
 			var files = item.value;
 			files.each(function(item) {
 				var file = item.value;
-				file.selected = 0;
-			});
-		});
+				this.selectedFiles.splice(this.selectedFiles.indexOf(file.relativePath), 1);
+			}.bind(this));
+		}.bind(this));
 	},
 
 	/**
@@ -209,10 +208,14 @@ var FileManager = Class.create({
 		// create overlay background
 		this.background = new Element('div').addClassName('overlayBackground').hide();
 
-		// create map headline
+		// create headline
 		var iconClose = new Element('img', { src: this.options.iconCloseSrc, title: this.options.langClose }).addClassName('pointer');
 		var spanButtons = new Element('span').addClassName('buttons').insert(iconClose);
 		var headline = new Element('h3').addClassName('subHeadline').update(this.options.langFileManager).insert(spanButtons);
+
+		// create submit button
+		var submitButton = new Element('input', { type: 'submit', value: this.options.langSelectionApply }).observe('click', function() { this.closeOverlay(false); }.bind(this));
+		var formSubmit = new Element('div').addClassName('formSubmit').insert(submitButton);
 
 		// create button bar
 		var iconFileManager = new Element('img', { src: this.options.iconFileManagerSrc });
@@ -225,7 +228,7 @@ var FileManager = Class.create({
 
 		// create container
 		this.fileContent = new Element('div');
-		var content = new Element('div', { id: 'largeMap' }).addClassName('container-1').insert(headline).insert(this.fileContent).insert(buttonBar);
+		var content = new Element('div').addClassName('container-1').insert(headline).insert(this.fileContent).insert(formSubmit).insert(buttonBar);
 		this.container = new Element('div').addClassName('overlay border content').insert(content).hide();
 
 		// insert elements
@@ -235,8 +238,8 @@ var FileManager = Class.create({
 		this.updateOverlay();
 
 		// bind event listeners
-		this.background.observe('click', this.closeOverlay.bind(this));
-		iconClose.observe('click', this.closeOverlay.bind(this));
+		this.background.observe('click', function() { this.closeOverlay(true); }.bind(this));
+		iconClose.observe('click', function() { this.closeOverlay(true); }.bind(this));
 		Event.observe(window, 'resize', this.updateOverlay.bind(this));
 	},
 
@@ -264,6 +267,9 @@ var FileManager = Class.create({
 			from: 0.0,
 			to: 0.6,
 			afterFinish: function() {
+				// save initial selected files
+				this.previousSelectedFiles = this.selectedFiles.clone();
+
 				// load files
 				this.loadFiles();
 
@@ -297,7 +303,13 @@ var FileManager = Class.create({
 	/**
 	 * Closes the overlay.
 	 */
-	closeOverlay: function() {
+	closeOverlay: function(discardChanges) {
+		// discard changes
+		if (discardChanges) {
+			this.selectedFiles = this.previousSelectedFiles;
+		}
+
+		// hide background
 		this.background.fade({
 			duration: 0.3,
 			from: 0.6,

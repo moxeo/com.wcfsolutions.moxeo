@@ -71,7 +71,7 @@
 				<label for="thumbnail">{lang}moxeo.acp.article.section.text.thumbnail{/lang}</label>
 			</div>
 			<div class="formField">
-				<input type="button" id="thumbnail" value="{lang}moxeo.acp.fileManager{/lang}" />
+				<input type="button" id="thumbnail" value="{lang}moxeo.acp.fileManager.selection.change{/lang}" />
 				{if $errorField == 'thumbnail'}
 					<p class="innerError">
 						{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
@@ -162,7 +162,7 @@
 			langFilePermissions:		'{lang}moxeo.acp.fileManager.file.permissions{/lang}',
 			langFileTypeFolder:		'{lang}moxeo.acp.fileManager.file.fileType.folder{/lang}',
 			langFileTypeFile:		'{lang}moxeo.acp.fileManager.file.fileType.file{/lang}',
-			langClose:			'{lang}wcf.global.button.close{/lang}',
+			langSelectionApply:		'{lang}moxeo.acp.fileManager.selection.apply{/lang}',
 			multipleSelect:			false
 		});
 

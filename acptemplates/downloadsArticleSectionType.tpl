@@ -2,13 +2,13 @@
 
 <fieldset>
 	<legend>{lang}moxeo.acp.article.section.downloads.files{/lang}</label></legend>
-	
+
 	<div class="formElement{if $errorField == 'files'} formError{/if}" id="filesDiv">
 		<div class="formFieldLabel">
 			<label for="files">{lang}moxeo.acp.article.section.downloads.files{/lang}</label>
 		</div>
 		<div class="formField">
-			<input type="button" id="files" value="{lang}moxeo.acp.fileManager{/lang}" />
+			<input type="button" id="files" value="{lang}moxeo.acp.fileManager.selection.change{/lang}" />
 			{if $errorField == 'image'}
 				<p class="innerError">
 					{if $errorType|is_array}
@@ -47,10 +47,10 @@
 			langFilePermissions:		'{lang}moxeo.acp.fileManager.file.permissions{/lang}',
 			langFileTypeFolder:		'{lang}moxeo.acp.fileManager.file.fileType.folder{/lang}',
 			langFileTypeFile:		'{lang}moxeo.acp.fileManager.file.fileType.file{/lang}',
-			langClose:			'{lang}wcf.global.button.close{/lang}',
+			langSelectionApply:		'{lang}moxeo.acp.fileManager.selection.apply{/lang}',
 			multipleSelect:			true
 		});
-		
+
 		var form = $$('form')[0];
 		if (form) {
 			form.observe('submit', function(form) { this.submit(form); }.bind(fileManager, form));

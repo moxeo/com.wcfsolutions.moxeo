@@ -2,13 +2,13 @@
 
 <fieldset>
 	<legend>{lang}moxeo.acp.article.section.download.file{/lang}</label></legend>
-	
+
 	<div class="formElement{if $errorField == 'file'} formError{/if}" id="fileDiv">
 		<div class="formFieldLabel">
 			<label for="file">{lang}moxeo.acp.article.section.download.file{/lang}</label>
 		</div>
 		<div class="formField">
-			<input type="button" id="file" value="{lang}moxeo.acp.fileManager{/lang}" />
+			<input type="button" id="file" value="{lang}moxeo.acp.fileManager.selection.change{/lang}" />
 			{if $errorField == 'file'}
 				<p class="innerError">
 					{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
@@ -23,7 +23,7 @@
 	<script type="text/javascript">//<![CDATA[
 		inlineHelp.register('file');
 	//]]></script>
-	
+
 	<div class="formElement" id="captionDiv">
 		<div class="formFieldLabel">
 			<label for="caption">{lang}moxeo.acp.article.section.download.caption{/lang}</label>
@@ -57,10 +57,10 @@
 			langFilePermissions:		'{lang}moxeo.acp.fileManager.file.permissions{/lang}',
 			langFileTypeFolder:		'{lang}moxeo.acp.fileManager.file.fileType.folder{/lang}',
 			langFileTypeFile:		'{lang}moxeo.acp.fileManager.file.fileType.file{/lang}',
-			langClose:			'{lang}wcf.global.button.close{/lang}',
+			langSelectionApply:		'{lang}moxeo.acp.fileManager.selection.apply{/lang}',
 			multipleSelect:			false
 		});
-		
+
 		var form = $$('form')[0];
 		if (form) {
 			form.observe('submit', function(form) { this.submit(form); }.bind(fileManager, form));

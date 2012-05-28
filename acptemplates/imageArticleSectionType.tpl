@@ -2,13 +2,13 @@
 
 <fieldset>
 	<legend>{lang}moxeo.acp.article.section.image.image{/lang}</label></legend>
-	
+
 	<div class="formElement{if $errorField == 'image'} formError{/if}" id="imageDiv">
 		<div class="formFieldLabel">
 			<label for="image">{lang}moxeo.acp.article.section.image.image{/lang}</label>
 		</div>
 		<div class="formField">
-			<input type="button" id="image" value="{lang}moxeo.acp.fileManager{/lang}" />
+			<input type="button" id="image" value="{lang}moxeo.acp.fileManager.selection.change{/lang}" />
 			{if $errorField == 'image'}
 				<p class="innerError">
 					{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
@@ -23,7 +23,7 @@
 	<script type="text/javascript">//<![CDATA[
 		inlineHelp.register('image');
 	//]]></script>
-	
+
 	<div class="formElement" id="captionDiv">
 		<div class="formFieldLabel">
 			<label for="caption">{lang}moxeo.acp.article.section.image.caption{/lang}</label>
@@ -38,7 +38,7 @@
 	<script type="text/javascript">//<![CDATA[
 		inlineHelp.register('caption');
 	//]]></script>
-	
+
 	<div class="formElement" id="alternativeTitleDiv">
 		<div class="formFieldLabel">
 			<label for="alternativeTitle">{lang}moxeo.acp.article.section.image.alternativeTitle{/lang}</label>
@@ -53,7 +53,7 @@
 	<script type="text/javascript">//<![CDATA[
 		inlineHelp.register('alternativeTitle');
 	//]]></script>
-	
+
 	<div class="formElement" id="enableFullsizeDiv">
 		<div class="formField">
 			<label for="enableFullsize"><input type="checkbox" name="enableFullsize" id="enableFullsize" value="1" {if $enableFullsize}checked="checked" {/if}/> {lang}moxeo.acp.article.section.image.enableFullsize{/lang}</label>
@@ -65,7 +65,7 @@
 	<script type="text/javascript">//<![CDATA[
 		inlineHelp.register('enableFullsize');
 	//]]></script>
-	
+
 	<div class="formElement" id="urlDiv">
 		<div class="formFieldLabel">
 			<label for="url">{lang}moxeo.acp.article.section.image.url{/lang}</label>
@@ -99,10 +99,10 @@
 			langFilePermissions:		'{lang}moxeo.acp.fileManager.file.permissions{/lang}',
 			langFileTypeFolder:		'{lang}moxeo.acp.fileManager.file.fileType.folder{/lang}',
 			langFileTypeFile:		'{lang}moxeo.acp.fileManager.file.fileType.file{/lang}',
-			langClose:			'{lang}wcf.global.button.close{/lang}',
+			langSelectionApply:		'{lang}moxeo.acp.fileManager.selection.apply{/lang}',
 			multipleSelect:			false
 		});
-		
+
 		var form = $$('form')[0];
 		if (form) {
 			form.observe('submit', function(form) { this.submit(form); }.bind(fileManager, form));
