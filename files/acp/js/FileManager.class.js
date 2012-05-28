@@ -140,6 +140,12 @@ var FileManager = Class.create({
 						this.uncheckAll();
 					}
 					file.selected = (fileSelect.checked ? 1 : 0);
+					if (file.selected) {
+						this.selectedFiles.push(file.relativePath);
+					}
+					else {
+						this.selectedFiles.splice(this.selectedFiles.indexOf(file.relativePath), 1);
+					}
 				}.bind(this, file, fileSelect));
 				columnSelect.insert(fileSelect);
 			}
@@ -238,18 +244,12 @@ var FileManager = Class.create({
 	 * Stores the values in hidden fields.
 	 */
 	submit: function(form) {
-		this.dirs.each(function(item) {
-			var files = item.value;
-			files.each(function(item) {
-				var file = item.value;
-				if (file.selected) {
-					// create field
-					var field = new Element('input', { 'type': 'hidden', 'name': this.key+(this.options.multipleSelect ? '[]' : ''), 'value': file.relativePath });
+		this.selectedFiles.each(function(relativePath) {
+			// create field
+			var field = new Element('input', { 'type': 'hidden', 'name': this.key+(this.options.multipleSelect ? '[]' : ''), 'value': relativePath });
 
-					// insert field
-					form.insert(field);
-				}
-			}.bind(this));
+			// insert field
+			form.insert(field);
 		}.bind(this));
 	},
 
