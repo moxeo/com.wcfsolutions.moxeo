@@ -24,7 +24,7 @@ if (!empty($_SERVER['SERVER_NAME'])) {
 	}
 
 	// file
-	$path = FileUtil::removeTrailingSlash(FileUtil::getRealPath(FileUtil::addTrailingSlash(dirname(dirname(WCF::getSession()->requestURI))).$this->installation->getPackage()->getDir()));
+	$path = FileUtil::removeTrailingSlash(FileUtil::getRealPath(FileUtil::addTrailingSlash(dirname(WCF::getSession()->requestURI)).RELATIVE_WCF_DIR.$this->installation->getPackage()->getDir()));
 	$pageURL .= $path;
 
 	$sql = "UPDATE	wcf".WCF_N."_option
