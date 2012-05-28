@@ -20,17 +20,26 @@ class YouTubeArticleSectionType extends HeadlineArticleSectionType {
 
 	// display methods
 	/**
-	 * @see	ArticleSectionType::getContent()
+	 * Returns the video html code of the article section.
+	 *
+	 * @param	ArticleSection	$articleSection
+	 * @param	int		$width
+	 * @param	int		$height
+	 * @return	string
 	 */
-	public function getContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
+	protected function getVideoHTML(ArticleSection $articleSection, $width = 425, $height = 344) {
 		// get video id
 		$videoID = $articleSection->videoID;
 		if (preg_match('!(?:watch\?|&amp;)v=([a-z0-9_\-]+)!i', $videoID, $match)) $videoID = $match[1];
 
-		// get dimensions
-		$width = 425;
-		$height = 344;
+		// return video html
+		return '<object width="'.$width.'" height="'.$height.'" type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'"><param name="movie" value="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'" /><param name="wmode" value="transparent" /></object>';
+	}
 
+	/**
+	 * @see	ArticleSectionType::getContent()
+	 */
+	public function getContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		// get headline
 		$headline = '';
 		if ($articleSection->headline) {
@@ -38,8 +47,11 @@ class YouTubeArticleSectionType extends HeadlineArticleSectionType {
 			$headline = WCF::getTPL()->fetch('headlineArticleSectionType');
 		}
 
-		// return video html
-		return $headline.'<object width="'.$width.'" height="'.$height.'" type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'"><param name="movie" value="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'" /><param name="wmode" value="transparent" /></object>';
+		// get video html
+		$video = $this->getVideoHTML($articleSection);
+
+		// return content
+		return $headline.$video;
 	}
 
 	/**
@@ -50,7 +62,7 @@ class YouTubeArticleSectionType extends HeadlineArticleSectionType {
 		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
 
 		// prepare video preview
-		$video = $this->getContent($articleSection, $article, $contentItem);
+		$video = $this->getVideoHTML($articleSection);
 
 		// return preview
 		return $headline.$video;
