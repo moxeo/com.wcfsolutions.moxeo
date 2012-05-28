@@ -31,6 +31,7 @@ class YouTubeArticleSectionType extends HeadlineArticleSectionType {
 		$width = 425;
 		$height = 344;
 
+		// return video html
 		return '<object width="'.$width.'" height="'.$height.'" type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'"><param name="movie" value="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'" /><param name="wmode" value="transparent" /></object>';
 	}
 
@@ -38,7 +39,7 @@ class YouTubeArticleSectionType extends HeadlineArticleSectionType {
 	 * @see	ArticleSectionType::getPreviewHTML()
 	 */
 	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		return $articleSection->videoID;
+		return $this->getContent($articleSection, $article, $contentItem);
 	}
 
 	// form methods

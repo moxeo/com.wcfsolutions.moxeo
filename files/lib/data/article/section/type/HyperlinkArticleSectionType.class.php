@@ -29,6 +29,20 @@ class HyperlinkArticleSectionType extends HeadlineArticleSectionType {
 		return WCF::getTPL()->fetch('hyperlinkArticleSectionType');
 	}
 
+	/**
+	 * @see	ArticleSectionType::getPreviewHTML()
+	 */
+	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
+		// get headline
+		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
+
+		// prepare hyperlink preview
+		$link = '<a href="'.$articleSection->url.'">'.($articleSection->caption ? $articleSection->caption : $articleSection->url).'</a>';
+
+		// return preview
+		return $headline.$link;
+	}
+
 	// form methods
 	/**
 	 * @see	ArticleSectionType::readFormParameters()

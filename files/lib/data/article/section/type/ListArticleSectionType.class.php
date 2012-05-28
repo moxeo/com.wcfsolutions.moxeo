@@ -27,14 +27,48 @@ class ListArticleSectionType extends HeadlineArticleSectionType {
 
 	// display methods
 	/**
+	 * Returns the list data of the given article section.
+	 *
+	 * @param	ArticleSection $articleSection
+	 * @return	array
+	 */
+	protected function getListData(ArticleSection $articleSection) {
+		return array(
+			'listItems' => ArrayUtil::trim(explode("\n", StringUtil::trim(StringUtil::unifyNewlines($articleSection->listItems)))),
+			'listTag' => (($articleSection->listStyleType == 'none' || $articleSection->listStyleType == 'circle' || $articleSection->listStyleType == 'square' || $articleSection->listStyleType == 'disc') ? 'ul' : 'ol')
+		);
+	}
+	/**
 	 * @see	ArticleSectionType::getContent()
 	 */
 	public function getContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		WCF::getTPL()->assign(array(
-			'listItems' => ArrayUtil::trim(explode("\n", StringUtil::trim(StringUtil::unifyNewlines($articleSection->listItems)))),
-			'listTag' => (($articleSection->listStyleType == 'none' || $articleSection->listStyleType == 'circle' || $articleSection->listStyleType == 'square' || $articleSection->listStyleType == 'disc') ? 'ul' : 'ol')
-		));
+		// get list data
+		$listData = $this->getListData($articleSection);
+
+		// assign list data and return template
+		WCF::getTPL()->assign($listData);
 		return WCF::getTPL()->fetch('listArticleSectionType');
+	}
+
+	/**
+	 * @see	ArticleSectionType::getPreviewHTML()
+	 */
+	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
+		// get list data
+		$listData = $this->getListData($articleSection);
+
+		// get headline
+		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
+
+		// prepare list preview
+		$list = '<'.$listData['listTag'].' style="list-style-type: '.$articleSection->listStyleType.'">';
+		foreach ($listData['listItems'] as $listItem) {
+			$list .= '<li>'.$listItem.'</li>';
+		}
+		$list .= '</'.$listData['listTag'].'>';
+
+		// return preview
+		return $headline.$list;
 	}
 
 	// form methods
