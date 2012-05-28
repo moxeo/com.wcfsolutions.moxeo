@@ -45,7 +45,6 @@
 		<options>options.xml</options>
 		<cronjobs>cronjobs.xml</cronjobs>
 		<acpmenu>acpmenu.xml</acpmenu>
-		<feedsource>feedsource.xml</feedsource>
 		<eventlistener>eventlistener.xml</eventlistener>
 		<articlesectiontype>articlesectiontype.xml</articlesectiontype>
 		<thememoduletype>thememoduletype.xml</thememoduletype>
@@ -60,6 +59,9 @@
 		<!-- files -->
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
+
+		<!-- config -->
+		<feedsource>feedsource.xml</feedsource>
 
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
