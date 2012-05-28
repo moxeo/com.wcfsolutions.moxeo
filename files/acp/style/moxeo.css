@@ -10,16 +10,20 @@ Copyright 2009-2012 by wcfsolutions.com
 
 /* ### -- -- -- -- -- Miscellaneous -- -- -- -- -- ### */
 
+.columnArticleSectionPreview {
+	width: 70%;
+}
+
 .columnArticleSectionPreview h3 {
 	font-weight: bold;
 }
 
-.dragable img {
-	cursor: pointer !important;
-}
-
 .columnComment {
 	width: 50%;
+}
+
+.dragable img {
+	cursor: pointer !important;
 }
 
 /* ### -- -- -- -- -- EOF -- -- -- -- -- ### */
