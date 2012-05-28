@@ -39,7 +39,7 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
 
 		// prepare image preview
-		$image = '<img src="'.RELATIVE_MOXEO_DIR.'files/'.$articleSection->image.'" alt="'.$articleSection->alternativeTitle.'" />';
+		$image = '<div class="image"><img src="'.RELATIVE_MOXEO_DIR.'files/'.$articleSection->image.'" alt="'.$articleSection->alternativeTitle.'" /></div>';
 
 		// return preview
 		return $headline.$image;
