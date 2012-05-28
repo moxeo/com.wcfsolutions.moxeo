@@ -309,6 +309,9 @@ var FileManager = Class.create({
 			this.selectedFiles = this.previousSelectedFiles;
 		}
 
+		// reset dir
+		this.dir = '';
+
 		// hide background
 		this.background.fade({
 			duration: 0.3,
