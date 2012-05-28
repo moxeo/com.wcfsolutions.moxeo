@@ -31,15 +31,29 @@ class YouTubeArticleSectionType extends HeadlineArticleSectionType {
 		$width = 425;
 		$height = 344;
 
+		// get headline
+		$headline = '';
+		if ($articleSection->headline) {
+			WCF::getTPL()->assign('articleSection', $articleSection);
+			$headline = WCF::getTPL()->fetch('headlineArticleSectionType');
+		}
+
 		// return video html
-		return '<object width="'.$width.'" height="'.$height.'" type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'"><param name="movie" value="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'" /><param name="wmode" value="transparent" /></object>';
+		return $headline.'<object width="'.$width.'" height="'.$height.'" type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'"><param name="movie" value="http://www.youtube.com/v/'.$videoID.'&amp;hl='.WCF::getLanguage()->getLanguageCode().'" /><param name="wmode" value="transparent" /></object>';
 	}
 
 	/**
 	 * @see	ArticleSectionType::getPreviewHTML()
 	 */
 	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		return $this->getContent($articleSection, $article, $contentItem);
+		// get headline
+		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
+
+		// prepare video preview
+		$video = $this->getContent($articleSection, $article, $contentItem);
+
+		// return preview
+		return $headline.$video;
 	}
 
 	// form methods
