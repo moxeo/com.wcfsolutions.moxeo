@@ -31,6 +31,20 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 		return WCF::getTPL()->fetch('imageArticleSectionType');
 	}
 
+	/**
+	 * @see	ArticleSectionType::getPreviewHTML()
+	 */
+	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
+		// get headline
+		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
+
+		// prepare image preview
+		$image = '<img src="'.RELATIVE_MOXEO_DIR.'files/'.$articleSection->image.'" alt="'.$articleSection->alternativeTitle.'" />';
+
+		// return preview
+		return $headline.$image;
+	}
+
 	// form methods
 	/**
 	 * @see	ArticleSectionType::readFormParameters()

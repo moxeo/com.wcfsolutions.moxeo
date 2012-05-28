@@ -40,6 +40,25 @@ class DownloadsArticleSectionType extends HeadlineArticleSectionType {
 		return WCF::getTPL()->fetch('downloadsArticleSectionType');
 	}
 
+	/**
+	 * @see	ArticleSectionType::getPreviewHTML()
+	 */
+	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
+		// get headline
+		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
+
+		// prepare downloads preview
+		$downloads = '';
+		foreach ($articleSection->files as $file) {
+			$filename = basename($file);
+			if (!empty($downloads)) $downloads .= ', ';
+			$downloads .= $filename;
+		}
+
+		// return preview
+		return $headline.$downloads;
+	}
+
 	// form methods
 	/**
 	 * @see	ArticleSectionType::readFormParameters()

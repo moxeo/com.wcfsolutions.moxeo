@@ -10,6 +10,16 @@ Copyright 2009-2012 by wcfsolutions.com
 
 /* ### -- -- -- -- -- Miscellaneous -- -- -- -- -- ### */
 
+.columnComment {
+	width: 50%;
+}
+
+.dragable img {
+	cursor: pointer !important;
+}
+
+/* ### -- -- -- -- -- Previews -- -- -- -- -- ### */
+
 .columnArticleSectionPreview {
 	width: 70%;
 }
@@ -18,12 +28,20 @@ Copyright 2009-2012 by wcfsolutions.com
 	font-weight: bold;
 }
 
-.columnComment {
-	width: 50%;
+.columnArticleSectionPreview .images {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-.dragable img {
-	cursor: pointer !important;
+.columnArticleSectionPreview .images .image {
+	float: left;
+	margin: 10px;
+}
+
+.columnArticleSectionPreview .images .image img {
+	max-width: 200px;
+	max-height: 200px;
 }
 
 /* ### -- -- -- -- -- EOF -- -- -- -- -- ### */

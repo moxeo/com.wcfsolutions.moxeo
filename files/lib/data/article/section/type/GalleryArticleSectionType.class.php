@@ -40,6 +40,24 @@ class GalleryArticleSectionType extends HeadlineArticleSectionType {
 		return WCF::getTPL()->fetch('galleryArticleSectionType');
 	}
 
+	/**
+	 * @see	ArticleSectionType::getPreviewHTML()
+	 */
+	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
+		// get headline
+		$headline = parent::getPreviewHTML($articleSection, $article, $contentItem);
+
+		// prepare gallery preview
+		$gallery = '<ul class="images">';
+		foreach ($articleSection->images as $image) {
+			$gallery .= '<li class="image"><img src="'.RELATIVE_MOXEO_DIR.'files/'.$image.'" alt="" /></li>';
+		}
+		$gallery .= '</ul>';
+
+		// return preview
+		return $headline.$gallery;
+	}
+
 	// form methods
 	/**
 	 * @see	ArticleSectionType::readFormParameters()
