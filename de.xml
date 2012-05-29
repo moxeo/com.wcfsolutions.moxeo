@@ -59,11 +59,11 @@
 		<item name="wcf.acp.option.page_url.description"><![CDATA[Geben Sie an, unter welcher Adresse (URL) die Seite aufzurufen ist (ohne abschließenden Slash).]]></item>
 	</category>
 	<category name="wcf.acp.package">
-		<item name="wcf.acp.package.step.install.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Abschnitts-Typen werden installiert ...]]></item>
+		<item name="wcf.acp.package.step.install.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Artikelabschnitts-Typen werden installiert ...]]></item>
 		<item name="wcf.acp.package.step.install.CommentableObjectTypePackageInstallationPlugin"><![CDATA[Kommentar-Typen werden installiert ...]]></item>
-		<item name="wcf.acp.package.step.uninstall.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Abschnitts-Typen werden deinstalliert ...]]></item>
+		<item name="wcf.acp.package.step.uninstall.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Artikelaschnitts-Typen werden deinstalliert ...]]></item>
 		<item name="wcf.acp.package.step.uninstall.CommentableObjectTypePackageInstallationPlugin"><![CDATA[Kommentar-Typen werden deinstalliert ...]]></item>
-		<item name="wcf.acp.package.step.update.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Abschnitts-Typen werden aktualisiert ...]]></item>
+		<item name="wcf.acp.package.step.update.ArticleSectionTypePackageInstallationPlugin"><![CDATA[Artikelabschnitts-Typen werden aktualisiert ...]]></item>
 		<item name="wcf.acp.package.step.update.CommentableObjectTypePackageInstallationPlugin"><![CDATA[Kommentar-Typen werden aktualisiert ...]]></item>
 	</category>
 	<category name="wcf.theme">
@@ -92,7 +92,7 @@
 		<item name="wcf.user.emailChange.title"><![CDATA[E-Mail-Adresse ändern]]></item>
 	</category>
 	<category name="wcf.user.login">
-		<item name="wcf.user.login.error.password.false"><![CDATA[Das eingegebene Kennwort ist falsch. Falls Sie Ihr Kennwort vergessen haben, steht Ihnen die <strong><a href="index.php?form=LostPassword{@SID_ARG_2ND}">&raquo;Kennwort vergessen&laquo;-Funktion</a></strong> zur Verfügung.]]></item>
+		<item name="wcf.user.login.error.password.false"><![CDATA[Das eingegebene Kennwort ist falsch.]]></item>
 		<item name="wcf.user.login.useCookies"><![CDATA[Ich möchte auf diesem Computer angemeldet bleiben, bis ich mich abmelde.]]></item>
 		<item name="wcf.user.login.user"><![CDATA[Angemeldet als {$this->user->username}.]]></item>
 	</category>
@@ -274,7 +274,7 @@
 		<item name="moxeo.acp.contentItem.enable"><![CDATA[Seite aktivieren]]></item>
 		<item name="moxeo.acp.contentItem.externalURL"><![CDATA[Adresse (URL) des Links]]></item>
 		<item name="moxeo.acp.contentItem.externalURL.description"><![CDATA[Bestimmen Sie hier die Adresse (URL) des Links, zu der die Seite weiterleiten soll.]]></item>
-		<item name="moxeo.acp.contentItem.invisible"><![CDATA[Seite unsichtbar]]></item>
+		<item name="moxeo.acp.contentItem.invisible"><![CDATA[Seite verstecken]]></item>
 		<item name="moxeo.acp.contentItem.invisible.description"><![CDATA[Sie können die Seite grundsätzlich verstecken. Dann ist sie nur noch per direktem Link aufrufbar.]]></item>
 		<item name="moxeo.acp.contentItem.language"><![CDATA[Sprache]]></item>
 		<item name="moxeo.acp.contentItem.language.description"><![CDATA[Bestimmen Sie hier die Sprache der Seite.]]></item>
@@ -291,7 +291,7 @@
 		<item name="moxeo.acp.contentItem.permissions.add"><![CDATA[Hinzufügen]]></item>
 		<item name="moxeo.acp.contentItem.permissions.allow"><![CDATA[Zulassen]]></item>
 		<item name="moxeo.acp.contentItem.permissions.canAddArticle"><![CDATA[Kann Artikel erstellen]]></item>
-		<item name="moxeo.acp.contentItem.permissions.canAddContentItem"><![CDATA[Kann Seite hinzufügen]]></item>
+		<item name="moxeo.acp.contentItem.permissions.canAddContentItem"><![CDATA[Kann Unterseiten hinzufügen]]></item>
 		<item name="moxeo.acp.contentItem.permissions.canDeleteArticle"><![CDATA[Kann Artikel löschen]]></item>
 		<item name="moxeo.acp.contentItem.permissions.canDeleteContentItem"><![CDATA[Kann Seite löschen]]></item>
 		<item name="moxeo.acp.contentItem.permissions.canEditArticle"><![CDATA[Kann Artikel bearbeiten]]></item>

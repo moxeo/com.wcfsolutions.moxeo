@@ -52,7 +52,7 @@
 
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="en">de.xml</languages>
+		<languages languagecode="en">en.xml</languages>
 	</instructions>
 
 	<instructions type="update" fromversion="1.0.0 RC 1">
@@ -65,6 +65,6 @@
 
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="en">de.xml</languages>
+		<languages languagecode="en">en.xml</languages>
 	</instructions>
 </package>
