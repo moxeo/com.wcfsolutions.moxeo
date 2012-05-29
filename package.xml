@@ -59,6 +59,7 @@
 		<!-- files -->
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
+		<acptemplates>acptemplates.tar</acptemplates>
 
 		<!-- config -->
 		<feedsource>feedsource.xml</feedsource>
