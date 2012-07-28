@@ -135,7 +135,7 @@ var FileManager = Class.create({
 				if (this.selectedFiles.indexOf(file.relativePath) != -1) {
 					fileSelect.checked = 1;
 				}
-				fileSelect.observe('change', function(file, fileSelect) {
+				var onChange = function(file, fileSelect) {
 					if (!this.options.multipleSelect) {
 						this.uncheckAll();
 					}
@@ -145,14 +145,18 @@ var FileManager = Class.create({
 					else {
 						this.selectedFiles.splice(this.selectedFiles.indexOf(file.relativePath), 1);
 					}
-				}.bind(this, file, fileSelect));
+				}.bind(this, file, fileSelect);
+				fileSelect.observe('change', onChange);
 				columnSelect.insert(fileSelect);
 			}
 
 			// column name
 			var fileLink = new Element('a').update(name);
 			if (file.isDir == 0) {
-				fileLink.setAttribute('href', 'index.php?page=FileManagerFileDownload&file='+encodeURIComponent(file.relativePath)+'&packageID='+PACKAGE_ID+SID_ARG_2ND);
+				fileLink.observe('click', function(fileSelect, onChange) {
+					fileSelect.checked = (!fileSelect.checked);
+					onChange();
+				}.bind(this, fileSelect, onChange));
 			}
 			else {
 				fileLink.observe('click', function(name, file) {
@@ -217,18 +221,9 @@ var FileManager = Class.create({
 		var submitButton = new Element('input', { type: 'submit', value: this.options.langSelectionApply }).observe('click', function() { this.closeOverlay(false); }.bind(this));
 		var formSubmit = new Element('div').addClassName('formSubmit').insert(submitButton);
 
-		// create button bar
-		var iconFileManager = new Element('img', { src: this.options.iconFileManagerSrc });
-		var span = new Element('span').update(this.options.langFileManager);
-		var link = new Element('a', { href: 'index.php?page=FileManager'+SID_ARG_2ND, title: this.options.langFileManager }).insert(iconFileManager).insert(' ').insert(span);
-		var listItem = new Element('li').insert(link);
-		var list = new Element('ul').insert(listItem);
-		var smallButtons = new Element('div').addClassName('smallButtons').insert(list);
-		var buttonBar = new Element('div').addClassName('buttonBar').insert(smallButtons);
-
 		// create container
 		this.fileContent = new Element('div');
-		var content = new Element('div').addClassName('container-1').insert(headline).insert(this.fileContent).insert(formSubmit).insert(buttonBar);
+		var content = new Element('div').addClassName('container-1').insert(headline).insert(this.fileContent).insert(formSubmit);
 		this.container = new Element('div').addClassName('overlay border content').insert(content).hide();
 
 		// insert elements
