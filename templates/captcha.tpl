@@ -1,22 +1,22 @@
 {if !$this->user->userID}
-	<div class="formElement{if $errorField == 'captchaValue'} formError{/if}">
-		<div class="formFieldLabel">
+	<dl class="formElement{if $errorField == 'captchaValue'} formError{/if}">
+		<dt>
 			<label for="captchaValue">{lang}moxeo.captcha.captchaValue{/lang}</label>
-		</div>
-		<div class="formField">
-			<input type="text" class="inputText" name="captchaValue" id="captchaValue" value="" />
+		</dt>
+		<dd>
+			<input type="text" class="medium" name="captchaValue" id="captchaValue" value="" />
 			{if $errorField == 'captchaValue'}
-				<p class="innerError">
+				<small class="innerError">
 					{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 					{if $errorType == 'false'}{lang}moxeo.captcha.error.captchaValue.false{/lang}{/if}
-				</p>
+				</small>
 			{/if}
-		</div>
-		<div class="formFieldDesc">
-			<p>{@$captcha->getEncodedQuestion()}</p>
-			<p>{lang}moxeo.captcha.captchaValue.description{/lang}</p>
-		</div>
-		
+			<small>
+				<p>{@$captcha->getEncodedQuestion()}</p>
+				<p>{lang}moxeo.captcha.captchaValue.description{/lang}</p>
+			</small>
+		</dd>
+
 		<input type="hidden" id="captchaID" name="captchaID" value="{@$captchaID}" />
-	</div>
+	</dl>
 {/if}

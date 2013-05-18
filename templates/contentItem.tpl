@@ -55,11 +55,11 @@
 
 	{assign var=headerThemeModules value=$this->getThemeLayout()->getModules('header', $additionalThemeModuleData)}
 	{if $headerThemeModules|count}
-		<div id="header">
+		<header id="header">
 			<div class="inner">
 				{include file='themeModules' themeModulePosition='header' themeModules=$headerThemeModules additionalData=$additionalThemeModuleData}
 			</div>
-		</div>
+		</header>
 	{/if}
 
 	<div id="content">
@@ -71,27 +71,27 @@
 		<div id="layout-{if $leftThemeModules|count && $rightThemeModules|count}4{elseif $leftThemeModules|count}3{elseif $rightThemeModules|count}2{else}1{/if}">
 
 			{if $leftThemeModules|count}
-				<div id="left">
+				<aside id="left">
 					<div class="inner">
 						{include file='themeModules' themeModulePosition='left' themeModules=$leftThemeModules additionalData=$additionalThemeModuleData}
 					</div>
-				</div>
+				</aside>
 			{/if}
 
 			{if $mainThemeModules|count}
 				<div id="main">
 					<div class="inner">
-					{include file='themeModules' themeModulePosition='main' themeModules=$mainThemeModules additionalData=$additionalThemeModuleData}
+						{include file='themeModules' themeModulePosition='main' themeModules=$mainThemeModules additionalData=$additionalThemeModuleData}
 					</div>
 				</div>
 			{/if}
 
 			{if $rightThemeModules|count}
-				<div id="right">
+				<aside id="right">
 					<div class="inner">
 						{include file='themeModules' themeModulePosition='right' themeModules=$rightThemeModules additionalData=$additionalThemeModuleData}
 					</div>
-				</div>
+				</aside>
 			{/if}
 
 		</div>
@@ -100,11 +100,11 @@
 
 	{assign var=footerThemeModules value=$this->getThemeLayout()->getModules('footer', $additionalThemeModuleData)}
 	{if $footerThemeModules|count}
-		<div id="footer">
+		<footer id="footer">
 			<div class="inner">
 				{include file='themeModules' themeModulePosition='footer' themeModules=$footerThemeModules additionalData=$additionalThemeModuleData}
 			</div>
-		</div>
+		</footer>
 	{/if}
 
 </div>

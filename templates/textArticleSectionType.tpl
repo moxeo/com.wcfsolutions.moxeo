@@ -11,4 +11,6 @@
 		{if $articleSection->thumbnailCaption}<span class="caption">{$articleSection->thumbnailCaption}</span>{/if}
 	</p>
 {/if}
-{@$articleSection->code}
+<div class="text">
+	{@$articleSection->code}
+</div>

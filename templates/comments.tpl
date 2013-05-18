@@ -4,9 +4,8 @@
 	<h2>{lang}moxeo.comment.comments{/lang}</h2>
 
 	<ul class="comments">
-		{cycle name='commentsCycle' values='even,odd' reset=true print=false advance=false}
 		{foreach from=$comments item=commentObj}
-			<li class="comment {cycle name='commentsCycle'}">
+			<li class="comment">
 				<p class="author">{$commentObj->username} ({@$commentObj->time|time})</p>
 				<p class="text">{@$commentObj->getFormattedComment()}</p>
 			</li>

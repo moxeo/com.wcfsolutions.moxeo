@@ -2,50 +2,49 @@
 	{lang}wcf.user.login.user{/lang}
 {else}
 	<form method="post" action="{$additionalData.contentItem->getURL()}">
-		<div class="formElement{if $errorField == 'username'} formError{/if}">
-			<div class="formFieldLabel">
+		<dl class="formElement{if $errorField == 'username'} formError{/if}">
+			<dt>
 				<label for="loginUsername">{lang}wcf.user.username{/lang}</label>
-			</div>
-			<div class="formField">
-				<input type="text" class="inputText" name="loginUsername" value="{$username}" id="loginUsername" />
+			</dt>
+			<dd>
+				<input type="text" class="large" name="loginUsername" value="{$username}" id="loginUsername" />
 				{if $errorField == 'username'}
-					<p class="innerError">
+					<small class="innerError">
 						{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 						{if $errorType == 'notFound'}{lang}wcf.user.error.username.notFound{/lang}{/if}
 						{if $errorType == 'notEnabled'}{lang}wcf.user.login.error.username.notEnabled{/lang}{/if}
-					</p>
+					</small>
 				{/if}
-			</div>
-		</div>
-		
-		<div class="formElement{if $errorField == 'password'} formError{/if}">
-			<div class="formFieldLabel">
+			</dd>
+		</dl>
+
+		<dl class="formElement{if $errorField == 'password'} formError{/if}">
+			<dt>
 				<label for="loginPassword">{lang}wcf.user.password{/lang}</label>
-			</div>
-			<div class="formField">
-				<input type="password" class="inputText" name="loginPassword" value="{$password}" id="loginPassword" />
+			</dt>
+			<dd>
+				<input type="password" class="large" name="loginPassword" value="{$password}" id="loginPassword" />
 				{if $errorField == 'password'}
-					<p class="innerError">
+					<small class="innerError">
 						{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 						{if $errorType == 'false'}{lang}wcf.user.login.error.password.false{/lang}{/if}
-					</p>
+					</small>
 				{/if}
-			</div>
-		</div>
-		
+			</dd>
+		</dl>
+
 		{if $supportsPersistentLogins}
-			<div class="formElement">
-				<div class="formField">
+			<dl class="formElement">
+				<dd>
 					<label><input type="checkbox" name="useCookies" value="1" {if $useCookies == 1}checked="checked" {/if}/> {lang}wcf.user.login.useCookies{/lang}</label>
-				</div>
-			</div>
+				</dd>
+			</dl>
 		{/if}
-		
+
 		{if $additionalLoginFields.$identifier|isset}{@$additionalLoginFields.$identifier}{/if}
-		
+
 		<div class="formSubmit">
 			<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
-			<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />
 			{@$formElementInputTag}
 			{@SID_INPUT_TAG}
 		</div>
