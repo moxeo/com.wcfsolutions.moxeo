@@ -505,7 +505,8 @@ class ContentItem extends DatabaseObject {
 
 		$sql = "SELECT		contentItemID
 			FROM		moxeo".MOXEO_N."_content_item
-			WHERE		searchableContent LIKE '%".escapeString($query)."%'
+			WHERE		title LIKE '%".escapeString($query)."%'
+					OR searchableContent LIKE '%".escapeString($query)."%'
 			ORDER BY	parentID, showOrder";
 		$result = WCF::getDB()->sendQuery($sql, $limit, $offset);
 		while ($row = WCF::getDB()->fetchArray($result)) {
