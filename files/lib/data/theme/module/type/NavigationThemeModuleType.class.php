@@ -16,6 +16,13 @@ require_once(WCF_DIR.'lib/data/theme/module/type/AbstractThemeModuleType.class.p
  * @category	Moxeo Open Source CMS
  */
 class NavigationThemeModuleType extends AbstractThemeModuleType {
+	/**
+	 * cached content item lists
+	 *
+	 * @var	array<ViewableContentItemList>
+	 */
+	public $cache = array();
+
 	// display methods
 	/**
 	 * @see	ThemeModuleType::hasContent()
@@ -24,18 +31,10 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 		if (!isset($additionalData['contentItem'])) return '';
 		$activeContentItem = $additionalData['contentItem'];
 
-		if ($themeModule->levelOffset <= ($activeContentItem->getLevel() + 1)) {
-			return true;
+		// check level and offset
+		if ($themeModule->levelOffset > ($activeContentItem->getLevel() + 1)) {
+			return false;
 		}
-		return false;
-	}
-
-	/**
-	 * @see	ThemeModuleType::getContent()
-	 */
-	public function getContent(ThemeModule $themeModule, $themeModulePosition, $additionalData) {
-		if (!isset($additionalData['contentItem'])) return '';
-		$activeContentItem = $additionalData['contentItem'];
 
 		// get parent content item
 		$contentItem = $activeContentItem;
@@ -50,6 +49,23 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 		// init content item list
 		$contentItemList = new ViewableContentItemList($parentID, $themeModule->levelOffset, $themeModule->levelLimit);
 		$contentItemList->readContentItems();
+		if (!count($contentItemList->getContentItemList())) {
+			return false;
+		}
+
+		$this->cache[$themeModule->themeModuleID.'@'.$themeModulePosition] = $contentItemList;
+		return true;
+	}
+
+	/**
+	 * @see	ThemeModuleType::getContent()
+	 */
+	public function getContent(ThemeModule $themeModule, $themeModulePosition, $additionalData) {
+		if (!isset($additionalData['contentItem'])) return '';
+		$activeContentItem = $additionalData['contentItem'];
+
+		if (!isset($this->cache[$themeModule->themeModuleID.'@'.$themeModulePosition])) return '';
+		$contentItemList = $this->cache[$themeModule->themeModuleID.'@'.$themeModulePosition];
 
 		WCF::getTPL()->assign(array(
 			'activeContentItemID' => $activeContentItem->contentItemID,
