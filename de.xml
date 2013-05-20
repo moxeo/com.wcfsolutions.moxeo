@@ -93,7 +93,7 @@
 	</category>
 	<category name="wcf.user.login">
 		<item name="wcf.user.login.error.password.false"><![CDATA[Das eingegebene Kennwort ist falsch.]]></item>
-		<item name="wcf.user.login.useCookies"><![CDATA[Ich möchte auf diesem Computer angemeldet bleiben, bis ich mich abmelde.]]></item>
+		<item name="wcf.user.login.useCookies"><![CDATA[Angemeldet bleiben]]></item>
 		<item name="wcf.user.login.user"><![CDATA[Angemeldet als {$this->user->username}.]]></item>
 	</category>
 	<category name="wcf.user.passwordChange">

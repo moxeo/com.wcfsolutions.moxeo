@@ -93,7 +93,7 @@
 	</category>
 	<category name="wcf.user.login">
 		<item name="wcf.user.login.error.password.false"><![CDATA[The password you entered is invalid.]]></item>
-		<item name="wcf.user.login.useCookies"><![CDATA[Remember my login on this computer until I logout manually.]]></item>
+		<item name="wcf.user.login.useCookies"><![CDATA[Remember me]]></item>
 		<item name="wcf.user.login.user"><![CDATA[Logged in as {$this->user->username}.]]></item>
 	</category>
 	<category name="wcf.user.passwordChange">
@@ -285,7 +285,7 @@
 		<item name="moxeo.acp.contentItem.metaKeywords.description"><![CDATA[Enter the keywords of the page here, which are analysed by search robots.]]></item>
 		<item name="moxeo.acp.contentItem.pageTitle"><![CDATA[Page title]]></item>
 		<item name="moxeo.acp.contentItem.pageTitle.description"><![CDATA[Enter the page title here.]]></item>
-		<item name="moxeo.acp.contentItem.parentID"><![CDATA[Parent Page]]></item>
+		<item name="moxeo.acp.contentItem.parentID"><![CDATA[Parent page]]></item>
 		<item name="moxeo.acp.contentItem.parentID.description"><![CDATA[Choose the parent page here.]]></item>
 		<item name="moxeo.acp.contentItem.permissions"><![CDATA[Permissions for users and groups]]></item>
 		<item name="moxeo.acp.contentItem.permissions.add"><![CDATA[Add]]></item>
