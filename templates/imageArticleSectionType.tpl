@@ -3,7 +3,7 @@
 {/if}
 <p class="image">
 	{if $articleSection->enableFullsize}
-		<a href="{if $articleSection->url}{$articleSection->url}{else}files/{$articleSection->image}{/if}" class="enlargable" title="{$articleSection->title}"><img src="files/{$articleSection->image}" alt="{$articleSection->alternativeTitle}" /></a>
+		<a href="{if $articleSection->url}{$articleSection->url}{else}files/{$articleSection->image}{/if}" rel="lightbox-{@$articleSection->articleSectionID}" title="{$articleSection->title}"><img src="files/{$articleSection->image}" alt="{$articleSection->alternativeTitle}" /></a>
 	{else}
 		<img src="files/{$articleSection->image}" alt="{$articleSection->alternativeTitle}" />
 	{/if}

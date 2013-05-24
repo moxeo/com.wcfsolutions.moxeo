@@ -11,6 +11,9 @@
 	{if $metaKeywords}<meta name="keywords" content="{$metaKeywords}" />{/if}
 	<meta name="robots" content="{@$contentItem->robots}" />
 
+	<!-- 3rd party styles -->
+	<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_MOXEO_DIR}js/3rdParty/slimbox2/slimbox2.css" />
+
 	<!-- theme style -->
 	<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WCF_DIR}theme/theme{$this->getThemeLayout()->getTheme()->themeID}-{$this->getThemeLayout()->themeLayoutID}.css" />
 
@@ -38,6 +41,7 @@
 	</script>
 	<script type="text/javascript" src="{@RELATIVE_MOXEO_DIR}js/3rdParty/jquery-1.9.0.min.js"></script>
 	<script type="text/javascript" src="{@RELATIVE_MOXEO_DIR}js/3rdParty/jquery-ui-1.10.0.min.js"></script>
+	<script type="text/javascript" src="{@RELATIVE_MOXEO_DIR}js/3rdParty/slimbox2/slimbox2.min.js"></script>
 
 	{if $executeCronjobs}
 		<script type="text/javascript">
