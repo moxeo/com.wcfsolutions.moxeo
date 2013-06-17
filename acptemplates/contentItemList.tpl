@@ -81,9 +81,12 @@
 								{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
 							</div>
 
-							<h3 class="itemListTitle">
-								<img src="{@RELATIVE_MOXEO_DIR}icon/contentItem{if $contentItem->isExternalLink()}Redirect{/if}S.png" alt="" />
-								{@$contentItem->getLanguageIcon()}
+							<h3 class="itemListTitle{if $contentItem->isRoot()} itemListCategory{/if}">
+								{if $contentItem->isRoot()}
+									{@$contentItem->getLanguageIcon()}
+								{else}
+									<img src="{@RELATIVE_MOXEO_DIR}icon/contentItem{if $contentItem->isExternalLink()}Redirect{/if}S.png" alt="" />
+								{/if}
 
 								{if $this->user->getPermission('admin.moxeo.isContentItemAdmin') && $this->user->getPermission('admin.moxeo.canEditContentItem')}
 									<select name="contentItemListPositions[{@$contentItem->contentItemID}][{@$child.parentID}]">

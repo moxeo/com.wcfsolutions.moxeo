@@ -53,8 +53,6 @@
 		<item name="wcf.acp.option.category.general.page.description"><![CDATA[]]></item>
 		<item name="wcf.acp.option.enable_seo_rewriting"><![CDATA[Enable SEO friendly URLs]]></item>
 		<item name="wcf.acp.option.enable_seo_rewriting.description"><![CDATA[Should SEO friendly URLs be enabled?]]></item>
-		<item name="wcf.acp.option.page_title"><![CDATA[Page title]]></item>
-		<item name="wcf.acp.option.page_title.description"><![CDATA[Enter the global title of the page here.]]></item>
 		<item name="wcf.acp.option.page_url"><![CDATA[Page URL]]></item>
 		<item name="wcf.acp.option.page_url.description"><![CDATA[Enter the URL of the page here (without trailing slash).]]></item>
 	</category>

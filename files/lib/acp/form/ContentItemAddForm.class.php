@@ -206,7 +206,7 @@ class ContentItemAddForm extends ACPForm {
 		}
 
 		// content item type
-		if ($this->contentItemType < 0 || $this->contentItemType > 3) {
+		if ($this->contentItemType < -1 || $this->contentItemType > 3) {
 			$this->contentItemType = 0;
 		}
 
@@ -276,8 +276,11 @@ class ContentItemAddForm extends ACPForm {
 					ContentItem::getContentItem($this->parentID);
 				}
 				catch (IllegalLinkException $e) {
-					$this->parentID = 0;
+					throw new UserInputException('parentID');
 				}
+			}
+			else {
+				throw new UserInputException('parentID');
 			}
 		}
 		else {

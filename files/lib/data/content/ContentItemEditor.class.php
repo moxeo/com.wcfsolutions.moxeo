@@ -420,9 +420,20 @@ class ContentItemEditor extends ContentItem {
 	 * @param	integer		$position
 	 */
 	public static function updatePosition($contentItemID, $parentID, $position) {
+		$isRoot = ContentItem::getContentItem($contentItemID)->isRoot();
+
+		$additionalSQL = '';
+		if ($parentID != 0 && $isRoot) {
+			$additionalSQL = ", languageID = 0, contentItemType = ".self::TYPE_PAGE;
+		}
+		elseif ($parentID == 0 && !$isRoot) {
+			$additionalSQL = ", languageID = ".WCF::getLanguage()->getLanguageID().", contentItemType = ".self::TYPE_ROOT;
+		}
+
 		$sql = "UPDATE	moxeo".MOXEO_N."_content_item
 			SET	parentID = ".$parentID.",
 				showOrder = ".$position."
+				".$additionalSQL."
 			WHERE 	contentItemID = ".$contentItemID;
 		WCF::getDB()->sendQuery($sql);
 	}

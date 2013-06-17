@@ -8,12 +8,6 @@
 			</category>
 		</categories>
 		<options>
-			<option name="page_title">
-				<categoryname>general.page</categoryname>
-				<optiontype>text</optiontype>
-				<showorder>1</showorder>
-				<defaultvalue>Moxeo Open Source CMS</defaultvalue>
-			</option>
 			<option name="page_url">
 				<categoryname>general.page</categoryname>
 				<optiontype>text</optiontype>

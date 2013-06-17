@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="{lang}wcf.global.pageDirection{/lang}" lang="{@LANGUAGE_CODE}">
 <head>
-	<title>{$pageTitle} - {lang}{PAGE_TITLE}{/lang}</title>
+	<title>{$pageTitle} - {$contentItem->getRoot()->title}</title>
 
 	<meta name="generator" content="Moxeo Open Source CMS" />
 
