@@ -38,8 +38,9 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 
 		// get parent content item
 		$contentItem = $activeContentItem;
+		$rootID = $activeContentItem->getRootID();
 		$parentID = $contentItem->contentItemID;
-		while ($parentID != 0 && $themeModule->levelOffset != ($contentItem->getLevel() + 1)) {
+		while ($parentID != $rootID && $themeModule->levelOffset != ($contentItem->getLevel() + 1)) {
 			$parentID = $contentItem->parentID;
 			if ($parentID) {
 				$contentItem = ContentItem::getContentItem($parentID);

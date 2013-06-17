@@ -1,4 +1,7 @@
 <?php
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
+
 /**
  * MOXEOIllegalLinkException shows the unknown link error page.
  *
@@ -14,9 +17,16 @@ class MOXEOIllegalLinkException extends IllegalLinkException {
 	 * @see	NamedUserException::show();
 	 */
 	public function show() {
+		// get root id
+		if (ContentItemRequestHandler::getInstance()->getRootID()) {
+			$rootID = ContentItemRequestHandler::getInstance()->getRootID();
+		}
+		else {
+			$rootID = ContentItem::getFirstRootID();
+		}
+
 		// get content item id
-		require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
-		$contentItemID = ContentItem::getErrorContentItemID('404');
+		$contentItemID = ContentItem::getErrorContentItemID($rootID, '404');
 		if ($contentItemID) {
 			// send headers
 			@header('HTTP/1.0 404 Not Found');

@@ -1,4 +1,7 @@
 <?php
+// moxeo imports
+require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
+
 /**
  * A MOXEOPermissionDeniedException is thrown when a user has no permission to access to a specific area.
  *
@@ -14,9 +17,16 @@ class MOXEOPermissionDeniedException extends PermissionDeniedException {
 	 * @see	NamedUserException::show();
 	 */
 	public function show() {
+		// get root id
+		if (ContentItemRequestHandler::getInstance()->getRootID()) {
+			$rootID = ContentItemRequestHandler::getInstance()->getRootID();
+		}
+		else {
+			$rootID = ContentItem::getFirstRootID();
+		}
+
 		// get content item id
-		require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
-		$contentItemID = ContentItem::getErrorContentItemID('403');
+		$contentItemID = ContentItem::getErrorContentItemID($rootID, '403');
 		if ($contentItemID) {
 			// send headers
 			@header('HTTP/1.0 403 Forbidden');

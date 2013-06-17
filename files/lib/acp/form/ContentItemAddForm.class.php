@@ -195,9 +195,14 @@ class ContentItemAddForm extends ACPForm {
 		parent::validate();
 
 		// language id
-		if (!Language::getLanguage($this->languageID)) {
-			// use default language
-			$this->languageID = Language::getDefaultLanguageID();
+		if ($this->contentItemType == -1) {
+			if (!Language::getLanguage($this->languageID)) {
+				// use default language
+				$this->languageID = Language::getDefaultLanguageID();
+			}
+		}
+		else {
+			$this->languageID = 0;
 		}
 
 		// content item type
@@ -265,13 +270,18 @@ class ContentItemAddForm extends ACPForm {
 	 * Validates the parent id.
 	 */
 	protected function validateParentID() {
-		if ($this->parentID) {
-			try {
-				ContentItem::getContentItem($this->parentID);
+		if ($this->contentItemType != -1) {
+			if ($this->parentID) {
+				try {
+					ContentItem::getContentItem($this->parentID);
+				}
+				catch (IllegalLinkException $e) {
+					$this->parentID = 0;
+				}
 			}
-			catch (IllegalLinkException $e) {
-				$this->parentID = 0;
-			}
+		}
+		else {
+			$this->parentID = 0;
 		}
 	}
 

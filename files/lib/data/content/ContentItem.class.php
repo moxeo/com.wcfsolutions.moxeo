@@ -46,6 +46,11 @@ class ContentItem extends DatabaseObject {
 	protected $parentContentItems = null;
 
 	/**
+	 * Defines that a content item acts as a root page.
+	 */
+	const TYPE_ROOT = -1;
+
+	/**
 	 * Defines that a content item acts as a page.
 	 */
 	const TYPE_PAGE = 0;
@@ -132,7 +137,9 @@ class ContentItem extends DatabaseObject {
 	public function getURL() {
 		$contentItemURL = URL_PREFIX;
 		foreach ($this->getParentContentItems() as $parentContentItem) {
-			$contentItemURL .= $parentContentItem->contentItemAlias.'/';
+			if (!$parentContentItem->isRoot() || !$parentContentItem->contentItemAlias == '') {
+				$contentItemURL .= $parentContentItem->contentItemAlias.'/';
+			}
 		}
 		$contentItemURL .= $this->contentItemAlias.'/';
 		return $contentItemURL;
@@ -149,6 +156,18 @@ class ContentItem extends DatabaseObject {
 			return '<img src="'.RELATIVE_WCF_DIR.'icon/language'.ucfirst($languageData['languageCode']).'S.png" alt="" title="'.WCF::getLanguage()->get('wcf.global.language.'.$languageData['languageCode']).'" />';
 		}
 		return '';
+	}
+
+	/**
+	 * Returns true, if this content item is the root of the website.
+	 *
+	 * @return	boolean
+	 */
+	public function isRoot() {
+		if ($this->contentItemType == self::TYPE_ROOT) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -228,6 +247,7 @@ class ContentItem extends DatabaseObject {
 			$parentContentItem = $this;
 			while ($parentContentItem->parentID != 0) {
 				$parentContentItem = $contentItems[$parentContentItem->parentID];
+				//if ($parentContentItem->isRoot()) break;
 				array_unshift($this->parentContentItems, $parentContentItem);
 			}
 		}
@@ -236,13 +256,38 @@ class ContentItem extends DatabaseObject {
 	}
 
 	/**
-	 * Returns the level of this content item.
+	 * Returns the root object of this content item.
+	 *
+	 * @return	ContentItem
+	 */
+	public function getRoot() {
+		$contentItems = self::getContentItems();
+
+		$parentContentItem = $this;
+		while ($parentContentItem->parentID != 0) {
+			$parentContentItem = $contentItems[$parentContentItem->parentID];
+		}
+
+		return $parentContentItem;
+	}
+
+	/**
+	 * Returns the root id of this content item.
+	 *
+	 * @return	integer
+	 */
+	public function getRootID() {
+		return $this->getRoot()->contentItemID;
+	}
+
+	/**
+	 * Returns the level of this content item (based on the root).
 	 *
 	 * @return	integer
 	 */
 	public function getLevel() {
 		$parentContentItems = $this->getParentContentItems();
-		return count($parentContentItems);
+		return count($parentContentItems) - 1;
 	}
 
 	/**
@@ -519,22 +564,16 @@ class ContentItem extends DatabaseObject {
 	/**
 	 * Returns the error content item id with the given error type and the given language id.
 	 *
+	 * @param	integer		$rootID
 	 * @param	string		$errorType
-	 * @param	integer		$languageID
 	 * @return	integer
 	 */
-	public static function getErrorContentItemID($errorType = '404', $languageID = 0) {
-		if ($languageID == 0) {
-			$languageID = Language::getDefaultLanguageID();
-			if (is_object(WCF::getLanguage())) {
-				$languageID = WCF::getLanguage()->getLanguageID();
-			}
-		}
+	public static function getErrorContentItemID($rootID, $errorType = '404') {
+		$contentItemIDs = self::getSubContentItemIDArray($rootID);
 
-		$contentItems = self::getContentItems();
-
-		foreach ($contentItems as $contentItem) {
-			if ($contentItem->languageID == $languageID && $contentItem->isErrorPage($errorType)) {
+		foreach ($contentItemIDs as $contentItemID) {
+			$contentItem = ContentItem::getContentItem($contentItemID);
+			if ($contentItem->isErrorPage($errorType)) {
 				return $contentItem->contentItemID;
 			}
 		}
@@ -543,32 +582,154 @@ class ContentItem extends DatabaseObject {
 	}
 
 	/**
-	 * Returns the index content item id with the given language id.
+	 * Returns the super root id. The super root is the content item with no alias.
 	 *
-	 * @param	integer		$languageID
 	 * @return	integer
 	 */
-	public static function getIndexContentItemID($languageID = 0) {
-		if ($languageID == 0) {
-			$languageID = Language::getDefaultLanguageID();
-			if (is_object(WCF::getLanguage())) {
-				$languageID = WCF::getLanguage()->getLanguageID();
+	public static function getSuperRootID() {
+		// find root page with empty alias
+		$cache = WCF::getCache()->get('contentItemAlias');
+		foreach ($cache[0] as $contentItemAlias => $contentItemID) {
+			if (empty($contentItemAlias)) {
+				return $contentItemID;
 			}
-		}
-
-		$contentItemStructure = self::getContentItemStructure();
-
-		foreach (self::$contentItemStructure as $contentItemIDArray) {
-			foreach ($contentItemIDArray as $contentItemID) {
-				$contentItem = new ContentItem($contentItemID);
-				if ($contentItem->isVisiblePage() && $contentItem->languageID == $languageID) {
-					return $contentItemID;
-				}
-			}
-
 		}
 
 		return 0;
+	}
+
+	/**
+	 * Returns the first root id.
+	 *
+	 * @return	integer
+	 */
+	public static function getFirstRootID() {
+		$cache = self::getContentItemStructure();
+
+		if (isset($cache[0])) {
+			return reset($cache[0]);
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Returns the language id of the root which a user with a new session most likely wants to see.
+	 *
+	 * @return	integer
+	 */
+	public static function getInitialRootLanguageID() {
+		$languageCode = Language::$cache['languages'][Language::$cache['default']]['languageCode'];
+
+		// get available language codes
+		$availableLanguageCodes = array();
+		foreach (Language::getAvailableLanguages(PACKAGE_ID) as $language) {
+			$availableLanguageCodes[] = $language['languageCode'];
+		}
+
+		// get preferred language
+		$languageCode = Language::getPreferredLanguage($availableLanguageCodes, $languageCode);
+
+		// get language id of preferred language
+		$languageID = 0;
+		foreach (Language::$cache['languages'] as $key => $language) {
+			if ($language['languageCode'] == $languageCode) {
+				$languageID = $key;
+				break;
+			}
+		}
+
+		return $languageID;
+	}
+
+	/**
+	 * Returns the index content item id with the given language id.
+	 *
+	 * @param	integer		$rootID
+	 * @param	integer		$languageID
+	 * @return	integer
+	 */
+	public static function getRootIDByLanguageID($languageID) {
+		$contentItemStructure = self::getContentItemStructure();
+
+		$fallbackRootID = 0;
+
+		if (isset($contentItemStructure[0])) {
+			foreach ($contentItemStructure[0] as $contentItemID) {
+				$fallbackRootID = $contentItemID;
+
+				$contentItem = ContentItem::getContentItem($contentItemID);
+				// todo: check permissions
+				if ($contentItem->languageID == $languageID) {
+					return $contentItemID;
+				}
+
+			}
+		}
+
+		return $fallbackRootID;
+	}
+
+	/**
+	 * Returns the index content item id with the given language id.
+	 *
+	 * @param	integer		$rootID
+	 * @return	integer
+	 */
+	public static function getIndexContentItemID($rootID) {
+		$contentItemStructure = self::getContentItemStructure();
+
+		if (isset($contentItemStructure[$rootID])) {
+			foreach ($contentItemStructure[$rootID] as $contentItemID) {
+				$contentItem = ContentItem::getContentItem($contentItemID);
+				// todo: check permissions
+				if ($contentItem->isVisiblePage()) {
+					return $contentItemID;
+				}
+
+			}
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Returns an array of sub content items of the content item with the given id.
+	 *
+	 * @param	mixed		$contentItemID
+	 * @return	array<integer>
+	 */
+	public static function getSubContentItemIDArray($contentItemID) {
+		$contentItemIDArray = (is_array($contentItemID) ? $contentItemID : array($contentItemID));
+		$subContentItemIDArray = array();
+
+		foreach ($contentItemIDArray as $contentItemID) {
+			$subContentItemIDArray = array_merge($subContentItemIDArray, self::makeSubContentItemIDArray($contentItemID));
+		}
+
+		$subContentItemIDArray = array_unique($subContentItemIDArray);
+		return $subContentItemIDArray;
+	}
+
+	/**
+	 * Creates an array of sub content items of the content item with the given id.
+	 *
+	 * @param	integer		$parentContentItemID
+	 * @return	array<integer>
+	 */
+	public static function makeSubContentItemIDArray($parentContentItemID) {
+		$contentItemStructure = self::getContentItemStructure();
+		if (!isset($contentItemStructure[$parentContentItemID])) {
+			return array();
+		}
+
+		$subContentItemIDArray = array();
+		foreach ($contentItemStructure[$parentContentItemID] as $contentItemID) {
+			$subContentItemIDArray = array_merge($subContentItemIDArray, self::makeSubContentItemIDArray($contentItemID));
+			$subContentItemIDArray[] = $contentItemID;
+		}
+
+		return $subContentItemIDArray;
 	}
 }
 ?>

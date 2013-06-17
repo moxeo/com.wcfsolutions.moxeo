@@ -24,11 +24,7 @@ class BreadCrumbThemeModuleType extends AbstractThemeModuleType {
 		if (!isset($additionalData['contentItem'])) return '';
 		$contentItem = $additionalData['contentItem'];
 
-		$indexID = ContentItem::getIndexContentItemID();
-		$index = ContentItem::getContentItem($indexID);
-
 		WCF::getTPL()->assign(array(
-			'index' => $index,
 			'contentItem' => $contentItem
 		));
 		return WCF::getTPL()->fetch('breadCrumbThemeModuleType');

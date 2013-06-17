@@ -255,6 +255,7 @@
 		<item name="moxeo.acp.contentItem.contentItemAlias"><![CDATA[Alias]]></item>
 		<item name="moxeo.acp.contentItem.contentItemAlias.description"><![CDATA[Enter the alias of the page here, which will be displayed in the page url.]]></item>
 		<item name="moxeo.acp.contentItem.contentItemType"><![CDATA[Type of page]]></item>
+		<item name="moxeo.acp.contentItem.contentItemType.-1"><![CDATA[Root]]></item>
 		<item name="moxeo.acp.contentItem.contentItemType.0"><![CDATA[Page]]></item>
 		<item name="moxeo.acp.contentItem.contentItemType.1"><![CDATA[External link]]></item>
 		<item name="moxeo.acp.contentItem.contentItemType.2"><![CDATA[Permission denied (403)]]></item>

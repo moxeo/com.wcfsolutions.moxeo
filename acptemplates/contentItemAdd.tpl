@@ -90,18 +90,22 @@
 	// content item type
 	function setContentItemType(newType) {
 		switch (newType) {
+			case -1:
+				showOptions('languageIDDiv', 'descriptionDiv');
+				hideOptions('parentIDDiv', 'meta', 'themeLayoutIDDiv', 'invisibleDiv', 'addSecurityTokenDiv', 'publishing', 'externalURLDiv');
+				break;
 			case 0:
-				showOptions('descriptionDiv', 'meta', 'themeLayoutIDDiv', 'invisibleDiv', 'addSecurityTokenDiv', 'publishing');
-				hideOptions('externalURLDiv');
+				showOptions('parentIDDiv', 'descriptionDiv', 'meta', 'themeLayoutIDDiv', 'invisibleDiv', 'addSecurityTokenDiv', 'publishing');
+				hideOptions('languageIDDiv', 'externalURLDiv');
 				break;
 			case 1:
-				showOptions('externalURLDiv', 'invisibleDiv', 'publishing');
-				hideOptions('descriptionDiv', 'meta', 'themeLayoutIDDiv', 'addSecurityTokenDiv');
+				showOptions('parentIDDiv', 'externalURLDiv', 'invisibleDiv', 'publishing');
+				hideOptions('languageIDDiv', 'descriptionDiv', 'meta', 'themeLayoutIDDiv', 'addSecurityTokenDiv');
 				break;
 			case 2:
 			case 3:
-				showOptions('descriptionDiv', 'meta', 'themeLayoutIDDiv');
-				hideOptions('externalURLDiv', 'invisibleDiv', 'addSecurityTokenDiv', 'publishing');
+				showOptions('parentIDDiv', 'descriptionDiv', 'meta', 'themeLayoutIDDiv');
+				hideOptions('languageIDDiv', 'externalURLDiv', 'invisibleDiv', 'addSecurityTokenDiv', 'publishing');
 				break;
 		}
 	}
@@ -169,6 +173,7 @@
 				<legend>{lang}moxeo.acp.contentItem.contentItemType{/lang}</legend>
 				<div class="formElement">
 					<ul class="formOptions">
+						<li><label><input onclick="if (IS_SAFARI) setContentItemType(-1)" onfocus="setContentItemType(-1)" type="radio" name="contentItemType" value="-1" {if $contentItemType == -1}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.-1{/lang}</label></li>
 						<li><label><input onclick="if (IS_SAFARI) setContentItemType(0)" onfocus="setContentItemType(0)" type="radio" name="contentItemType" value="0" {if $contentItemType == 0}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.0{/lang}</label></li>
 						<li><label><input onclick="if (IS_SAFARI) setContentItemType(1)" onfocus="setContentItemType(1)" type="radio" name="contentItemType" value="1" {if $contentItemType == 1}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.1{/lang}</label></li>
 						<li><label><input onclick="if (IS_SAFARI) setContentItemType(2)" onfocus="setContentItemType(2)" type="radio" name="contentItemType" value="2" {if $contentItemType == 2}checked="checked" {/if}/> {lang}moxeo.acp.contentItem.contentItemType.2{/lang}</label></li>
@@ -187,7 +192,6 @@
 						</div>
 						<div class="formField">
 							<select name="parentID" id="parentID">
-								<option value="0"></option>
 								{htmlOptions options=$contentItemOptions selected=$parentID disableEncoding=true}
 							</select>
 						</div>
