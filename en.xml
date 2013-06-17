@@ -111,7 +111,6 @@
 	<category name="moxeo.acp.article">
 		<item name="moxeo.acp.article.add"><![CDATA[Add article]]></item>
 		<item name="moxeo.acp.article.add.success"><![CDATA[The article was added successfully.]]></item>
-		<item name="moxeo.acp.article.articleID"><![CDATA[Article ID]]></item>
 		<item name="moxeo.acp.article.articleSections"><![CDATA[Sections]]></item>
 		<item name="moxeo.acp.article.classification"><![CDATA[Classification]]></item>
 		<item name="moxeo.acp.article.contentItemID"><![CDATA[Page]]></item>
@@ -128,7 +127,6 @@
 		<item name="moxeo.acp.article.edit.success"><![CDATA[The article was edited successfully.]]></item>
 		<item name="moxeo.acp.article.section.add"><![CDATA[Add section]]></item>
 		<item name="moxeo.acp.article.section.add.success"><![CDATA[The section was added successfully.]]></item>
-		<item name="moxeo.acp.article.section.articleSectionID"><![CDATA[Section ID]]></item>
 		<item name="moxeo.acp.article.section.articleSectionType"><![CDATA[Type]]></item>
 		<item name="moxeo.acp.article.section.cssClasses"><![CDATA[CSS classes]]></item>
 		<item name="moxeo.acp.article.section.cssClasses.description"><![CDATA[Enter the CSS classes of the section here.]]></item>
@@ -203,7 +201,6 @@
 		<item name="moxeo.acp.article.section.type"><![CDATA[Type]]></item>
 		<item name="moxeo.acp.article.section.type.description"><![CDATA[Choose the type of this section here.]]></item>
 		<item name="moxeo.acp.article.section.view"><![CDATA[Sections of the article &raquo;{$article->title}&laquo;]]></item>
-		<item name="moxeo.acp.article.section.view.count"><![CDATA[There is a total of {#$items} section{if $items != 1}s{/if}]]></item>
 		<item name="moxeo.acp.article.section.view.count.noArticleSections"><![CDATA[Currently there are no sections available.]]></item>
 		<item name="moxeo.acp.article.section.youTube.data"><![CDATA[Data]]></item>
 		<item name="moxeo.acp.article.section.youTube.videoID"><![CDATA[Video]]></item>
@@ -216,7 +213,6 @@
 		<item name="moxeo.acp.article.title"><![CDATA[Title]]></item>
 		<item name="moxeo.acp.article.title.description"><![CDATA[Enter the title of the article here.]]></item>
 		<item name="moxeo.acp.article.view"><![CDATA[Articles]]></item>
-		<item name="moxeo.acp.article.view.count"><![CDATA[There is a total of {#$items} article{if $items != 1}s{/if}]]></item>
 		<item name="moxeo.acp.article.view.count.noArticles"><![CDATA[Currently there are no articles available.]]></item>
 		<item name="moxeo.acp.article.view.count.noContentItems"><![CDATA[Currently there are no pages available to which articles could be added.]]></item>
 		<item name="moxeo.acp.article.view.info"><![CDATA[Choose the page whose articles you would like to manage.]]></item
