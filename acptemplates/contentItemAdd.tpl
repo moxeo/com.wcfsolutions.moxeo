@@ -186,7 +186,7 @@
 				<legend>{lang}moxeo.acp.contentItem.classification{/lang}</legend>
 
 				{if $contentItemOptions|count > 0}
-					<div class="formElement" id="parentIDDiv">
+					<div class="formElement{if $errorField == 'parentID'} formError{/if}" id="parentIDDiv">
 						<div class="formFieldLabel">
 							<label for="parentID">{lang}moxeo.acp.contentItem.parentID{/lang}</label>
 						</div>
@@ -194,6 +194,11 @@
 							<select name="parentID" id="parentID">
 								{htmlOptions options=$contentItemOptions selected=$parentID disableEncoding=true}
 							</select>
+							{if $errorField == 'parentID'}
+								<p class="innerError">
+									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+								</p>
+							{/if}
 						</div>
 						<div class="formFieldDesc hidden" id="parentIDHelpMessage">
 							<p>{lang}moxeo.acp.contentItem.parentID.description{/lang}</p>

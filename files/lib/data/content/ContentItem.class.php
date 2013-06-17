@@ -137,7 +137,7 @@ class ContentItem extends DatabaseObject {
 	public function getURL() {
 		$contentItemURL = URL_PREFIX;
 		foreach ($this->getParentContentItems() as $parentContentItem) {
-			if (!$parentContentItem->isRoot() || !$parentContentItem->contentItemAlias == '') {
+			if (!$parentContentItem->isRoot() || $parentContentItem->contentItemAlias != '') {
 				$contentItemURL .= $parentContentItem->contentItemAlias.'/';
 			}
 		}
