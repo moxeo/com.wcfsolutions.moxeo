@@ -7,7 +7,7 @@ require_once(MOXEO_DIR.'lib/data/comment/object/CommentableObjectType.class.php'
  * Represents an article section commentable object type.
  *
  * @author	Sebastian Oettl
- * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2013 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	data.article.section
