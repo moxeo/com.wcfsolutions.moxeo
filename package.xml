@@ -60,6 +60,7 @@
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
+		<script>acp/update.php</script>
 
 		<!-- config -->
 		<options>options.xml</options>
@@ -74,6 +75,7 @@
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
+		<script>acp/update.php</script>
 
 		<!-- config -->
 		<options>options.xml</options>
