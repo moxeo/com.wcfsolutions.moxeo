@@ -215,7 +215,7 @@
 		<item name="moxeo.acp.article.view"><![CDATA[Articles]]></item>
 		<item name="moxeo.acp.article.view.count.noArticles"><![CDATA[Currently there are no articles available.]]></item>
 		<item name="moxeo.acp.article.view.count.noContentItems"><![CDATA[Currently there are no pages available to which articles could be added.]]></item>
-		<item name="moxeo.acp.article.view.info"><![CDATA[Choose the page whose articles you would like to manage.]]></item
+		<item name="moxeo.acp.article.view.info"><![CDATA[Choose the page whose articles you would like to manage.]]></item>
 	</category>
 	<category name="moxeo.acp.comment">
 		<item name="moxeo.acp.comment.comment"><![CDATA[Comment]]></item>

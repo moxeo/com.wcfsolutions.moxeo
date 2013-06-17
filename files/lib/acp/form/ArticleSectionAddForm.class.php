@@ -100,6 +100,9 @@ class ArticleSectionAddForm extends ACPForm {
 
 		// get content item
 		$this->contentItem = new ContentItemEditor($this->article->contentItemID);
+		if ($this->contentItem->isRoot() || $this->contentItem->isExternalLink()) {
+			throw new IllegalLinkException();
+		}
 		$this->contentItem->checkAdminPermission('canEditArticle');
 
 		// get available article section types

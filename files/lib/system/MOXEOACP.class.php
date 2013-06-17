@@ -52,7 +52,7 @@ class MOXEOACP extends WCFACP {
 			// add jump to frontend link
 			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_MOXEO_DIR.'"><img src="'.RELATIVE_MOXEO_DIR.'icon/indexS.png" alt="" /> <span>'.WCF::getLanguage()->get('moxeo.acp.jumpToFrontend').'</span></a></li>',
 			// individual page title
-			'pageTitle' => WCF::getLanguage()->get('Moxeo Open Source CMS - '.StringUtil::encodeHTML(PACKAGE_NAME.' '.PACKAGE_VERSION)
+			'pageTitle' => 'Moxeo Open Source CMS - '.StringUtil::encodeHTML(PACKAGE_NAME.' '.PACKAGE_VERSION)
 		));
 
 		// moxeo stylesheet

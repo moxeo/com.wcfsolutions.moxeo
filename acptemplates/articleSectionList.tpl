@@ -41,7 +41,7 @@
 {/if}
 
 <div class="contentHeader">
-	{pages print=true assign=pagesLinks link="index.php?page=ArticleSectionList&articleID=$articleID&pageNo=%d&sortField=$sortField&sortOrder=$sortOrder&packageID="|concat:PACKAGE_ID:SID_ARG_2ND_NOT_ENCODED}
+	{pages print=true assign=pagesLinks link="index.php?page=ArticleSectionList&articleID=$articleID&pageNo=%d&packageID="|concat:PACKAGE_ID:SID_ARG_2ND_NOT_ENCODED}
 	<div class="largeButtons">
 		<ul>
 			<li><a href="index.php?form=ArticleSectionAdd&amp;articleID={@$articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionAddM.png" alt="" title="{lang}moxeo.acp.article.section.add{/lang}" /> <span>{lang}moxeo.acp.article.section.add{/lang}</span></a></li>

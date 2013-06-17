@@ -5,7 +5,7 @@
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
 $packageID = $this->installation->getPackageID();
-$instanceNo = $this->installation->getPackage()->getParentPackage()->getInstanceNo();
+$instanceNo = $this->installation->getPackage()->getInstanceNo();
 
 // create root
 $sql = "INSERT INTO	moxeo".WCF_N."_".$instanceNo."_content_item
@@ -18,6 +18,7 @@ $contentItemID = WCF::getDB()->getInsertID("moxeo".WCF_N."_".$instanceNo."_conte
 $sql = "UPDATE	moxeo".WCF_N."_".$instanceNo."_content_item
 	SET	parentID = ".$contentItemID.",
 		languageID = 0
-	WHERE 	parentID = 0";
+	WHERE 	parentID = 0
+		AND contentItemID <> ".$contentItemID;
 WCF::getDB()->sendQuery($sql);
 ?>

@@ -59,6 +59,9 @@ class ArticleAddForm extends ACPForm {
 		if (isset($_REQUEST['contentItemID'])) $this->contentItemID = intval($_REQUEST['contentItemID']);
 		if ($this->contentItemID) {
 			$this->contentItem = new ContentItemEditor($this->contentItemID);
+			if ($this->contentItem->isRoot() || $this->contentItem->isExternalLink()) {
+				throw new IllegalLinkException();
+			}
 			$this->contentItem->checkAdminPermission('canAddArticle');
 		}
 	}

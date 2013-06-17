@@ -53,6 +53,9 @@ abstract class AbstractArticleAction extends AbstractAction {
 
 		// get content item
 		$this->contentItem = new ContentItemEditor($this->article->contentItemID);
+		if ($this->contentItem->isRoot() || $this->contentItem->isExternalLink()) {
+			throw new IllegalLinkException();
+		}
 	}
 }
 ?>

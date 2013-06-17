@@ -148,7 +148,11 @@
 										<img src="{@RELATIVE_MOXEO_DIR}icon/contentItem{if $contentItem->isExternalLink()}Redirect{/if}S.png" alt="" />
 									{/if}
 
-									ID-{@$contentItem->contentItemID} <a href="index.php?page=ArticleList&amp;contentItemID={@$contentItem->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" class="title">{$contentItem->title}</a>
+									{if $contentItem->isRoot() || $contentItem->isExternalLink()}
+										ID-{@$contentItem->contentItemID} {$contentItem->title}
+									{else}
+										ID-{@$contentItem->contentItemID} <a href="index.php?page=ArticleList&amp;contentItemID={@$contentItem->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" class="title">{$contentItem->title}</a>
+									{/if}
 								</h3>
 
 							{if $child.hasChildren}<ol id="parentItem_{@$contentItem->contentItemID}">{else}<ol id="parentItem_{@$contentItem->contentItemID}"></ol></li>{/if}

@@ -8,6 +8,10 @@
 			</category>
 		</categories>
 		<options>
+			<option name="page_url">
+				<categoryname>general.page</categoryname>
+				<optiontype>text</optiontype>
+			</option>
 			<option name="enable_seo_rewriting">
 				<categoryname>general.page</categoryname>
 				<optiontype>boolean</optiontype>
@@ -26,6 +30,6 @@
 		</options>
 	</import>
 	<delete>
-		<option name="page_url" />
+		<option name="page_title" />
 	</delete>
 </data>
