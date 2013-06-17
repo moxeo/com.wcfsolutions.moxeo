@@ -29,5 +29,12 @@ class BreadCrumbThemeModuleType extends AbstractThemeModuleType {
 		));
 		return WCF::getTPL()->fetch('breadCrumbThemeModuleType');
 	}
+
+	/**
+	 * @see	ThemeModuleType::getHTMLTag()
+	 */
+	public function getHTMLTag() {
+		return 'nav';
+	}
 }
 ?>

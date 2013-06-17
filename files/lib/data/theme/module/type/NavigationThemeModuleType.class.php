@@ -75,6 +75,13 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 		return WCF::getTPL()->fetch('navigationThemeModuleType');
 	}
 
+	/**
+	 * @see	ThemeModuleType::getHTMLTag()
+	 */
+	public function getHTMLTag() {
+		return 'nav';
+	}
+
 	// form methods
 	/**
 	 * @see	ThemeModuleType::readFormParameters()

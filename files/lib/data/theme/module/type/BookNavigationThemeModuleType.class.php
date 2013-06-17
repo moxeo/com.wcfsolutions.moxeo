@@ -86,6 +86,13 @@ class BookNavigationThemeModuleType extends AbstractThemeModuleType {
 		return WCF::getTPL()->fetch('bookNavigationThemeModuleType');
 	}
 
+	/**
+	 * @see	ThemeModuleType::getHTMLTag()
+	 */
+	public function getHTMLTag() {
+		return 'nav';
+	}
+
 	// form methods
 	/**
 	 * @see	ThemeModuleType::readFormParameters()
