@@ -136,19 +136,103 @@
 			<fieldset{if $errorField == 'fileUpload'} class="formError"{/if} id="fileDiv">
 				<legend>{lang}moxeo.acp.fileManager.fileUpload{/lang}</legend>
 
-				<div class="formElement{if $errorField == 'fileUpload'} formError{/if}">
-					<div class="formFieldLabel">
-						<label for="fileUpload">{lang}moxeo.acp.fileManager.fileUpload{/lang}</label>
+				<ol id="uploadFields" class="itemList">
+					<li>
+						<div class="buttons">
+							<a href="#delete" title="{lang}wcf.global.button.delete{/lang}" class="hidden"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" longdesc="" alt="" /></a>
+						</div>
+						<div class="itemListTitle">
+							<input type="file" size="50" name="fileUpload[]" />
+						</div>
+					</li>
+				</ol>
+
+				{if $errorField == 'fileUpload'}
+					<div class="innerError">
+						{if $errorType|is_array}
+							{foreach from=$errorType item=error}
+								{assign var=filename value=$error.filename}
+								<p>
+									{if $error.errorType == 'uploadFailed'}{lang}moxeo.acp.fileManager.file.fileUpload.error.uploadFailed{/lang}{/if}
+									{if $error.errorType == 'copyFailed'}{lang}moxeo.acp.fileManager.file.fileUpload.error.copyFailed{/lang}{/if}
+									{if $error.errorType == 'illegalExtension'}{lang}moxeo.acp.fileManager.file.fileUpload.error.illegalExtension{/lang}{/if}
+								</p>
+							{/foreach}
+						{elseif $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 					</div>
-					<div class="formField">
-						<input type="file" size="50" name="fileUpload" />
-						{if $errorField == 'fileUpload'}
-							<p class="innerError">
-								{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-							</p>
-						{/if}
-					</div>
-				</div>
+				{/if}
+
+				<script type="text/javascript">
+					//<![CDATA[
+					var openUploads = 20;
+					function addUploadField() {
+						if (openUploads > 0) {
+							var fileInput = new Element('input', { 'type': 'file', 'name': 'fileUpload[]', 'size': 50 });
+							var fileDiv = new Element('div').addClassName('itemListTitle');
+							var deleteButton = new Element('a', { 'href': '#delete', 'title': '{lang}wcf.global.button.delete{/lang}' });
+							deleteButton.addClassName('hidden');
+							var deleteImg = new Element('img', { 'src': '{@RELATIVE_WCF_DIR}icon/deleteS.png', 'longdesc': '' });
+							var buttons = new Element('div').addClassName('buttons').insert(deleteButton.insert(deleteImg));
+
+							$('uploadFields').insert(new Element('li').insert(buttons).insert(fileDiv.insert(fileInput)));
+							deleteButton.observe('click', removeUploadField);
+							fileInput.observe('change', uploadFieldChanged);
+							openUploads--;
+						}
+					}
+
+					function removeUploadField(evt) {
+						var fileInput = evt.findElement().up('li').down('input');
+						var emptyField = true;
+						var counter = 0;
+						$$('#uploadFields input[type=file]').each(function(input) {
+							if (input.value == '') {
+								emptyField = true;
+							}
+							counter++;
+						});
+						if (emptyField && fileInput.value != '' && counter > 1) {
+							fileInput.up('li').fade({
+								'duration': '0.5', afterFinish: function() { fileInput.up('li').remove(); }
+							});
+							openUploads++;
+						}
+						else {
+							fileInput.value = '';
+						}
+						evt.stop();
+					}
+
+					function uploadFieldChanged(e) {
+						if (!e) e = window.event;
+
+						if (e.target) var inputField = e.target;
+						else if (e.srcElement) var inputField = e.srcElement;
+
+						var emptyField = false;
+						$$('#uploadFields input[type=file]').each(function(input) {
+							if (input.value == '') emptyField = true;
+						});
+
+						if (!emptyField && inputField.value != '' && inputField.value != inputField.oldValue) {
+							inputField.oldValue = inputField.value;
+							addUploadField();
+						}
+						if (inputField.value == '') {
+							$(inputField).up('li').down('a[href*="#delete"]').addClassName('hidden');
+						}
+						else {
+							$(inputField).up('li').down('a[href*="#delete"]').removeClassName('hidden');
+						}
+					}
+
+					// add button
+					document.observe('dom:loaded', function() {
+						$$('#uploadFields input[type=file]').invoke('observe', 'change', uploadFieldChanged);
+						$$('#uploadFields a[href*="#delete"]').invoke('observe', 'click', removeUploadField);
+					});
+					//]]>
+				</script>
 			</fieldset>
 		</div>
 	</div>

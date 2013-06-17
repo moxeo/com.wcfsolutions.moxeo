@@ -82,6 +82,44 @@ class FileManagerFileAddForm extends AbstractForm {
 				throw new UserInputException('dirName');
 			}
 		}
+
+		// files
+		else if ($this->fileType == 'file') {
+			if (isset($this->fileUpload['name']) && count($this->fileUpload['name'])) {
+				$errors = array();
+				for ($x = 0, $y = count($this->fileUpload['name']); $x < $y; $x++) {
+					if (!empty($this->fileUpload['name'][$x])) {
+						try {
+							// check upload
+							if ($this->fileUpload['error'][$x] != 0) {
+								throw new UserInputException('fileUpload', 'uploadFailed');
+							}
+
+							if (!FileManagerUtil::hasValidFileExtension($this->fileUpload['name'][$x])) {
+								throw new UserInputException('fileUpload', 'illegalExtension');
+							}
+
+							if (!@move_uploaded_file($this->fileUpload['tmp_name'][$x], $this->path.$this->fileUpload['name'][$x])) {
+								throw new UserInputException('fileUpload', 'copyFailed');
+							}
+							@chmod($this->path.$this->fileUpload['name'][$x], 0777);
+						}
+						catch (UserInputException $e) {
+							$errors[] = array('errorType' => $e->getType(), 'filename' => $this->fileUpload['name'][$x]);
+						}
+					}
+				}
+
+				// show error message
+				if (count($errors)) {
+					throw new UserInputException('fileUpload', $errors);
+				}
+
+			}
+			else {
+				throw new UserInputException('fileUpload');
+			}
+		}
 	}
 
 	/**
@@ -94,26 +132,6 @@ class FileManagerFileAddForm extends AbstractForm {
 		if ($this->fileType == 'folder') {
 			@mkdir($this->path.$this->dirName, 0777, true);
 			@chmod($this->path.$this->dirName, 0777);
-		}
-		// file
-		else if ($this->fileType == 'file') {
-			if ($this->fileUpload && $this->fileUpload['error'] != 4) {
-				if ($this->fileUpload['error'] != 0) {
-					throw new UserInputException('fileUpload');
-				}
-
-				if (!FileManagerUtil::hasValidFileExtension($this->fileUpload['name'])) {
-					throw new UserInputException('fileUpload');
-				}
-
-				if (!@move_uploaded_file($this->fileUpload['tmp_name'], $this->path.$this->fileUpload['name'])) {
-					throw new UserInputException('fileUpload');
-				}
-				@chmod($this->path.$this->fileUpload['name'], 0777);
-			}
-			else {
-				throw new UserInputException('fileUpload');
-			}
 		}
 		$this->saved();
 

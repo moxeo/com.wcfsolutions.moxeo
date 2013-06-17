@@ -321,7 +321,7 @@
 	<category name="moxeo.acp.fileManager">
 		<item name="moxeo.acp.fileManager"><![CDATA[Dateimanager]]></item>
 		<item name="moxeo.acp.fileManager.dirName"><![CDATA[Name]]></item>
-		<item name="moxeo.acp.fileManager.file.add"><![CDATA[Datei hinzufügen]]></item>
+		<item name="moxeo.acp.fileManager.file.add"><![CDATA[Dateien hinzufügen]]></item>
 		<item name="moxeo.acp.fileManager.file.count.noFiles"><![CDATA[Derzeit sind keine Dateien vorhanden.]]></item>
 		<item name="moxeo.acp.fileManager.file.date"><![CDATA[Änderungsdatum]]></item>
 		<item name="moxeo.acp.fileManager.file.delete"><![CDATA[Datei löschen]]></item>
@@ -329,8 +329,11 @@
 		<item name="moxeo.acp.fileManager.file.delete.sure"><![CDATA[Wollen Sie diese Datei wirklich löschen?]]></item>
 		<item name="moxeo.acp.fileManager.file.error.fileType.invalid"><![CDATA[Der angegebene Typ ist ungültig.]]></item>
 		<item name="moxeo.acp.fileManager.file.fileType"><![CDATA[Typ]]></item>
-		<item name="moxeo.acp.fileManager.file.fileType.file"><![CDATA[Datei]]></item>
+		<item name="moxeo.acp.fileManager.file.fileType.file"><![CDATA[Dateien]]></item>
 		<item name="moxeo.acp.fileManager.file.fileType.folder"><![CDATA[Verzeichnis]]></item>
+		<item name="moxeo.acp.fileManager.file.fileUpload.error.copyFailed"><![CDATA[Die Datei &raquo;{$filename}&laquo; konnte nicht erfolgreich kopiert werden.]]></item>
+		<item name="moxeo.acp.fileManager.file.fileUpload.error.illegalExtension"><![CDATA[Die Datei &raquo;{$filename}&laquo; hat eine ungültige Dateiendung.]]></item>
+		<item name="moxeo.acp.fileManager.file.fileUpload.error.uploadFailed"><![CDATA[Das Hochladen der Datei &raquo;{$filename}&laquo; ist fehlgeschlagen.]]></item>
 		<item name="moxeo.acp.fileManager.file.name"><![CDATA[Name]]></item>
 		<item name="moxeo.acp.fileManager.file.permissions"><![CDATA[Zugriffsrechte]]></item>
 		<item name="moxeo.acp.fileManager.file.size"><![CDATA[Größe]]></item>
