@@ -125,42 +125,42 @@
 		</div>
 	{/if}
 {else}
-	<div class="info">
-		{lang}moxeo.acp.article.view.info{/lang}
-	</div>
-
 	{if $contentItems|count > 0}
-			<div class="border content">
-				<div class="container-1">
-					<ol class="itemList" id="contentItemList">
-						{foreach from=$contentItems item=child}
-							{assign var="contentItem" value=$child.contentItem}
+		<div class="info">
+			{lang}moxeo.acp.article.view.info{/lang}
+		</div>
 
-							<li id="item_{@$contentItem->contentItemID}">
-								<div class="buttons">
-									{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
-								</div>
+		<div class="border content">
+			<div class="container-1">
+				<ol class="itemList" id="contentItemList">
+					{foreach from=$contentItems item=child}
+						{assign var="contentItem" value=$child.contentItem}
 
-								<h3 class="itemListTitle{if $contentItem->isRoot()} itemListCategory{/if}">
-									{if $contentItem->isRoot()}
-										{@$contentItem->getLanguageIcon()}
-									{else}
-										<img src="{@RELATIVE_MOXEO_DIR}icon/contentItem{if $contentItem->isExternalLink()}Redirect{/if}S.png" alt="" />
-									{/if}
+						<li id="item_{@$contentItem->contentItemID}">
+							<div class="buttons">
+								{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
+							</div>
 
-									{if $contentItem->isRoot() || $contentItem->isExternalLink()}
-										ID-{@$contentItem->contentItemID} {$contentItem->title}
-									{else}
-										ID-{@$contentItem->contentItemID} <a href="index.php?page=ArticleList&amp;contentItemID={@$contentItem->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" class="title">{$contentItem->title}</a>
-									{/if}
-								</h3>
+							<h3 class="itemListTitle{if $contentItem->isRoot()} itemListCategory{/if}">
+								{if $contentItem->isRoot()}
+									{@$contentItem->getLanguageIcon()}
+								{else}
+									<img src="{@RELATIVE_MOXEO_DIR}icon/contentItem{if $contentItem->isExternalLink()}Redirect{/if}S.png" alt="" />
+								{/if}
 
-							{if $child.hasChildren}<ol id="parentItem_{@$contentItem->contentItemID}">{else}<ol id="parentItem_{@$contentItem->contentItemID}"></ol></li>{/if}
-							{if $child.openParents > 0}{@"</ol></li>"|str_repeat:$child.openParents}{/if}
-						{/foreach}
-					</ol>
-				</div>
+								{if $contentItem->isRoot() || $contentItem->isExternalLink()}
+									ID-{@$contentItem->contentItemID} {$contentItem->title}
+								{else}
+									ID-{@$contentItem->contentItemID} <a href="index.php?page=ArticleList&amp;contentItemID={@$contentItem->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" class="title">{$contentItem->title}</a>
+								{/if}
+							</h3>
+
+						{if $child.hasChildren}<ol id="parentItem_{@$contentItem->contentItemID}">{else}<ol id="parentItem_{@$contentItem->contentItemID}"></ol></li>{/if}
+						{if $child.openParents > 0}{@"</ol></li>"|str_repeat:$child.openParents}{/if}
+					{/foreach}
+				</ol>
 			</div>
+		</div>
 	{else}
 		<div class="border content">
 			<div class="container-1">
