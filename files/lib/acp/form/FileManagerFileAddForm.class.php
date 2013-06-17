@@ -118,7 +118,7 @@ class FileManagerFileAddForm extends AbstractForm {
 		$this->saved();
 
 		// forward to list page
-		HeaderUtil::redirect('index.php?page=FileManager&dir='.$this->dir.'&packageID='.PACKAGE_ID.SID_ARG_2ND_NOT_ENCODED);
+		HeaderUtil::redirect('index.php?page=FileManager&dir='.urlencode($this->dir).'&packageID='.PACKAGE_ID.SID_ARG_2ND_NOT_ENCODED);
 		exit;
 	}
 
