@@ -219,7 +219,7 @@ class ContentItemAddForm extends ACPForm {
 		}
 
 		// alias
-		if (empty($this->contentItemAlias)) {
+		if (empty($this->contentItemAlias) && $this->contentItemType != -1) {
 			$this->contentItemAlias = $this->title;
 		}
 		$this->contentItemAlias = SEOUtil::formatString($this->contentItemAlias);
