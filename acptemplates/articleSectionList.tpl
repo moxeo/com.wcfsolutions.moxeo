@@ -6,21 +6,17 @@
 		var articleSectionList = $('articleSectionList');
 		if (articleSectionList) {
 			articleSectionList.addClassName('dragable');
-			
-			Sortable.create(articleSectionList, { 
-				tag: 'tr',
+
+			Sortable.create(articleSectionList, {
+				tag: 'div',
 				onUpdate: function(list) {
-					var rows = list.select('tr');
-					var showOrder = 0;
+					var rows = list.select('.message');
 					var newShowOrder = 0;
 					rows.each(function(row, i) {
-						row.className = 'container-' + (i % 2 == 0 ? '1' : '2') + (row.hasClassName('marked') ? ' marked' : '');
-						showOrder = row.select('.columnNumbers')[0];
-						newShowOrder = i + 1;
-						if (newShowOrder != showOrder.innerHTML) {
-							showOrder.update(newShowOrder);
-							new Ajax.Request('index.php?action=ArticleSectionSort&articleSectionID='+row.id.gsub('articleSectionRow_', '')+SID_ARG_2ND, { method: 'post', parameters: { showOrder: newShowOrder } } );
-						}
+					    	row.firstDescendant().removeClassName('container-1').removeClassName('container-2');
+						row.firstDescendant().addClassName('container-' + (i % 2 == 0 ? '1' : '2'));
+						newShowOrder = i + {@$startIndex} - 1;
+						new Ajax.Request('index.php?action=ArticleSectionSort&articleSectionID='+row.id.gsub('articleSectionRow_', '')+SID_ARG_2ND, { method: 'post', parameters: { showOrder: newShowOrder } } );
 					});
 				}
 			});
@@ -29,38 +25,19 @@
 	//]]>
 </script>
 
+<ul class="breadCrumbs">
+	<li><a href="index.php?page=ArticleList{@SID_ARG_2ND}"><span>{lang}moxeo.acp.article.view{/lang}</span></a> &raquo;</li>
+	<li><a href="index.php?page=ArticleList&amp;contentItemID={@$article->contentItemID}{@SID_ARG_2ND}"><span>{$contentItem->title}</span></a> &raquo;</li>
+</ul>
 <div class="mainHeadline">
 	<img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionL.png" alt="" />
 	<div class="headlineContainer">
 		<h2>{lang}moxeo.acp.article.section.view{/lang}</h2>
-		<p>{$article->title}</p>
 	</div>
 </div>
-
-{*<div class="border titleBarPanel">
-	<div class="containerHead"><h3>{lang}moxeo.acp.article{/lang}</h3></div>
-</div>
-<div class="border borderMarginRemove">
-	<div class="content">
-		<div class="container-1">
-			<div class="formElement">
-				<div class="formFieldLabel">
-					<label>{lang}moxeo.acp.article.title{/lang}</label>
-				</div>
-				<div class="formField">
-					{$article->title}
-				</div>
-			</div>
-		</div>
-	</div>
-</div>*}
 
 {if $deletedArticleSectionID}
-	<p class="success">{lang}moxeo.acp.article.section.delete.success{/lang}</p>	
-{/if}
-
-{if $successfulSorting}
-	<p class="success">{lang}moxeo.acp.article.section.sort.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.article.section.delete.success{/lang}</p>
 {/if}
 
 <div class="contentHeader">
@@ -68,59 +45,43 @@
 	<div class="largeButtons">
 		<ul>
 			<li><a href="index.php?form=ArticleSectionAdd&amp;articleID={@$articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionAddM.png" alt="" title="{lang}moxeo.acp.article.section.add{/lang}" /> <span>{lang}moxeo.acp.article.section.add{/lang}</span></a></li>
-			<li><a href="index.php?page=ArticleList&amp;contentItemID={@$article->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleM.png" alt="" title="{lang}moxeo.acp.article.view{/lang}" /> <span>{lang}moxeo.acp.article.view{/lang}</span></a></li>
 		</ul>
 	</div>
 </div>
 
 {if $articleSections|count}
-	<div class="border titleBarPanel">
-		<div class="containerHead"><h3>{lang}moxeo.acp.article.section.view.count{/lang}</h3></div>
+	<div id="articleSectionList">
+		{foreach from=$articleSections item=articleSection}
+			<div class="message content" id="articleSectionRow_{@$articleSection->articleSectionID}">
+				<div class="messageInner container-{cycle name='articleSections' values='1,2'}">
+					<h3 class="subHeadline">
+						{lang}moxeo.article.section.type.{@$articleSection->articleSectionType}{/lang}
+					</h3>
+
+					<div class="messageBody">
+						{@$articleSection->getArticleSectionType()->getPreviewHTML($articleSection, $article, $contentItem)}
+					</div>
+
+					<div class="messageFooter">
+						<div class="smallButtons">
+							<ul>
+								<li class="extraButton"><a href="#top" title="{lang}wcf.global.scrollUp{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/upS.png" alt="{lang}wcf.global.scrollUp{/lang}" /></a></li>
+								<li><a onclick="return confirm('{lang}moxeo.acp.article.section.delete.sure{/lang}')" href="index.php?action=ArticleSectionDelete&amp;articleSectionID={@$articleSection->articleSectionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wcf.global.button.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /> <span>{lang}wcf.global.button.delete{/lang}</span></a></li>
+								<li><a href="index.php?form=ArticleSectionEdit&amp;articleSectionID={@$articleSection->articleSectionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wcf.global.button.edit{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" /> <span>{lang}wcf.global.button.edit{/lang}</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		{/foreach}
 	</div>
-	<div class="border borderMarginRemove">
-		<table class="tableList">
-			<thead>
-				<tr class="tableHead">
-					<th class="columnArticleSectionID{if $sortField == 'articleSectionID'} active{/if}" colspan="2"><div><a href="index.php?page=ArticleSectionList&amp;articleID={@$articleID}&amp;pageNo={@$pageNo}&amp;sortField=articleSectionID&amp;sortOrder={if $sortField == 'articleSectionID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.section.articleSectionID{/lang}{if $sortField == 'articleSectionID'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-					<th class="columnArticleSectionType{if $sortField == 'articleSectionType'} active{/if}"><div><a href="index.php?page=ArticleSectionList&amp;articleID={@$articleID}&amp;pageNo={@$pageNo}&amp;sortField=articleSectionType&amp;sortOrder={if $sortField == 'articleSectionType' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.section.articleSectionType{/lang}{if $sortField == 'articleSectionType'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-					<th class="columnArticleSectionPreview"><div><span class="emptyHead">{lang}moxeo.acp.article.section.preview{/lang}</span></div></th>
-					<th class="columnShowOrder{if $sortField == 'showOrder'} active{/if}"><div><a href="index.php?page=ArticleSectionList&amp;articleID={@$articleID}&amp;pageNo={@$pageNo}&amp;sortField=showOrder&amp;sortOrder={if $sortField == 'showOrder' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.article.section.showOrder{/lang}{if $sortField == 'showOrder'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-					
-					{if $additionalColumnHeads|isset}{@$additionalColumnHeads}{/if}
-				</tr>
-			</thead>
-			<tbody id="articleSectionList">
-				{foreach from=$articleSections item=articleSection}
-					<tr class="{cycle values="container-1,container-2"}" id="articleSectionRow_{@$articleSection->articleSectionID}">
-						<td class="columnIcon">
-							<a href="index.php?form=ArticleSectionEdit&amp;articleSectionID={@$articleSection->articleSectionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}moxeo.acp.article.section.edit{/lang}" /></a>
-							<a href="index.php?action=ArticleSectionDelete&amp;articleSectionID={@$articleSection->articleSectionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}moxeo.acp.article.section.delete.sure{/lang}')" title="{lang}moxeo.acp.article.section.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
-							
-							{if $additionalButtons.$articleSection->articleSectionID|isset}{@$additionalButtons.$articleSection->articleSectionID}{/if}
-						</td>
-						<td class="columnArticleSectionID columnID">{@$articleSection->articleSectionID}</td>
-						<td class="columnArticleSectionType columnText">
-							{lang}moxeo.article.section.type.{@$articleSection->articleSectionType}{/lang}
-						</td>
-						<td class="columnArticleSectionPreview columnText">
-							{@$articleSection->getArticleSectionType()->getPreviewHTML($articleSection, $article, $contentItem)}
-						</td>
-						<td class="columnShowOrder columnNumbers">{@$articleSection->showOrder}</td>
-						
-						{if $additionalColumns.$articleSection->articleSectionID|isset}{@$additionalColumns.$articleSection->articleSectionID}{/if}
-					</tr>
-				{/foreach}
-			</tbody>
-		</table>
-	</div>
-	
+
 	<div class="contentFooter">
 		{@$pagesLinks}
-		
+
 		<div class="largeButtons">
 			<ul>
 				<li><a href="index.php?form=ArticleSectionAdd&amp;articleID={@$articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionAddM.png" alt="" title="{lang}moxeo.acp.article.section.add{/lang}" /> <span>{lang}moxeo.acp.article.section.add{/lang}</span></a></li>
-				<li><a href="index.php?page=ArticleList&amp;contentItemID={@$article->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleM.png" alt="" title="{lang}moxeo.acp.article.view{/lang}" /> <span>{lang}moxeo.acp.article.view{/lang}</span></a></li>
 			</ul>
 		</div>
 	</div>

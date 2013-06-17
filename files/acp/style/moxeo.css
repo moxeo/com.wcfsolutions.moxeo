@@ -11,35 +11,32 @@ Copyright 2009-2012 by wcfsolutions.com
 /* ### -- -- -- -- -- Miscellaneous -- -- -- -- -- ### */
 
 .columnComment {
-	width: 50%;
+	width: 30%;
+	overflow: scroll;
 }
 
-.dragable img {
+.dragable img, .dragable a, .dragable a * {
 	cursor: pointer !important;
 }
 
 /* ### -- -- -- -- -- Previews -- -- -- -- -- ### */
 
-.columnArticleSectionPreview {
-	width: 70%;
-}
-
-.columnArticleSectionPreview h3 {
+#articleSectionList .messageBody h3 {
 	font-weight: bold;
 }
 
-.columnArticleSectionPreview .images {
+#articleSectionList .messageBody .images {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-.columnArticleSectionPreview .images .image {
+#articleSectionList .messageBody .images .image {
 	float: left;
 	margin: 10px;
 }
 
-.columnArticleSectionPreview .image img {
+#articleSectionList .messageBody .image img {
 	max-width: 200px;
 	max-height: 200px;
 }

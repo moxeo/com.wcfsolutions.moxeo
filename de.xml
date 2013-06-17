@@ -114,8 +114,6 @@
 		<item name="moxeo.acp.article.articleID"><![CDATA[Artikel-ID]]></item>
 		<item name="moxeo.acp.article.articleSections"><![CDATA[Abschnitte]]></item>
 		<item name="moxeo.acp.article.classification"><![CDATA[Einordnung]]></item>
-		<item name="moxeo.acp.article.contentItem"><![CDATA[Seite]]></item>
-		<item name="moxeo.acp.article.contentItem.description"><![CDATA[Wählen Sie die Seite aus, deren Artikel Sie verwalten möchten.]]></item>
 		<item name="moxeo.acp.article.contentItemID"><![CDATA[Seite]]></item>
 		<item name="moxeo.acp.article.contentItemID.description"><![CDATA[Wählen Sie eine Seite.]]></item>
 		<item name="moxeo.acp.article.cssClasses"><![CDATA[CSS-Klassen]]></item>
@@ -123,7 +121,6 @@
 		<item name="moxeo.acp.article.cssID"><![CDATA[CSS-ID]]></item>
 		<item name="moxeo.acp.article.cssID.description"><![CDATA[Geben Sie hier die CSS-ID des Artikels ein.]]></item>
 		<item name="moxeo.acp.article.data"><![CDATA[Daten]]></item>
-		<item name="moxeo.acp.article.delete"><![CDATA[Artikel löschen]]></item>
 		<item name="moxeo.acp.article.delete.success"><![CDATA[Der Artikel wurde erfolgreich gelöscht.]]></item>
 		<item name="moxeo.acp.article.delete.sure"><![CDATA[Wollen Sie diesen Artikel wirklich löschen?]]></item>
 		<item name="moxeo.acp.article.display"><![CDATA[Darstellung]]></item>
@@ -137,7 +134,6 @@
 		<item name="moxeo.acp.article.section.cssClasses.description"><![CDATA[Geben Sie hier die CSS-Klassen des Abschnitts ein.]]></item>
 		<item name="moxeo.acp.article.section.cssID"><![CDATA[CSS-ID]]></item>
 		<item name="moxeo.acp.article.section.cssID.description"><![CDATA[Geben Sie hier die CSS-ID des Abschnitts ein.]]></item>
-		<item name="moxeo.acp.article.section.delete"><![CDATA[Abschnitt löschen]]></item>
 		<item name="moxeo.acp.article.section.delete.success"><![CDATA[Der Abschnitt wurde erfolgreich gelöscht.]]></item>
 		<item name="moxeo.acp.article.section.delete.sure"><![CDATA[Wollen Sie diesen Abschnitt wirklich löschen?]]></item>
 		<item name="moxeo.acp.article.section.display"><![CDATA[Darstellung]]></item>
@@ -206,7 +202,7 @@
 		<item name="moxeo.acp.article.section.themeModule.themeModuleID.invalid"><![CDATA[Das gewählte Modul ist ungültig.]]></item>
 		<item name="moxeo.acp.article.section.type"><![CDATA[Typ]]></item>
 		<item name="moxeo.acp.article.section.type.description"><![CDATA[Wählen Sie den Typ des Abschnitts aus.]]></item>
-		<item name="moxeo.acp.article.section.view"><![CDATA[Abschnitte]]></item>
+		<item name="moxeo.acp.article.section.view"><![CDATA[Abschnitte des Artikels &raquo;{$article->title}&laquo;]]></item>
 		<item name="moxeo.acp.article.section.view.count"><![CDATA[Insgesamt {#$items} Abschnitt{if $items != 1}e{/if}]]></item>
 		<item name="moxeo.acp.article.section.view.count.noArticleSections"><![CDATA[Derzeit sind keine Abschnitte vorhanden.]]></item>
 		<item name="moxeo.acp.article.section.youTube.data"><![CDATA[Daten]]></item>
@@ -223,6 +219,7 @@
 		<item name="moxeo.acp.article.view.count"><![CDATA[Insgesamt {#$items} Artikel]]></item>
 		<item name="moxeo.acp.article.view.count.noArticles"><![CDATA[Derzeit sind keine Artikel vorhanden.]]></item>
 		<item name="moxeo.acp.article.view.count.noContentItems"><![CDATA[Derzeit sind keine Seiten vorhanden, zu denen Artikel hinzugefügt werden könnten.]]></item>
+		<item name="moxeo.acp.article.view.info"><![CDATA[Wählen Sie die Seite aus, deren Artikel Sie verwalten möchten.]]></item>
 	</category>
 	<category name="moxeo.acp.comment">
 		<item name="moxeo.acp.comment.comment"><![CDATA[Kommentar]]></item>

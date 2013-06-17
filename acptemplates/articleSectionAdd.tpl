@@ -1,5 +1,10 @@
 {include file='header'}
 
+<ul class="breadCrumbs">
+	<li><a href="index.php?page=ArticleList{@SID_ARG_2ND}"><span>{lang}moxeo.acp.article.view{/lang}</span></a> &raquo;</li>
+	<li><a href="index.php?page=ArticleList&amp;contentItemID={@$article->contentItemID}{@SID_ARG_2ND}"><span>{$contentItem->title}</span></a> &raquo;</li>
+	<li><a href="index.php?page=ArticleSectionList&amp;articleID={@$article->articleID}{@SID_ARG_2ND}"><span>{lang}moxeo.acp.article.section.view{/lang}</span></a> &raquo;</li>
+</ul>
 <div class="mainHeadline">
 	<img src="{@RELATIVE_MOXEO_DIR}icon/articleSection{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
@@ -12,23 +17,15 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}moxeo.acp.article.section.{@$action}.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.article.section.{@$action}.success{/lang}</p>
 {/if}
 
-<div class="contentHeader">
-	<div class="largeButtons">
-		<ul>
-			<li><a href="index.php?page=ArticleSectionList&amp;articleID={@$article->articleID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.article.section.view{/lang}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleSectionM.png" alt="" /> <span>{lang}moxeo.acp.article.section.view{/lang}</span></a></li>
-			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
-		</ul>
-	</div>
-</div>
 <form method="post" action="index.php?form=ArticleSection{@$action|ucfirst}{if $action == 'add'}&amp;articleID={@$articleID}{elseif $action == 'edit'}&amp;articleSectionID={@$articleSectionID}{/if}">
 	<div class="border content">
-		<div class="container-1">			
+		<div class="container-1">
 			<fieldset>
 				<legend>{lang}moxeo.acp.article.section.general{/lang}</legend>
-				
+
 				<div class="formElement{if $errorField == 'articleSectionType'} formError{/if}" id="articleSectionTypeDiv">
 					<div class="formFieldLabel">
 						<label for="articleSectionType">{lang}moxeo.acp.article.section.type{/lang}</label>
@@ -51,12 +48,12 @@
 				<script type="text/javascript">//<![CDATA[
 					inlineHelp.register('articleSectionType');
 				//]]></script>
-				
+
 				<div class="formElement" id="showOrderDiv">
 					<div class="formFieldLabel">
 						<label for="showOrder">{lang}moxeo.acp.article.section.showOrder{/lang}</label>
 					</div>
-					<div class="formField">	
+					<div class="formField">
 						<input type="text" class="inputText" name="showOrder" id="showOrder" value="{$showOrder}" />
 					</div>
 					<div class="formFieldDesc hidden" id="showOrderHelpMessage">
@@ -66,13 +63,13 @@
 				<script type="text/javascript">//<![CDATA[
 					inlineHelp.register('showOrder');
 				//]]></script>
-				
+
 				{if $additionalGeneralFields|isset}{@$additionalGeneralFields}{/if}
 			</fieldset>
-			
+
 			<fieldset>
 				<legend>{lang}moxeo.acp.article.section.display{/lang}</legend>
-				
+
 				<div class="formElement" id="cssIDDiv">
 					<div class="formFieldLabel">
 						<label for="cssID">{lang}moxeo.acp.article.section.cssID{/lang}</label>
@@ -87,7 +84,7 @@
 				<script type="text/javascript">//<![CDATA[
 					inlineHelp.register('cssID');
 				//]]></script>
-				
+
 				<div class="formElement" id="cssClassesDiv">
 					<div class="formFieldLabel">
 						<label for="cssClasses">{lang}moxeo.acp.article.section.cssClasses{/lang}</label>
@@ -102,18 +99,18 @@
 				<script type="text/javascript">//<![CDATA[
 					inlineHelp.register('cssClasses');
 				//]]></script>
-				
+
 				{if $additionalDisplayFields|isset}{@$additionalDisplayFields}{/if}
 			</fieldset>
-			
+
 			{if $articleSectionTypeObject && $articleSectionTypeObject->getFormTemplateName()}
 				{include file=$articleSectionTypeObject->getFormTemplateName()}
 			{/if}
-			
+
 			{if $additionalFields|isset}{@$additionalFields}{/if}
 		</div>
 	</div>
-	
+
 	<div class="formSubmit">
 		<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 		<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />

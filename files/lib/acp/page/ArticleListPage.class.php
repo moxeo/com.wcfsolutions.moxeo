@@ -1,25 +1,24 @@
 <?php
 // moxeo imports
 require_once(MOXEO_DIR.'lib/data/article/ArticleList.class.php');
-require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
+require_once(MOXEO_DIR.'lib/data/content/ACPContentItemList.class.php');
 
 // wcf imports
-require_once(WCF_DIR.'lib/page/SortablePage.class.php');
+require_once(WCF_DIR.'lib/page/MultipleLinkPage.class.php');
 
 /**
  * Shows a list of all articles.
  *
  * @author	Sebastian Oettl
- * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2013 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.page
  * @category	Moxeo Open Source CMS
  */
-class ArticleListPage extends SortablePage {
+class ArticleListPage extends MultipleLinkPage {
 	// system
 	public $templateName = 'articleList';
-	public $defaultSortField = 'showOrder';
 
 	/**
 	 * content item id
@@ -36,11 +35,11 @@ class ArticleListPage extends SortablePage {
 	public $contentItem = null;
 
 	/**
-	 * list of available content items
+	 * content item list object
 	 *
-	 * @var	array
+	 * @var	ContentItemList
 	 */
-	public $contentItemOptions = array();
+	public $contentItemList = null;
 
 	/**
 	 * article list object
@@ -57,34 +56,31 @@ class ArticleListPage extends SortablePage {
 	public $deletedArticleID = 0;
 
 	/**
-	 * True, if the list was sorted successfully.
-	 *
-	 * @var boolean
-	 */
-	public $successfulSorting = false;
-
-	/**
 	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
 
 		if (isset($_REQUEST['deletedArticleID'])) $this->deletedArticleID = intval($_REQUEST['deletedArticleID']);
-		if (isset($_REQUEST['successfulSorting'])) $this->successfulSorting = true;
 
 		// get content item
 		if (isset($_REQUEST['contentItemID'])) $this->contentItemID = intval($_REQUEST['contentItemID']);
 		if ($this->contentItemID) {
 			$this->contentItem = new ContentItem($this->contentItemID);
 			$this->contentItem->checkAdminPermission(array('canEditArticle', 'canDeleteArticle'));
+
+			// init article list
+			$this->articleList = new ArticleList();
+			$this->articleList->sqlConditions = "article.contentItemID = ".$this->contentItemID;
 		}
 		else {
 			WCF::getUser()->checkPermission(array('admin.moxeo.canEditArticle', 'admin.moxeo.canDeleteArticle'));
+
+			// init content item list
+			$this->contentItemList = new ACPContentItemList();
 		}
 
-		// init article list
-		$this->articleList = new ArticleList();
-		$this->articleList->sqlConditions = "article.contentItemID = ".$this->contentItemID;
+
 	}
 
 	/**
@@ -93,29 +89,16 @@ class ArticleListPage extends SortablePage {
 	public function readData() {
 		parent::readData();
 
-		// get content item options
-		$this->contentItemOptions = ContentItem::getContentItemSelect(array(), array('canEditArticle', 'canDeleteArticle'));
-
-		// read articles
-		$this->articleList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
-		$this->articleList->sqlLimit = $this->itemsPerPage;
-		$this->articleList->sqlOrderBy = ($this->sortField != 'articleSections' ? 'article.' : '').$this->sortField." ".$this->sortOrder;
-		$this->articleList->readObjects();
-	}
-
-	/**
-	 * @see	SortablePage::validateSortField()
-	 */
-	public function validateSortField() {
-		parent::validateSortField();
-
-		switch ($this->sortField) {
-			case 'articleID':
-			case 'title':
-			case 'articleSections':
-			case 'themeModulePosition':
-			case 'showOrder': break;
-			default: $this->sortField = $this->defaultSortField;
+		if ($this->contentItemID) {
+			// read articles
+			$this->articleList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
+			$this->articleList->sqlLimit = $this->itemsPerPage;
+			$this->articleList->sqlOrderBy = 'article.showOrder ASC';
+			$this->articleList->readObjects();
+		}
+		else {
+			// read content items
+			$this->contentItemList->readContentItems();
 		}
 	}
 
@@ -125,7 +108,10 @@ class ArticleListPage extends SortablePage {
 	public function countItems() {
 		parent::countItems();
 
-		return $this->articleList->countObjects();
+		if ($this->articleList !== null) {
+			return $this->articleList->countObjects();
+		}
+		return 0;
 	}
 
 	/**
@@ -137,10 +123,9 @@ class ArticleListPage extends SortablePage {
 		WCF::getTPL()->assign(array(
 			'contentItemID' => $this->contentItemID,
 			'contentItem' => $this->contentItem,
-			'contentItemOptions' => $this->contentItemOptions,
-			'articles' => $this->articleList->getObjects(),
-			'deletedArticleID' => $this->deletedArticleID,
-			'successfulSorting' => $this->successfulSorting
+			'articles' => ($this->articleList !== null ? $this->articleList->getObjects() : null),
+			'contentItems' => ($this->contentItemList !== null ? $this->contentItemList->getContentItemList() : null),
+			'deletedArticleID' => $this->deletedArticleID
 		));
 	}
 

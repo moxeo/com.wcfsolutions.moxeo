@@ -5,22 +5,21 @@ require_once(MOXEO_DIR.'lib/data/article/section/ArticleSectionList.class.php');
 require_once(MOXEO_DIR.'lib/data/content/ContentItem.class.php');
 
 // wcf imports
-require_once(WCF_DIR.'lib/page/SortablePage.class.php');
+require_once(WCF_DIR.'lib/page/MultipleLinkPage.class.php');
 
 /**
  * Shows a list of all article sections.
  *
  * @author	Sebastian Oettl
- * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
+ * @copyright	2009-2013 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.moxeo
  * @subpackage	acp.page
  * @category	Moxeo Open Source CMS
  */
-class ArticleSectionListPage extends SortablePage {
+class ArticleSectionListPage extends MultipleLinkPage {
 	// system
 	public $templateName = 'articleSectionList';
-	public $defaultSortField = 'showOrder';
 
 	/**
 	 * article id
@@ -58,20 +57,12 @@ class ArticleSectionListPage extends SortablePage {
 	public $deletedArticleSectionID = 0;
 
 	/**
-	 * True, if the list was sorted successfully.
-	 *
-	 * @var boolean
-	 */
-	public $successfulSorting = false;
-
-	/**
 	 * @see	Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
 
 		if (isset($_REQUEST['deletedArticleSectionID'])) $this->deletedArticleSectionID = intval($_REQUEST['deletedArticleSectionID']);
-		if (isset($_REQUEST['successfulSorting'])) $this->successfulSorting = true;
 
 		// get article
 		if (isset($_REQUEST['articleID'])) $this->articleID = intval($_REQUEST['articleID']);
@@ -98,22 +89,8 @@ class ArticleSectionListPage extends SortablePage {
 		// read article sections
 		$this->articleSectionList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
 		$this->articleSectionList->sqlLimit = $this->itemsPerPage;
-		$this->articleSectionList->sqlOrderBy = 'article_section.'.$this->sortField." ".$this->sortOrder;
+		$this->articleSectionList->sqlOrderBy = 'article_section.showOrder ASC';
 		$this->articleSectionList->readObjects();
-	}
-
-	/**
-	 * @see	SortablePage::validateSortField()
-	 */
-	public function validateSortField() {
-		parent::validateSortField();
-
-		switch ($this->sortField) {
-			case 'articleSectionID':
-			case 'articleSectionType':
-			case 'showOrder': break;
-			default: $this->sortField = $this->defaultSortField;
-		}
 	}
 
 	/**
@@ -136,8 +113,7 @@ class ArticleSectionListPage extends SortablePage {
 			'article' => $this->article,
 			'contentItem' => $this->contentItem,
 			'articleSections' => $this->articleSectionList->getObjects(),
-			'deletedArticleSectionID' => $this->deletedArticleSectionID,
-			'successfulSorting' => $this->successfulSorting
+			'deletedArticleSectionID' => $this->deletedArticleSectionID
 		));
 	}
 
