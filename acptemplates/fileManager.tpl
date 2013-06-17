@@ -8,7 +8,7 @@
 </div>
 
 {if $deletedFile}
-	<p class="success">{lang}moxeo.acp.fileManager.file.delete.success{/lang}</p>	
+	<p class="success">{lang}moxeo.acp.fileManager.file.delete.success{/lang}</p>
 {/if}
 
 {if $files|count}
@@ -24,7 +24,7 @@
 					<th class="columnSize{if $sortField == 'size'} active{/if}"><div><a href="index.php?page=FileManager&amp;dir={$dir}&amp;pageNo={@$pageNo}&amp;sortField=size&amp;sortOrder={if $sortField == 'size' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.fileManager.file.size{/lang}{if $sortField == 'size'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 					<th class="columnDate{if $sortField == 'date'} active{/if}"><div><a href="index.php?page=FileManager&amp;dir={$dir}&amp;pageNo={@$pageNo}&amp;sortField=date&amp;sortOrder={if $sortField == 'date' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.fileManager.file.date{/lang}{if $sortField == 'date'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
 					<th class="columnPermissions{if $sortField == 'permissions'} active{/if}"><div><a href="index.php?page=FileManager&amp;dir={$dir}&amp;pageNo={@$pageNo}&amp;sortField=permissions&amp;sortOrder={if $sortField == 'permissions' && $sortOrder == 'ASC'}DESC{else}ASC{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}moxeo.acp.fileManager.file.permissions{/lang}{if $sortField == 'permissions'} <img src="{@RELATIVE_WCF_DIR}icon/sort{@$sortOrder}S.png" alt="" />{/if}</a></div></th>
-					
+
 					{if $additionalColumnHeads|isset}{@$additionalColumnHeads}{/if}
 				</tr>
 			</thead>
@@ -32,13 +32,17 @@
 				{foreach from=$files item=file}
 					<tr class="{cycle values="container-1,container-2"}">
 						<td class="columnIcon">
-							<a href="index.php?action=FileManagerFileDelete&amp;file={$file.relativePath|urlencode}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}moxeo.acp.fileManager.file.delete.sure{/lang}')" title="{lang}moxeo.acp.fileManager.file.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
-							
+							{if $file.name != '..'}
+						   		<a href="index.php?action=FileManagerFileDelete&amp;file={$file.relativePath|urlencode}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}moxeo.acp.fileManager.file.delete.sure{/lang}')" title="{lang}moxeo.acp.fileManager.file.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
+							{else}
+								<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}moxeo.acp.fileManager.file.delete{/lang}" />
+							{/if}
+
 							<img src="{@RELATIVE_MOXEO_DIR}icon/fileManager{if $file.isDir}Folder{else}File{/if}S.png" alt="{lang}moxeo.acp.fileManager.file.fileType.{if $file.isDir}folder{else}file{/if}{/lang}" title="{lang}moxeo.acp.fileManager.file.fileType.{if $file.isDir}folder{else}file{/if}{/lang}" />
 						</td>
 						<td class="columnName columnText">
 							{if $file.isDir}
-								<a href="index.php?page=FileManager{if $file.relativePath}&amp;dir={$file.relativePath|urlencode}{/if}&amp;sortField={$sortField}&amp;sortOrder={$sortOrder}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$file.name}</a>	
+								<a href="index.php?page=FileManager{if $file.relativePath}&amp;dir={$file.relativePath|urlencode}{/if}&amp;sortField={$sortField}&amp;sortOrder={$sortOrder}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$file.name}</a>
 							{else}
 								<a href="index.php?page=FileManagerFileDownload&amp;file={$file.relativePath|urlencode}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$file.name}</a>
 							{/if}
@@ -87,7 +91,7 @@
 		<div class="container-1">
 			<fieldset>
 				<legend>{lang}moxeo.acp.fileManager.file.fileType{/lang}</legend>
-				
+
 				<div class="formGroup{if $errorField == 'fileType'} formError{/if}">
 					<div class="formGroupLabel">
 						{lang}moxeo.acp.fileManager.file.fileType{/lang}
@@ -110,10 +114,10 @@
 					</div>
 				</div>
 			</fieldset>
-			
+
 			<fieldset{if $errorField == 'dirName'} class="formError"{/if} id="folderDiv">
 				<legend>{lang}moxeo.acp.fileManager.dirName{/lang}</legend>
-				
+
 				<div class="formElement{if $errorField == 'dirName'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="dirName">{lang}moxeo.acp.fileManager.dirName{/lang}</label>
@@ -128,10 +132,10 @@
 					</div>
 				</div>
 			</fieldset>
-			
+
 			<fieldset{if $errorField == 'fileUpload'} class="formError"{/if} id="fileDiv">
 				<legend>{lang}moxeo.acp.fileManager.fileUpload{/lang}</legend>
-				
+
 				<div class="formElement{if $errorField == 'fileUpload'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="fileUpload">{lang}moxeo.acp.fileManager.fileUpload{/lang}</label>
@@ -146,9 +150,9 @@
 					</div>
 				</div>
 			</fieldset>
-		</div>			
+		</div>
 	</div>
-			
+
 	<div class="formSubmit">
 		<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 		<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />

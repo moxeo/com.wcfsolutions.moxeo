@@ -73,6 +73,14 @@ class FileManagerFileAddForm extends AbstractForm {
 			if (empty($this->dirName)) {
 				throw new UserInputException('dirName');
 			}
+
+			if ($this->dirName == '.' || $this->dirName == '..') {
+				throw new UserInputException('dirName');
+			}
+
+			if (str_replace(array('/', '\\'), '', $this->dirName) != $this->dirName) {
+				throw new UserInputException('dirName');
+			}
 		}
 	}
 
