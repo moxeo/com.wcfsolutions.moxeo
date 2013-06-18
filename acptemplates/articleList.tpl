@@ -138,6 +138,11 @@
 
 						<li id="item_{@$contentItem->contentItemID}">
 							<div class="buttons">
+								{if !$contentItem->isRoot() && !$contentItem->isExternalLink() && $contentItem->getAdminPermission('canAddArticle')}
+									<a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItem->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.article.add{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/addS.png" alt="" /></a>
+								{else}
+									<img src="{@RELATIVE_WCF_DIR}icon/addDisabledS.png" alt="" title="{lang}moxeo.acp.article.add{/lang}" />
+								{/if}
 								{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
 							</div>
 

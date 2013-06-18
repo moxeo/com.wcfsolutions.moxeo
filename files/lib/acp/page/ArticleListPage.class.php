@@ -79,8 +79,6 @@ class ArticleListPage extends MultipleLinkPage {
 			// init content item list
 			$this->contentItemList = new ACPContentItemList();
 		}
-
-
 	}
 
 	/**

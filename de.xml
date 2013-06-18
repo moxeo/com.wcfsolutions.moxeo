@@ -110,11 +110,10 @@
 	</category>
 	<category name="moxeo.acp.article">
 		<item name="moxeo.acp.article.add"><![CDATA[Artikel hinzufügen]]></item>
+		<item name="moxeo.acp.article.add.info"><![CDATA[Wählen Sie die Seite aus, zu denen Sie Artikel hinzufügen möchten.]]></item>
 		<item name="moxeo.acp.article.add.success"><![CDATA[Der Artikel wurde erfolgreich hinzugefügt.]]></item>
 		<item name="moxeo.acp.article.articleSections"><![CDATA[Abschnitte]]></item>
 		<item name="moxeo.acp.article.classification"><![CDATA[Einordnung]]></item>
-		<item name="moxeo.acp.article.contentItemID"><![CDATA[Seite]]></item>
-		<item name="moxeo.acp.article.contentItemID.description"><![CDATA[Wählen Sie eine Seite.]]></item>
 		<item name="moxeo.acp.article.cssClasses"><![CDATA[CSS-Klassen]]></item>
 		<item name="moxeo.acp.article.cssClasses.description"><![CDATA[Geben Sie hier die CSS-Klassen des Artikels ein.]]></item>
 		<item name="moxeo.acp.article.cssID"><![CDATA[CSS-ID]]></item>

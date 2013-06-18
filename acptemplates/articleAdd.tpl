@@ -1,10 +1,13 @@
 {include file='header'}
 
+<ul class="breadCrumbs">
+	<li><a href="index.php?page=ArticleList{@SID_ARG_2ND}"><span>{lang}moxeo.acp.article.view{/lang}</span></a> &raquo;</li>
+	{if $contentItem}<li><a href="index.php?page=ArticleList&amp;contentItemID={@$contentItem->contentItemID}{@SID_ARG_2ND}"><span>{$contentItem->title}</span></a> &raquo;</li>{/if}
+</ul>
 <div class="mainHeadline">
 	<img src="{@RELATIVE_MOXEO_DIR}icon/article{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
 		<h2>{lang}moxeo.acp.article.{@$action}{/lang}</h2>
-		{if $contentItemID}<p>{$contentItem->title}</p>{/if}
 	</div>
 </div>
 
@@ -13,47 +16,7 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}moxeo.acp.article.{@$action}.success{/lang}</p>	
-{/if}
-
-<div class="contentHeader">
-	<div class="largeButtons">
-		<ul>
-			<li><a href="index.php?page=ArticleList{if $contentItem}&amp;contentItemID={@$contentItem->contentItemID}{/if}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.menu.link.content.article.view{/lang}"><img src="{@RELATIVE_MOXEO_DIR}icon/articleM.png" alt="" /> <span>{lang}moxeo.acp.menu.link.content.article.view{/lang}</span></a></li>
-			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
-		</ul>
-	</div>
-</div>
-
-{if $action == 'add'}
-	{if $contentItemOptions|count}
-		<fieldset>
-			<legend>{lang}moxeo.acp.article.contentItem{/lang}</legend>
-			<div class="formElement" id="contentItemIDDiv">
-				<div class="formFieldLabel">
-					<label for="contentItemChange">{lang}moxeo.acp.article.contentItemID{/lang}</label>
-				</div>
-				<div class="formField">
-					<select id="contentItemChange" onchange="document.location.href=fixURL('index.php?form=ArticleAdd&amp;contentItemID='+this.options[this.selectedIndex].value+'&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}')">
-						<option value="0"></option>
-						{htmloptions options=$contentItemOptions selected=$contentItemID disableEncoding=true}
-					</select>
-				</div>
-				<div class="formFieldDesc hidden" id="contentItemIDHelpMessage">
-					{lang}moxeo.acp.article.contentItemID.description{/lang}
-				</div>
-			</div>
-			<script type="text/javascript">//<![CDATA[
-				inlineHelp.register('contentItemID');
-			//]]></script>
-		</fieldset>
-	{else}
-		<div class="border content">
-			<div class="container-1">
-				<p>{lang}moxeo.acp.article.view.count.noContentItems{/lang}</p>
-			</div>
-		</div>
-	{/if}
+	<p class="success">{lang}moxeo.acp.article.{@$action}.success{/lang}</p>
 {/if}
 
 {if $contentItemID || $action == 'edit'}
@@ -62,12 +25,12 @@
 			<div class="container-1">
 				<fieldset>
 					<legend>{lang}moxeo.acp.article.classification{/lang}</legend>
-					
+
 					<div class="formElement" id="showOrderDiv">
 						<div class="formFieldLabel">
 							<label for="showOrder">{lang}moxeo.acp.article.showOrder{/lang}</label>
 						</div>
-						<div class="formField">	
+						<div class="formField">
 							<input type="text" class="inputText" name="showOrder" id="showOrder" value="{$showOrder}" />
 						</div>
 						<div class="formFieldDesc hidden" id="showOrderHelpMessage">
@@ -77,13 +40,13 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('showOrder');
 					//]]></script>
-						
+
 					{if $additionalClassificationFields|isset}{@$additionalClassificationFields}{/if}
 				</fieldset>
-						
+
 				<fieldset>
 					<legend>{lang}moxeo.acp.article.data{/lang}</legend>
-					
+
 					<div class="formElement{if $errorField == 'title'} formError{/if}" id="titleDiv">
 						<div class="formFieldLabel">
 							<label for="title">{lang}moxeo.acp.article.title{/lang}</label>
@@ -103,7 +66,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('title');
 					//]]></script>
-					
+
 					<div class="formElement" id="themeModulePositionDiv">
 						<div class="formFieldLabel">
 							<label for="themeModulePosition">{lang}moxeo.acp.article.themeModulePosition{/lang}</label>
@@ -122,13 +85,13 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('themeModulePosition');
 					//]]></script>
-					
+
 					{if $additionalDataFields|isset}{@$additionalDataFields}{/if}
 				</fieldset>
-				
+
 				<fieldset>
 					<legend>{lang}moxeo.acp.article.display{/lang}</legend>
-					
+
 					<div class="formElement" id="cssIDDiv">
 						<div class="formFieldLabel">
 							<label for="cssID">{lang}moxeo.acp.article.cssID{/lang}</label>
@@ -143,7 +106,7 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('cssID');
 					//]]></script>
-					
+
 					<div class="formElement" id="cssClassesDiv">
 						<div class="formFieldLabel">
 							<label for="cssClasses">{lang}moxeo.acp.article.cssClasses{/lang}</label>
@@ -158,14 +121,14 @@
 					<script type="text/javascript">//<![CDATA[
 						inlineHelp.register('cssClasses');
 					//]]></script>
-					
+
 					{if $additionalDisplayFields|isset}{@$additionalDisplayFields}{/if}
 				</fieldset>
-				
+
 				{if $additionalFields|isset}{@$additionalFields}{/if}
 			</div>
 		</div>
-		
+
 		<div class="formSubmit">
 			<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 			<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />
@@ -175,6 +138,55 @@
 	 		{if $articleID|isset}<input type="hidden" name="articleID" value="{@$articleID}" />{/if}
 	 	</div>
 	</form>
+{else}
+	{if $contentItems|count > 0}
+		<div class="info">
+			{lang}moxeo.acp.article.add.info{/lang}
+		</div>
+
+		<div class="border content">
+			<div class="container-1">
+				<ol class="itemList" id="contentItemList">
+					{foreach from=$contentItems item=child}
+						{assign var="contentItem" value=$child.contentItem}
+
+						<li id="item_{@$contentItem->contentItemID}">
+							<div class="buttons">
+								{if !$contentItem->isRoot() && !$contentItem->isExternalLink() && $contentItem->getAdminPermission('canAddArticle')}
+									<a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItem->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}moxeo.acp.article.add{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/addS.png" alt="" /></a>
+								{else}
+									<img src="{@RELATIVE_WCF_DIR}icon/addDisabledS.png" alt="" title="{lang}moxeo.acp.article.add{/lang}" />
+								{/if}
+								{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
+							</div>
+
+							<h3 class="itemListTitle{if $contentItem->isRoot()} itemListCategory{/if}">
+								{if $contentItem->isRoot()}
+									{@$contentItem->getLanguageIcon()}
+								{else}
+									<img src="{@RELATIVE_MOXEO_DIR}icon/contentItem{if $contentItem->isExternalLink()}Redirect{/if}S.png" alt="" />
+								{/if}
+
+								{if $contentItem->isRoot() || $contentItem->isExternalLink()}
+									ID-{@$contentItem->contentItemID} {$contentItem->title}
+								{else}
+									ID-{@$contentItem->contentItemID} <a href="index.php?form=ArticleAdd&amp;contentItemID={@$contentItem->contentItemID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" class="title">{$contentItem->title}</a>
+								{/if}
+							</h3>
+
+						{if $child.hasChildren}<ol id="parentItem_{@$contentItem->contentItemID}">{else}<ol id="parentItem_{@$contentItem->contentItemID}"></ol></li>{/if}
+						{if $child.openParents > 0}{@"</ol></li>"|str_repeat:$child.openParents}{/if}
+					{/foreach}
+				</ol>
+			</div>
+		</div>
+	{else}
+		<div class="border content">
+			<div class="container-1">
+				<p>{lang}moxeo.acp.article.view.count.noContentItems{/lang}</p>
+			</div>
+		</div>
+	{/if}
 {/if}
 
 {include file='footer'}

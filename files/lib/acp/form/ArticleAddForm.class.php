@@ -2,6 +2,7 @@
 // moxeo imports
 require_once(MOXEO_DIR.'lib/data/article/ArticleEditor.class.php');
 require_once(MOXEO_DIR.'lib/data/content/ContentItemEditor.class.php');
+require_once(MOXEO_DIR.'lib/data/content/ACPContentItemList.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/acp/form/ACPForm.class.php');
@@ -37,6 +38,13 @@ class ArticleAddForm extends ACPForm {
 	public $contentItem = null;
 
 	/**
+	 * content item list object
+	 *
+	 * @var	ContentItemList
+	 */
+	public $contentItemList = null;
+
+	/**
 	 * article editor object
 	 *
 	 * @var	ArticleEditor
@@ -63,6 +71,22 @@ class ArticleAddForm extends ACPForm {
 				throw new IllegalLinkException();
 			}
 			$this->contentItem->checkAdminPermission('canAddArticle');
+		}
+		else {
+			// init content item list
+			$this->contentItemList = new ACPContentItemList();
+		}
+	}
+
+	/**
+	 * @see	Page::assignVariables()
+	 */
+	public function readData() {
+		parent::readData();
+
+		if ($this->contentItemList !== null) {
+			// read content items
+			$this->contentItemList->readContentItems();
 		}
 	}
 
@@ -134,7 +158,7 @@ class ArticleAddForm extends ACPForm {
 			'cssID' => $this->cssID,
 			'cssClasses' => $this->cssClasses,
 			'showOrder' => $this->showOrder,
-			'contentItemOptions' => ContentItem::getContentItemSelect(array(), array('canAddArticle')),
+			'contentItems' => ($this->contentItemList !== null ? $this->contentItemList->getContentItemList() : null)
 		));
 	}
 }
