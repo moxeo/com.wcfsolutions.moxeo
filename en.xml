@@ -344,11 +344,13 @@
 	<category name="moxeo.acp.index">
 		<item name="moxeo.acp.index"><![CDATA[Moxeo Open Source CMS Administration Control Panel]]></item>
 		<item name="moxeo.acp.index.credits"><![CDATA[About Moxeo Open Source CMS]]></item>
-		<item name="moxeo.acp.index.credits.contributor"><![CDATA[Contributor]]></item>
+		<item name="moxeo.acp.index.credits.3rdParty"><![CDATA[3rd Party Projects]]></item>
+		<item name="moxeo.acp.index.credits.3rdParty.author"><![CDATA[Author]]></item>
+		<item name="moxeo.acp.index.credits.3rdParty.description"><![CDATA[Moxeo Open Source CMS is made possible by the following open source projects]]></item>
+		<item name="moxeo.acp.index.credits.3rdParty.license"><![CDATA[License]]></item>
+		<item name="moxeo.acp.index.credits.3rdParty.project"><![CDATA[Project]]></item>
 		<item name="moxeo.acp.index.credits.developedBy"><![CDATA[Software developed by]]></item>
 		<item name="moxeo.acp.index.credits.developer"><![CDATA[Development]]></item>
-		<item name="moxeo.acp.index.credits.icons"><![CDATA[Icons]]></item>
-		<item name="moxeo.acp.index.credits.productManager"><![CDATA[Project management]]></item>
 		<item name="moxeo.acp.index.minorUpdates"><![CDATA[Updates (recommended)]]></item>
 		<item name="moxeo.acp.index.minorUpdates.description"><![CDATA[The following recommended updates are currently available.]]></item>
 		<item name="moxeo.acp.index.majorUpdates"><![CDATA[Updates (optional)]]></item>

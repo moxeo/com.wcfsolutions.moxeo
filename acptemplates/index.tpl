@@ -234,20 +234,109 @@
 			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.wcfsolutions.com"|rawurlencode}" class="externalURL">WCF Solutions</a></p>
 		</div>
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}moxeo.acp.index.credits.productManager{/lang}</p>
-			<p class="formField">Sebastian &Ouml;ttl</p>
-		</div>
-		<div class="formElement">
 			<p class="formFieldLabel">{lang}moxeo.acp.index.credits.developer{/lang}</p>
 			<p class="formField">Sebastian &Ouml;ttl</p>
-		</div>
-		<div class="formElement">
-			<p class="formFieldLabel">{lang}moxeo.acp.index.credits.icons{/lang}</p>
-			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.everaldo.com"|rawurlencode}" class="externalURL">Everaldo Coelho</a></p>
 		</div>
 		<div class="formElement" style="margin-top: 10px">
 			<p class="formFieldLabel"></p>
 			<p class="formField">Copyright &copy; 2009-2013 wcfsolutions.com.</p>
+		</div>
+
+		<div class="border titleBarPanel" style="margin-top: 15px;">
+			<div class="containerHead">
+				<h3>{lang}moxeo.acp.index.credits.3rdParty{/lang}</h3>
+				<p class="smallFont">{lang}moxeo.acp.index.credits.3rdParty.description{/lang}</p>
+			</div>
+		</div>
+		<div class="border borderMarginRemove">
+			<table class="tableList">
+				<thead>
+					<tr class="tableHead">
+						<th><div><span class="emptyHead">{lang}moxeo.acp.index.credits.3rdParty.project{/lang}</span></div></th>
+						<th><div><span class="emptyHead">{lang}moxeo.acp.index.credits.3rdParty.author{/lang}</span></div></th>
+						<th><div><span class="emptyHead">{lang}moxeo.acp.index.credits.3rdParty.license{/lang}</span></div></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="container-1">
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.woltlab.com/wcf/"|rawurlencode}" class="externalURL">WoltLab Community Framework {@WCF_VERSION}</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.woltlab.com/"|rawurlencode}" class="externalURL">WoltLab</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.gnu.org/licenses/lgpl.html"|rawurlencode}" class="externalURL">GNU Lesser General Public License</a>
+						</td>
+					</tr>
+					<tr class="container-1">
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.jquery.com/"|rawurlencode}" class="externalURL">jQuery 1.9.0</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.jquery.org/"|rawurlencode}" class="externalURL">The jQuery Foundation</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://opensource.org/licenses/MIT"|rawurlencode}" class="externalURL">MIT License</a>
+						</td>
+					</tr>
+					<tr class="container-1">
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.jqueryui.com/"|rawurlencode}" class="externalURL">jQuery UI 1.10.0</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.jquery.org/"|rawurlencode}" class="externalURL">The jQuery Foundation</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://opensource.org/licenses/MIT"|rawurlencode}" class="externalURL">MIT License</a>
+						</td>
+					</tr>
+					<tr class="container-1">
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.digitalia.be/software/slimbox2"|rawurlencode}" class="externalURL">Slimbox 2.05</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.digitalia.be/"|rawurlencode}" class="externalURL">Christophe Beyls</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://opensource.org/licenses/MIT"|rawurlencode}" class="externalURL">MIT License</a>
+						</td>
+					</tr>
+					<tr class="container-1">
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.ckeditor.com/"|rawurlencode}" class="externalURL">CKEditor 3.6.2</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.cksource.com/"|rawurlencode}" class="externalURL">CKSource</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.gnu.org/licenses/lgpl.html"|rawurlencode}" class="externalURL">GNU Lesser General Public License</a>
+						</td>
+					</tr>
+					<tr class="container-1">
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.codemirror.net/"|rawurlencode}" class="externalURL">CodeMirror 3.13</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.marijnhaverbeke.nl/"|rawurlencode}" class="externalURL">Marijn Haverbeke</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://opensource.org/licenses/MIT"|rawurlencode}" class="externalURL">MIT License</a>
+						</td>
+					</tr>
+					<tr class="container-1">
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.everaldo.com"|rawurlencode}" class="externalURL">Crystal Icons</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.everaldo.com"|rawurlencode}" class="externalURL">Everaldo Coelho</a>
+						</td>
+						<td class="columnText">
+							<a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.gnu.org/licenses/lgpl.html"|rawurlencode}" class="externalURL">GNU Lesser General Public License</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
