@@ -10,6 +10,14 @@ Copyright 2009-2013 by wcfsolutions.com
 
 /* ### -- -- -- -- -- Miscellaneous -- -- -- -- -- ### */
 
+.CodeMirror {
+	height: 360px;
+}
+
+.CodeMirror .CodeMirror-linenumber {
+	font-size: 1.25em;
+}
+
 .columnComment {
 	max-width: 30%;
 }

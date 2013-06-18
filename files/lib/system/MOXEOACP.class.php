@@ -55,8 +55,9 @@ class MOXEOACP extends WCFACP {
 			'pageTitle' => 'Moxeo Open Source CMS - '.StringUtil::encodeHTML(PACKAGE_NAME.' '.PACKAGE_VERSION)
 		));
 
-		// moxeo stylesheet
+		// additional stylesheets
 		$html = '<style type="text/css">
+				@import url("'.RELATIVE_WCF_DIR.'js/3rdParty/codeMirror/lib/codemirror.css");
 				@import url("'.RELATIVE_MOXEO_DIR.'acp/style/moxeo'.(PAGE_DIRECTION == 'rtl' ? '-rtl' : '').'.css");
 			</style>';
 		self::getTPL()->append('specialStyles', $html);
