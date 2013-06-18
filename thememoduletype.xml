@@ -62,12 +62,4 @@
 			<classfile>lib/data/theme/module/type/SearchThemeModuleType.class.php</classfile>
 		</type>
 	</import>
-	<delete>
-		<type>
-			<name>newsItemList</name>
-		</type>
-		<type>
-			<name>newsItem</name>
-		</type>
-	</delete>
 </data>

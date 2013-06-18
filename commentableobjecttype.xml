@@ -6,9 +6,4 @@
 			<classfile>lib/data/article/section/ArticleSectionCommentableObjectType.class.php</classfile>
 		</type>
 	</import>
-	<delete>
-		<type>
-			<name>newsItem</name>
-		</type>
-	</delete>
 </data>

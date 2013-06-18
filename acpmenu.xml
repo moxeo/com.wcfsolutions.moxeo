@@ -52,13 +52,4 @@
 			<permissions>admin.moxeo.canEditComment,admin.moxeo.canDeleteComment</permissions>
 		</acpmenuitem>
 	</import>
-	<delete>
-		<acpmenuitem name="moxeo.acp.menu.link.content.news" />
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive" />
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive.view" />
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsArchive.add" />
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem" />
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem.view" />
-		<acpmenuitem name="moxeo.acp.menu.link.content.newsItem.add" />
-	</delete>
 </data>

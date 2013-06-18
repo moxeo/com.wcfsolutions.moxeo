@@ -3,8 +3,8 @@
 	<packageinformation>
 		<packagename>Moxeo Open Source CMS</packagename>
 		<standalone>1</standalone>
-		<version>1.1.0 Alpha 2</version>
-		<date>2013-06-17</date>
+		<version>1.1.0 Beta 1</version>
+		<date>2013-06-18</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -20,9 +20,9 @@
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf.imageViewer</requiredpackage>
 
 		<!-- wcfsolutions packages -->
-		<requiredpackage minversion="1.0.0 Alpha 1">com.wcfsolutions.wcf.codeMirror</requiredpackage>
+		<requiredpackage minversion="1.0.0 Beta 1">com.wcfsolutions.wcf.codeMirror</requiredpackage>
 		<requiredpackage minversion="1.0.1" file="requirements/com.wcfsolutions.wcf.ckeditor.tar">com.wcfsolutions.wcf.ckeditor</requiredpackage>
-		<requiredpackage minversion="1.1.0 Alpha 2" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
+		<requiredpackage minversion="1.1.0 Beta 1" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
 	</requiredpackages>
 
 	<optionalpackages>
