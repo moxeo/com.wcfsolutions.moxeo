@@ -135,13 +135,22 @@ class ContentItem extends DatabaseObject {
 	 * @return string
 	 */
 	public function getURL() {
+		// use external url
+		if ($this->isExternalLink()) {
+			return $this->externalURL;
+		}
+
+		// generate url
 		$contentItemURL = URL_PREFIX;
 		foreach ($this->getParentContentItems() as $parentContentItem) {
 			if (!$parentContentItem->isRoot() || $parentContentItem->contentItemAlias != '') {
 				$contentItemURL .= $parentContentItem->contentItemAlias.'/';
 			}
 		}
-		$contentItemURL .= $this->contentItemAlias.'/';
+		if (!$this->isRoot() || $this->contentItemAlias != '') {
+			$contentItemURL .= $this->contentItemAlias.'/';
+		}
+
 		return $contentItemURL;
 	}
 

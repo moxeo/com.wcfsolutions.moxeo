@@ -94,8 +94,8 @@ class ContentItemRequestHandler {
 	public function getFilename() {
 		if ($this->filename === null) {
 			$basename = $this->getBasename();
-			$length = StringUtil::length($basename);
-			if ($length > 5 && StringUtil::indexOf($basename, '.html', $length-5)) {
+			$length = strlen($basename);
+			if ($length > 5 && strpos($basename, '.html', $length-5)) {
 				$this->filename = basename($basename, '.html');
 			}
 		}
@@ -186,11 +186,11 @@ class ContentItemRequestHandler {
 					$count++;
 				}
 
-				if ($contentItemID != $rootID && $numberOfRC <= $count) {
+				if ($contentItemID != $rootID && ($numberOfRC == $count || $this->getFilename() && ($numberOfRC - 1) == $count)) {
 					return array($contentItemID, ContentItem::getContentItem($contentItemID)->getRootID());
 				}
 				else {
-					return array(0, ContentItem::getContentItem($contentItemID)->getRootID());
+					return array(0, ContentItem::getFirstRootID());
 				}
 			}
 			else {
@@ -219,7 +219,7 @@ class ContentItemRequestHandler {
 			$rootURL = ContentItem::getContentItem($rootID)->getURL();
 
 			// redirect to the index page of the root
-			if ($rootURL != '/') {
+			if ($rootURL != URL_PREFIX) {
 				HeaderUtil::sendNoCacheHeaders();
 				HeaderUtil::redirect($rootURL.SID_ARG_1ST);
 				exit;
