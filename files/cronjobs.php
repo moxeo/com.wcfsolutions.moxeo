@@ -5,6 +5,8 @@
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
 try {
+	define('NO_REDIRECTS', 1);
+
 	// include wcf/moxeo
 	require_once('./global.php');
 

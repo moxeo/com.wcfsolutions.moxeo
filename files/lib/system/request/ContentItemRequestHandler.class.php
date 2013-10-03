@@ -190,6 +190,7 @@ class ContentItemRequestHandler {
 					return array($contentItemID, ContentItem::getContentItem($contentItemID)->getRootID());
 				}
 				else {
+					// todo: find right root id here!
 					return array(0, ContentItem::getFirstRootID());
 				}
 			}
@@ -220,9 +221,14 @@ class ContentItemRequestHandler {
 
 			// redirect to the index page of the root
 			if ($rootURL != URL_PREFIX) {
-				HeaderUtil::sendNoCacheHeaders();
-				HeaderUtil::redirect($rootURL.SID_ARG_1ST);
-				exit;
+				if (!defined('NO_REDIRECTS')) {
+					HeaderUtil::sendNoCacheHeaders();
+					HeaderUtil::redirect($rootURL.SID_ARG_1ST);
+					exit;
+				}
+				else {
+					return;
+				}
 			}
 
 			$contentItemID = ContentItem::getIndexContentItemID($rootID);
