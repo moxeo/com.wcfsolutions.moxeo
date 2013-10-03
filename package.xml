@@ -22,7 +22,7 @@
 		<!-- wcfsolutions packages -->
 		<requiredpackage minversion="1.0.0 Beta 1" file="requirements/com.wcfsolutions.wcf.codeMirror.tar">com.wcfsolutions.wcf.codeMirror</requiredpackage>
 		<requiredpackage minversion="1.0.1" file="requirements/com.wcfsolutions.wcf.ckeditor.tar">com.wcfsolutions.wcf.ckeditor</requiredpackage>
-		<requiredpackage minversion="1.1.0 Beta 1" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
+		<requiredpackage minversion="1.1.0 Beta 2" file="requirements/com.wcfsolutions.wcf.theme.tar">com.wcfsolutions.wcf.theme</requiredpackage>
 	</requiredpackages>
 
 	<optionalpackages>
