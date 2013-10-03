@@ -33,10 +33,17 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	 */
 	public function cache(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		if (!isset($this->themeModules[$articleSection->themeModuleID])) {
-			$this->themeModules[$articleSection->themeModuleID] = ThemeModule::getThemeModule($articleSection->themeModuleID);
+			$this->themeModules[$articleSection->themeModuleID] = null;
+			try {
+				$this->themeModules[$articleSection->themeModuleID] = ThemeModule::getThemeModule($articleSection->themeModuleID);
+			}
+			catch (IllegalLinkException $e) {}
 		}
+
 		$themeModule = $this->themeModules[$articleSection->themeModuleID];
-		$themeModule->getThemeModuleType()->cache($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
+		if ($themeModule !== null) {
+			$themeModule->getThemeModuleType()->cache($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
+		}
 	}
 
 	/**
@@ -44,7 +51,11 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	 */
 	public function hasContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
 		$themeModule = $this->themeModules[$articleSection->themeModuleID];
-		return $themeModule->getThemeModuleType()->hasContent($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
+		if ($themeModule !== null) {
+			return $themeModule->getThemeModuleType()->hasContent($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
+		}
+
+		return false;
 	}
 
 	/**
@@ -63,16 +74,26 @@ class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	 * @see	ArticleSectionType::getSearchableContent()
 	 */
 	public function getSearchableContent(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		$themeModule = ThemeModule::getThemeModule($articleSection->themeModuleID);
-		return $themeModule->getThemeModuleType()->getSearchableContent($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
+		try {
+			$themeModule = ThemeModule::getThemeModule($articleSection->themeModuleID);
+			return $themeModule->getThemeModuleType()->getSearchableContent($themeModule, $article->themeModulePosition, array('contentItem' => $contentItem));
+		}
+		catch (IllegalLinkException $e) {
+			return '';
+		}
 	}
 
 	/**
 	 * @see	ArticleSectionType::getPreviewHTML()
 	 */
 	public function getPreviewHTML(ArticleSection $articleSection, Article $article, ContentItem $contentItem) {
-		$themeModule = ThemeModule::getThemeModule($articleSection->themeModuleID);
-		return $themeModule->getThemeModuleType()->getPreviewHTML($themeModule);
+		try {
+			$themeModule = ThemeModule::getThemeModule($articleSection->themeModuleID);
+			return $themeModule->getThemeModuleType()->getPreviewHTML($themeModule);
+		}
+		catch (IllegalLinkException $e) {
+			return '';
+		}
 	}
 
 	// form methods
