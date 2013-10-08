@@ -14,14 +14,6 @@ require_once(MOXEO_DIR.'lib/data/user/AbstractMOXEOUserSession.class.php');
  */
 class MOXEOUserSession extends AbstractMOXEOUserSession {
 	/**
-	 * Updates the user session.
-	 */
-	public function update() {
-		// update global last activity timestamp
-		self::updateLastActivityTime($this->userID);
-	}
-
-	/**
 	 * @see	UserSession::getGroupData()
 	 */
 	protected function getGroupData() {
@@ -51,19 +43,6 @@ class MOXEOUserSession extends AbstractMOXEOUserSession {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Updates the global last activity timestamp in user database.
-	 *
-	 * @param	integer		$userID
-	 * @param	integer		$timestamp
-	 */
-	public static function updateLastActivityTime($userID, $timestamp = TIME_NOW) {
-		$sql = "UPDATE	wcf".WCF_N."_user
-			SET	lastActivityTime = ".$timestamp."
-			WHERE	userID = ".$userID;
-		WCF::getDB()->registerShutdownUpdate($sql);
 	}
 }
 ?>
