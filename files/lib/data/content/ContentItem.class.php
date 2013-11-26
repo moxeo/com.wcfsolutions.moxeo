@@ -628,6 +628,11 @@ class ContentItem extends DatabaseObject {
 	 * @return	integer
 	 */
 	public static function getInitialRootLanguageID() {
+		// load language cache if first language has not been initialized yet
+		if (Language::$cache === null) {
+			Language::$cache = WCF::getCache()->get('languages');
+		}
+
 		$languageCode = Language::$cache['languages'][Language::$cache['default']]['languageCode'];
 
 		// get available language codes

@@ -113,7 +113,7 @@ class ContentItemRequestHandler {
 			// define url prefix
 			define('URL_PREFIX', (ENABLE_SEO_REWRITING ? '' : 'index.php/'));
 
-			list($this->contentItemID, $this->rootID) = $this->getContentItemDataByBasename($this->getBasename());
+			list($this->contentItemID, $this->rootID) = $this->getContentItemData($this->getBasename());
 		}
 
 		return $this->contentItemID;
@@ -138,80 +138,87 @@ class ContentItemRequestHandler {
 	 * @param	string		$basename
 	 * @return	array
 	 */
-	protected function getContentItemDataByBasename($basename) {
-		// get request components
-		$requestComponents = array();
+	protected function getContentItemData($basename) {
+		// read url components
+		$urlComponents = array();
 		if ($basename) {
-			$requestComponents = explode('/', $basename);
+			$urlComponents = explode('/', $basename);
 			if (!ENABLE_SEO_REWRITING) {
-				array_shift($requestComponents);
+				array_shift($urlComponents);
 			}
 		}
 
-		// get content item id
-		if (($numberOfRC = count($requestComponents))) {
-			$contentItemID = 0;
+		// count url components
+		$numberOfUC = count($urlComponents);
+
+		// user has requested a content item
+		if ($numberOfUC > 0) {
+			$isSuperRootURL = false;
 			$cache = WCF::getCache()->get('contentItemAlias');
 
-			// request with one component
-			if ($numberOfRC == 1 && isset($cache[$contentItemID][$requestComponents[0]])) {
-				$rootID = $cache[$contentItemID][$requestComponents[0]];
-
-				// check if this component is a root
-				if (ContentItem::getContentItem($rootID)->isRoot()) {
-					Language::$cache = WCF::getCache()->get('languages');
-					$contentItemID = ContentItem::getIndexContentItemID($rootID);
-
-					// return if root has no accessible children
-					if (!$contentItemID) {
-						return array(0, $rootID);
-					}
-				}
+			// find root
+			// look if there are roots which match the first url component
+			if (isset($cache[0][$urlComponents[0]])) {
+				$rootID = $cache[0][$urlComponents[0]];
 			}
-
-			// try to find content item id
-			if (!$contentItemID) {
-				$rootID = 0;
-
-				// if request component doesn't match, request component might be the alias of a child of the super root
-				if (!isset($cache[$contentItemID][$requestComponents[0]])) {
-					$rootID = ContentItem::getSuperRootID();
-				}
-
-				// process request components
-				$contentItemID = $rootID;
-				$count = 0;
-				while (($contentItemAlias = array_shift($requestComponents)) && isset($cache[$contentItemID][$contentItemAlias])) {
-					$contentItemID = $cache[$contentItemID][$contentItemAlias];
-					$count++;
-				}
-
-				if ($contentItemID != $rootID && ($numberOfRC == $count || $this->getFilename() && ($numberOfRC - 1) == $count)) {
-					return array($contentItemID, ContentItem::getContentItem($contentItemID)->getRootID());
-				}
-				else {
-					// todo: find right root id here!
-					return array(0, ContentItem::getFirstRootID());
-				}
-			}
+			// url component might be the alias of a child of the super root
 			else {
-				return array($contentItemID, ContentItem::getContentItem($contentItemID)->getRootID());
+				$isSuperRootURL = true;
+				$rootID = ContentItem::getSuperRootID();
+			}
+
+			// handle non-existing root
+			if ($rootID == 0) {
+				// find root of error page
+				$languageID = ContentItem::getInitialRootLanguageID();
+				$rootID = ContentItem::getRootIDByLanguageID($languageID);
+
+				// if there is still no suitable root, use first root
+				if ($rootID == 0) {
+					$rootID = ContentItem::getFirstRootID();
+				}
+
+				return array(0, $rootID);
+			}
+
+			// handle non-super root urls
+			if (!$isSuperRootURL) {
+				// if only the root is known, find index content item of this root
+				if ($numberOfUC == 1) {
+					$contentItemID = ContentItem::getIndexContentItemID($rootID);
+					return array($contentItemID, $rootID);
+				}
+
+				// shift first url component (as it has already been processed)
+				array_shift($urlComponents);
+				$numberOfUC--;
+			}
+
+			// find requested content item by processing the other url components
+			$contentItemID = $rootID;
+			$count = 0;
+			while (($contentItemAlias = array_shift($urlComponents)) && isset($cache[$contentItemID][$contentItemAlias])) {
+				$contentItemID = $cache[$contentItemID][$contentItemAlias];
+				$count++;
+			}
+
+			// content item is valid
+			if ($contentItemID != $rootID && ($numberOfUC == $count || $this->getFilename() && ($numberOfUC - 1) == $count)) {
+				return array($contentItemID, $rootID);
+			}
+			// content item does not exist
+			else {
+				return array(0, $rootID);
 			}
 		}
+		// no content item specified
 		else {
-			// find root page with empty alias
-			$rootID = ContentItem::getSuperRootID();
-
-			$languageID = 0;
-			if ($rootID) {
-				Language::$cache = WCF::getCache()->get('languages');
-
-				// try to guess the desired language on new sessions
-				if (WCF::getSession()->isNew) {
-					$languageID = ContentItem::getInitialRootLanguageID();
-				}
+			// try to guess the desired language for new sessions
+			if (WCF::getSession()->isNew) {
+				$languageID = ContentItem::getInitialRootLanguageID();
 			}
-			if (!$languageID) {
+			// use the language of the active session otherwise
+			else {
 				$languageID = WCF::getSession()->getLanguageID();
 			}
 
@@ -232,7 +239,7 @@ class ContentItemRequestHandler {
 			}
 
 			$contentItemID = ContentItem::getIndexContentItemID($rootID);
-			return array($contentItemID, ContentItem::getContentItem($contentItemID)->getRootID());
+			return array($contentItemID, $rootID);
 		}
 	}
 
