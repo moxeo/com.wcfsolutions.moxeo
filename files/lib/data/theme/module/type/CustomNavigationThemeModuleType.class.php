@@ -27,7 +27,10 @@ class CustomNavigationThemeModuleType extends AbstractThemeModuleType {
 		// get content items
 		$contentItems = array();
 		foreach ($themeModule->contentItemIDs as $contentItemID) {
-			$contentItems[] = ContentItem::getContentItem($contentItemID);
+			try {
+				$contentItems[] = ContentItem::getContentItem($contentItemID);
+			}
+			catch (IllegalLinkException $e) {}
 		}
 
 		WCF::getTPL()->assign(array(
