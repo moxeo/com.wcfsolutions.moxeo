@@ -104,8 +104,12 @@ class IndexPage extends AbstractPage {
 	protected function readNews() {
 		$this->news = FeedReaderSource::getEntries(5);
 		foreach ($this->news as $key => $news) {
-			$this->news[$key]['description'] = preg_replace('/href="(.*?)"/e', '\'href="'.RELATIVE_WCF_DIR.'acp/dereferrer.php?url=\'.rawurlencode(\'$1\').\'" class="externalURL"\'', $news['description']);
+			$this->news[$key]['description'] = preg_replace_callback('/href="(.*?)"/', array($this, 'parseNewsFeedCallback'), $news['description']);
 		}
+	}
+
+	private function parseNewsFeedCallback($match) {
+		return 'href="'.RELATIVE_WCF_DIR.'acp/dereferrer.php?url='.rawurlencode($match[1]).'" class="externalURL"';
 	}
 
 	/**
