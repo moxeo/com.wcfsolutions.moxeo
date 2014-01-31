@@ -74,6 +74,11 @@ class ImageArticleSectionType extends HeadlineArticleSectionType {
 
 		$path = FileManagerUtil::getPath($this->formData['image']);
 
+		// check if image exists
+		if (!file_exists($path)) {
+			throw new UserInputException('images', 'badImage');
+		}
+
 		// check image content
 		if (!ImageUtil::checkImageContent($path)) {
 			throw new UserInputException('images', 'badImage');

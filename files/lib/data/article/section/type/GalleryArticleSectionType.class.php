@@ -81,9 +81,15 @@ class GalleryArticleSectionType extends HeadlineArticleSectionType {
 
 		// validate images
 		$errors = array();
-		foreach ($this->formData['images'] as $image) {
+		foreach ($this->formData['images'] as $key => $image) {
 			try {
 				$path = FileManagerUtil::getPath($image);
+
+				// check if image exists
+				if (!file_exists($path)) {
+					unset($this->formData['images'][$key]);
+					continue;
+				}
 
 				// check image content
 				if (!ImageUtil::checkImageContent($path)) {

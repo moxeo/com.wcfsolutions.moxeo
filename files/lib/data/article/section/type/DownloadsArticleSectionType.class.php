@@ -82,11 +82,16 @@ class DownloadsArticleSectionType extends HeadlineArticleSectionType {
 
 		// validate files
 		$errors = array();
-		foreach ($this->formData['files'] as $file) {
+		foreach ($this->formData['files'] as $key => $file) {
 			try {
 				$path = FileManagerUtil::getPath($file);
 
-				if (!file_exists($path) || !is_file($path)) {
+				if (!file_exists($path)) {
+					unset($this->formData['files'][$key]);
+					continue;
+				}
+
+				if (!is_file($path)) {
 					throw new UserInputException('files', 'invalid');
 				}
 			}
