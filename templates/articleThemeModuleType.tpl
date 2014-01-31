@@ -5,7 +5,8 @@
 			{foreach from=$articleSections.$articleID item=articleSection}
 				{if $articleSection->getArticleSectionType()->hasContent($articleSection, $article, $contentItem)}
 					<section class="section {@$articleSection->articleSectionType}Section{if $articleSection->cssClasses} {$articleSection->cssClasses}{/if}"{if $articleSection->cssID} id="{$articleSection->cssID}"{/if}>
-						{@$articleSection->getArticleSectionType()->getContent($articleSection, $article, $contentItem)}
+						{capture assign='content'}{@$articleSection->getArticleSectionType()->getContent($articleSection, $article, $contentItem)}{/capture}
+						{@$content}
 					</section>
 				{/if}
 			{/foreach}

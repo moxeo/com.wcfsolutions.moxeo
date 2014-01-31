@@ -3,5 +3,6 @@
 {/if}
 {assign var=themeModuleType value=$themeModule->getThemeModuleType()}
 <{@$themeModuleType->getHTMLTag()} class="module {@$themeModule->themeModuleType}Module{if $themeModule->cssClasses} {$themeModule->cssClasses}{/if}">
-	{@$themeModuleType->getContent($themeModule, $articleSection->themeModulePosition, $additionalData)}
+	{capture assign='content'}{@$themeModuleType->getContent($themeModule, $articleSection->themeModulePosition, $additionalData)}{/capture}
+	{@$content}
 </{@$themeModuleType->getHTMLTag()}>
