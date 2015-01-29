@@ -18,14 +18,14 @@ class ViewableContentItemList extends ContentItemList {
 	 *
 	 * @var	integer
 	 */
-	public $levelOffset = 0;
+	protected $levelOffset = 0;
 
 	/**
 	 * level limit
 	 *
 	 * @var	integer
 	 */
-	public $levelLimit = 0;
+	protected $levelLimit = 0;
 
 	/**
 	 * Creates a new ViewableContentItemList.
@@ -44,7 +44,11 @@ class ViewableContentItemList extends ContentItemList {
 	 * @see	ContentItemList::isVisible()
 	 */
 	protected function isVisible(ContentItem $contentItem) {
-		if (($contentItem->isRoot() && $contentItem->languageID != WCF::getLanguage()->getLanguageID()) || !$contentItem->isVisiblePage() || !$contentItem->getPermission() || ((!$contentItem->enabled || !$contentItem->isPublished()) && !$contentItem->getPermission('canViewHiddenContentItem')) || $this->levelLimit && $contentItem->getLevel() >= ($this->levelOffset + $this->levelLimit)) {
+		if (($contentItem->isRoot() && $contentItem->languageID != WCF::getLanguage()->getLanguageID())
+			|| !$contentItem->isVisiblePage() || !$contentItem->getPermission()
+			|| ((!$contentItem->enabled || !$contentItem->isPublished())
+				&& !$contentItem->getPermission('canViewHiddenContentItem'))
+			|| $this->levelLimit && $contentItem->getLevel() >= ($this->levelOffset + $this->levelLimit)) {
 			return false;
 		}
 		return true;

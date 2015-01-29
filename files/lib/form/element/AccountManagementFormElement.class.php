@@ -117,7 +117,6 @@ class AccountManagementFormElement extends ThemeModuleFormElement {
 
 		// get user editor
 		$editor = WCF::getUser()->getEditor();
-		$success = array();
 
 		// email
 		if ($this->email != WCF::getUser()->email) {

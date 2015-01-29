@@ -18,28 +18,28 @@ class ContentItemList {
 	 *
 	 * @var	integer
 	 */
-	public $contentItemID = 0;
+	protected $contentItemID = 0;
 
 	/**
 	 * list of all content items
 	 *
 	 * @var	array<ContentItem>
 	 */
-	public $contentItems = null;
+	protected $contentItems = null;
 
 	/**
 	 * content item structure
 	 *
 	 * @var	array
 	 */
-	public $contentItemStructure = null;
+	protected $contentItemStructure = null;
 
 	/**
 	 * list of content items
 	 *
 	 * @var	array
 	 */
-	public $contentItemList = array();
+	protected $contentItemList = array();
 
 	/**
 	 * Creates a new ContentItemList.
@@ -84,7 +84,7 @@ class ContentItemList {
 	/**
 	 * Removes invisible content items from content item list.
 	 *
-	 * @param	integer		parentID
+	 * @param	integer		$parentID
 	 */
 	protected function clearContentItemList($parentID = 0) {
 		if (!isset($this->contentItemStructure[$parentID])) return;

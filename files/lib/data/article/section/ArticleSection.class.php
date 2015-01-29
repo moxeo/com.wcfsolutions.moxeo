@@ -18,21 +18,21 @@ class ArticleSection extends DatabaseObject {
 	 *
 	 * @var	array
 	 */
-	public static $articleSectionTypes = null;
+	private static $articleSectionTypes = null;
 
 	/**
 	 * list of available article section types
 	 *
 	 * @var	array<ArticleSectionType>
 	 */
-	public static $availableArticleSectionTypes = null;
+	private static $availableArticleSectionTypes = null;
 
 	/**
 	 * list of article section options
 	 *
 	 * @var	array
 	 */
-	protected $articleSectionOptions = null;
+	private $articleSectionOptions = null;
 
 	/**
 	 * Creates a new ArticleSection object.

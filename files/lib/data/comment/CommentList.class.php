@@ -21,7 +21,7 @@ class CommentList extends DatabaseObjectList {
 	 *
 	 * @var array<Comment>
 	 */
-	public $comments = array();
+	private $comments = array();
 
 	/**
 	 * sql order by statement

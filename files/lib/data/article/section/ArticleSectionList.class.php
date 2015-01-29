@@ -21,7 +21,7 @@ class ArticleSectionList extends DatabaseObjectList {
 	 *
 	 * @var array<ArticleSection>
 	 */
-	public $articleSections = array();
+	private $articleSections = array();
 
 	/**
 	 * @see	DatabaseObjectList::countObjects()

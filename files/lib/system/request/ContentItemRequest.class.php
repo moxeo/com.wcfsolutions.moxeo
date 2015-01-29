@@ -18,14 +18,14 @@ class ContentItemRequest {
 	 *
 	 * @var	integer
 	 */
-	public $contentItemID = 0;
+	protected $contentItemID = 0;
 
 	/**
 	 * content item object
 	 *
 	 * @var	ContentItem
 	 */
-	public $contentItem = null;
+	protected $contentItem = null;
 
 	/**
 	 * Creates a new ContentItemRequest object.

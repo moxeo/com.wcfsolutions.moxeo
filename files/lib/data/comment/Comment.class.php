@@ -18,14 +18,14 @@ class Comment extends DatabaseObject {
 	 *
 	 * @var	array
 	 */
-	public static $commentableObjectTypes = null;
+	private static $commentableObjectTypes = null;
 
 	/**
 	 * list of available commentable object types
 	 *
 	 * @var	array<CommentableObjectType>
 	 */
-	public static $availableCommentableObjectTypes = null;
+	private static $availableCommentableObjectTypes = null;
 
 	/**
 	 * Creates a new Comment object.

@@ -99,13 +99,8 @@ class ContentItem extends DatabaseObject {
 	 * @return	boolean
 	 */
 	public function isPublished() {
-		if ($this->publishingStartTime && $this->publishingStartTime > TIME_NOW) {
-			return false;
-		}
-		if ($this->publishingEndTime && $this->publishingEndTime <= TIME_NOW) {
-			return false;
-		}
-		return true;
+		return ((!$this->publishingStartTime || $this->publishingStartTime <= TIME_NOW)
+			&& (!$this->publishingEndTime || $this->publishingEndTime > TIME_NOW));
 	}
 
 	/**
@@ -173,10 +168,7 @@ class ContentItem extends DatabaseObject {
 	 * @return	boolean
 	 */
 	public function isRoot() {
-		if ($this->contentItemType == self::TYPE_ROOT) {
-			return true;
-		}
-		return false;
+		return ($this->contentItemType == self::TYPE_ROOT);
 	}
 
 	/**
@@ -185,10 +177,7 @@ class ContentItem extends DatabaseObject {
 	 * @return	boolean
 	 */
 	public function isPage() {
-		if ($this->contentItemType == self::TYPE_PAGE) {
-			return true;
-		}
-		return false;
+		return ($this->contentItemType == self::TYPE_PAGE);
 	}
 
 	/**
@@ -197,10 +186,7 @@ class ContentItem extends DatabaseObject {
 	 * @return	boolean
 	 */
 	public function isExternalLink() {
-		if ($this->contentItemType == self::TYPE_LINK) {
-			return true;
-		}
-		return false;
+		return ($this->contentItemType == self::TYPE_LINK);
 	}
 
 	/**
@@ -210,13 +196,8 @@ class ContentItem extends DatabaseObject {
 	 * @return	boolean
 	 */
 	public function isErrorPage($errorType = '404') {
-		if ($errorType == '404' && $this->contentItemType == self::TYPE_ERROR_404) {
-			return true;
-		}
-		else if ($errorType == '403' && $this->contentItemType == self::TYPE_ERROR_403) {
-			return true;
-		}
-		return false;
+		return ($errorType == '404' && $this->contentItemType == self::TYPE_ERROR_404
+			|| $errorType == '403' && $this->contentItemType == self::TYPE_ERROR_403);
 	}
 
 	/**
@@ -225,10 +206,7 @@ class ContentItem extends DatabaseObject {
 	 * @return	boolean
 	 */
 	public function isVisiblePage() {
-		if (!$this->invisible && ($this->isPage() || $this->isExternalLink())) {
-			return true;
-		}
-		return false;
+		return (!$this->invisible && ($this->isPage() || $this->isExternalLink()));
 	}
 
 	/**

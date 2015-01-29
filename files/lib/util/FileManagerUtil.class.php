@@ -15,7 +15,7 @@ class FileManagerUtil {
 	 *
 	 * @var	string
 	 */
-	protected static $rootDir = null;
+	private static $rootDir = null;
 
 	/**
 	 * Returns true, if the given path is valid.
