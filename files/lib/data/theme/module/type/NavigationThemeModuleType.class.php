@@ -21,7 +21,7 @@ class NavigationThemeModuleType extends AbstractThemeModuleType {
 	 *
 	 * @var	array<ViewableContentItemList>
 	 */
-	public $cache = array();
+	private $cache = array();
 
 	// display methods
 	/**

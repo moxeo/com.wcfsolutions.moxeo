@@ -14,14 +14,18 @@ require_once(WCF_DIR.'lib/data/theme/module/type/ViewableThemeModuleType.class.p
  */
 class SearchThemeModuleType extends ViewableThemeModuleType {
 	/**
-	 * @see	ViewableThemeModuleType::$pageElement
+	 * @see	ViewableThemeModuleType::getPageElement()
 	 */
-	public $pageElement = 'search';
+	public function getPageElement() {
+		return 'search';
+	}
 
 	/**
-	 * @see	ViewableThemeModuleType::$pageElementDir
+	 * @see	ViewableThemeModuleType::getPageElementDir()
 	 */
-	public $pageElementDir = MOXEO_DIR;
+	public function getPageElementDir() {
+		return MOXEO_DIR;
+	}
 
 	// form methods
 	/**

@@ -23,14 +23,14 @@ class ArticleThemeModuleType extends AbstractThemeModuleType {
 	 *
 	 * @var	array
 	 */
-	public $articles = null;
+	private $articles = null;
 
 	/**
 	 * list of article sections
 	 *
 	 * @var	array
 	 */
-	public $articleSections = null;
+	private $articleSections = null;
 
 	// display methods
 	/**

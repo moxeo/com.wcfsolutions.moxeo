@@ -14,18 +14,24 @@ require_once(WCF_DIR.'lib/data/theme/module/type/ViewableThemeModuleType.class.p
  */
 class AccountManagementThemeModuleType extends ViewableThemeModuleType {
 	/**
-	 * @see	ViewableThemeModuleType::$pageElement
+	 * @see	ViewableThemeModuleType::getPageElement()
 	 */
-	public $pageElement = 'accountManagement';
+	public function getPageElement() {
+		return 'accountManagement';
+	}
 
 	/**
-	 * @see	ViewableThemeModuleType::$pageElementType
+	 * @see	ViewableThemeModuleType::getPageElementType()
 	 */
-	public $pageElementType = 'form';
+	public function getPageElementType() {
+		return 'form';
+	}
 
 	/**
-	 * @see	ViewableThemeModuleType::$pageElementDir
+	 * @see	ViewableThemeModuleType::getPageElementDir()
 	 */
-	public $pageElementDir = MOXEO_DIR;
+	public function getPageElementDir() {
+		return MOXEO_DIR;
+	}
 }
 ?>
