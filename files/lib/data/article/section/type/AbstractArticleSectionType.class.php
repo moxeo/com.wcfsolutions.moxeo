@@ -19,7 +19,7 @@ abstract class AbstractArticleSectionType implements ArticleSectionType {
 	 *
 	 * @var	array
 	 */
-	public $formData = array();
+	protected $formData = array();
 
 	// display methods
 	/**

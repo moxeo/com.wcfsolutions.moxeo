@@ -17,16 +17,18 @@ require_once(WCF_DIR.'lib/data/theme/module/ThemeModule.class.php');
  */
 class ThemeModuleArticleSectionType extends HeadlineArticleSectionType {
 	/**
-	 * @see	HeadlineArticleSectionType::$requireHeadline
+	 * @see	HeadlineArticleSectionType::requireHeadline()
 	 */
-	public $requireHeadline = false;
+	public function requireHeadline() {
+		return false;
+	}
 
 	/**
 	 * list of theme modules
 	 *
 	 * @var	array<ThemeModule>
 	 */
-	public $themeModules = array();
+	private $themeModules = array();
 
 	/**
 	 * @see	ArticleSectionType::cache()

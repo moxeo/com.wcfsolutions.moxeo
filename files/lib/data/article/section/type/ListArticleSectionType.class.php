@@ -14,16 +14,18 @@ require_once(MOXEO_DIR.'lib/data/article/section/type/HeadlineArticleSectionType
  */
 class ListArticleSectionType extends HeadlineArticleSectionType {
 	/**
-	 * @see	HeadlineArticleSectionType::$requireHeadline
+	 * @see	HeadlineArticleSectionType::requireHeadline()
 	 */
-	public $requireHeadline = false;
+	public function requireHeadline() {
+		return false;
+	}
 
 	/**
 	 * list of list style type options
 	 *
 	 * @var	array
 	 */
-	public $listStyleTypeOptions = array('none', 'decimal', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha', 'disc', 'circle', 'square');
+	private $listStyleTypeOptions = array('none', 'decimal', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha', 'disc', 'circle', 'square');
 
 	// display methods
 	/**

@@ -18,21 +18,23 @@ abstract class ViewableArticleSectionType extends AbstractArticleSectionType {
 	 *
 	 * @var	array<PageElement>
 	 */
-	public $pageElements = array();
+	private $pageElements = array();
 
 	/**
-	 * page element
+	 * Returns the name of the page element to be displayed.
 	 *
-	 * @var	string
+	 * @return	string		The name of the page element to be displayed.
 	 */
-	public $pageElement = '';
+	public abstract function getPageElement();
 
 	/**
-	 * page element type (page/form/action)
+	 * Returns the type of the page element.
 	 *
-	 * @var	string
+	 * @return	string		The page element type (either 'page', 'form' or 'action').
 	 */
-	public $pageElementType = 'page';
+	public function getPageElementType() {
+		return 'page';
+	}
 
 	/**
 	 * @see	ArticleSectionType::cache()

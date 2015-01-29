@@ -14,8 +14,10 @@ require_once(MOXEO_DIR.'lib/data/article/section/type/ViewableArticleSectionType
  */
 class CommentsArticleSectionType extends ViewableArticleSectionType {
 	/**
-	 * @see	ViewableArticleSectionType::$pageElement
+	 * @see	ViewableArticleSectionType::getPageElement()
 	 */
-	public $pageElement = 'comments';
+	public function getPageElement() {
+		return 'comments';
+	}
 }
 ?>

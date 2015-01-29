@@ -14,11 +14,13 @@ require_once(MOXEO_DIR.'lib/data/article/section/type/AbstractArticleSectionType
  */
 class HeadlineArticleSectionType extends AbstractArticleSectionType {
 	/**
-	 * True, if the headline is required.
+	 * Returns whether the headline should be shown.
 	 *
-	 * @var	boolean
+	 * @return	boolean		True, if the headline should be shown.
 	 */
-	public $requireHeadline = true;
+	public function requireHeadline() {
+		return true;
+	}
 
 	// display methods
 	/**
@@ -60,7 +62,7 @@ class HeadlineArticleSectionType extends AbstractArticleSectionType {
 	 */
 	public function validate() {
 		// headline
-		if ($this->requireHeadline) {
+		if ($this->requireHeadline()) {
 			if (empty($this->formData['headline'])) {
 				throw new UserInputException('headline');
 			}

@@ -14,9 +14,11 @@ require_once(MOXEO_DIR.'lib/data/article/section/type/HeadlineArticleSectionType
  */
 class GalleryArticleSectionType extends HeadlineArticleSectionType {
 	/**
-	 * @see	HeadlineArticleSectionType::$requireHeadline
+	 * @see	HeadlineArticleSectionType::requireHeadline()
 	 */
-	public $requireHeadline = false;
+	public function requireHeadline() {
+		return false;
+	}
 
 	// display methods
 	/**
