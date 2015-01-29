@@ -32,7 +32,9 @@ class CommentsPageElement extends ArticleSectionPageElement {
 
 		// init comment list
 		$this->commentList = new CommentList();
-		$this->commentList->sqlConditions .= "comment.commentableObjectID = ".$this->articleSection->articleSectionID." AND comment.commentableObjectType = 'articleSection'";
+		$this->commentList->sqlConditions .= "comment.commentableObjectID = "
+			. $this->getArticleSection()->articleSectionID
+			. " AND comment.commentableObjectType = 'articleSection'";
 		$this->commentList->sqlOrderBy = 'comment.time DESC';
 	}
 
@@ -65,7 +67,8 @@ class CommentsPageElement extends ArticleSectionPageElement {
 
 		// init comment add form
 		require_once(MOXEO_DIR.'lib/form/element/CommentAddFormElement.class.php');
-		$commentAddForm = new CommentAddFormElement($this->articleSection->getCommentableObject(), $this->contentItem, $this->contentItem->getURL());
+		$commentAddForm = new CommentAddFormElement($this->getArticleSection()->getCommentableObject(),
+			$this->getContentItem(), $this->getContentItem()->getURL());
 
 		WCF::getTPL()->assign(array(
 			'comments' => $this->commentList->getObjects(),

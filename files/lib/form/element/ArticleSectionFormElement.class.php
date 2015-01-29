@@ -21,21 +21,21 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 	 *
 	 * @var	ArticleSection
 	 */
-	public $articleSection = null;
+	private $articleSection = null;
 
 	/**
 	 * article object
 	 *
 	 * @var	Article
 	 */
-	public $article = null;
+	private $article = null;
 
 	/**
 	 * content item object
 	 *
 	 * @var	ContentItem
 	 */
-	public $contentItem = null;
+	private $contentItem = null;
 
 	/**
 	 * Creates a new ArticleSectionFormElement object.
@@ -68,6 +68,33 @@ abstract class ArticleSectionFormElement extends AbstractFormElement {
 			'article' => $this->article,
 			'contentItem' => $this->contentItem
 		));
+	}
+
+	/**
+	 * Returns the article section object of this form element.
+	 *
+	 * @return	ArticleSection		The article section object of this form element.
+	 */
+	public function getArticleSection() {
+		return $this->articleSection;
+	}
+
+	/**
+	 * Returns the article object of this form element.
+	 *
+	 * @return	Article			The article object of this form element.
+	 */
+	public function getArticle() {
+		return $this->article;
+	}
+
+	/**
+	 * Returns content item object of this form element.
+	 *
+	 * @return	ContentItem		The content item object of this form element.
+	 */
+	public function getContentItem() {
+		return $this->contentItem;
 	}
 }
 ?>

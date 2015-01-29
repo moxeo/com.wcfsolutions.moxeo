@@ -46,7 +46,7 @@ class SearchPageElement extends ThemeModulePageElement {
 		if (isset($_REQUEST['q'])) $this->query = StringUtil::trim($_REQUEST['q']);
 
 		// items per page
-		if ($this->themeModule->itemsPerPage) $this->itemsPerPage = $this->themeModule->itemsPerPage;
+		if ($this->getThemeModule()->itemsPerPage) $this->itemsPerPage = $this->getThemeModule()->itemsPerPage;
 	}
 
 	/**
@@ -68,10 +68,11 @@ class SearchPageElement extends ThemeModulePageElement {
 		parent::readData();
 
 		// get content item
-		if (!isset($this->additionalData['contentItem'])) {
+		$additionalData = $this->getAdditionalData();
+		if (!isset($additionalData['contentItem'])) {
 			throw new SystemException('no content item given');
 		}
-		$this->contentItem = $this->additionalData['contentItem'];
+		$this->contentItem = $additionalData['contentItem'];
 
 		// search
 		if ($this->query) {

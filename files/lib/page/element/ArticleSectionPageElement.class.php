@@ -21,21 +21,21 @@ abstract class ArticleSectionPageElement extends AbstractPageElement {
 	 *
 	 * @var	ArticleSection
 	 */
-	public $articleSection = null;
+	private $articleSection = null;
 
 	/**
 	 * article object
 	 *
 	 * @var	Article
 	 */
-	public $article = null;
+	private $article = null;
 
 	/**
 	 * content item object
 	 *
 	 * @var	ContentItem
 	 */
-	public $contentItem = null;
+	private $contentItem = null;
 
 	/**
 	 * Creates a new ArticleSectionPageElement object.
@@ -68,6 +68,33 @@ abstract class ArticleSectionPageElement extends AbstractPageElement {
 			'article' => $this->article,
 			'contentItem' => $this->contentItem
 		));
+	}
+
+	/**
+	 * Returns the article section object of this page element.
+	 *
+	 * @return	ArticleSection		The article section object of this page element.
+	 */
+	public function getArticleSection() {
+		return $this->articleSection;
+	}
+
+	/**
+	 * Returns the article object of this page element.
+	 *
+	 * @return	Article			The article object of this page element.
+	 */
+	public function getArticle() {
+		return $this->article;
+	}
+
+	/**
+	 * Returns content item object of this page element.
+	 *
+	 * @return	ContentItem		The content item object of this page element.
+	 */
+	public function getContentItem() {
+		return $this->contentItem;
 	}
 }
 ?>
