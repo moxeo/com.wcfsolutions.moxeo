@@ -21,21 +21,21 @@ abstract class ArticleSectionActionElement extends AbstractSecureAction {
 	 *
 	 * @var	ArticleSection
 	 */
-	public $articleSection = null;
+	private $articleSection = null;
 
 	/**
 	 * article object
 	 *
 	 * @var	Article
 	 */
-	public $article = null;
+	private $article = null;
 
 	/**
 	 * content item object
 	 *
 	 * @var	ContentItem
 	 */
-	public $contentItem = null;
+	private $contentItem = null;
 
 	/**
 	 * Creates a new ArticleSectionActionElement object.
