@@ -48,5 +48,32 @@ abstract class ArticleSectionActionElement extends AbstractSecureAction {
 		$this->contentItem = $contentItem;
 		parent::__construct();
 	}
+
+	/**
+	 * Returns the article section object of this action element.
+	 *
+	 * @return	ArticleSection		The article section object of this action element.
+	 */
+	public function getArticleSection() {
+		return $this->articleSection;
+	}
+
+	/**
+	 * Returns the article object of this action element.
+	 *
+	 * @return	Article			The article object of this action element.
+	 */
+	public function getArticle() {
+		return $this->article;
+	}
+
+	/**
+	 * Returns content item object of this action element.
+	 *
+	 * @return	ContentItem		The content item object of this action element.
+	 */
+	public function getContentItem() {
+		return $this->contentItem;
+	}
 }
 ?>
